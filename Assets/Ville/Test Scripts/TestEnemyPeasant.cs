@@ -9,8 +9,8 @@ public class TestEnemyPeasant : MonoBehaviour
 
     [Header("Seeing Player Parameters")]
     [SerializeField] GameObject player;
-    public float radius = 5;
-    [Range(0, 360)] public float angle = 45;
+    float radius = 10;
+    [Range(0, 360)] float angle = 90;
     public LayerMask targetLayer;
     public LayerMask obstructionLayer;
     public bool CanSeePlayer; //{ get; set; }
@@ -49,6 +49,7 @@ public class TestEnemyPeasant : MonoBehaviour
         {
             isAgro = true;
             agroCounter = 0;
+            LookAtPlayer();
         }
         else
         {
@@ -94,7 +95,7 @@ public class TestEnemyPeasant : MonoBehaviour
             Transform target = rangeChecks[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
-            if (Vector2.Angle(transform.right * transform.localScale.x, directionToTarget) < angle / 2)
+            if (Vector2.Angle(transform.up * transform.localScale.x, directionToTarget) < angle / 2)
             {
                 float distanceToTarget = Vector2.Distance(transform.position, target.position);
 
@@ -122,9 +123,9 @@ public class TestEnemyPeasant : MonoBehaviour
     void LookAtPlayer()
     {
         direction = player.transform.position - transform.position;
-        Debug.DrawRay(transform.position, direction, Color.green);
+        //Debug.DrawRay(transform.position, direction, Color.green);
         lookAtAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
-        Debug.Log("Angle: " + angle);
+        //Debug.Log("Angle: " + angle);
         angleAxis = Quaternion.AngleAxis(lookAtAngle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, angleAxis, Time.deltaTime * 50);
     }
@@ -137,9 +138,9 @@ public class TestEnemyPeasant : MonoBehaviour
         Vector2 angle01 = DirectionFromAngle(transform.eulerAngles.y, -angle / 2);
         Vector2 angle02 = DirectionFromAngle(transform.eulerAngles.y, angle / 2);
 
-        //Gizmos.color = Color.yellow;
-        //Gizmos.DrawLine(transform.position, angle01 * radius);
-        //Gizmos.DrawLine(transform.position, angle02 * radius);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, angle01 * radius);
+        Gizmos.DrawLine(transform.position, angle02 * radius);
 
         if (CanSeePlayer)
         {
