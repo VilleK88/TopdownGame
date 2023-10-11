@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class TestPlayer : MonoBehaviour
 {
-    float moveSpeed = 5; // original speed 5
+    Rigidbody2D rb2d;
+    public Camera cam;
+
+    [Header("Player Movement and Mouse Aiming")]
+    float moveSpeed = 5;
     Vector2 movement;
     Vector2 mousePos;
     Vector2 lookDir;
     float angle;
-    //float horizontalInput;
-    //float verticalInput;
-    Rigidbody2D rb2d;
-
-    public Camera cam;
 
     private void Start()
     {
@@ -23,30 +22,34 @@ public class TestPlayer : MonoBehaviour
     private void Update()
     {
         Move();
-        MouseAimin();
+        MouseAiming();
     }
 
     private void FixedUpdate()
     {
-        rb2d.MovePosition(rb2d.position + movement * moveSpeed * Time.fixedDeltaTime);
-
-        lookDir = mousePos - rb2d.position;
-        angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg -90;
-        rb2d.rotation = angle;
+        MoveFixed();
+        MouseAimingFixed();
     }
 
     private void Move()
     {
-        //horizontalInput = Input.GetAxis("Horizontal") * moveSpeed;
-        //verticalInput = Input.GetAxis("Vertical") * moveSpeed;
-        //rb2d.velocity = new Vector2(horizontalInput, verticalInput);
-
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
     }
+    void MoveFixed()
+    {
+        rb2d.MovePosition(rb2d.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
 
-    private void MouseAimin()
+    private void MouseAiming()
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+    void MouseAimingFixed()
+    {
+        lookDir = mousePos - rb2d.position;
+        angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
+        rb2d.rotation = angle;
     }
 }
