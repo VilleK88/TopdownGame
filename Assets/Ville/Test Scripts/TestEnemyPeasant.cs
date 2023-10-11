@@ -18,13 +18,15 @@ public class TestEnemyPeasant : MonoBehaviour
     [Header("Speed and Distance Parameters")]
     float speed = 3;
     float walkSpeed = 2;
-    float distance = 5;
+    float distance = 3;
     Vector2 target;
 
     [Header("Agro Parameters")]
-    bool isAgro = false;
+    public bool isAgro = false;
     float maxAgroCounter = 5;
     public float agroCounter = 0;
+    float distanceToTarget;
+    //float attackDistance;
 
     [Header("Look At Player Parameters")]
     Vector3 direction;
@@ -39,13 +41,15 @@ public class TestEnemyPeasant : MonoBehaviour
         target = player.transform.position;
 
         rb2d = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        float attackDistance = Vector2.Distance(transform.position, player.transform.position);
+        distanceToTarget = Vector2.Distance(transform.position, player.transform.position);
+        //Debug.Log("AttackDistance: " + distanceToTarget);
 
-        if (CanSeePlayer && attackDistance < 10)
+        if (CanSeePlayer)
         {
             isAgro = true;
             agroCounter = 0;
@@ -71,8 +75,21 @@ public class TestEnemyPeasant : MonoBehaviour
 
         if(isAgro)
         {
-            Chase();
+            if(distanceToTarget <= 1.5f)
+            {
+                Attack();
+            }
+            else
+            {
+                Chase();
+            }
         }
+    }
+
+    void Attack()
+    {
+        anim.SetTrigger("PikeAttack1");
+        Debug.Log("Attack");
     }
 
     IEnumerator FOVRoutine()
@@ -97,7 +114,7 @@ public class TestEnemyPeasant : MonoBehaviour
 
             if (Vector2.Angle(transform.up * transform.localScale.x, directionToTarget) < angle / 2)
             {
-                float distanceToTarget = Vector2.Distance(transform.position, target.position);
+                distanceToTarget = Vector2.Distance(transform.position, target.position);
 
                 if (!Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget,
                     obstructionLayer))
@@ -159,41 +176,9 @@ public class TestEnemyPeasant : MonoBehaviour
 
     void Chase()
     {
-        float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
-
-        if (distanceToPlayer < distance)
-        {
-            target = player.transform.position;
-            Vector2 direction = (target - (Vector2)transform.position).normalized;
-            rb2d.velocity = direction * speed;
-
-            if (direction.x > 0)
-            {
-                //transform.localScale = new Vector2(1, 1);
-            }
-            else if (direction.x < 0)
-            {
-                //transform.localScale = new Vector2(-1, 1);
-            }
-        }
-        else if (distanceToPlayer > distance && Vector2.Distance(transform.position, target) < 0.1f)
-        {
-            target = new Vector2(player.transform.position.x, player.transform.position.y + 2);
-        }
-        else
-        {
-            Vector2 direction = (target - (Vector2)transform.position).normalized;
-            rb2d.velocity = direction * speed;
-
-            if (direction.x > 0)
-            {
-                //transform.localScale = new Vector2(1, 1);
-            }
-            else if (direction.x < 0)
-            {
-                //transform.localScale = new Vector2(-1, 1);
-            }
-        }
+        direction = player.transform.position - transform.position;
+        direction.Normalize();
+        transform.position += direction * speed * Time.deltaTime;
     }
 
     void StopChasingPlayer()
