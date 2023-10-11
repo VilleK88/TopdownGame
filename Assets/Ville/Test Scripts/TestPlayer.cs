@@ -6,6 +6,7 @@ public class TestPlayer : MonoBehaviour
 {
     Rigidbody2D rb2d;
     public Camera cam;
+    Animator anim;
 
     [Header("Player Movement and Mouse Aiming")]
     float moveSpeed = 5;
@@ -17,12 +18,14 @@ public class TestPlayer : MonoBehaviour
     private void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
         Move();
         MouseAiming();
+        Attack();
     }
 
     private void FixedUpdate()
@@ -51,5 +54,13 @@ public class TestPlayer : MonoBehaviour
         lookDir = mousePos - rb2d.position;
         angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
         rb2d.rotation = angle;
+    }
+
+    void Attack()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            anim.SetTrigger("AxeAttack1");
+        }
     }
 }
