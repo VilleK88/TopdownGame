@@ -43,9 +43,9 @@ public class TestEnemyPeasant : MonoBehaviour
 
     private void Update()
     {
-        float shootingDistance = Vector2.Distance(transform.position, player.transform.position);
+        float attackDistance = Vector2.Distance(transform.position, player.transform.position);
 
-        if (CanSeePlayer && shootingDistance < 10)
+        if (CanSeePlayer && attackDistance < 10)
         {
             isAgro = true;
             agroCounter = 0;
