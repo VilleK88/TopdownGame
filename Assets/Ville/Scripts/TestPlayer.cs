@@ -19,6 +19,7 @@ public class TestPlayer : MonoBehaviour
     RaycastHit hit;
     Vector3 cursorPosition;
 
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -50,14 +51,14 @@ public class TestPlayer : MonoBehaviour
 
     private void MouseAiming()
     {
-        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        /*ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if(Physics.Raycast(ray, out hit))
         {
             cursorPosition = hit.point - transform.position;
 
             transform.forward = new Vector3(cursorPosition.x, 0, cursorPosition.z);
-        }
+        }*/
     }
 
     void Attack()

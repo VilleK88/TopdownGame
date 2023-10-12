@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(TestEnemy))]
 public class FieldOfViewEditor : Editor
 {
-    void OnSceneGUI()
+    /*void OnSceneGUI()
     {
         TestEnemy fov = (TestEnemy)target;
         Handles.color = Color.white;
@@ -25,5 +25,5 @@ public class FieldOfViewEditor : Editor
         angleInDegrees += eulerY;
 
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
-    }
+    }*/
 }
