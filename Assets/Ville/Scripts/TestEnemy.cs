@@ -7,9 +7,9 @@ using UnityEngine;
 
 public class TestEnemy : MonoBehaviour
 {
-    public float radius;
+    public float radius = 6;
     [Range(0,360)]
-    public float angle;
+    public float angle = 90;
 
     public GameObject player;
 
@@ -28,6 +28,11 @@ public class TestEnemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(FOVRoutine());
+    }
+
+    private void Update()
+    {
+        
     }
 
     IEnumerator FOVRoutine()
@@ -73,27 +78,4 @@ public class TestEnemy : MonoBehaviour
             canSeePlayer = false;
         }
     }
-
-    /*void OnSceneGUI()
-    {
-        Handles.color = Color.white;
-        Handles.DrawWireArc(target.transform.position, Vector3.up, Vector3.forward, 360, radius);
-
-        viewAngle01 = DirectionFromAngle(target.transform.eulerAngles.y, -target.eulerAngles / 2);
-    }*/
-
-    private void OnDrawGizmos()
-    {
-        //Gizmos.color = Color.white;
-        //Handles.DrawWireArc(target.transform.position, Vector3.up, Vector3.forward, 360, radius);
-
-        //Vector3 viewAngle01 = DirectionFromAngle(target.transform.eulerAngles.y, -target.angle / 2);
-    }
-
-    /*Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)
-    {
-        angleInDegrees += eulerY;
-
-        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
-    }*/
 }
