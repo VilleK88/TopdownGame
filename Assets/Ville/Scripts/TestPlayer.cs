@@ -8,13 +8,9 @@ public class TestPlayer : MonoBehaviour
     [SerializeField] GameObject childSprite;
     public Camera cam;
 
-    [Header("Player Movement and Mouse Aiming")]
+    [Header("Player Movement and Mouse Parameters")]
     float moveSpeed = 5;
     Vector3 movement;
-    Vector3 mousePos;
-    Vector3 lookDir;
-    float angle;
-
     Ray ray;
     RaycastHit hit;
     Vector3 cursorPosition;
@@ -51,14 +47,14 @@ public class TestPlayer : MonoBehaviour
 
     private void MouseAiming()
     {
-        /*ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if(Physics.Raycast(ray, out hit))
         {
             cursorPosition = hit.point - transform.position;
 
             transform.forward = new Vector3(cursorPosition.x, 0, cursorPosition.z);
-        }*/
+        }
     }
 
     void Attack()
