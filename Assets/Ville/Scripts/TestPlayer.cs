@@ -8,23 +8,33 @@ public class TestPlayer : MonoBehaviour
     [SerializeField] GameObject childSprite;
     public Camera cam;
 
-    [Header("Player Movement and Mouse Parameters")]
+    [Header("Player Movement and Mouse Aiming Parameters")]
     float moveSpeed = 5;
     Vector3 movement;
     Ray ray;
     RaycastHit hit;
     Vector3 cursorPosition;
+    bool running = false;
+
+    [Header("Jump Parameters")]
+    float jumpForce = 5;
+    float gravityModifier = 1;
+    int jumps = 0;
+    [SerializeField] Transform groundCheck;
+    [SerializeField] LayerMask ground;
 
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         childSprite.GetComponent<Animator>();
+        Physics.gravity *= gravityModifier;
     }
 
     private void Update()
     {
         Move();
+        Jump();
         MouseAiming();
         Attack();
     }
@@ -63,5 +73,24 @@ public class TestPlayer : MonoBehaviour
         {
             childSprite.GetComponent<Animator>().SetTrigger("AxeAttack1");
         }
+    }
+
+    void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        {
+            jumps = 0;
+            rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && jumps < 1)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+            jumps++;
+        }
+    }
+
+    bool IsGrounded()
+    {
+        return Physics.CheckSphere(groundCheck.position, 1f, ground);
     }
 }

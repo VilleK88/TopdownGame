@@ -7,7 +7,8 @@ using UnityEngine.AI;
 public class TestEnemy : MonoBehaviour
 {
     Rigidbody rb;
-    Animator anim;
+    //Animator anim;
+    [SerializeField] GameObject childSprite;
     public GameObject player;
     public Transform playerTransform;
     float speed = 50; // 10 original
@@ -35,9 +36,11 @@ public class TestEnemy : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        //rb.angularVelocity = Vector3.zero;
         //player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
         agent = GetComponent<NavMeshAgent>();
+        childSprite.GetComponent<Animator>();
         StartCoroutine(FOVRoutine());
     }
 
@@ -69,7 +72,17 @@ public class TestEnemy : MonoBehaviour
         if(isAgro)
         {
             Chase();
+
+            if (distanceToTarget <= 2)
+            {
+                Attack();
+            }
         }
+    }
+
+    void Attack()
+    {
+        childSprite.GetComponent<Animator>().SetTrigger("PikeAttack1");
     }
 
     void Chase()
