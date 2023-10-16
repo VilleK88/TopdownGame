@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TestEnemy : MonoBehaviour
 {
     Rigidbody rb;
     Animator anim;
     public GameObject player;
+    public Transform playerTransform;
     float speed = 50; // 10 original
 
     [Header("Field of View Parameters")]
@@ -28,11 +30,14 @@ public class TestEnemy : MonoBehaviour
     public float agroCounter = 0;
     Vector3 direction;
     Quaternion lookRotation;
+    NavMeshAgent agent;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
+        playerTransform = player.transform;
+        agent = GetComponent<NavMeshAgent>();
         StartCoroutine(FOVRoutine());
     }
 
@@ -42,13 +47,13 @@ public class TestEnemy : MonoBehaviour
         {
             isAgro = true;
             agroCounter = 0;
-            LookAtPlayer();
+            //LookAtPlayer();
         }
         else
         {
             if(isAgro)
             {
-                LookAtPlayer();
+                //LookAtPlayer();
                 if(agroCounter < maxAgroCounter)
                 {
                     agroCounter += Time.deltaTime;
@@ -69,10 +74,11 @@ public class TestEnemy : MonoBehaviour
 
     void Chase()
     {
-        direction = (player.transform.position - transform.position).normalized;
-        rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
+        //direction = (player.transform.position - transform.position).normalized;
+        //rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
         //transform.position = Vector3.MoveTowards(transform.position, player.transform.position,
         //speed * Time.deltaTime);
+        agent.SetDestination(playerTransform.position);
     }
 
     void LookAtPlayer()
