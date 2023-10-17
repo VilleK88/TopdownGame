@@ -1170,7 +1170,6 @@ MonoBehaviour:
   canSeePlayer: 0
   isAgro: 0
   agroCounter: 0
-  hitBox: {fileID: 1653132963}
 --- !u!114 &810991946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1183,11 +1182,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd9c0fe3bf3d31498733fc98677eef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySprite: {fileID: 386276938}
   currentHealth: 0
   components: []
   iFramesDuration: 2
   numberOfFlashes: 2
   playerBlockFetch: 0
+  blockingPlayer: 0
 --- !u!1 &815343435
 GameObject:
   m_ObjectHideFlags: 0

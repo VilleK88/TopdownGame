@@ -32,7 +32,8 @@ public class TestEnemy : MonoBehaviour
     Vector3 direction;
     Quaternion lookRotation;
     NavMeshAgent agent;
-    public GameObject hitBox;
+
+    bool ifBlockingPlayersAttackFetch; // from EnemyHealth -script
 
     private void Start()
     {
@@ -47,6 +48,8 @@ public class TestEnemy : MonoBehaviour
 
     private void Update()
     {
+        ifBlockingPlayersAttackFetch = GetComponent<TestEnemyHealth>().blockingPlayer;
+
         if(canSeePlayer)
         {
             isAgro = true;
@@ -77,7 +80,10 @@ public class TestEnemy : MonoBehaviour
             if (distanceToTarget <= 2)
             {
                 //Attack();
-                StartCoroutine(AttackPlayer());
+                if(!ifBlockingPlayersAttackFetch)
+                {
+                    StartCoroutine(AttackPlayer());
+                }
             }
         }
     }

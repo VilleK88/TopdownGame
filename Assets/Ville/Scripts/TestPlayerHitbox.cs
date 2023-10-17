@@ -9,9 +9,13 @@ public class TestPlayerHitbox : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             TestEnemyHealth health = other.gameObject.GetComponent<TestEnemyHealth>();
+            bool ifBlocking = other.gameObject.GetComponent<TestEnemyHealth>().blockingPlayer;
             if(health != null)
             {
-                health.TakeDamage(10);
+                if(!ifBlocking)
+                {
+                    health.TakeDamage(10);
+                }
             }
         }
     }

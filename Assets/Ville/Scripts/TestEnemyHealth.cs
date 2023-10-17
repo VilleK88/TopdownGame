@@ -5,9 +5,10 @@ using UnityEngine;
 public class TestEnemyHealth : MonoBehaviour
 {
     Animator anim;
+    [SerializeField] GameObject enemySprite;
 
     float startingHealth = 100;
-    float maxHealth = 100;
+    float maxHealth = 1000;
     public float currentHealth; //{ get; set; }
     float chipSpeed = 2;
     float lerpTimer;
@@ -22,10 +23,13 @@ public class TestEnemyHealth : MonoBehaviour
 
     public bool playerBlockFetch;
 
+    int blockOrNot;
+    public bool blockingPlayer;
+
     private void Start()
     {
         currentHealth = maxHealth;
-        anim = GetComponent<Animator>();
+        anim = enemySprite.GetComponent<Animator>();
     }
 
     private void Update()
@@ -36,11 +40,37 @@ public class TestEnemyHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+
+        if(currentHealth <= 0)
+        {
+            // die
+        }
+        else
+        {
+            //Block();
+            blockOrNot = Random.Range(0, 1);
+            if(blockOrNot == 0)
+            {
+                blockingPlayer = true;
+                anim.SetBool("PikeBlock", true);
+                StartCoroutine(StopBlocking());
+                //Debug.Log("Toimii");
+            }
+            //blockingPlayer = true;
+            //anim.SetBool("PikeBlock", true);
+        }
     }
 
     public void RestoreHealth(float healAmount)
     {
         currentHealth += healAmount;
+    }
+
+    IEnumerator StopBlocking()
+    {
+        yield return new WaitForSeconds(2);
+        anim.SetBool("PikeBlock", false);
+        blockingPlayer = false;
     }
 
     private IEnumerator Invulnerability()
