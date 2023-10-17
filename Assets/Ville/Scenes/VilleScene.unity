@@ -1487,7 +1487,7 @@ MonoBehaviour:
   frontHealthbar: {fileID: 263512927}
   backHealthbar: {fileID: 318159078}
   components: []
-  iFramesDuration: 20
+  iFramesDuration: 2
   numberOfFlashes: 2
   playerSprite: {fileID: 35958977}
   playerBlockFetch: 0
@@ -1952,7 +1952,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 700e428984f61e64b9c5af8851c8a202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1385117353}
 --- !u!1 &1848693907
 GameObject:
   m_ObjectHideFlags: 0
