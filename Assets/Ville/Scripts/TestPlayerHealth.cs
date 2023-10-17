@@ -86,10 +86,10 @@ public class TestPlayerHealth : MonoBehaviour
         else
         {
             currentHealth -= damage;
+            StartCoroutine(Invulnerability());
         }
 
         lerpTimer = 0;
-        StartCoroutine(Invulnerability());
     }
 
     public void RestoreHealth(float healAmount)
