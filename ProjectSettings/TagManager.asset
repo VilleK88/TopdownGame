@@ -15,8 +15,8 @@ TagManager:
   - Enemy
   - Obstruction
   - Ground
-  - 
-  - 
+  - EnemyHitBox
+  - PlayerHitBox
   - 
   - 
   - 

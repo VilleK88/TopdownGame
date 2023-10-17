@@ -67,7 +67,7 @@ public class TestPlayer : MonoBehaviour
         }
     }
 
-    void Attack()
+    public void Attack()
     {
         if(Input.GetMouseButtonDown(0))
         {

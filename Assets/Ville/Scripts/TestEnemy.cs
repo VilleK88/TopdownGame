@@ -32,6 +32,7 @@ public class TestEnemy : MonoBehaviour
     Vector3 direction;
     Quaternion lookRotation;
     NavMeshAgent agent;
+    public GameObject hitBox;
 
     private void Start()
     {
@@ -75,7 +76,8 @@ public class TestEnemy : MonoBehaviour
 
             if (distanceToTarget <= 2)
             {
-                Attack();
+                //Attack();
+                StartCoroutine(AttackPlayer());
             }
         }
     }
@@ -83,6 +85,12 @@ public class TestEnemy : MonoBehaviour
     void Attack()
     {
         childSprite.GetComponent<Animator>().SetTrigger("PikeAttack1");
+    }
+
+    IEnumerator AttackPlayer()
+    {
+        childSprite.GetComponent<Animator>().SetTrigger("PikeAttack1");
+        yield return new WaitForSeconds(2);
     }
 
     void Chase()
