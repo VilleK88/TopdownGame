@@ -1472,6 +1472,7 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 512
+  blocking: 0
 --- !u!114 &1385117360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1491,7 +1492,8 @@ MonoBehaviour:
   iFramesDuration: 2
   numberOfFlashes: 2
   playerSprite: {fileID: 35958977}
-  playerBlockFetch: 0
+  player: {fileID: 1385117353}
+  blockingFetch: 0
 --- !u!1 &1398936646
 GameObject:
   m_ObjectHideFlags: 0

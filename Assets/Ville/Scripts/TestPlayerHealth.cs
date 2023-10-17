@@ -1,12 +1,11 @@
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TestPlayerHealth : MonoBehaviour
 {
-    Animator anim;
-
     float startingHealth = 100;
     float maxHealth = 100;
     public float currentHealth; //{ get; set; }
@@ -25,18 +24,19 @@ public class TestPlayerHealth : MonoBehaviour
     SpriteRenderer spriteRend;
     Color originalColor;
 
-    public bool playerBlockFetch;
+    [SerializeField] GameObject player;
+    public bool blockingFetch; // from Player -script
 
     private void Start()
     {
         currentHealth = maxHealth;
-        anim = GetComponent<Animator>();
         spriteRend = playerSprite.GetComponent<SpriteRenderer>();
         originalColor = spriteRend.color;
     }
 
     private void Update()
     {
+        blockingFetch = player.GetComponent<TestPlayer>().blocking;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthUI();
         /*if(Input.GetKeyDown(KeyCode.A))
@@ -75,7 +75,19 @@ public class TestPlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage;
+        if(currentHealth <= 0)
+        {
+            // die
+        }
+        else if(blockingFetch)
+        {
+
+        }
+        else
+        {
+            currentHealth -= damage;
+        }
+
         lerpTimer = 0;
         StartCoroutine(Invulnerability());
     }

@@ -47,17 +47,13 @@ public class TestEnemyHealth : MonoBehaviour
         }
         else
         {
-            //Block();
             blockOrNot = Random.Range(0, 1);
             if(blockOrNot == 0)
             {
                 blockingPlayer = true;
                 anim.SetBool("PikeBlock", true);
                 StartCoroutine(StopBlocking());
-                //Debug.Log("Toimii");
             }
-            //blockingPlayer = true;
-            //anim.SetBool("PikeBlock", true);
         }
     }
 

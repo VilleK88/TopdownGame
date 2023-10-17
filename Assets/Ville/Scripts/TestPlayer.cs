@@ -23,6 +23,8 @@ public class TestPlayer : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
 
+    public bool blocking; // if player is blocking or not
+
 
     private void Start()
     {
@@ -34,9 +36,13 @@ public class TestPlayer : MonoBehaviour
     private void Update()
     {
         Move();
-        Jump();
         MouseAiming();
-        Attack();
+        Block();
+        if(!blocking)
+        {
+            Jump();
+            Attack();
+        }
     }
 
     private void FixedUpdate()
@@ -72,6 +78,20 @@ public class TestPlayer : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             childSprite.GetComponent<Animator>().SetTrigger("AxeAttack1");
+        }
+    }
+
+    void Block()
+    {
+        if(Input.GetKey(KeyCode.Q))
+        {
+            childSprite.GetComponent<Animator>().SetBool("AxeBlock", true);
+            blocking = true;
+        }
+        else
+        {
+            childSprite.GetComponent<Animator>().SetBool("AxeBlock", false);
+            blocking = false;
         }
     }
 
