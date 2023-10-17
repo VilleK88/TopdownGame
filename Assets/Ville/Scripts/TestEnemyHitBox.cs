@@ -21,6 +21,14 @@ public class TestEnemyHitBox : MonoBehaviour
             {
                 health.TakeDamage(2.5f);
             }
+            TestPlayer stamina = other.gameObject.GetComponent<TestPlayer>();
+            if(stamina != null)
+            {
+                if(stamina.blocking)
+                {
+                    stamina.currentStamina -= 10;
+                }
+            }
         }
     }
 }

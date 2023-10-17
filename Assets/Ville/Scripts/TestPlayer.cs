@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestPlayer : MonoBehaviour
 {
@@ -25,9 +26,18 @@ public class TestPlayer : MonoBehaviour
 
     public bool blocking; // if player is blocking or not
 
+    [Header("Stamina Parameters")]
+    float maxStamina = 100;
+    public float currentStamina;
+    public Image frontStaminaBar;
+    public Image backStaminaBar;
+    float chipSpeed = 2;
+    float lerpTimer;
+
 
     private void Start()
     {
+        currentStamina = maxStamina;
         rb = GetComponent<Rigidbody>();
         childSprite.GetComponent<Animator>();
         Physics.gravity *= gravityModifier;
@@ -43,6 +53,7 @@ public class TestPlayer : MonoBehaviour
             Jump();
             Attack();
         }
+        UpdateStaminaUI();
     }
 
     private void FixedUpdate()
@@ -75,9 +86,10 @@ public class TestPlayer : MonoBehaviour
 
     public void Attack()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && currentStamina > 9)
         {
             childSprite.GetComponent<Animator>().SetTrigger("AxeAttack1");
+            currentStamina -= 10;
         }
     }
 
@@ -112,5 +124,37 @@ public class TestPlayer : MonoBehaviour
     bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, 1f, ground);
+    }
+
+    public void UpdateStaminaUI()
+    {
+        float fillF = frontStaminaBar.fillAmount;
+        float fillB = backStaminaBar.fillAmount;
+        float hFraction = currentStamina / maxStamina;
+        if (fillB > hFraction)
+        {
+            frontStaminaBar.fillAmount = hFraction;
+            backStaminaBar.color = Color.red;
+            lerpTimer += Time.deltaTime;
+            float percentComplete = lerpTimer / chipSpeed;
+            backStaminaBar.fillAmount = Mathf.Lerp(fillB, hFraction, percentComplete);
+        }
+        if (fillF < hFraction)
+        {
+            backStaminaBar.fillAmount = hFraction;
+            backStaminaBar.color = Color.green;
+            lerpTimer += Time.deltaTime;
+            float percentComplete = lerpTimer / chipSpeed;
+            frontStaminaBar.fillAmount = Mathf.Lerp(fillF, backStaminaBar.fillAmount, percentComplete);
+        }
+
+        /*if (blocking)
+        {
+            currentStamina -= 2 * Time.deltaTime;
+        }*/
+        if(currentStamina < 100)
+        {
+            currentStamina += Time.deltaTime * 10;
+        }
     }
 }
