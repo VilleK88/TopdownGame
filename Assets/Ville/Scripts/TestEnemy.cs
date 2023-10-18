@@ -79,10 +79,9 @@ public class TestEnemy : MonoBehaviour
 
             if (distanceToTarget <= 2)
             {
-                //Attack();
                 if(!ifBlockingPlayersAttackFetch)
                 {
-                    StartCoroutine(AttackPlayer());
+                    Attack();
                 }
             }
         }
@@ -91,12 +90,6 @@ public class TestEnemy : MonoBehaviour
     void Attack()
     {
         childSprite.GetComponent<Animator>().SetTrigger("PikeAttack1");
-    }
-
-    IEnumerator AttackPlayer()
-    {
-        childSprite.GetComponent<Animator>().SetTrigger("PikeAttack1");
-        yield return new WaitForSeconds(2);
     }
 
     void Chase()

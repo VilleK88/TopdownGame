@@ -63,12 +63,25 @@ public class TestPlayer : MonoBehaviour
 
     void Move()
     {
+        if(Input.GetKeyDown("left shift"))
+        {
+            running = true;
+        }
+        else if(Input.GetKeyUp("left shift"))
+        {
+            running = false;
+        }
+
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.z = Input.GetAxisRaw("Vertical");
     }
 
     void FixedMove()
     {
+        if (running)
+            moveSpeed = 10;
+        else
+            moveSpeed = 5;
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
