@@ -15,6 +15,7 @@ public class TestPlayer : MonoBehaviour
     Ray ray;
     RaycastHit hit;
     Vector3 cursorPosition;
+    bool running = false;
 
     [Header("Jump Parameters")]
     float jumpForce = 5;
@@ -33,7 +34,9 @@ public class TestPlayer : MonoBehaviour
     float chipSpeed = 2;
     float lerpTimer;
     float attackCost = 10;
-    float runCost = 3;
+    float runCost = 6;
+    float chargeRate = 33;
+    Coroutine recharge;
 
 
     private void Start()
@@ -67,16 +70,33 @@ public class TestPlayer : MonoBehaviour
         if(Input.GetKey("left shift") && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) ||
             Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
-            currentStamina -= runCost * Time.deltaTime;
+            running = true;
+            //currentStamina -= runCost * Time.deltaTime;
             moveSpeed = 10;
         }
         else
         {
+            running = false;
             moveSpeed = 5;
         }
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.z = Input.GetAxisRaw("Vertical");
+
+        if(running)
+        {
+            currentStamina -= runCost * Time.deltaTime;
+            if(currentStamina < 0)
+            {
+                currentStamina = 0;
+            }
+            frontStaminaBar.fillAmount = currentStamina / maxStamina;
+            if (recharge != null)
+            {
+                StopCoroutine(recharge);
+            }
+            recharge = StartCoroutine(RechargeStamina());
+        }
     }
 
     void FixedMove()
@@ -102,12 +122,23 @@ public class TestPlayer : MonoBehaviour
         {
             childSprite.GetComponent<Animator>().SetTrigger("AxeAttack1");
             currentStamina -= attackCost;
+            if (currentStamina < 0)
+            {
+                currentStamina = 0;
+            }
+            frontStaminaBar.fillAmount = currentStamina / maxStamina;
+
+            if(recharge != null)
+            {
+                StopCoroutine(recharge);
+            }
+            recharge = StartCoroutine(RechargeStamina());
         }
     }
 
     void Block()
     {
-        if(Input.GetKey(KeyCode.Q))
+        if(Input.GetKey(KeyCode.Q) && currentStamina > 0)
         {
             childSprite.GetComponent<Animator>().SetBool("AxeBlock", true);
             blocking = true;
@@ -160,9 +191,25 @@ public class TestPlayer : MonoBehaviour
             frontStaminaBar.fillAmount = Mathf.Lerp(fillF, backStaminaBar.fillAmount, percentComplete);
         }
 
-        if(currentStamina < 99)
+        /*if(currentStamina < 99 && !running)
         {
             currentStamina += Time.deltaTime * 10;
+        }*/
+    }
+
+    IEnumerator RechargeStamina()
+    {
+        yield return new WaitForSeconds(1);
+
+        while(currentStamina < maxStamina)
+        {
+            currentStamina += chargeRate / 10;
+            if(currentStamina > maxStamina)
+            {
+                currentStamina = maxStamina;
+            }
+            frontStaminaBar.fillAmount = currentStamina / maxStamina;
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
