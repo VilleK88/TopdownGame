@@ -15,7 +15,6 @@ public class TestPlayer : MonoBehaviour
     Ray ray;
     RaycastHit hit;
     Vector3 cursorPosition;
-    bool running = false;
 
     [Header("Jump Parameters")]
     float jumpForce = 5;
@@ -33,6 +32,8 @@ public class TestPlayer : MonoBehaviour
     public Image backStaminaBar;
     float chipSpeed = 2;
     float lerpTimer;
+    float attackCost = 10;
+    float runCost = 3;
 
 
     private void Start()
@@ -63,13 +64,15 @@ public class TestPlayer : MonoBehaviour
 
     void Move()
     {
-        if(Input.GetKeyDown("left shift"))
+        if(Input.GetKey("left shift") && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) ||
+            Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
-            running = true;
+            currentStamina -= runCost * Time.deltaTime;
+            moveSpeed = 10;
         }
-        else if(Input.GetKeyUp("left shift"))
+        else
         {
-            running = false;
+            moveSpeed = 5;
         }
 
         movement.x = Input.GetAxisRaw("Horizontal");
@@ -78,10 +81,6 @@ public class TestPlayer : MonoBehaviour
 
     void FixedMove()
     {
-        if (running)
-            moveSpeed = 10;
-        else
-            moveSpeed = 5;
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
@@ -102,7 +101,7 @@ public class TestPlayer : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && currentStamina > 9)
         {
             childSprite.GetComponent<Animator>().SetTrigger("AxeAttack1");
-            currentStamina -= 10;
+            currentStamina -= attackCost;
         }
     }
 
@@ -161,11 +160,7 @@ public class TestPlayer : MonoBehaviour
             frontStaminaBar.fillAmount = Mathf.Lerp(fillF, backStaminaBar.fillAmount, percentComplete);
         }
 
-        /*if (blocking)
-        {
-            currentStamina -= 2 * Time.deltaTime;
-        }*/
-        if(currentStamina < 100)
+        if(currentStamina < 99)
         {
             currentStamina += Time.deltaTime * 10;
         }
