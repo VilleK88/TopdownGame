@@ -38,7 +38,6 @@ public class TestEnemy : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //rb.angularVelocity = Vector3.zero;
         //player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
         agent = GetComponent<NavMeshAgent>();
@@ -94,10 +93,6 @@ public class TestEnemy : MonoBehaviour
 
     void Chase()
     {
-        //direction = (player.transform.position - transform.position).normalized;
-        //rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
-        //transform.position = Vector3.MoveTowards(transform.position, player.transform.position,
-        //speed * Time.deltaTime);
         agent.SetDestination(playerTransform.position);
     }
 
@@ -148,6 +143,15 @@ public class TestEnemy : MonoBehaviour
         else if(canSeePlayer)
         {
             canSeePlayer = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            isAgro = true;
+            agroCounter = 0;
         }
     }
 }

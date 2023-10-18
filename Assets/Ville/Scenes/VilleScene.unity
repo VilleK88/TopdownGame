@@ -1636,7 +1636,7 @@ GameObject:
   - component: {fileID: 1404647042}
   m_Layer: 0
   m_Name: Axe
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1826,7 +1826,7 @@ GameObject:
   - component: {fileID: 1577075998}
   m_Layer: 11
   m_Name: AxeBlade
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

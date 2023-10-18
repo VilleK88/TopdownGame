@@ -98,25 +98,6 @@ public class TestPlayerHealth : MonoBehaviour
         lerpTimer = 0;
     }
 
-    /*public void TakeDamage(float damage)
-    {
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
-
-        if (currentHealth > 0 && playerBlockFetch)
-        {
-
-        }
-        else if (currentHealth > 0)
-        {
-            StartCoroutine(Invulnerability());
-        }
-    }*/
-
-    /*public void AddHealth(float value)
-    {
-        currentHealth = Mathf.Clamp(currentHealth + value, 0, startingHealth);
-    }*/
-
     private IEnumerator Invulnerability()
     {
         Physics2D.IgnoreLayerCollision(6, 10, true);

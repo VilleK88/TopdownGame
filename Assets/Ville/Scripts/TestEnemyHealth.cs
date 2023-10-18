@@ -24,7 +24,7 @@ public class TestEnemyHealth : MonoBehaviour
     public bool playerBlockFetch;
 
     int blockOrNot;
-    public bool blockingPlayer;
+    public bool blockingPlayer; // this is fetched from the Enemy -script
 
     private void Start()
     {
