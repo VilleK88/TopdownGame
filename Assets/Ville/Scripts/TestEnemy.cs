@@ -59,13 +59,12 @@ public class TestEnemy : MonoBehaviour
         {
             isAgro = true;
             agroCounter = 0;
-            //LookAtPlayer();
+            StartCoroutine(CallHelp());
         }
         else
         {
             if(isAgro)
             {
-                //LookAtPlayer();
                 if(agroCounter < maxAgroCounter)
                 {
                     agroCounter += Time.deltaTime;
@@ -111,6 +110,35 @@ public class TestEnemy : MonoBehaviour
             }
             //agent.SetDestination(waypoints[waypointIndex].position);
             StartCoroutine(NextWayPoint());
+        }
+    }
+
+    IEnumerator CallHelp()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject enemy in enemies)
+        {
+            Transform enemyTransform = enemy.transform;
+            TestEnemy testEnemy = enemy.GetComponent<TestEnemy>();
+            TestPeasant testPeasant = enemy.GetComponent<TestPeasant>();
+            if(enemyTransform != null && testEnemy != null)
+            {
+                float distance = Vector3.Distance(transform.position, enemyTransform.position);
+                if(distance < 20)
+                {
+                    testEnemy.isAgro = true;
+                }
+            }
+            if(enemyTransform != null && testPeasant != null)
+            {
+                float distance = Vector3.Distance(transform.position, enemyTransform.position);
+                if (distance < 20)
+                {
+                    testPeasant.isAgro = true;
+                }
+            }
         }
     }
 

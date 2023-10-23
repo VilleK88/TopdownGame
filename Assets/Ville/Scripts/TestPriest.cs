@@ -25,6 +25,9 @@ public class TestPriest : MonoBehaviour
 
     bool deadFetch; // from TestPriestHealth -script
 
+    [SerializeField] GameObject particle;
+    ParticleSystem particleSystem;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -32,6 +35,7 @@ public class TestPriest : MonoBehaviour
         peasants = GameObject.FindGameObjectsWithTag("Peasant");
         Debug.Log("Found " + peasants.Length + " peasants.");
         //MoveToNextPeasant();
+        particleSystem = particle.GetComponent<ParticleSystem>();
     }
 
     private void Update()
@@ -48,16 +52,23 @@ public class TestPriest : MonoBehaviour
                 if (convertingMaxTime >= convertingCounter)
                 {
                     convertingCounter += Time.deltaTime;
+                    particleSystem.Play();
                 }
                 else
                 {
                     testPeasant.converted = true;
+                    particleSystem.Stop();
                     convertingCounter = 0;
                     MoveToNextPeasant();
                 }
                 //testPeasant.converted = true;
                 //StartCoroutine(ConvertingPeasant());
             }
+        }
+
+        if(deadFetch)
+        {
+            particleSystem.Stop();
         }
     }
 

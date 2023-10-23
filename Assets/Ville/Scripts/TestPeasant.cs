@@ -38,6 +38,7 @@ public class TestPeasant : MonoBehaviour
     NavMeshAgent agent;
 
     bool ifBlockingPlayersAttackFetch; // from EnemyHealth -script
+    public int convertOnlyOnce = 0;
 
     private void Start()
     {
@@ -56,18 +57,21 @@ public class TestPeasant : MonoBehaviour
 
         if(converted)
         {
-            sprite.color = Color.red;
+            if(converted && convertOnlyOnce == 0)
+            {
+                Convert();
+                convertOnlyOnce = 1;
+            }
             if (canSeePlayer)
             {
                 isAgro = true;
                 agroCounter = 0;
-                //LookAtPlayer();
+                StartCoroutine(CallHelp());
             }
             else
             {
                 if (isAgro)
                 {
-                    //LookAtPlayer();
                     if (agroCounter < maxAgroCounter)
                     {
                         agroCounter += Time.deltaTime;
@@ -132,6 +136,48 @@ public class TestPeasant : MonoBehaviour
     void Chase()
     {
         agent.SetDestination(playerTransform.position);
+    }
+
+    void Convert()
+    {
+        string currentTag = gameObject.tag;
+        if(converted)
+        {
+            if(currentTag == "Peasant")
+            {
+                gameObject.tag = "Enemy";
+                sprite.color = Color.red;
+            }
+        }
+    }
+
+    IEnumerator CallHelp()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Transform enemyTransform = enemy.transform;
+            TestEnemy testEnemy = enemy.GetComponent<TestEnemy>();
+            TestPeasant testPeasant = enemy.GetComponent<TestPeasant>();
+            if (enemyTransform != null && testEnemy != null)
+            {
+                float distance = Vector3.Distance(transform.position, enemyTransform.position);
+                if (distance < 20)
+                {
+                    testEnemy.isAgro = true;
+                }
+            }
+            if (enemyTransform != null && testPeasant != null)
+            {
+                float distance = Vector3.Distance(transform.position, enemyTransform.position);
+                if (distance < 20)
+                {
+                    testPeasant.isAgro = true;
+                }
+            }
+        }
     }
 
     IEnumerator FOVRoutine()
