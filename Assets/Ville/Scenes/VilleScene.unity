@@ -5313,6 +5313,7 @@ MonoBehaviour:
   canSeePlayer: 0
   isAgro: 0
   agroCounter: 0
+  convertOnlyOnce: 0
 --- !u!114 &212252327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8955,6 +8956,7 @@ MonoBehaviour:
   canSeePlayer: 0
   isAgro: 0
   agroCounter: 0
+  convertOnlyOnce: 0
 --- !u!114 &2036971692
 MonoBehaviour:
   m_ObjectHideFlags: 0

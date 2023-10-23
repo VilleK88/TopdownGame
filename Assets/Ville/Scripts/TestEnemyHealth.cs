@@ -8,7 +8,7 @@ public class TestEnemyHealth : MonoBehaviour
     [SerializeField] GameObject enemySprite;
 
     float startingHealth = 100;
-    float maxHealth = 1000;
+    float maxHealth = 100;
     public float currentHealth; //{ get; set; }
     float chipSpeed = 2;
     float lerpTimer;
