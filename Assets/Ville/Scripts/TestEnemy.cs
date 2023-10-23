@@ -74,11 +74,14 @@ public class TestEnemy : MonoBehaviour
 
         if(isAgro)
         {
-            Chase();
-
-            if (distanceToTarget <= 2)
+            if(distanceToTarget > 2)
             {
-                if(!ifBlockingPlayersAttackFetch)
+                Chase();
+            }
+            else if (distanceToTarget <= 2)
+            {
+                transform.LookAt(player.transform.position);
+                if (!ifBlockingPlayersAttackFetch)
                 {
                     Attack();
                 }

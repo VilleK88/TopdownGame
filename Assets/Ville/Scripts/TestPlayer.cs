@@ -34,7 +34,7 @@ public class TestPlayer : MonoBehaviour
     float chipSpeed = 2;
     float lerpTimer;
     float attackCost = 10;
-    float runCost = 6;
+    float runCost = 15;
     float chargeRate = 33;
     Coroutine recharge;
 
@@ -72,7 +72,14 @@ public class TestPlayer : MonoBehaviour
         {
             running = true;
             //currentStamina -= runCost * Time.deltaTime;
-            moveSpeed = 10;
+            if(currentStamina > 0)
+            {
+                moveSpeed = 10;
+            }
+            else
+            {
+                moveSpeed = 5;
+            }
         }
         else
         {
@@ -122,10 +129,10 @@ public class TestPlayer : MonoBehaviour
         {
             childSprite.GetComponent<Animator>().SetTrigger("AxeAttack1");
             currentStamina -= attackCost;
-            if (currentStamina < 0)
+            /*if (currentStamina < 0)
             {
                 currentStamina = 0;
-            }
+            }*/
             frontStaminaBar.fillAmount = currentStamina / maxStamina;
 
             if(recharge != null)
@@ -138,15 +145,37 @@ public class TestPlayer : MonoBehaviour
 
     void Block()
     {
-        if(Input.GetKey(KeyCode.Q) && currentStamina > 0)
+        if(Input.GetKey(KeyCode.Q) && currentStamina > 5)
         {
             childSprite.GetComponent<Animator>().SetBool("AxeBlock", true);
             blocking = true;
+
+            frontStaminaBar.fillAmount = currentStamina / maxStamina;
+
+            /*if (recharge != null)
+            {
+                StopCoroutine(recharge);
+            }
+            recharge = StartCoroutine(RechargeStamina());*/
         }
         else
         {
             childSprite.GetComponent<Animator>().SetBool("AxeBlock", false);
             blocking = false;
+        }
+
+        if(blocking)
+        {
+            if (currentStamina < 0)
+            {
+                currentStamina = 0;
+            }
+            frontStaminaBar.fillAmount = currentStamina / maxStamina;
+            if (recharge != null)
+            {
+                StopCoroutine(recharge);
+            }
+            recharge = StartCoroutine(RechargeStamina());
         }
     }
 
