@@ -48,7 +48,7 @@ public class TestEnemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         childSprite.GetComponent<Animator>();
         StartCoroutine(FOVRoutine());
-        UpdateDestination();
+        agent.SetDestination(waypoints[waypointIndex].position);
     }
 
     private void Update()
@@ -101,25 +101,15 @@ public class TestEnemy : MonoBehaviour
 
     void Patrol()
     {
-        if(Vector3.Distance(transform.position, waypointTarget) < 1)
+        if(Vector3.Distance(transform.position, waypoints[waypointIndex].transform.position) < 1)
         {
-            IteRateWaypointIndex();
-            UpdateDestination();
-        }
-    }
+            waypointIndex++;
 
-    void UpdateDestination()
-    {
-        waypointTarget = waypoints[waypointIndex].position;
-        agent.SetDestination(waypointTarget);
-    }
-
-    void IteRateWaypointIndex()
-    {
-        waypointIndex++;
-        if(waypointIndex >= waypoints.Length)
-        {
-            waypointIndex = 0;
+            if (waypointIndex >= waypoints.Length)
+            {
+                waypointIndex = 0;
+            }
+            agent.SetDestination(waypoints[waypointIndex].position);
         }
     }
 
