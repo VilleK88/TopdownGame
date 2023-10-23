@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class TestEnemy : MonoBehaviour
+public class TestPeasant : MonoBehaviour
 {
+    public bool converted = false;
+    float range = 4; // radius of sphere
+    public Transform centerPoint; // center of the area the agent wants to move around
+
     Rigidbody rb;
     //Animator anim;
     [SerializeField] GameObject childSprite;
@@ -35,11 +38,6 @@ public class TestEnemy : MonoBehaviour
 
     bool ifBlockingPlayersAttackFetch; // from EnemyHealth -script
 
-    [Header("Patrol Parameters")]
-    public Transform[] waypoints;
-    int waypointIndex;
-    Vector3 waypointTarget;
-
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -48,79 +46,79 @@ public class TestEnemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         childSprite.GetComponent<Animator>();
         StartCoroutine(FOVRoutine());
-        UpdateDestination();
     }
 
     private void Update()
     {
         ifBlockingPlayersAttackFetch = GetComponent<TestEnemyHealth>().blockingPlayer;
 
-        if(canSeePlayer)
+        if(converted)
         {
-            isAgro = true;
-            agroCounter = 0;
-            //LookAtPlayer();
-        }
-        else
-        {
-            if(isAgro)
+            if (canSeePlayer)
             {
+                isAgro = true;
+                agroCounter = 0;
                 //LookAtPlayer();
-                if(agroCounter < maxAgroCounter)
+            }
+            else
+            {
+                if (isAgro)
                 {
-                    agroCounter += Time.deltaTime;
-                }
-                else
-                {
-                    agroCounter = 0;
-                    isAgro = false;
+                    //LookAtPlayer();
+                    if (agroCounter < maxAgroCounter)
+                    {
+                        agroCounter += Time.deltaTime;
+                    }
+                    else
+                    {
+                        agroCounter = 0;
+                        isAgro = false;
+                    }
                 }
             }
-        }
 
-        if(isAgro)
-        {
-            if(distanceToTarget > 2)
+            if (isAgro)
             {
-                Chase();
-            }
-            else if (distanceToTarget <= 2)
-            {
-                transform.LookAt(player.transform.position);
-                if (!ifBlockingPlayersAttackFetch)
+                if (distanceToTarget > 2)
                 {
-                    Attack();
+                    Chase();
+                }
+                else if (distanceToTarget <= 2)
+                {
+                    transform.LookAt(player.transform.position);
+                    if (!ifBlockingPlayersAttackFetch)
+                    {
+                        Attack();
+                    }
                 }
             }
         }
         else
         {
-            Patrol();
+            if(agent.remainingDistance <= agent.stoppingDistance)
+            {
+                Vector3 point;
+                if(RandomPoint(centerPoint.position, range, out point))
+                {
+                    Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
+                    agent.SetDestination(point);
+                }
+            }
         }
     }
 
-    void Patrol()
+    bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
-        if(Vector3.Distance(transform.position, waypointTarget) < 1)
+        Vector3 randomPoint = center + Random.insideUnitSphere * range;
+        NavMeshHit hit;
+        if(NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
         {
-            IteRateWaypointIndex();
-            UpdateDestination();
+            result = hit.position;
+            return true;
         }
-    }
 
-    void UpdateDestination()
-    {
-        waypointTarget = waypoints[waypointIndex].position;
-        agent.SetDestination(waypointTarget);
-    }
-
-    void IteRateWaypointIndex()
-    {
-        waypointIndex++;
-        if(waypointIndex >= waypoints.Length)
-        {
-            waypointIndex = 0;
-        }
+        result = Vector3.zero;
+        return false;
     }
 
     void Attack()
@@ -133,17 +131,11 @@ public class TestEnemy : MonoBehaviour
         agent.SetDestination(playerTransform.position);
     }
 
-    void LookAtPlayer()
-    {
-        lookRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10);
-    }
-
     IEnumerator FOVRoutine()
     {
         WaitForSeconds wait = new WaitForSeconds(0.2f);
 
-        while(true)
+        while (true)
         {
             yield return wait;
             FieldOfViewCheck();
@@ -154,16 +146,16 @@ public class TestEnemy : MonoBehaviour
     {
         rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
 
-        if(rangeChecks.Length != 0)
+        if (rangeChecks.Length != 0)
         {
             target = rangeChecks[0].transform;
             directionToTarget = (target.position - transform.position).normalized;
 
-            if(Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+            if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
             {
                 distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-                if(!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                 {
                     canSeePlayer = true;
                 }
@@ -177,7 +169,7 @@ public class TestEnemy : MonoBehaviour
                 canSeePlayer = false;
             }
         }
-        else if(canSeePlayer)
+        else if (canSeePlayer)
         {
             canSeePlayer = false;
         }
@@ -185,7 +177,7 @@ public class TestEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             isAgro = true;
             agroCounter = 0;
