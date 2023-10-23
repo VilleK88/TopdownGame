@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class TestPeasant : MonoBehaviour
 {
     public bool converted = false;
-    float range = 4; // radius of sphere
+    float range = 5; // radius of sphere
     public Transform centerPoint; // center of the area the agent wants to move around
 
     Rigidbody rb;

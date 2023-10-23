@@ -101,7 +101,7 @@ public class TestEnemy : MonoBehaviour
 
     void Patrol()
     {
-        if(Vector3.Distance(transform.position, waypoints[waypointIndex].transform.position) < 1)
+        if(Vector3.Distance(transform.position, waypoints[waypointIndex].transform.position) < 1.5f)
         {
             waypointIndex++;
 
@@ -109,8 +109,15 @@ public class TestEnemy : MonoBehaviour
             {
                 waypointIndex = 0;
             }
-            agent.SetDestination(waypoints[waypointIndex].position);
+            //agent.SetDestination(waypoints[waypointIndex].position);
+            StartCoroutine(NextWayPoint());
         }
+    }
+
+    IEnumerator NextWayPoint()
+    {
+        yield return new WaitForSeconds(3);
+        agent.SetDestination(waypoints[waypointIndex].position);
     }
 
     void Attack()
@@ -121,12 +128,6 @@ public class TestEnemy : MonoBehaviour
     void Chase()
     {
         agent.SetDestination(playerTransform.position);
-    }
-
-    void LookAtPlayer()
-    {
-        lookRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10);
     }
 
     IEnumerator FOVRoutine()
