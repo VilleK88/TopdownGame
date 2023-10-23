@@ -12,6 +12,7 @@ public class TestPeasant : MonoBehaviour
     Rigidbody rb;
     //Animator anim;
     [SerializeField] GameObject childSprite;
+    SpriteRenderer sprite;
     public GameObject player;
     public Transform playerTransform;
     float speed = 50; // 10 original
@@ -45,6 +46,7 @@ public class TestPeasant : MonoBehaviour
         playerTransform = player.transform;
         agent = GetComponent<NavMeshAgent>();
         childSprite.GetComponent<Animator>();
+        sprite = childSprite.GetComponent<SpriteRenderer>();
         StartCoroutine(FOVRoutine());
     }
 
@@ -54,6 +56,7 @@ public class TestPeasant : MonoBehaviour
 
         if(converted)
         {
+            sprite.color = Color.red;
             if (canSeePlayer)
             {
                 isAgro = true;

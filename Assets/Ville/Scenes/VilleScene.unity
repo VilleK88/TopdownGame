@@ -2069,8 +2069,8 @@ GameObject:
   - component: {fileID: 863605299}
   - component: {fileID: 863605298}
   - component: {fileID: 863605297}
-  - component: {fileID: 863605296}
   - component: {fileID: 863605295}
+  - component: {fileID: 863605303}
   m_Layer: 7
   m_Name: Priest
   m_TagString: Untagged
@@ -2093,25 +2093,7 @@ MonoBehaviour:
   peasants: []
   convertedFetch: 0
   waypoints: []
---- !u!114 &863605296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 863605294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dd9c0fe3bf3d31498733fc98677eef1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemySprite: {fileID: 1715061774}
-  currentHealth: 0
-  components: []
-  iFramesDuration: 2
-  numberOfFlashes: 2
-  playerBlockFetch: 0
-  blockingPlayer: 0
+  dead: 0
 --- !u!195 &863605297
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2231,6 +2213,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &863605303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863605294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3d8e56e89993064f9bd29b32e6f11d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySprite: {fileID: 1715061774}
+  currentHealth: 0
+  dead: 0
 --- !u!1 &886656590
 GameObject:
   m_ObjectHideFlags: 0
