@@ -6,27 +6,41 @@ using UnityEngine.Rendering;
 
 public class TestPriest : MonoBehaviour
 {
+    Rigidbody rb;
+    CapsuleCollider capsuleCollider;
+    [SerializeField] GameObject childSprite;
     NavMeshAgent agent;
     public GameObject[] peasants;
     int currentPeasantIndex = 0;
     public bool convertedFetch;
 
-    [Header("Peasant Waypoint Parameters")]
+    [Header("Converting Peasants Parameters")]
+    TestPeasant testPeasant;
     public Transform[] waypoints;
     int waypointIndex;
     Vector3 waypointTarget;
-    //TestPeasant testPeasant;
+    bool stopConverting = false;
+    float convertingMaxTime = 3;
+    float convertingCounter = 0;
 
     public bool dead = false;
-    bool stopConverting = false;
-
-    float convertingMaxTime = 5;
-    float convertingCounter = 0;
 
     bool deadFetch; // from TestPriestHealth -script
 
-    [SerializeField] GameObject particle;
-    ParticleSystem particleSystem;
+    [SerializeField] GameObject particleConverting;
+    ParticleSystem particleSystemConverting;
+    [SerializeField] GameObject particleHealing;
+    ParticleSystem particleSystemHealing;
+
+    [Header("Healing Enemies Parameters")]
+    bool startHealing = false;
+    float checkInterval = 2;
+    float maxHealth = 100;
+    string enemyTag = "Enemy";
+    float detectionRadius = 20;
+    //public GameObject healer;
+    GameObject enemy;
+    TestEnemyHealth testEnemyHealth;
 
     private void Start()
     {
@@ -34,7 +48,10 @@ public class TestPriest : MonoBehaviour
 
         peasants = GameObject.FindGameObjectsWithTag("Peasant");
         Debug.Log("Found " + peasants.Length + " peasants.");
-        particleSystem = particle.GetComponent<ParticleSystem>();
+        particleSystemConverting = particleConverting.GetComponent<ParticleSystem>();
+        particleSystemHealing = particleHealing.GetComponent<ParticleSystem>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
+        InvokeRepeating("HealEnemies", 0, checkInterval);
     }
 
     private void Update()
@@ -43,18 +60,77 @@ public class TestPriest : MonoBehaviour
 
         if (agent.remainingDistance <= agent.stoppingDistance && !deadFetch)
         {
-            Convert();
+            if(!startHealing)
+            {
+                Convert();
+            }
+            else
+            {
+                agent.SetDestination(testEnemyHealth.transform.position);
+            }
         }
 
         if(deadFetch)
         {
-            particleSystem.Stop();
+            particleSystemConverting.Stop();
+        }
+
+        Death();
+    }
+
+    void HealEnemies()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRadius);
+
+        foreach(Collider collider in colliders)
+        {
+            if(collider.CompareTag(enemyTag))
+            {
+                //GameObject enemy = collider.gameObject;
+                enemy = collider.gameObject;
+                float distance = Vector3.Distance(transform.position, enemy.transform.position);
+
+                if(distance <= detectionRadius)
+                {
+                    NavMeshPath path = new NavMeshPath();
+                    agent.CalculatePath(enemy.transform.position, path);
+
+                    if(path.status == NavMeshPathStatus.PathComplete)
+                    {
+                        //TestEnemyHealth testEnemyHealth = enemy.GetComponent<TestEnemyHealth>();
+                        testEnemyHealth = enemy.GetComponent<TestEnemyHealth>();
+
+                        if (testEnemyHealth != null && testEnemyHealth.currentHealth < maxHealth &&
+                            testEnemyHealth.currentHealth <= 0)
+                        {
+                            //testEnemyHealth.currentHealth = maxHealth;
+                            testEnemyHealth.currentHealth += 10;
+                            particleSystemHealing.Play();
+                            //StartCoroutine(Heal());
+                        }
+                        else
+                        {
+                            particleSystemHealing.Stop();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    IEnumerator Heal()
+    {
+        if(!dead)
+        {
+            yield return new WaitForSeconds(2);
+            testEnemyHealth.currentHealth += 10;
         }
     }
 
     void Convert()
     {
-        TestPeasant testPeasant = GetCurrentPeasantScript();
+        //TestPeasant testPeasant = GetCurrentPeasantScript();
+        testPeasant = GetCurrentPeasantScript();
         if (testPeasant != null)
         {
             if (testPeasant.converted == false)
@@ -64,12 +140,12 @@ public class TestPriest : MonoBehaviour
                 if (convertingMaxTime >= convertingCounter)
                 {
                     convertingCounter += Time.deltaTime;
-                    particleSystem.Play();
+                    particleSystemConverting.Play();
                 }
                 else
                 {
                     testPeasant.converted = true;
-                    particleSystem.Stop();
+                    particleSystemConverting.Stop();
                 }
             }
             else
@@ -82,6 +158,10 @@ public class TestPriest : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            startHealing = true;
+        }
     }
 
     TestPeasant GetCurrentPeasantScript()
@@ -91,5 +171,28 @@ public class TestPriest : MonoBehaviour
             return peasants[currentPeasantIndex].GetComponent<TestPeasant>();
         }
         return null;
+    }
+
+    void Death()
+    {
+        if (deadFetch)
+        {
+            //childSprite.GetComponent<Animator>();
+            if (capsuleCollider != null)
+            {
+                capsuleCollider.enabled = false;
+            }
+            this.enabled = false;
+
+            StartCoroutine(Vanish());
+        }
+    }
+
+    IEnumerator Vanish()
+    {
+        yield return new WaitForSeconds(2);
+        childSprite.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(2);
+        gameObject.SetActive(false);
     }
 }

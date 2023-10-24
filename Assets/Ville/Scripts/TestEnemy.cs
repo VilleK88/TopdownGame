@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class TestEnemy : MonoBehaviour
 {
     Rigidbody rb;
+    CapsuleCollider capsuleCollider;
     //Animator anim;
     [SerializeField] GameObject childSprite;
     public GameObject player;
@@ -40,6 +41,8 @@ public class TestEnemy : MonoBehaviour
     int waypointIndex;
     Vector3 waypointTarget;
 
+    bool deadFetch; // from EnemyHealth -script
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -49,11 +52,13 @@ public class TestEnemy : MonoBehaviour
         childSprite.GetComponent<Animator>();
         StartCoroutine(FOVRoutine());
         agent.SetDestination(waypoints[waypointIndex].position);
+        capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
     private void Update()
     {
         ifBlockingPlayersAttackFetch = GetComponent<TestEnemyHealth>().blockingPlayer;
+        deadFetch = GetComponent<TestEnemyHealth>().dead;
 
         if(canSeePlayer)
         {
@@ -96,6 +101,8 @@ public class TestEnemy : MonoBehaviour
         {
             Patrol();
         }
+
+        Death();
     }
 
     void Patrol()
@@ -209,5 +216,28 @@ public class TestEnemy : MonoBehaviour
             isAgro = true;
             agroCounter = 0;
         }
+    }
+
+    void Death()
+    {
+        if (deadFetch)
+        {
+            //childSprite.GetComponent<Animator>();
+            if(capsuleCollider != null)
+            {
+                capsuleCollider.enabled = false;
+            }
+            this.enabled = false;
+
+            StartCoroutine(Vanish());
+        }
+    }
+
+    IEnumerator Vanish()
+    {
+        yield return new WaitForSeconds(2);
+        childSprite.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(2);
+        gameObject.SetActive(false);
     }
 }

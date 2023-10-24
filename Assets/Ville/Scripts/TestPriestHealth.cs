@@ -13,6 +13,9 @@ public class TestPriestHealth : MonoBehaviour
 
     public bool dead = false;
 
+    int blockOrNot;
+    public bool blockingPlayer = false; // this is fetched from the Enemy -script
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -35,7 +38,10 @@ public class TestPriestHealth : MonoBehaviour
         }
         else
         {
+            if (gameObject.name == "TestEnemy")
+            {
 
+            }
         }
     }
 

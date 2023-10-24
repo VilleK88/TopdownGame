@@ -10,6 +10,7 @@ public class TestPeasant : MonoBehaviour
     public Transform centerPoint; // center of the area the agent wants to move around
 
     Rigidbody rb;
+    CapsuleCollider capsuleCollider;
     //Animator anim;
     [SerializeField] GameObject childSprite;
     SpriteRenderer sprite;
@@ -37,8 +38,11 @@ public class TestPeasant : MonoBehaviour
     Quaternion lookRotation;
     NavMeshAgent agent;
 
-    bool ifBlockingPlayersAttackFetch; // from EnemyHealth -script
+    //bool ifBlockingPlayersAttackFetch; // from EnemyHealth -script
+    bool gettingHitFetch; // from EnemyHealth -script
     public int convertOnlyOnce = 0;
+
+    bool deadFetch; // from EnemyHealth -script
 
     private void Start()
     {
@@ -48,12 +52,14 @@ public class TestPeasant : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         childSprite.GetComponent<Animator>();
         sprite = childSprite.GetComponent<SpriteRenderer>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
         StartCoroutine(FOVRoutine());
     }
 
     private void Update()
     {
-        ifBlockingPlayersAttackFetch = GetComponent<TestEnemyHealth>().blockingPlayer;
+        //ifBlockingPlayersAttackFetch = GetComponent<TestEnemyHealth>().blockingPlayer;
+        gettingHitFetch = GetComponent<TestEnemyHealth>().gettingHit;
 
         if(converted)
         {
@@ -93,7 +99,7 @@ public class TestPeasant : MonoBehaviour
                 else if (distanceToTarget <= 2)
                 {
                     transform.LookAt(player.transform.position);
-                    if (!ifBlockingPlayersAttackFetch)
+                    if (!gettingHitFetch)
                     {
                         Attack();
                     }
@@ -112,6 +118,8 @@ public class TestPeasant : MonoBehaviour
                 }
             }
         }
+
+        Death();
     }
 
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
@@ -231,5 +239,28 @@ public class TestPeasant : MonoBehaviour
             isAgro = true;
             agroCounter = 0;
         }
+    }
+
+    void Death()
+    {
+        if (deadFetch)
+        {
+            //childSprite.GetComponent<Animator>();
+            if (capsuleCollider != null)
+            {
+                capsuleCollider.enabled = false;
+            }
+            this.enabled = false;
+
+            StartCoroutine(Vanish());
+        }
+    }
+
+    IEnumerator Vanish()
+    {
+        yield return new WaitForSeconds(2);
+        childSprite.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(2);
+        gameObject.SetActive(false);
     }
 }

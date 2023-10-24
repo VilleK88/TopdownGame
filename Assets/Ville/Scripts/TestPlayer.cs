@@ -33,7 +33,7 @@ public class TestPlayer : MonoBehaviour
     public Image backStaminaBar;
     float chipSpeed = 2;
     float lerpTimer;
-    float attackCost = 10;
+    float attackCost = 6;
     float runCost = 15;
     float chargeRate = 33;
     Coroutine recharge;
@@ -126,7 +126,7 @@ public class TestPlayer : MonoBehaviour
 
     public void Attack()
     {
-        if(Input.GetMouseButtonDown(0) && currentStamina > 9)
+        if(Input.GetMouseButtonDown(0) && currentStamina > 5)
         {
             childSprite.GetComponent<Animator>().SetTrigger("AxeAttack1");
             currentStamina -= attackCost;

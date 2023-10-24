@@ -10,21 +10,13 @@ public class TestEnemyHealth : MonoBehaviour
     float startingHealth = 100;
     float maxHealth = 100;
     public float currentHealth; //{ get; set; }
-    float chipSpeed = 2;
-    float lerpTimer;
-
-    [Header("Components")]
-    [SerializeField] Behaviour[] components;
-
-    [Header("iFrames")]
-    [SerializeField] float iFramesDuration = 2;
-    [SerializeField] int numberOfFlashes = 2;
-    SpriteRenderer spriteRend;
+    public bool dead = false;
 
     public bool playerBlockFetch;
-
     int blockOrNot;
     public bool blockingPlayer; // this is fetched from the Enemy -script
+    int gettingHitOrNot;
+    public bool gettingHit = false;
 
     private void Start()
     {
@@ -44,15 +36,28 @@ public class TestEnemyHealth : MonoBehaviour
         if(currentHealth <= 0)
         {
             // die
+            dead = true;
         }
         else
         {
-            blockOrNot = Random.Range(0, 1);
-            if(blockOrNot == 0)
+            if(gameObject.name == "TestEnemy")
             {
-                blockingPlayer = true;
-                anim.SetBool("PikeBlock", true);
-                StartCoroutine(StopBlocking());
+                blockOrNot = Random.Range(0, 1);
+                if (blockOrNot == 0)
+                {
+                    blockingPlayer = true;
+                    anim.SetBool("PikeBlock", true);
+                    StartCoroutine(StopBlocking());
+                }
+            }
+            else
+            {
+                gettingHitOrNot = Random.Range(0, 1);
+                if (gettingHitOrNot == 0)
+                {
+                    gettingHit = true;
+                    StartCoroutine(StopGettingHit());
+                }
             }
         }
     }
@@ -62,23 +67,16 @@ public class TestEnemyHealth : MonoBehaviour
         currentHealth += healAmount;
     }
 
+    IEnumerator StopGettingHit()
+    {
+        yield return new WaitForSeconds(2);
+        gettingHit = false;
+    }
+
     IEnumerator StopBlocking()
     {
         yield return new WaitForSeconds(2);
         anim.SetBool("PikeBlock", false);
         blockingPlayer = false;
-    }
-
-    private IEnumerator Invulnerability()
-    {
-        Physics2D.IgnoreLayerCollision(10, 11, true);
-        for (int i = 0; i < numberOfFlashes; i++)
-        {
-            spriteRend.color = new Color(1, 0, 0, 0.5f);
-            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 4));
-            spriteRend.color = Color.white;
-            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 4));
-        }
-        Physics2D.IgnoreLayerCollision(10, 11, false);
     }
 }
