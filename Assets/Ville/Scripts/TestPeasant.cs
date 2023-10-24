@@ -106,21 +106,30 @@ public class TestPeasant : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                RandomMovement();
+            }
         }
         else
         {
-            if(agent.remainingDistance <= agent.stoppingDistance)
-            {
-                Vector3 point;
-                if(RandomPoint(centerPoint.position, range, out point))
-                {
-                    Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
-                    agent.SetDestination(point);
-                }
-            }
+            RandomMovement();
         }
 
         Death();
+    }
+
+    void RandomMovement()
+    {
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            Vector3 point;
+            if (RandomPoint(centerPoint.position, range, out point))
+            {
+                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
+                agent.SetDestination(point);
+            }
+        }
     }
 
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
