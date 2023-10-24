@@ -45,7 +45,7 @@ public class TestPlayer : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         childSprite.GetComponent<Animator>();
         Physics.gravity *= gravityModifier;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()

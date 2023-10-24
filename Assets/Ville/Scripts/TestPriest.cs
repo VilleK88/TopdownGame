@@ -34,7 +34,6 @@ public class TestPriest : MonoBehaviour
 
         peasants = GameObject.FindGameObjectsWithTag("Peasant");
         Debug.Log("Found " + peasants.Length + " peasants.");
-        //MoveToNextPeasant();
         particleSystem = particle.GetComponent<ParticleSystem>();
     }
 
@@ -44,11 +43,24 @@ public class TestPriest : MonoBehaviour
 
         if (agent.remainingDistance <= agent.stoppingDistance && !deadFetch)
         {
-            //TestPeasant testPeasant = peasants[currentPeasantIndex].GetComponent<TestPeasant>();
-            //testPeasant = peasants[currentPeasantIndex].GetComponent<TestPeasant>();
-            TestPeasant testPeasant = GetCurrentPeasantScript();
-            if (testPeasant != null)
+            Convert();
+        }
+
+        if(deadFetch)
+        {
+            particleSystem.Stop();
+        }
+    }
+
+    void Convert()
+    {
+        TestPeasant testPeasant = GetCurrentPeasantScript();
+        if (testPeasant != null)
+        {
+            if (testPeasant.converted == false)
             {
+                agent.SetDestination(peasants[currentPeasantIndex].transform.position);
+                transform.LookAt(peasants[currentPeasantIndex].transform.position);
                 if (convertingMaxTime >= convertingCounter)
                 {
                     convertingCounter += Time.deltaTime;
@@ -58,17 +70,17 @@ public class TestPriest : MonoBehaviour
                 {
                     testPeasant.converted = true;
                     particleSystem.Stop();
-                    convertingCounter = 0;
-                    MoveToNextPeasant();
                 }
-                //testPeasant.converted = true;
-                //StartCoroutine(ConvertingPeasant());
             }
-        }
-
-        if(deadFetch)
-        {
-            particleSystem.Stop();
+            else
+            {
+                if (currentPeasantIndex < peasants.Length)
+                {
+                    currentPeasantIndex++;
+                    Debug.Log("Next peasant to convert.");
+                    convertingCounter = 0;
+                }
+            }
         }
     }
 
@@ -79,29 +91,5 @@ public class TestPriest : MonoBehaviour
             return peasants[currentPeasantIndex].GetComponent<TestPeasant>();
         }
         return null;
-    }
-
-    IEnumerator ConvertingPeasant()
-    {
-        yield return new WaitForSeconds(5);
-        if(!dead && !stopConverting)
-        {
-            //testPeasant.converted = true;
-        }
-    }
-
-    void MoveToNextPeasant()
-    {
-        if (currentPeasantIndex < peasants.Length)
-        {
-            agent.SetDestination(peasants[currentPeasantIndex].transform.position);
-            currentPeasantIndex++;
-        }
-        else
-        {
-            agent.isStopped = true;
-            //stopConverting = true;
-            Debug.Log("No more peasants to convert");
-        }
     }
 }
