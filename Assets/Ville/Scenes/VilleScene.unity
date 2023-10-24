@@ -11330,8 +11330,8 @@ MonoBehaviour:
   childSprite: {fileID: 386276938}
   player: {fileID: 1385117353}
   playerTransform: {fileID: 0}
-  radius: 6
-  angle: 90
+  radius: 7
+  angle: 120
   targetMask:
     serializedVersion: 2
     m_Bits: 64
@@ -11400,12 +11400,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childSprite: {fileID: 1715061774}
-  peasants: []
-  convertedFetch: 0
-  waypoints: []
   dead: 0
+  peasants: []
+  waypoints: []
+  convertedFetch: 0
   particleConverting: {fileID: 18636980}
   particleHealing: {fileID: 453817001}
+  radius: 7
+  angle: 120
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 64
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 256
+  canSeePlayer: 0
+  player: {fileID: 1385117353}
+  playerTransform: {fileID: 0}
+  isAgro: 0
+  agroCounter: 0
 --- !u!195 &863605297
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -11669,9 +11682,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1067344652477661550, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
+      propertyPath: angle
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067344652477661550, guid: 2f277d0751841dc4eade76cf9eb6bea3,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1385117353}
+    - target: {fileID: 1067344652477661550, guid: 2f277d0751841dc4eade76cf9eb6bea3,
+        type: 3}
+      propertyPath: radius
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661551, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: m_Name

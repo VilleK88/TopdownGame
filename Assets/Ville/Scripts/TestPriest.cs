@@ -6,15 +6,17 @@ using UnityEngine.Rendering;
 
 public class TestPriest : MonoBehaviour
 {
+    [Header("Rigidbody, Colliders and Sprites")]
     Rigidbody rb;
     CapsuleCollider capsuleCollider;
     [SerializeField] GameObject childSprite;
-    NavMeshAgent agent;
-    public GameObject[] peasants;
-    int currentPeasantIndex = 0;
-    public bool convertedFetch;
+
+    [Header("Death Parameters")]
+    public bool dead = false;
+    bool deadFetch; // from TestPriestHealth -script
 
     [Header("Converting Peasants Parameters")]
+    public GameObject[] peasants;
     TestPeasant testPeasant;
     public Transform[] waypoints;
     int waypointIndex;
@@ -22,11 +24,10 @@ public class TestPriest : MonoBehaviour
     bool stopConverting = false;
     float convertingMaxTime = 3;
     float convertingCounter = 0;
+    int currentPeasantIndex = 0;
+    public bool convertedFetch;
 
-    public bool dead = false;
-
-    bool deadFetch; // from TestPriestHealth -script
-
+    [Header("Particle Parameters")]
     [SerializeField] GameObject particleConverting;
     ParticleSystem particleSystemConverting;
     [SerializeField] GameObject particleHealing;
@@ -42,6 +43,30 @@ public class TestPriest : MonoBehaviour
     GameObject enemy;
     TestEnemyHealth testEnemyHealth;
 
+    [Header("Field of View Parameters")]
+    public float radius = 7;
+    [Range(0, 360)]
+    public float angle = 120;
+    public LayerMask targetMask;
+    public LayerMask obstructionMask;
+    public bool canSeePlayer;
+    Collider[] rangeChecks;
+    Transform target;
+    Vector3 directionToTarget;
+    float distanceToTarget;
+
+    [Header("Player")]
+    public GameObject player;
+    public Transform playerTransform;
+
+    [Header("Chase, Attack and Agro Parameters")]
+    public bool isAgro = false;
+    float maxAgroCounter = 5;
+    public float agroCounter = 0;
+    Vector3 direction;
+    Quaternion lookRotation;
+    NavMeshAgent agent;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -52,11 +77,34 @@ public class TestPriest : MonoBehaviour
         particleSystemHealing = particleHealing.GetComponent<ParticleSystem>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         InvokeRepeating("HealEnemies", 0, checkInterval);
+        StartCoroutine(FOVRoutine());
     }
 
     private void Update()
     {
         deadFetch = GetComponent<TestEnemyHealth>().dead;
+
+        if (canSeePlayer)
+        {
+            isAgro = true;
+            agroCounter = 0;
+            StartCoroutine(CallHelp());
+        }
+        else
+        {
+            if (isAgro)
+            {
+                if (agroCounter < maxAgroCounter)
+                {
+                    agroCounter += Time.deltaTime;
+                }
+                else
+                {
+                    agroCounter = 0;
+                    isAgro = false;
+                }
+            }
+        }
 
         if (agent.remainingDistance <= agent.stoppingDistance && !deadFetch)
         {
@@ -78,6 +126,50 @@ public class TestPriest : MonoBehaviour
         Death();
     }
 
+    IEnumerator FOVRoutine()
+    {
+        WaitForSeconds wait = new WaitForSeconds(0.2f);
+
+        while (true)
+        {
+            yield return wait;
+            FieldOfViewCheck();
+        }
+    }
+
+    void FieldOfViewCheck()
+    {
+        rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
+
+        if (rangeChecks.Length != 0)
+        {
+            target = rangeChecks[0].transform;
+            directionToTarget = (target.position - transform.position).normalized;
+
+            if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+            {
+                distanceToTarget = Vector3.Distance(transform.position, target.position);
+
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                {
+                    canSeePlayer = true;
+                }
+                else
+                {
+                    canSeePlayer = false;
+                }
+            }
+            else
+            {
+                canSeePlayer = false;
+            }
+        }
+        else if (canSeePlayer)
+        {
+            canSeePlayer = false;
+        }
+    }
+
     void HealEnemies()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRadius);
@@ -86,7 +178,6 @@ public class TestPriest : MonoBehaviour
         {
             if(collider.CompareTag(enemyTag))
             {
-                //GameObject enemy = collider.gameObject;
                 enemy = collider.gameObject;
                 float distance = Vector3.Distance(transform.position, enemy.transform.position);
 
@@ -97,16 +188,13 @@ public class TestPriest : MonoBehaviour
 
                     if(path.status == NavMeshPathStatus.PathComplete)
                     {
-                        //TestEnemyHealth testEnemyHealth = enemy.GetComponent<TestEnemyHealth>();
                         testEnemyHealth = enemy.GetComponent<TestEnemyHealth>();
 
                         if (testEnemyHealth != null && testEnemyHealth.currentHealth < maxHealth &&
                             testEnemyHealth.currentHealth > 0)
                         {
-                            //testEnemyHealth.currentHealth = maxHealth;
                             testEnemyHealth.currentHealth += 10;
                             particleSystemHealing.Play();
-                            //StartCoroutine(Heal());
                         }
                         else
                         {
@@ -115,15 +203,6 @@ public class TestPriest : MonoBehaviour
                     }
                 }
             }
-        }
-    }
-
-    IEnumerator Heal()
-    {
-        if(!dead)
-        {
-            yield return new WaitForSeconds(2);
-            testEnemyHealth.currentHealth += 10;
         }
     }
 
@@ -171,6 +250,35 @@ public class TestPriest : MonoBehaviour
             return peasants[currentPeasantIndex].GetComponent<TestPeasant>();
         }
         return null;
+    }
+
+    IEnumerator CallHelp()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Transform enemyTransform = enemy.transform;
+            TestEnemy testEnemy = enemy.GetComponent<TestEnemy>();
+            TestPeasant testPeasant = enemy.GetComponent<TestPeasant>();
+            if (enemyTransform != null && testEnemy != null)
+            {
+                float distance = Vector3.Distance(transform.position, enemyTransform.position);
+                if (distance < 20)
+                {
+                    testEnemy.isAgro = true;
+                }
+            }
+            if (enemyTransform != null && testPeasant != null)
+            {
+                float distance = Vector3.Distance(transform.position, enemyTransform.position);
+                if (distance < 20)
+                {
+                    testPeasant.isAgro = true;
+                }
+            }
+        }
     }
 
     void Death()

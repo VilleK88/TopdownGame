@@ -13,9 +13,14 @@ public class TestPlayerHitbox : MonoBehaviour
             bool ifBlocking = other.gameObject.GetComponent<TestEnemyHealth>().blockingPlayer;
             if(health != null)
             {
-                if(gameObject.name == "TestEnemy")
+                if(other.gameObject.name == "TestEnemy")
                 {
-                    if(!ifBlocking)
+                    bool ifAgro = other.gameObject.GetComponent<TestEnemy>().isAgro;
+                    if (!ifBlocking && !ifAgro)
+                    {
+                        health.TakeDamage(50);
+                    }
+                    else if(!ifBlocking)
                     {
                         health.TakeDamage(10);
                     }
@@ -43,14 +48,5 @@ public class TestPlayerHitbox : MonoBehaviour
                 }
             }
         }*/
-
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") && other.gameObject.name == "Priest")
-        {
-            TestPriestHealth priestHealth = other.gameObject.GetComponent<TestPriestHealth>();
-            if (priestHealth != null)
-            {
-                priestHealth.TakeDamage(10);
-            }
-        }
     }
 }

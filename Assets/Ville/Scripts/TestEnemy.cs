@@ -15,9 +15,9 @@ public class TestEnemy : MonoBehaviour
     float speed = 50; // 10 original
 
     [Header("Field of View Parameters")]
-    public float radius = 6;
+    public float radius = 7;
     [Range(0, 360)]
-    public float angle = 90;
+    public float angle = 120;
     public LayerMask targetMask;
     public LayerMask obstructionMask;
     public bool canSeePlayer;

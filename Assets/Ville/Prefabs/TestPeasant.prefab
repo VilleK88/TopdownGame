@@ -470,11 +470,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySprite: {fileID: 1067344652550070822}
   currentHealth: 0
-  components: []
-  iFramesDuration: 2
-  numberOfFlashes: 2
+  dead: 0
   playerBlockFetch: 0
   blockingPlayer: 0
+  gettingHit: 0
 --- !u!114 &1067344652477661550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,8 +491,8 @@ MonoBehaviour:
   childSprite: {fileID: 1067344652550070822}
   player: {fileID: 0}
   playerTransform: {fileID: 0}
-  radius: 6
-  angle: 90
+  radius: 7
+  angle: 120
   targetMask:
     serializedVersion: 2
     m_Bits: 64
