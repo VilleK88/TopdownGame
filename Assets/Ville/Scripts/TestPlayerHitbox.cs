@@ -9,7 +9,7 @@ public class TestPlayerHitbox : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             TestEnemyHealth health = other.gameObject.GetComponent<TestEnemyHealth>();
-            TestPriestHealth priestHealth = other.gameObject.GetComponent<TestPriestHealth>();
+            //TestPriestHealth priestHealth = other.gameObject.GetComponent<TestPriestHealth>();
             bool ifBlocking = other.gameObject.GetComponent<TestEnemyHealth>().blockingPlayer;
             if(health != null)
             {
@@ -20,13 +20,13 @@ public class TestPlayerHitbox : MonoBehaviour
                         health.TakeDamage(10);
                     }
                 }
-                if(gameObject.name == "Priest")
+                /*if(gameObject.name == "Priest")
                 {
                     priestHealth.TakeDamage(10);
-                }
+                }*/
                 else
                 {
-                    health.TakeDamage(10);
+                    health.TakeDamage(15);
                 }
             }
         }

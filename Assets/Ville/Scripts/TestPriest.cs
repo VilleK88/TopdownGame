@@ -56,7 +56,7 @@ public class TestPriest : MonoBehaviour
 
     private void Update()
     {
-        deadFetch = GetComponent<TestPriestHealth>().dead;
+        deadFetch = GetComponent<TestEnemyHealth>().dead;
 
         if (agent.remainingDistance <= agent.stoppingDistance && !deadFetch)
         {
@@ -101,7 +101,7 @@ public class TestPriest : MonoBehaviour
                         testEnemyHealth = enemy.GetComponent<TestEnemyHealth>();
 
                         if (testEnemyHealth != null && testEnemyHealth.currentHealth < maxHealth &&
-                            testEnemyHealth.currentHealth <= 0)
+                            testEnemyHealth.currentHealth > 0)
                         {
                             //testEnemyHealth.currentHealth = maxHealth;
                             testEnemyHealth.currentHealth += 10;
@@ -183,7 +183,7 @@ public class TestPriest : MonoBehaviour
                 capsuleCollider.enabled = false;
             }
             this.enabled = false;
-
+            CancelInvoke("HealEnemies");
             StartCoroutine(Vanish());
         }
     }
@@ -192,6 +192,7 @@ public class TestPriest : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         childSprite.GetComponent<SpriteRenderer>().enabled = false;
+        childSprite.GetComponentInChildren<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(2);
         gameObject.SetActive(false);
     }

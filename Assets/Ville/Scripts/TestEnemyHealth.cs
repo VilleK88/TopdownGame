@@ -50,6 +50,10 @@ public class TestEnemyHealth : MonoBehaviour
                     StartCoroutine(StopBlocking());
                 }
             }
+            else if(gameObject.name == "Priest")
+            {
+
+            }
             else
             {
                 gettingHitOrNot = Random.Range(0, 1);

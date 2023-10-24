@@ -60,6 +60,7 @@ public class TestPeasant : MonoBehaviour
     {
         //ifBlockingPlayersAttackFetch = GetComponent<TestEnemyHealth>().blockingPlayer;
         gettingHitFetch = GetComponent<TestEnemyHealth>().gettingHit;
+        deadFetch = GetComponent<TestEnemyHealth>().dead;
 
         if(converted)
         {
@@ -260,6 +261,7 @@ public class TestPeasant : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         childSprite.GetComponent<SpriteRenderer>().enabled = false;
+        childSprite.GetComponentInChildren<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(2);
         gameObject.SetActive(false);
     }

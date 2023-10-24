@@ -237,6 +237,7 @@ public class TestEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         childSprite.GetComponent<SpriteRenderer>().enabled = false;
+        childSprite.GetComponentInChildren<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(2);
         gameObject.SetActive(false);
     }

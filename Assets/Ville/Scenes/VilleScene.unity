@@ -11536,12 +11536,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 863605294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3d8e56e89993064f9bd29b32e6f11d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 2dd9c0fe3bf3d31498733fc98677eef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemySprite: {fileID: 1715061774}
   currentHealth: 0
   dead: 0
+  playerBlockFetch: 0
+  blockingPlayer: 0
+  gettingHit: 0
 --- !u!1 &886656590
 GameObject:
   m_ObjectHideFlags: 0
