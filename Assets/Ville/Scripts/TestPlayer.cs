@@ -12,10 +12,11 @@ public class TestPlayer : MonoBehaviour
     Camera cam;
     TestPlayerMotor motor;
     //NavMeshAgent agent;
+    public Interactable focus;
 
 
     [Header("Player Movement and Mouse Aiming Parameters")]
-    float moveSpeed = 5;
+    float moveSpeed = 3.5f;
     Vector3 movement;
     Ray ray;
     RaycastHit hit;
@@ -85,6 +86,7 @@ public class TestPlayer : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100, ground))
             {
                 motor.MoveToPoint(hit.point);
+                RemoveFocus();
             }
         }
 
@@ -93,12 +95,42 @@ public class TestPlayer : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 100, ground))
+            if (Physics.Raycast(ray, out hit, 100))
             {
-                // Check if we hit an interactable
-                // If we did set it as our focus
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                if(interactable != null)
+                {
+                    SetFocus(interactable);
+                }
             }
         }
+    }
+
+    void SetFocus(Interactable newFocus)
+    {
+        if(newFocus != focus)
+        {
+            if(focus !=  null)
+            {
+                focus.OnDefocused();
+            }
+
+            focus = newFocus;
+            motor.FollowTarget(newFocus);
+        }
+
+        newFocus.OnFocused(transform);
+    }
+
+    void RemoveFocus()
+    {
+        if(focus != null)
+        {
+            focus.OnDefocused();
+        }
+
+        focus = null;
+        motor.StopFollowingTarget();
     }
 
     void Move()
@@ -110,17 +142,17 @@ public class TestPlayer : MonoBehaviour
             //currentStamina -= runCost * Time.deltaTime;
             if(currentStamina > 0)
             {
-                moveSpeed = 10;
+                moveSpeed = 6;
             }
             else
             {
-                moveSpeed = 5;
+                moveSpeed = 3.5f;
             }
         }
         else
         {
             running = false;
-            moveSpeed = 5;
+            moveSpeed = 3.5f;
         }
 
         movement.x = Input.GetAxisRaw("Horizontal");
