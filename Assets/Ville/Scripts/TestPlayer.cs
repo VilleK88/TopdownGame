@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 //[RequireComponent(typeof(TestPlayerMotor))]
 public class TestPlayer : MonoBehaviour
@@ -59,6 +60,11 @@ public class TestPlayer : MonoBehaviour
 
     private void Update()
     {
+        if(EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         MouseMovement();
         //Move();
         //MouseAiming();
