@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
+//[RequireComponent(typeof(TestPlayerMotor))]
 public class TestPlayer : MonoBehaviour
 {
     Rigidbody rb;
     [SerializeField] GameObject childSprite;
-    public Camera cam;
+    Camera cam;
+    TestPlayerMotor motor;
+    //NavMeshAgent agent;
+
 
     [Header("Player Movement and Mouse Aiming Parameters")]
     float moveSpeed = 5;
@@ -16,6 +21,7 @@ public class TestPlayer : MonoBehaviour
     RaycastHit hit;
     Vector3 cursorPosition;
     bool running = false;
+
 
     [Header("Jump Parameters")]
     float jumpForce = 5;
@@ -38,7 +44,6 @@ public class TestPlayer : MonoBehaviour
     float chargeRate = 33;
     Coroutine recharge;
 
-
     private void Start()
     {
         currentStamina = maxStamina;
@@ -46,12 +51,16 @@ public class TestPlayer : MonoBehaviour
         childSprite.GetComponent<Animator>();
         Physics.gravity *= gravityModifier;
         //Cursor.lockState = CursorLockMode.Locked;
+        cam = Camera.main;
+        motor = GetComponent<TestPlayerMotor>();
+        //agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
-        Move();
-        MouseAiming();
+        MouseMovement();
+        //Move();
+        //MouseAiming();
         Block();
         if(!blocking)
         {
@@ -64,6 +73,32 @@ public class TestPlayer : MonoBehaviour
     private void FixedUpdate()
     {
         FixedMove();
+    }
+
+    void MouseMovement()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 100, ground))
+            {
+                motor.MoveToPoint(hit.point);
+            }
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 100, ground))
+            {
+                // Check if we hit an interactable
+                // If we did set it as our focus
+            }
+        }
     }
 
     void Move()
