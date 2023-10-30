@@ -10,9 +10,11 @@ public class TestEnemy : MonoBehaviour
     CapsuleCollider capsuleCollider;
     //Animator anim;
     [SerializeField] GameObject childSprite;
-    public GameObject player;
-    public Transform playerTransform;
     float speed = 50; // 10 original
+
+    [Header("Player GameObject and Transform")]
+    GameObject player;
+    Transform playerTransform;
 
     [Header("Field of View Parameters")]
     public float radius = 7;
@@ -46,10 +48,13 @@ public class TestEnemy : MonoBehaviour
     bool deadFetch; // from EnemyHealth -script
     bool dead = false;
 
+    public int enemyClass = 0;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         //player = GameObject.FindGameObjectWithTag("Player");
+        player = PlayerManager.instance.player;
         playerTransform = player.transform;
         agent = GetComponent<NavMeshAgent>();
         childSprite.GetComponent<Animator>();
@@ -110,8 +115,6 @@ public class TestEnemy : MonoBehaviour
                             Attack();
                             attackCooldown = attackCooldownOriginal;
                         }
-                        //Attack();
-                        //StartCoroutine(AttackPlayer());
                     }
                 }
             }
@@ -172,15 +175,6 @@ public class TestEnemy : MonoBehaviour
         if(!dead)
         {
             agent.SetDestination(waypoints[waypointIndex].position);
-        }
-    }
-
-    IEnumerator AttackPlayer()
-    {
-        yield return new WaitForSeconds(3);
-        if(distanceToTarget <= 2)
-        {
-            childSprite.GetComponent<Animator>().SetTrigger("PikeAttack1");
         }
     }
 

@@ -15,9 +15,11 @@ public class TestPeasant : MonoBehaviour
     //Animator anim;
     [SerializeField] GameObject childSprite;
     SpriteRenderer sprite;
-    public GameObject player;
-    public Transform playerTransform;
     float speed = 50; // 10 original
+
+    [Header("Player GameObject and Transform")]
+    GameObject player;
+    Transform playerTransform;
 
     [Header("Field of View Parameters")]
     public float radius = 6;
@@ -52,6 +54,7 @@ public class TestPeasant : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         //player = GameObject.FindGameObjectWithTag("Player");
+        player = PlayerManager.instance.player;
         playerTransform = player.transform;
         agent = GetComponent<NavMeshAgent>();
         childSprite.GetComponent<Animator>();

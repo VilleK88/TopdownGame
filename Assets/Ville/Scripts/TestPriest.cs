@@ -56,8 +56,8 @@ public class TestPriest : MonoBehaviour
     float distanceToTarget;
 
     [Header("Player")]
-    public GameObject player;
-    public Transform playerTransform;
+    GameObject player;
+    Transform playerTransform;
 
     [Header("Chase, Attack and Agro Parameters")]
     public bool isAgro = false;
@@ -69,6 +69,8 @@ public class TestPriest : MonoBehaviour
 
     private void Start()
     {
+        player = PlayerManager.instance.player;
+        playerTransform = player.transform;
         agent = GetComponent<NavMeshAgent>();
 
         peasants = GameObject.FindGameObjectsWithTag("Peasant");

@@ -16,7 +16,8 @@ public class TestPlayerHitbox : MonoBehaviour
             bool ifBlocking = other.gameObject.GetComponent<TestEnemyHealth>().blockingPlayer;
             if(health != null)
             {
-                if(other.gameObject.name == "TestEnemy")
+                int enemyClass = other.gameObject.GetComponent<TestEnemy>().enemyClass;
+                if (other.gameObject.name == "TestEnemy")
                 {
                     bool ifAgro = other.gameObject.GetComponent<TestEnemy>().isAgro;
                     if (!ifBlocking && !ifAgro)

@@ -78,6 +78,7 @@ public class TestPlayerHealth : MonoBehaviour
         if(currentHealth <= 0)
         {
             // die
+            Die();
         }
         else if(blockingFetch)
         {
@@ -118,5 +119,11 @@ public class TestPlayerHealth : MonoBehaviour
             yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
         }
         Physics2D.IgnoreLayerCollision(6, 10, false);
+    }
+
+    public virtual void Die()
+    {
+        //base.Die();
+        PlayerManager.instance.KillPlayer();
     }
 }
