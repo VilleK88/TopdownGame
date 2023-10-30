@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: HealtBottle
   m_EditorClassIdentifier: 
   name: Healt bottle
-  icon: {fileID: 0}
+  icon: {fileID: 693883484, guid: 3efb3c4af30e4f4409798feb4d56d1af, type: 3}
   isDefaultItem: 0
