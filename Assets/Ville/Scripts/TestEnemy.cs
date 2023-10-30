@@ -33,6 +33,8 @@ public class TestEnemy : MonoBehaviour
     Vector3 direction;
     Quaternion lookRotation;
     NavMeshAgent agent;
+    float attackCooldown = 1;
+    float attackCooldownOriginal;
 
     bool ifBlockingPlayersAttackFetch; // from EnemyHealth -script
 
@@ -54,6 +56,7 @@ public class TestEnemy : MonoBehaviour
         StartCoroutine(FOVRoutine());
         agent.SetDestination(waypoints[waypointIndex].position);
         capsuleCollider = GetComponent<CapsuleCollider>();
+        attackCooldownOriginal = attackCooldown;
     }
 
     private void Update()
@@ -98,7 +101,17 @@ public class TestEnemy : MonoBehaviour
                     transform.LookAt(player.transform.position);
                     if (!ifBlockingPlayersAttackFetch)
                     {
-                        Attack();
+                        if(attackCooldown >= 0)
+                        {
+                            attackCooldown -= Time.deltaTime;
+                        }
+                        else
+                        {
+                            Attack();
+                            attackCooldown = attackCooldownOriginal;
+                        }
+                        //Attack();
+                        //StartCoroutine(AttackPlayer());
                     }
                 }
             }
@@ -159,6 +172,15 @@ public class TestEnemy : MonoBehaviour
         if(!dead)
         {
             agent.SetDestination(waypoints[waypointIndex].position);
+        }
+    }
+
+    IEnumerator AttackPlayer()
+    {
+        yield return new WaitForSeconds(3);
+        if(distanceToTarget <= 2)
+        {
+            childSprite.GetComponent<Animator>().SetTrigger("PikeAttack1");
         }
     }
 

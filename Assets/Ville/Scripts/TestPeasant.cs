@@ -38,6 +38,8 @@ public class TestPeasant : MonoBehaviour
     Vector3 direction;
     Quaternion lookRotation;
     NavMeshAgent agent;
+    float attackCooldown = 1;
+    float attackCooldownOriginal;
 
     //bool ifBlockingPlayersAttackFetch; // from EnemyHealth -script
     bool gettingHitFetch; // from EnemyHealth -script
@@ -56,6 +58,7 @@ public class TestPeasant : MonoBehaviour
         sprite = childSprite.GetComponent<SpriteRenderer>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         StartCoroutine(FOVRoutine());
+        attackCooldownOriginal = attackCooldown;
     }
 
     private void Update()
@@ -108,7 +111,16 @@ public class TestPeasant : MonoBehaviour
                         transform.LookAt(player.transform.position);
                         if (!gettingHitFetch)
                         {
-                            Attack();
+                            if (attackCooldown >= 0)
+                            {
+                                attackCooldown -= Time.deltaTime;
+                            }
+                            else
+                            {
+                                Attack();
+                                attackCooldown = attackCooldownOriginal;
+                            }
+                            //Attack();
                         }
                     }
                 }
