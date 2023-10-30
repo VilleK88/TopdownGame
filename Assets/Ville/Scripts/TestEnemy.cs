@@ -42,6 +42,7 @@ public class TestEnemy : MonoBehaviour
     Vector3 waypointTarget;
 
     bool deadFetch; // from EnemyHealth -script
+    bool dead = false;
 
     private void Start()
     {
@@ -59,50 +60,53 @@ public class TestEnemy : MonoBehaviour
     {
         ifBlockingPlayersAttackFetch = GetComponent<TestEnemyHealth>().blockingPlayer;
         deadFetch = GetComponent<TestEnemyHealth>().dead;
-
-        if(canSeePlayer)
-        {
-            isAgro = true;
-            agroCounter = 0;
-            StartCoroutine(CallHelp());
-        }
-        else
-        {
-            if(isAgro)
-            {
-                if(agroCounter < maxAgroCounter)
-                {
-                    agroCounter += Time.deltaTime;
-                }
-                else
-                {
-                    agroCounter = 0;
-                    isAgro = false;
-                }
-            }
-        }
-
-        if(isAgro)
-        {
-            if(distanceToTarget > 2)
-            {
-                Chase();
-            }
-            else if (distanceToTarget <= 2)
-            {
-                transform.LookAt(player.transform.position);
-                if (!ifBlockingPlayersAttackFetch)
-                {
-                    Attack();
-                }
-            }
-        }
-        else
-        {
-            Patrol();
-        }
-
         Death();
+
+
+        if(!dead)
+        {
+            if (canSeePlayer)
+            {
+                isAgro = true;
+                agroCounter = 0;
+                StartCoroutine(CallHelp());
+            }
+            else
+            {
+                if (isAgro)
+                {
+                    if (agroCounter < maxAgroCounter)
+                    {
+                        agroCounter += Time.deltaTime;
+                    }
+                    else
+                    {
+                        agroCounter = 0;
+                        isAgro = false;
+                    }
+                }
+            }
+
+            if (isAgro)
+            {
+                if (distanceToTarget > 2)
+                {
+                    Chase();
+                }
+                else if (distanceToTarget <= 2)
+                {
+                    transform.LookAt(player.transform.position);
+                    if (!ifBlockingPlayersAttackFetch)
+                    {
+                        Attack();
+                    }
+                }
+            }
+            else
+            {
+                Patrol();
+            }
+        }
     }
 
     void Patrol()
@@ -152,7 +156,10 @@ public class TestEnemy : MonoBehaviour
     IEnumerator NextWayPoint()
     {
         yield return new WaitForSeconds(3);
-        agent.SetDestination(waypoints[waypointIndex].position);
+        if(!dead)
+        {
+            agent.SetDestination(waypoints[waypointIndex].position);
+        }
     }
 
     void Attack()
@@ -222,8 +229,9 @@ public class TestEnemy : MonoBehaviour
     {
         if (deadFetch)
         {
+            dead = true;
             //childSprite.GetComponent<Animator>();
-            if(capsuleCollider != null)
+            if (capsuleCollider != null)
             {
                 capsuleCollider.enabled = false;
             }
@@ -238,7 +246,7 @@ public class TestEnemy : MonoBehaviour
         yield return new WaitForSeconds(2);
         childSprite.GetComponent<SpriteRenderer>().enabled = false;
         childSprite.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(2);
+        //yield return new WaitForSeconds(2);
         gameObject.SetActive(false);
     }
 }

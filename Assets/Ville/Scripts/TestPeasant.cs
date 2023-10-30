@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem.Processors;
 
 public class TestPeasant : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class TestPeasant : MonoBehaviour
     public int convertOnlyOnce = 0;
 
     bool deadFetch; // from EnemyHealth -script
+    bool dead = false;
 
     private void Start()
     {
@@ -61,49 +63,58 @@ public class TestPeasant : MonoBehaviour
         //ifBlockingPlayersAttackFetch = GetComponent<TestEnemyHealth>().blockingPlayer;
         gettingHitFetch = GetComponent<TestEnemyHealth>().gettingHit;
         deadFetch = GetComponent<TestEnemyHealth>().dead;
+        Death();
 
-        if(converted)
+
+        if (!dead)
         {
-            if(converted && convertOnlyOnce == 0)
+            if (converted)
             {
-                Convert();
-                convertOnlyOnce = 1;
-            }
-            if (canSeePlayer)
-            {
-                isAgro = true;
-                agroCounter = 0;
-                StartCoroutine(CallHelp());
-            }
-            else
-            {
+                if (converted && convertOnlyOnce == 0)
+                {
+                    Convert();
+                    convertOnlyOnce = 1;
+                }
+                if (canSeePlayer)
+                {
+                    isAgro = true;
+                    agroCounter = 0;
+                    StartCoroutine(CallHelp());
+                }
+                else
+                {
+                    if (isAgro)
+                    {
+                        if (agroCounter < maxAgroCounter)
+                        {
+                            agroCounter += Time.deltaTime;
+                        }
+                        else
+                        {
+                            agroCounter = 0;
+                            isAgro = false;
+                        }
+                    }
+                }
+
                 if (isAgro)
                 {
-                    if (agroCounter < maxAgroCounter)
+                    if (distanceToTarget > 2)
                     {
-                        agroCounter += Time.deltaTime;
+                        Chase();
                     }
-                    else
+                    else if (distanceToTarget <= 2)
                     {
-                        agroCounter = 0;
-                        isAgro = false;
+                        transform.LookAt(player.transform.position);
+                        if (!gettingHitFetch)
+                        {
+                            Attack();
+                        }
                     }
                 }
-            }
-
-            if (isAgro)
-            {
-                if (distanceToTarget > 2)
+                else
                 {
-                    Chase();
-                }
-                else if (distanceToTarget <= 2)
-                {
-                    transform.LookAt(player.transform.position);
-                    if (!gettingHitFetch)
-                    {
-                        Attack();
-                    }
+                    RandomMovement();
                 }
             }
             else
@@ -111,12 +122,6 @@ public class TestPeasant : MonoBehaviour
                 RandomMovement();
             }
         }
-        else
-        {
-            RandomMovement();
-        }
-
-        Death();
     }
 
     void RandomMovement()
@@ -255,6 +260,7 @@ public class TestPeasant : MonoBehaviour
     {
         if (deadFetch)
         {
+            dead = true;
             //childSprite.GetComponent<Animator>();
             if (capsuleCollider != null)
             {
@@ -271,7 +277,7 @@ public class TestPeasant : MonoBehaviour
         yield return new WaitForSeconds(2);
         childSprite.GetComponent<SpriteRenderer>().enabled = false;
         childSprite.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(2);
+        //yield return new WaitForSeconds(2);
         gameObject.SetActive(false);
     }
 }

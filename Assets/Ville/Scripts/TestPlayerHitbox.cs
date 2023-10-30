@@ -18,7 +18,7 @@ public class TestPlayerHitbox : MonoBehaviour
                     bool ifAgro = other.gameObject.GetComponent<TestEnemy>().isAgro;
                     if (!ifBlocking && !ifAgro)
                     {
-                        health.TakeDamage(50);
+                        health.TakeDamage(100);
                     }
                     else if(!ifBlocking)
                     {
@@ -29,6 +29,18 @@ public class TestPlayerHitbox : MonoBehaviour
                 {
                     priestHealth.TakeDamage(10);
                 }*/
+                else if(other.gameObject.name == "Priest")
+                {
+                    bool ifAgro = other.gameObject.GetComponent<TestPriest>().isAgro;
+                    if (!ifAgro)
+                    {
+                        health.TakeDamage(100);
+                    }
+                    else
+                    {
+                        health.TakeDamage(15);
+                    }
+                }
                 else
                 {
                     health.TakeDamage(15);

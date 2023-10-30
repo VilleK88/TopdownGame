@@ -66,8 +66,8 @@ public class TestPlayer : MonoBehaviour
         }
 
         MouseMovement();
-        //Move();
-        //MouseAiming();
+        Move();
+        MouseAiming();
         Block();
         if(!blocking)
         {
@@ -91,7 +91,7 @@ public class TestPlayer : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 100, ground))
             {
-                motor.MoveToPoint(hit.point);
+                //motor.MoveToPoint(hit.point);
                 RemoveFocus();
             }
         }
@@ -122,7 +122,7 @@ public class TestPlayer : MonoBehaviour
             }
 
             focus = newFocus;
-            motor.FollowTarget(newFocus);
+            //motor.FollowTarget(newFocus);
         }
 
         newFocus.OnFocused(transform);
@@ -136,7 +136,7 @@ public class TestPlayer : MonoBehaviour
         }
 
         focus = null;
-        motor.StopFollowingTarget();
+        //motor.StopFollowingTarget();
     }
 
     void Move()

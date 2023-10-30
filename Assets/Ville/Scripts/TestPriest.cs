@@ -12,7 +12,7 @@ public class TestPriest : MonoBehaviour
     [SerializeField] GameObject childSprite;
 
     [Header("Death Parameters")]
-    public bool dead = false;
+    bool dead = false;
     bool deadFetch; // from TestPriestHealth -script
 
     [Header("Converting Peasants Parameters")]
@@ -83,47 +83,50 @@ public class TestPriest : MonoBehaviour
     private void Update()
     {
         deadFetch = GetComponent<TestEnemyHealth>().dead;
+        Death();
 
-        if (canSeePlayer)
-        {
-            isAgro = true;
-            agroCounter = 0;
-            StartCoroutine(CallHelp());
-        }
-        else
-        {
-            if (isAgro)
-            {
-                if (agroCounter < maxAgroCounter)
-                {
-                    agroCounter += Time.deltaTime;
-                }
-                else
-                {
-                    agroCounter = 0;
-                    isAgro = false;
-                }
-            }
-        }
 
-        if (agent.remainingDistance <= agent.stoppingDistance && !deadFetch)
+        if (!dead)
         {
-            if(!startHealing)
+            if (canSeePlayer)
             {
-                Convert();
+                isAgro = true;
+                agroCounter = 0;
+                StartCoroutine(CallHelp());
             }
             else
             {
-                agent.SetDestination(testEnemyHealth.transform.position);
+                if (isAgro)
+                {
+                    if (agroCounter < maxAgroCounter)
+                    {
+                        agroCounter += Time.deltaTime;
+                    }
+                    else
+                    {
+                        agroCounter = 0;
+                        isAgro = false;
+                    }
+                }
+            }
+
+            if (agent.remainingDistance <= agent.stoppingDistance && !deadFetch)
+            {
+                if (!startHealing)
+                {
+                    Convert();
+                }
+                else
+                {
+                    agent.SetDestination(testEnemyHealth.transform.position);
+                }
+            }
+
+            if (deadFetch)
+            {
+                particleSystemConverting.Stop();
             }
         }
-
-        if(deadFetch)
-        {
-            particleSystemConverting.Stop();
-        }
-
-        Death();
     }
 
     IEnumerator FOVRoutine()
@@ -285,6 +288,7 @@ public class TestPriest : MonoBehaviour
     {
         if (deadFetch)
         {
+            dead = true;
             //childSprite.GetComponent<Animator>();
             if (capsuleCollider != null)
             {
@@ -301,7 +305,7 @@ public class TestPriest : MonoBehaviour
         yield return new WaitForSeconds(2);
         childSprite.GetComponent<SpriteRenderer>().enabled = false;
         childSprite.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(2);
+        //yield return new WaitForSeconds(2);
         gameObject.SetActive(false);
     }
 }
