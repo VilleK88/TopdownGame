@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sword of Destiny
   m_EditorClassIdentifier: 
   name: Sword of Destiny
-  icon: {fileID: 21300000, guid: 244affada2f283d4ab21f7e777f2e680, type: 3}
+  icon: {fileID: -1760454380057269049, guid: 545f9c74323fe914c829180b85afb1b7, type: 3}
   isDefaultItem: 0
   equipSlot: 3
   armorModifier: 0

@@ -27,6 +27,9 @@ public class TestPlayerHealth : MonoBehaviour
     [SerializeField] GameObject player;
     public bool blockingFetch; // from Player -script
 
+    public Stat damage;
+    public Stat armor;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -39,14 +42,11 @@ public class TestPlayerHealth : MonoBehaviour
         blockingFetch = player.GetComponent<TestPlayer>().blocking;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthUI();
-        /*if(Input.GetKeyDown(KeyCode.A))
+
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            TakeDamage(Random.Range(5, 10));
+            TakeDamage(10);
         }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            RestoreHealth(Random.Range(5, 10));
-        }*/
     }
 
     public void UpdateHealthUI()
@@ -85,7 +85,16 @@ public class TestPlayerHealth : MonoBehaviour
         }
         else
         {
-            currentHealth -= damage;
+            if(damage > armor.GetValue())
+            {
+                damage -= armor.GetValue();
+                currentHealth -= damage;
+            }
+            else if(damage < armor.GetValue())
+            {
+
+            }
+            //currentHealth -= damage;
             StartCoroutine(Invulnerability());
         }
 

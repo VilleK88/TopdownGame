@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth { get; private set; }
+    public float maxHealth = 100;
+    public float currentHealth { get; private set; }
 
     public Stat damage;
     public Stat armor;
@@ -15,16 +15,16 @@ public class CharacterStats : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.T))
+       /* if(Input.GetKeyDown(KeyCode.T))
         {
             TakeDamage(10);
-        }
+        }*/
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         damage -= armor.GetValue();
-        damage = Mathf.Clamp(damage, 0, int.MaxValue);
+        damage = Mathf.Clamp(damage, 0, float.MaxValue);
 
         currentHealth -= damage;
         Debug.Log(transform.name + " takes " + damage + " damage.");

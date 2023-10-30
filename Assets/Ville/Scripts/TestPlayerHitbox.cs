@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TestPlayerHitbox : MonoBehaviour
 {
+    public Stat damage;
+    public Stat armor;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
@@ -18,11 +21,11 @@ public class TestPlayerHitbox : MonoBehaviour
                     bool ifAgro = other.gameObject.GetComponent<TestEnemy>().isAgro;
                     if (!ifBlocking && !ifAgro)
                     {
-                        health.TakeDamage(100);
+                        health.TakeDamage(100 + damage.GetValue());
                     }
                     else if(!ifBlocking)
                     {
-                        health.TakeDamage(10);
+                        health.TakeDamage(10 + damage.GetValue());
                     }
                 }
                 /*if(gameObject.name == "Priest")
@@ -34,16 +37,16 @@ public class TestPlayerHitbox : MonoBehaviour
                     bool ifAgro = other.gameObject.GetComponent<TestPriest>().isAgro;
                     if (!ifAgro)
                     {
-                        health.TakeDamage(100);
+                        health.TakeDamage(100 + damage.GetValue());
                     }
                     else
                     {
-                        health.TakeDamage(15);
+                        health.TakeDamage(15 + damage.GetValue());
                     }
                 }
                 else
                 {
-                    health.TakeDamage(15);
+                    health.TakeDamage(15 + damage.GetValue());
                 }
             }
         }

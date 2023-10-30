@@ -96,7 +96,7 @@ public class TestPlayer : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
