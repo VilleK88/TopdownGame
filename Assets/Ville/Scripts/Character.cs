@@ -6,17 +6,17 @@ public class Character : MonoBehaviour
 {
     [SerializeField] float currentHealth, maxHealth, currentExperience, maxExperience, currentLevel;
 
-    private void OnEnable()
+    public void OnEnable()
     {
         ExperienceManager.instance.onExperienceChange += HandleExperienceChange;
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         ExperienceManager.instance.onExperienceChange -= HandleExperienceChange;
     }
 
-    void HandleExperienceChange(float newExperience)
+    public void HandleExperienceChange(float newExperience)
     {
         currentExperience += newExperience;
         if(currentExperience >= maxExperience)
