@@ -19,7 +19,7 @@ public class TestEnemyHitBox : MonoBehaviour
             TestPlayerHealth health = other.gameObject.GetComponent<TestPlayerHealth>();
             if (health != null)
             {
-                health.TakeDamage(2.5f);
+                health.TakeDamage(3);
             }
             TestPlayer stamina = other.gameObject.GetComponent<TestPlayer>();
             if(stamina != null)

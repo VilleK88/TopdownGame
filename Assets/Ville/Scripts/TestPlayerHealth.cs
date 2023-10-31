@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class TestPlayerHealth : MonoBehaviour
 {
-    float startingHealth = 100;
     public float maxHealth = 100;
     public float currentHealth; //{ get; set; }
     float chipSpeed = 2;
@@ -73,7 +72,7 @@ public class TestPlayerHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         if(currentHealth <= 0)
         {
@@ -102,7 +101,7 @@ public class TestPlayerHealth : MonoBehaviour
         lerpTimer = 0;
     }
 
-    public void RestoreHealth(float healAmount)
+    public void RestoreHealth(int healAmount)
     {
         currentHealth += healAmount;
         lerpTimer = 0;
@@ -125,5 +124,11 @@ public class TestPlayerHealth : MonoBehaviour
     {
         //base.Die();
         PlayerManager.instance.KillPlayer();
+    }
+
+    public void IncreaseHealth(int level)
+    {
+        maxHealth += (currentHealth * 0.01f) * ((50 - level) * 0.1f);
+        currentHealth = maxHealth;
     }
 }

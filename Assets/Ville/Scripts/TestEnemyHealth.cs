@@ -13,28 +13,48 @@ public class TestEnemyHealth : MonoBehaviour
     [SerializeField] GameObject enemySprite;
     public EnemyClass enemyClass;
 
+    [Header("Health")]
     float startingHealth = 100;
     float maxHealth = 100;
     public float currentHealth; //{ get; set; }
     public bool dead = false;
 
+    [Header("Blocking Or Getting Hit")]
     public bool playerBlockFetch;
     int blockOrNot;
     public bool blockingPlayer; // this is fetched from the Enemy -script
     int gettingHitOrNot;
     public bool gettingHit = false;
 
-    float expAmount = 100;
+    [Header("Player XP")]
+    float expAmount;
 
     private void Start()
     {
         currentHealth = maxHealth;
         anim = enemySprite.GetComponent<Animator>();
+        HowMuchXp();
     }
 
     private void Update()
     {
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+    }
+
+    void HowMuchXp()
+    {
+        if (enemyClass == EnemyClass.Knight)
+        {
+            expAmount = 50;
+        }
+        if (enemyClass == EnemyClass.Peasant)
+        {
+            expAmount = 25;
+        }
+        if (enemyClass == EnemyClass.Priest)
+        {
+            expAmount = 100;
+        }
     }
 
     public void TakeDamage(float damage)
