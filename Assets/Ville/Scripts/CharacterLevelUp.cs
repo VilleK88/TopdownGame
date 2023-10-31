@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class CharacterLevelUp : MonoBehaviour
 {
     [SerializeField] float currentHealth, maxHealth, currentExperience, maxExperience, currentLevel;
+    [SerializeField] TestPlayerHealth playerHealtScript;
+
+    private void Start()
+    {
+        playerHealtScript = GetComponent<TestPlayerHealth>();
+    }
 
     public void OnEnable()
     {
@@ -27,8 +33,11 @@ public class Character : MonoBehaviour
 
     void LevelUp()
     {
-        maxHealth += 10;
-        currentHealth = maxHealth;
+        //maxHealth += 10;
+        //currentHealth = maxHealth;
+
+        playerHealtScript.maxHealth += 10;
+        playerHealtScript.currentHealth = playerHealtScript.maxHealth;
 
         currentLevel++;
 

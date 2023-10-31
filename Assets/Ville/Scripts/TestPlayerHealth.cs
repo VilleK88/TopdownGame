@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TestPlayerHealth : MonoBehaviour
 {
     float startingHealth = 100;
-    float maxHealth = 100;
+    public float maxHealth = 100;
     public float currentHealth; //{ get; set; }
     float chipSpeed = 2;
     float lerpTimer;
