@@ -24,6 +24,8 @@ public class TestEnemyHealth : MonoBehaviour
     int gettingHitOrNot;
     public bool gettingHit = false;
 
+    float expAmount = 100;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -41,7 +43,7 @@ public class TestEnemyHealth : MonoBehaviour
 
         if(currentHealth <= 0)
         {
-            // die
+            Die();
             dead = true;
         }
         else
@@ -88,5 +90,10 @@ public class TestEnemyHealth : MonoBehaviour
         yield return new WaitForSeconds(2);
         anim.SetBool("PikeBlock", false);
         blockingPlayer = false;
+    }
+
+    void Die()
+    {
+        ExperienceManager.instance.AddExperience(expAmount);
     }
 }

@@ -10,12 +10,21 @@ public class Inventory : MonoBehaviour
 
     private void Awake()
     {
-        if(instance != null)
+        /*if(instance != null)
         {
             Debug.LogWarning("More than one insatnce of Inventory found!");
             return;
         }
-        instance = this;
+        instance = this;*/
+
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
     #endregion
