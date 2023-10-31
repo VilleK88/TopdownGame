@@ -48,8 +48,6 @@ public class TestEnemy : MonoBehaviour
     bool deadFetch; // from EnemyHealth -script
     bool dead = false;
 
-    public int enemyClass = 0;
-
     private void Start()
     {
         rb = GetComponent<Rigidbody>();

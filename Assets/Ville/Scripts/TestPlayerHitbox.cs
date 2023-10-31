@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TestPlayerHitbox : MonoBehaviour
@@ -16,8 +17,7 @@ public class TestPlayerHitbox : MonoBehaviour
             bool ifBlocking = other.gameObject.GetComponent<TestEnemyHealth>().blockingPlayer;
             if(health != null)
             {
-                int enemyClass = other.gameObject.GetComponent<TestEnemy>().enemyClass;
-                if (other.gameObject.name == "TestEnemy")
+                if (health.enemyClass == EnemyClass.Knight)
                 {
                     bool ifAgro = other.gameObject.GetComponent<TestEnemy>().isAgro;
                     if (!ifBlocking && !ifAgro)
@@ -29,25 +29,29 @@ public class TestPlayerHitbox : MonoBehaviour
                         health.TakeDamage(10 + damage.GetValue());
                     }
                 }
-                /*if(gameObject.name == "Priest")
+                if(health.enemyClass == EnemyClass.Peasant)
                 {
-                    priestHealth.TakeDamage(10);
-                }*/
-                else if(other.gameObject.name == "Priest")
-                {
-                    bool ifAgro = other.gameObject.GetComponent<TestPriest>().isAgro;
+                    bool ifAgro = other.gameObject.GetComponent<TestPeasant>().isAgro;
                     if (!ifAgro)
                     {
                         health.TakeDamage(100 + damage.GetValue());
                     }
                     else
                     {
-                        health.TakeDamage(15 + damage.GetValue());
+                        health.TakeDamage(10 + damage.GetValue());
                     }
                 }
-                else
+                if(health.enemyClass == EnemyClass.Priest)
                 {
-                    health.TakeDamage(15 + damage.GetValue());
+                    bool ifAgro = other.gameObject.GetComponent<TestPriest>();
+                    if (!ifAgro)
+                    {
+                        health.TakeDamage(100 + damage.GetValue());
+                    }
+                    else
+                    {
+                        health.TakeDamage(10 + damage.GetValue());
+                    }
                 }
             }
         }

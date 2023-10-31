@@ -6201,6 +6201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySprite: {fileID: 1982924413}
+  enemyClass: 0
   currentHealth: 0
   dead: 0
   playerBlockFetch: 0
@@ -13393,6 +13394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySprite: {fileID: 386276938}
+  enemyClass: 0
   currentHealth: 0
   dead: 0
   playerBlockFetch: 0
@@ -13541,7 +13543,7 @@ GameObject:
   - component: {fileID: 863605303}
   m_Layer: 7
   m_Name: Priest
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13685,7 +13687,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863605294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.45, y: 1.2, z: 8.54}
+  m_LocalPosition: {x: -8.37, y: 1.2, z: 12.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13709,6 +13711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySprite: {fileID: 1715061774}
+  enemyClass: 2
   currentHealth: 0
   dead: 0
   playerBlockFetch: 0
@@ -14302,6 +14305,11 @@ PrefabInstance:
       propertyPath: m_AngularSpeed
       value: 1200
       objectReference: {fileID: 0}
+    - target: {fileID: 1067344652477661545, guid: 2f277d0751841dc4eade76cf9eb6bea3,
+        type: 3}
+      propertyPath: enemyClass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661550, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: angle
@@ -14330,7 +14338,7 @@ PrefabInstance:
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.365482
+      value: -16.285482
       objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
@@ -14340,7 +14348,7 @@ PrefabInstance:
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.206289
+      value: 7.906288
       objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
@@ -16522,6 +16530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySprite: {fileID: 1301895984}
+  enemyClass: 0
   currentHealth: 0
   dead: 0
   playerBlockFetch: 0
@@ -19522,6 +19531,11 @@ PrefabInstance:
       propertyPath: m_AngularSpeed
       value: 1200
       objectReference: {fileID: 0}
+    - target: {fileID: 1067344652477661545, guid: 2f277d0751841dc4eade76cf9eb6bea3,
+        type: 3}
+      propertyPath: enemyClass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661550, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: player
@@ -19540,7 +19554,7 @@ PrefabInstance:
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.11
+      value: -9.030001
       objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
@@ -19550,7 +19564,7 @@ PrefabInstance:
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.19
+      value: 7.8899994
       objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}

@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyClass
+{
+    Knight, Peasant, Priest, Dog
+}
+
 public class TestEnemyHealth : MonoBehaviour
 {
     Animator anim;
     [SerializeField] GameObject enemySprite;
+    public EnemyClass enemyClass;
 
     float startingHealth = 100;
     float maxHealth = 100;
@@ -40,7 +46,7 @@ public class TestEnemyHealth : MonoBehaviour
         }
         else
         {
-            if(gameObject.name == "TestEnemy")
+            if(enemyClass == EnemyClass.Knight)
             {
                 blockOrNot = Random.Range(0, 1);
                 if (blockOrNot == 0)
@@ -50,11 +56,11 @@ public class TestEnemyHealth : MonoBehaviour
                     StartCoroutine(StopBlocking());
                 }
             }
-            else if(gameObject.name == "Priest")
+            else if(enemyClass == EnemyClass.Priest)
             {
 
             }
-            else
+            else if(enemyClass == EnemyClass.Peasant)
             {
                 gettingHitOrNot = Random.Range(0, 1);
                 if (gettingHitOrNot == 0)
