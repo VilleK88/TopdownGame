@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
     public float currentStamina;
     public float maxStamina;
 
+    public float x;
+    public float y;
+    public float z;
+
 
     private void Awake()
     {
@@ -59,6 +63,9 @@ public class GameManager : MonoBehaviour
         data.maxHealth = maxHealth;
         data.currentStamina = currentStamina;
         data.maxStamina = maxStamina;
+        data.x = x;
+        data.y = y;
+        data.z = z;
         //data.Level1 = Level1;
         //data.Level2 = Level2;
         //data.Level3 = Level3;
@@ -92,6 +99,9 @@ public class GameManager : MonoBehaviour
             maxHealth = data.maxHealth;
             currentStamina = data.currentStamina;
             maxStamina = data.maxStamina;
+            x = data.x;
+            y = data.y;
+            z = data.z;
             //Level1 = data.Level1;
             //Level2 = data.Level2;
             //Level3 = data.Level3;
@@ -115,6 +125,10 @@ class GameData
 
     public float currentStamina;
     public float maxStamina;
+
+    public float x;
+    public float y;
+    public float z;
     //public bool Level1;
     //public bool Level2;
     //public bool Level3;

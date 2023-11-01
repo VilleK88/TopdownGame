@@ -59,6 +59,7 @@ public class TestPlayer : MonoBehaviour
         cam = Camera.main;
         motor = GetComponent<TestPlayerMotor>();
         //agent = GetComponent<NavMeshAgent>();
+        transform.position = new Vector3(GameManager.manager.x, GameManager.manager.y, GameManager.manager.z);
     }
 
     private void Update()
@@ -80,6 +81,10 @@ public class TestPlayer : MonoBehaviour
         UpdateStaminaUI();
 
         TogglePause();
+
+        GameManager.manager.x = transform.position.x;
+        GameManager.manager.y = transform.position.y;
+        GameManager.manager.z = transform.position.z;
     }
 
     private void FixedUpdate()
