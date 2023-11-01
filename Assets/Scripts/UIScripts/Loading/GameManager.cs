@@ -84,14 +84,14 @@ public class GameManager : MonoBehaviour
             // Kun tieto on ladattu data objektiin, siirret‰‰n muuttujien arvot Game Manager:in muuttujiin.
 
             //currentLevel = data.currentLevel;
-            data.currentLevel = currentLevel;
-            data.currentExperience = currentExperience;
-            data.maxExperience = maxExperience;
-            data.health = health;
-            data.currentHealth = currentHealth;
-            data.maxHealth = maxHealth;
-            data.currentStamina = currentStamina;
-            data.maxStamina = maxStamina;
+            currentLevel = data.currentLevel;
+            currentExperience = data.currentExperience;
+            maxExperience = data.maxExperience;
+            health = data.health;
+            currentHealth = data.currentHealth;
+            maxHealth = data.maxHealth;
+            currentStamina = data.currentStamina;
+            maxStamina = data.maxStamina;
             //Level1 = data.Level1;
             //Level2 = data.Level2;
             //Level3 = data.Level3;
