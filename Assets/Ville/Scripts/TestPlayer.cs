@@ -315,4 +315,10 @@ public class TestPlayer : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
+
+    public void IncreaseStamina(int level)
+    {
+        maxStamina += (currentStamina * 0.01f) * ((50 - level) * 0.1f);
+        currentStamina = maxStamina;
+    }
 }

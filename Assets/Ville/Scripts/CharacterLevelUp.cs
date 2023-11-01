@@ -8,6 +8,7 @@ public class CharacterLevelUp : MonoBehaviour
     public int currentLevel;
     public float currentExperience, maxExperience;
     TestPlayerHealth playerHealtScript;
+    TestPlayer playerScript;
 
     float lerpTimer;
     float delayTimer;
@@ -27,9 +28,10 @@ public class CharacterLevelUp : MonoBehaviour
     private void Start()
     {
         playerHealtScript = GetComponent<TestPlayerHealth>();
+        playerScript = GetComponent<TestPlayer>();
         frontXpBar.fillAmount = currentExperience / maxExperience;
         backXpBar.fillAmount = currentExperience / maxExperience;
-        maxExperience = CalculateRequiredXp();
+        //maxExperience = CalculateRequiredXp();
     }
 
     private void Update()
@@ -81,6 +83,7 @@ public class CharacterLevelUp : MonoBehaviour
         backXpBar.fillAmount = 0;
         currentExperience = Mathf.RoundToInt(currentExperience - maxExperience);
         playerHealtScript.IncreaseHealth(currentLevel);
+        playerScript.IncreaseStamina(currentLevel);
         maxExperience = CalculateRequiredXp();
     }
 
