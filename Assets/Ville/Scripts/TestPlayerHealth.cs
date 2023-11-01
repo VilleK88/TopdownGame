@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class TestPlayerHealth : MonoBehaviour
 {
-    public float maxHealth = 100;
-    public float currentHealth; //{ get; set; }
+    //public float maxHealth = 100;
+    //public float currentHealth; //{ get; set; }
     float chipSpeed = 2;
     float lerpTimer;
     public Image frontHealthbar;
@@ -31,7 +31,7 @@ public class TestPlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        //currentHealth = maxHealth;
         spriteRend = playerSprite.GetComponent<SpriteRenderer>();
         originalColor = spriteRend.color;
     }
@@ -39,7 +39,8 @@ public class TestPlayerHealth : MonoBehaviour
     private void Update()
     {
         blockingFetch = player.GetComponent<TestPlayer>().blocking;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        GameManager.manager.currentHealth = Mathf.Clamp(GameManager.manager.currentHealth, 0,
+            GameManager.manager.maxHealth);
         UpdateHealthUI();
 
         if (Input.GetKeyDown(KeyCode.T))
@@ -50,10 +51,9 @@ public class TestPlayerHealth : MonoBehaviour
 
     public void UpdateHealthUI()
     {
-        Debug.Log(currentHealth);
         float fillF = frontHealthbar.fillAmount;
         float fillB = backHealthbar.fillAmount;
-        float hFraction = currentHealth / maxHealth;
+        float hFraction = GameManager.manager.currentHealth / GameManager.manager.maxHealth;
         if(fillB > hFraction)
         {
             frontHealthbar.fillAmount = hFraction;
@@ -74,7 +74,7 @@ public class TestPlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if(currentHealth <= 0)
+        if(GameManager.manager.currentHealth <= 0)
         {
             // die
             Die();
@@ -88,7 +88,7 @@ public class TestPlayerHealth : MonoBehaviour
             if(damage > armor.GetValue())
             {
                 damage -= armor.GetValue();
-                currentHealth -= damage;
+                GameManager.manager.currentHealth -= damage;
             }
             else if(damage < armor.GetValue())
             {
@@ -103,7 +103,7 @@ public class TestPlayerHealth : MonoBehaviour
 
     public void RestoreHealth(int healAmount)
     {
-        currentHealth += healAmount;
+        GameManager.manager.currentHealth += healAmount;
         lerpTimer = 0;
     }
 
@@ -128,7 +128,7 @@ public class TestPlayerHealth : MonoBehaviour
 
     public void IncreaseHealth(int level)
     {
-        maxHealth += (currentHealth * 0.01f) * ((50 - level) * 0.1f);
-        currentHealth = maxHealth;
+        GameManager.manager.maxHealth += (GameManager.manager.currentHealth * 0.01f) * ((50 - level) * 0.1f);
+        GameManager.manager.currentHealth = GameManager.manager.maxHealth;
     }
 }

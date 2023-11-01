@@ -21,12 +21,13 @@ public class TestEnemyHitBox : MonoBehaviour
             {
                 health.TakeDamage(3);
             }
-            TestPlayer stamina = other.gameObject.GetComponent<TestPlayer>();
-            if(stamina != null)
+            TestPlayer player = other.gameObject.GetComponent<TestPlayer>();
+            if(player != null)
             {
-                if(stamina.blocking)
+                if(player.blocking)
                 {
-                    stamina.currentStamina -= 10;
+                    //stamina.currentStamina -= 10;
+                    GameManager.manager.currentStamina -= 10;
                 }
             }
         }

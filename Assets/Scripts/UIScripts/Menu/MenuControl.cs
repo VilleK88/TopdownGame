@@ -17,6 +17,11 @@ public class MenuControl : MonoBehaviour
 
     public void Load()
     {
-        //GameManager.manager.Load();
+        GameManager.manager.Load();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

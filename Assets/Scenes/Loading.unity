@@ -395,9 +395,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8d802c4b1798140b402140b9208c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: 0
+  currentExperience: 0
+  maxExperience: 100
   health: 0
-  previousHealth: 0
-  maxHealth: 0
+  currentHealth: 100
+  maxHealth: 100
+  currentStamina: 100
+  maxStamina: 100
 --- !u!4 &1943710919
 Transform:
   m_ObjectHideFlags: 0

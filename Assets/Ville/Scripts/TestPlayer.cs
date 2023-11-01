@@ -35,8 +35,8 @@ public class TestPlayer : MonoBehaviour
     public bool blocking; // if player is blocking or not
 
     [Header("Stamina Parameters")]
-    float maxStamina = 100;
-    public float currentStamina;
+    //float maxStamina = 100;
+    //public float currentStamina;
     public Image frontStaminaBar;
     public Image backStaminaBar;
     float chipSpeed = 2;
@@ -46,9 +46,12 @@ public class TestPlayer : MonoBehaviour
     float chargeRate = 33;
     Coroutine recharge;
 
+    bool isPaused = false;
+    public GameObject menuButtons;
+
     private void Start()
     {
-        currentStamina = maxStamina;
+        //currentStamina = maxStamina;
         rb = GetComponent<Rigidbody>();
         childSprite.GetComponent<Animator>();
         Physics.gravity *= gravityModifier;
@@ -75,11 +78,32 @@ public class TestPlayer : MonoBehaviour
             Attack();
         }
         UpdateStaminaUI();
+
+        TogglePause();
     }
 
     private void FixedUpdate()
     {
         FixedMove();
+    }
+
+    void TogglePause()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                Time.timeScale = 1;
+                isPaused = false;
+                //menuButtons.gameObject.SetActive(false);
+            }
+            else
+            {
+                Time.timeScale = 0;
+                isPaused = true;
+                //menuButtons.gameObject.SetActive(true);
+            }
+        }
     }
 
     void MouseMovement()
@@ -146,7 +170,7 @@ public class TestPlayer : MonoBehaviour
         {
             running = true;
             //currentStamina -= runCost * Time.deltaTime;
-            if(currentStamina > 0)
+            if(GameManager.manager.currentStamina > 0)
             {
                 moveSpeed = 6;
             }
@@ -166,12 +190,12 @@ public class TestPlayer : MonoBehaviour
 
         if(running)
         {
-            currentStamina -= runCost * Time.deltaTime;
-            if(currentStamina < 0)
+            GameManager.manager.currentStamina -= runCost * Time.deltaTime;
+            if(GameManager.manager.currentStamina < 0)
             {
-                currentStamina = 0;
+                GameManager.manager.currentStamina = 0;
             }
-            frontStaminaBar.fillAmount = currentStamina / maxStamina;
+            frontStaminaBar.fillAmount = GameManager.manager.currentStamina / GameManager.manager.maxStamina;
             if (recharge != null)
             {
                 StopCoroutine(recharge);
@@ -199,15 +223,15 @@ public class TestPlayer : MonoBehaviour
 
     public void Attack()
     {
-        if(Input.GetMouseButtonDown(0) && currentStamina > 5)
+        if(Input.GetMouseButtonDown(0) && GameManager.manager.currentStamina > 5)
         {
             childSprite.GetComponent<Animator>().SetTrigger("AxeAttack1");
-            currentStamina -= attackCost;
+            GameManager.manager.currentStamina -= attackCost;
             /*if (currentStamina < 0)
             {
                 currentStamina = 0;
             }*/
-            frontStaminaBar.fillAmount = currentStamina / maxStamina;
+            frontStaminaBar.fillAmount = GameManager.manager.currentStamina / GameManager.manager.maxStamina;
 
             if(recharge != null)
             {
@@ -219,12 +243,12 @@ public class TestPlayer : MonoBehaviour
 
     void Block()
     {
-        if(Input.GetKey(KeyCode.Q) && currentStamina > 5)
+        if(Input.GetKey(KeyCode.Q) && GameManager.manager.currentStamina > 5)
         {
             childSprite.GetComponent<Animator>().SetBool("AxeBlock", true);
             blocking = true;
 
-            frontStaminaBar.fillAmount = currentStamina / maxStamina;
+            frontStaminaBar.fillAmount = GameManager.manager.currentStamina / GameManager.manager.maxStamina;
 
             /*if (recharge != null)
             {
@@ -240,11 +264,11 @@ public class TestPlayer : MonoBehaviour
 
         if(blocking)
         {
-            if (currentStamina < 0)
+            if (GameManager.manager.currentStamina < 0)
             {
-                currentStamina = 0;
+                GameManager.manager.currentStamina = 0;
             }
-            frontStaminaBar.fillAmount = currentStamina / maxStamina;
+            frontStaminaBar.fillAmount = GameManager.manager.currentStamina / GameManager.manager.maxStamina;
             if (recharge != null)
             {
                 StopCoroutine(recharge);
@@ -276,7 +300,7 @@ public class TestPlayer : MonoBehaviour
     {
         float fillF = frontStaminaBar.fillAmount;
         float fillB = backStaminaBar.fillAmount;
-        float hFraction = currentStamina / maxStamina;
+        float hFraction = GameManager.manager.currentStamina / GameManager.manager.maxStamina;
         if (fillB > hFraction)
         {
             frontStaminaBar.fillAmount = hFraction;
@@ -304,21 +328,21 @@ public class TestPlayer : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
 
-        while(currentStamina < maxStamina)
+        while(GameManager.manager.currentStamina < GameManager.manager.maxStamina)
         {
-            currentStamina += chargeRate / 10;
-            if(currentStamina > maxStamina)
+            GameManager.manager.currentStamina += chargeRate / 10;
+            if(GameManager.manager.currentStamina > GameManager.manager.maxStamina)
             {
-                currentStamina = maxStamina;
+                GameManager.manager.currentStamina = GameManager.manager.maxStamina;
             }
-            frontStaminaBar.fillAmount = currentStamina / maxStamina;
+            frontStaminaBar.fillAmount = GameManager.manager.currentStamina / GameManager.manager.maxStamina;
             yield return new WaitForSeconds(0.1f);
         }
     }
 
     public void IncreaseStamina(int level)
     {
-        maxStamina += (currentStamina * 0.01f) * ((50 - level) * 0.1f);
-        currentStamina = maxStamina;
+        GameManager.manager.maxStamina += (GameManager.manager.currentStamina * 0.01f) * ((50 - level) * 0.1f);
+        GameManager.manager.currentStamina = GameManager.manager.maxStamina;
     }
 }

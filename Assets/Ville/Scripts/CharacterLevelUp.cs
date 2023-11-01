@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class CharacterLevelUp : MonoBehaviour
 {
-    public int currentLevel;
-    public float currentExperience, maxExperience;
+    //public int currentLevel;
+    //public float currentExperience, maxExperience;
     TestPlayerHealth playerHealtScript;
     TestPlayer playerScript;
 
@@ -29,8 +29,8 @@ public class CharacterLevelUp : MonoBehaviour
     {
         playerHealtScript = GetComponent<TestPlayerHealth>();
         playerScript = GetComponent<TestPlayer>();
-        frontXpBar.fillAmount = currentExperience / maxExperience;
-        backXpBar.fillAmount = currentExperience / maxExperience;
+        frontXpBar.fillAmount = GameManager.manager.currentExperience / GameManager.manager.maxExperience;
+        backXpBar.fillAmount = GameManager.manager.currentExperience / GameManager.manager.maxExperience;
         //maxExperience = CalculateRequiredXp();
     }
 
@@ -41,7 +41,7 @@ public class CharacterLevelUp : MonoBehaviour
         {
             GainExperienceFlatRate(20);
         }
-        if(currentExperience >= maxExperience)
+        if(GameManager.manager.currentExperience >= GameManager.manager.maxExperience)
         {
             LevelUp();
         }
@@ -59,8 +59,8 @@ public class CharacterLevelUp : MonoBehaviour
 
     public void HandleExperienceChange(float newExperience)
     {
-        currentExperience += newExperience;
-        if(currentExperience >= maxExperience)
+        GameManager.manager.currentExperience += newExperience;
+        if(GameManager.manager.currentExperience >= GameManager.manager.maxExperience)
         {
             LevelUp();
         }
@@ -74,22 +74,22 @@ public class CharacterLevelUp : MonoBehaviour
         //playerHealtScript.maxHealth += 10;
         //playerHealtScript.currentHealth = playerHealtScript.maxHealth;
 
-        currentLevel++;
+        GameManager.manager.currentLevel++;
 
         //currentExperience = 0;
         //maxExperience += 100;
 
         frontXpBar.fillAmount = 0;
         backXpBar.fillAmount = 0;
-        currentExperience = Mathf.RoundToInt(currentExperience - maxExperience);
-        playerHealtScript.IncreaseHealth(currentLevel);
-        playerScript.IncreaseStamina(currentLevel);
-        maxExperience = CalculateRequiredXp();
+        GameManager.manager.currentExperience = Mathf.RoundToInt(GameManager.manager.currentExperience - GameManager.manager.maxExperience);
+        playerHealtScript.IncreaseHealth(GameManager.manager.currentLevel);
+        playerScript.IncreaseStamina(GameManager.manager.currentLevel);
+        GameManager.manager.maxExperience = CalculateRequiredXp();
     }
 
     public void UpdateXpUI()
     {
-        float xpFraction = currentExperience / maxExperience;
+        float xpFraction = GameManager.manager.currentExperience / GameManager.manager.maxExperience;
         float FXP = frontXpBar.fillAmount;
         if(FXP < xpFraction)
         {
@@ -106,7 +106,7 @@ public class CharacterLevelUp : MonoBehaviour
 
     public void GainExperienceFlatRate(float xpGained)
     {
-        currentExperience += xpGained;
+        GameManager.manager.currentExperience += xpGained;
         lerpTimer = 0;
         delayTimer = 0;
     }
@@ -114,7 +114,7 @@ public class CharacterLevelUp : MonoBehaviour
     int CalculateRequiredXp()
     {
         int solveForRequiredXp = 0;
-        for(int levelCycle = 1; levelCycle <= currentLevel; levelCycle++)
+        for(int levelCycle = 1; levelCycle <= GameManager.manager.currentLevel; levelCycle++)
         {
             solveForRequiredXp += (int)Mathf.Floor(levelCycle + additionMultiplier * Mathf.Pow(powerMultiplier,
                 levelCycle / divisionMultiplier));
