@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Helmet of Protection
   m_EditorClassIdentifier: 
   name: Helmet of Protection
-  icon: {fileID: 21300000, guid: 244affada2f283d4ab21f7e777f2e680, type: 3}
   isDefaultItem: 0
+  tile: {fileID: 0}
+  type: 0
+  actionType: 0
+  range: {x: 5, y: 4}
+  stackable: 0
+  icon: {fileID: 21300000, guid: 244affada2f283d4ab21f7e777f2e680, type: 3}
   equipSlot: 0
   armorModifier: 3
   damageModifier: 0

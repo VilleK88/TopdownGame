@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Item item;
+    public TextMeshProUGUI countText;
 
     [Header("UI")]
     [HideInInspector] public Image image;
+    [HideInInspector] public int count = 1;
     [HideInInspector] public Transform parentAfterDrag;
 
     /*void Start()
@@ -21,6 +24,14 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         item = newItem;
         image.sprite = newItem.icon;
+        RefreshCount();
+    }
+
+    public void RefreshCount()
+    {
+        countText.text = count.ToString();
+        bool textActive = count > 1;
+        countText.gameObject.SetActive(textActive);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -45,5 +56,13 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         Debug.Log("End drag");
         transform.SetParent(parentAfterDrag);
         image.raycastTarget = true;
+    }
+
+    public void UseItem()
+    {
+        if (item != null)
+        {
+            item.Use();
+        }
     }
 }

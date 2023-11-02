@@ -15,7 +15,7 @@ public class TestPeasant : MonoBehaviour
     //Animator anim;
     [SerializeField] GameObject childSprite;
     SpriteRenderer sprite;
-    float speed = 50; // 10 original
+    //float speed = 50; // 10 original
 
     [Header("Player GameObject and Transform")]
     GameObject player;

@@ -21,7 +21,7 @@ public class TestPriest : MonoBehaviour
     public Transform[] waypoints;
     int waypointIndex;
     Vector3 waypointTarget;
-    bool stopConverting = false;
+    //bool stopConverting = false;
     float convertingMaxTime = 3;
     float convertingCounter = 0;
     int currentPeasantIndex = 0;

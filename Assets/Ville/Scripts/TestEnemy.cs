@@ -10,7 +10,7 @@ public class TestEnemy : MonoBehaviour
     CapsuleCollider capsuleCollider;
     //Animator anim;
     [SerializeField] GameObject childSprite;
-    float speed = 50; // 10 original
+    //float speed = 50; // 10 original
 
     [Header("Player GameObject and Transform")]
     GameObject player;

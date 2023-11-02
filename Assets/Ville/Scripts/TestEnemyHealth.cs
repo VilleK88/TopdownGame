@@ -14,7 +14,7 @@ public class TestEnemyHealth : MonoBehaviour
     public EnemyClass enemyClass;
 
     [Header("Health")]
-    float startingHealth = 100;
+    //float startingHealth = 100;
     float maxHealth = 100;
     public float currentHealth; //{ get; set; }
     public bool dead = false;
