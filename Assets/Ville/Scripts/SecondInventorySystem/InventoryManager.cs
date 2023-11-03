@@ -28,13 +28,28 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if(Physics.Raycast(ray, out hit))
         {
-            ChangeSelectedSlot(0);
+            for(int i = 0; i < inventorySlots.Length; i++)
+            {
+                if(hit.collider.gameObject == inventorySlots[i])
+                {
+                    selectedSlot = i;
+                    break;
+                }
+            }
         }
-        if(Input.GetKeyDown(KeyCode.Alpha2))
+
+        if(Input.inputString != null)
         {
-            ChangeSelectedSlot(1);
+            bool isNumber = int.TryParse(Input.inputString, out int number);
+            if ((isNumber && number > 0 && number < 8))
+            {
+                ChangeSelectedSlot(number - 1);
+            }
         }
     }
 
@@ -101,10 +116,12 @@ public class InventoryManager : MonoBehaviour
                 itemInSlot.count--;
                 if(itemInSlot.count >= 0)
                 {
+                    Debug.Log("Used item: " + itemInSlot);
                     Destroy(itemInSlot.gameObject);
                 }
                 else
                 {
+                    Debug.Log("Used item: " + itemInSlot);
                     itemInSlot.RefreshCount();
                 }
             }
