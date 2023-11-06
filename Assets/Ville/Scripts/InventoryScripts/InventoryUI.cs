@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
@@ -8,6 +9,9 @@ public class InventoryUI : MonoBehaviour
     public GameObject inventoryUI;
     Inventory inventory;
     InventorySlot[] slots;
+    InventorySlot slot;
+
+    public int maxStackedItems = 4;
 
     private void Start()
     {

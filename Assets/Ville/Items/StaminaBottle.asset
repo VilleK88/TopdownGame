@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: StaminaBottle
   m_EditorClassIdentifier: 
   name: Stamina bottle
-  icon: {fileID: 0}
   isDefaultItem: 0
+  type: 1
+  stackable: 1
+  icon: {fileID: 0}

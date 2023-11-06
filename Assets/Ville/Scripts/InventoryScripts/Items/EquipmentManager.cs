@@ -31,11 +31,11 @@ public class EquipmentManager : MonoBehaviour
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
     public OnEquipmentChanged onEquipmentChanged;
 
-    //Inventory inventory;
+    Inventory inventory;
 
     private void Start()
     {
-        //inventory = Inventory.instance;
+        inventory = Inventory.instance;
 
         int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
         currentEquipment = new Equipment[numSlots];
@@ -50,8 +50,7 @@ public class EquipmentManager : MonoBehaviour
         if (currentEquipment[slotIndex] != null)
         {
             oldItem = currentEquipment[slotIndex];
-            //inventory.Add(oldItem);
-            InventoryManager.instance.AddItem(oldItem);
+            inventory.Add(oldItem);
         }
 
         if(onEquipmentChanged != null)
@@ -67,8 +66,7 @@ public class EquipmentManager : MonoBehaviour
         if (currentEquipment[slotIndex] != null)
         {
             Equipment oldItem = currentEquipment[slotIndex];
-            //inventory.Add(oldItem);
-            InventoryManager.instance.AddItem(oldItem);
+            inventory.Add(oldItem);
 
             currentEquipment[slotIndex] = null;
 

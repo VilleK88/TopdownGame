@@ -8,11 +8,7 @@ public class Item : ScriptableObject
     new public string name = "New Item";
     public bool isDefaultItem = false;
 
-    [Header("Only gameplay")]
-    public TileBase tile;
     public ItemType type;
-    public ActionType actionType;
-    public Vector2Int range = new Vector2Int(5, 4);
 
     [Header("Only UI")]
     public bool stackable = true;
@@ -25,23 +21,21 @@ public class Item : ScriptableObject
         // Use the item
         // Something might happen
 
-        //Debug.Log("Using " + name);
-        InventoryManager.instance.GetSelectedItem(true);
+        Debug.Log("Using " + name);
+        if(type == ItemType.Stamina)
+        {
+            ExperienceManager.instance.AddExperience(20); // test
+        }
+        RemoveFromInventory();
     }
 
     public void RemoveFromInventory()
     {
-        //Inventory.instance.Remove(this);
-        //InventoryManager.instance.Remove(this);
+        Inventory.instance.Remove(this);
     }
 }
 
 public enum ItemType
 {
-    BuildingBlock, Tool
-}
-
-public enum ActionType
-{
-    Dig, Mine
+    Health, Stamina
 }
