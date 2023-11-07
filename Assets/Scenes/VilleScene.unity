@@ -17487,6 +17487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsParent: {fileID: 1496118010}
   inventoryUI: {fileID: 695160098}
+  maxStackedItems: 4
 --- !u!1 &1496118009
 GameObject:
   m_ObjectHideFlags: 0
@@ -19378,7 +19379,6 @@ GameObject:
   - component: {fileID: 1881851068}
   - component: {fileID: 1881851070}
   - component: {fileID: 1881851071}
-  - component: {fileID: 1881851072}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -19440,43 +19440,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1385117353}
---- !u!114 &1881851072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1881851067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2f5721c474b6314fb80bc5b85e66135, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxStackedItems: 4
-  inventorySlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  inventoryItemPrefab: {fileID: 2680833223224393071, guid: 232bfdf4d66f6b946881879a4b597990,
-    type: 3}
-  slot: {fileID: 0}
-  itemInSlot: {fileID: 0}
-  selectedSlot: -1
 --- !u!1001 &1920240033
 PrefabInstance:
   m_ObjectHideFlags: 0
