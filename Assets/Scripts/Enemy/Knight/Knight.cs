@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class TestEnemy : MonoBehaviour
+public class Knight : MonoBehaviour
 {
     Rigidbody rb;
     CapsuleCollider capsuleCollider;
@@ -64,8 +64,8 @@ public class TestEnemy : MonoBehaviour
 
     private void Update()
     {
-        ifBlockingPlayersAttackFetch = GetComponent<TestEnemyHealth>().blockingPlayer;
-        deadFetch = GetComponent<TestEnemyHealth>().dead;
+        ifBlockingPlayersAttackFetch = GetComponent<EnemyHealth>().blockingPlayer;
+        deadFetch = GetComponent<EnemyHealth>().dead;
         Death();
 
 
@@ -146,22 +146,22 @@ public class TestEnemy : MonoBehaviour
         foreach(GameObject enemy in enemies)
         {
             Transform enemyTransform = enemy.transform;
-            TestEnemy testEnemy = enemy.GetComponent<TestEnemy>();
-            TestPeasant testPeasant = enemy.GetComponent<TestPeasant>();
-            if(enemyTransform != null && testEnemy != null)
+            Knight knight = enemy.GetComponent<Knight>();
+            Peasant peasant = enemy.GetComponent<Peasant>();
+            if(enemyTransform != null && knight != null)
             {
                 float distance = Vector3.Distance(transform.position, enemyTransform.position);
                 if(distance < 20)
                 {
-                    testEnemy.isAgro = true;
+                    knight.isAgro = true;
                 }
             }
-            if(enemyTransform != null && testPeasant != null)
+            if(enemyTransform != null && peasant != null)
             {
                 float distance = Vector3.Distance(transform.position, enemyTransform.position);
                 if (distance < 20)
                 {
-                    testPeasant.isAgro = true;
+                    peasant.isAgro = true;
                 }
             }
         }

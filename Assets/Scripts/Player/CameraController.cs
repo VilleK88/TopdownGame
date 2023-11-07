@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestCameraController : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     Camera cam;
     [SerializeField] Transform player;

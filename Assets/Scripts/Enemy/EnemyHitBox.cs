@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestEnemyHitBox : MonoBehaviour
+public class EnemyHitBox : MonoBehaviour
 {
     BoxCollider boxCollider;
     //public GameObject player;
@@ -16,12 +16,12 @@ public class TestEnemyHitBox : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            TestPlayerHealth health = other.gameObject.GetComponent<TestPlayerHealth>();
+            PlayerHealth health = other.gameObject.GetComponent<PlayerHealth>();
             if (health != null)
             {
                 health.TakeDamage(3);
             }
-            TestPlayer player = other.gameObject.GetComponent<TestPlayer>();
+            Player player = other.gameObject.GetComponent<Player>();
             if(player != null)
             {
                 if(player.blocking)

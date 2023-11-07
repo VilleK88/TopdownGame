@@ -16520,7 +16520,7 @@ GameObject:
   - component: {fileID: 1385117363}
   - component: {fileID: 1385117364}
   m_Layer: 6
-  m_Name: TestPlayer
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16715,7 +16715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4010e0e6de0018b49bd64d5b41038b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testPlayerHealth: {fileID: 1385117360}
+  playerHealth: {fileID: 1385117360}
   playerHitbox: {fileID: 1577075998}
 --- !u!114 &1385117364
 MonoBehaviour:

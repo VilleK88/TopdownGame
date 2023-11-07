@@ -7,7 +7,7 @@ public enum EnemyClass
     Knight, Peasant, Priest, Dog
 }
 
-public class TestEnemyHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
     Animator anim;
     [SerializeField] GameObject enemySprite;

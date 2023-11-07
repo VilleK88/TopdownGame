@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem.Processors;
 
-public class TestPeasant : MonoBehaviour
+public class Peasant : MonoBehaviour
 {
     public bool converted = false;
     float range = 5; // radius of sphere
@@ -67,8 +67,8 @@ public class TestPeasant : MonoBehaviour
     private void Update()
     {
         //ifBlockingPlayersAttackFetch = GetComponent<TestEnemyHealth>().blockingPlayer;
-        gettingHitFetch = GetComponent<TestEnemyHealth>().gettingHit;
-        deadFetch = GetComponent<TestEnemyHealth>().dead;
+        gettingHitFetch = GetComponent<EnemyHealth>().gettingHit;
+        deadFetch = GetComponent<EnemyHealth>().dead;
         Death();
 
 
@@ -197,22 +197,22 @@ public class TestPeasant : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             Transform enemyTransform = enemy.transform;
-            TestEnemy testEnemy = enemy.GetComponent<TestEnemy>();
-            TestPeasant testPeasant = enemy.GetComponent<TestPeasant>();
-            if (enemyTransform != null && testEnemy != null)
+            Knight knight = enemy.GetComponent<Knight>();
+            Peasant peasant = enemy.GetComponent<Peasant>();
+            if (enemyTransform != null && knight != null)
             {
                 float distance = Vector3.Distance(transform.position, enemyTransform.position);
                 if (distance < 20)
                 {
-                    testEnemy.isAgro = true;
+                    knight.isAgro = true;
                 }
             }
-            if (enemyTransform != null && testPeasant != null)
+            if (enemyTransform != null && peasant != null)
             {
                 float distance = Vector3.Distance(transform.position, enemyTransform.position);
                 if (distance < 20)
                 {
-                    testPeasant.isAgro = true;
+                    peasant.isAgro = true;
                 }
             }
         }

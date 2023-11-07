@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class TestPlayerHitbox : MonoBehaviour
+public class PlayerHitbox : MonoBehaviour
 {
     public Stat damage;
     public Stat armor;
@@ -12,14 +12,14 @@ public class TestPlayerHitbox : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            TestEnemyHealth health = other.gameObject.GetComponent<TestEnemyHealth>();
+            EnemyHealth health = other.gameObject.GetComponent<EnemyHealth>();
             //TestPriestHealth priestHealth = other.gameObject.GetComponent<TestPriestHealth>();
-            bool ifBlocking = other.gameObject.GetComponent<TestEnemyHealth>().blockingPlayer;
+            bool ifBlocking = other.gameObject.GetComponent<EnemyHealth>().blockingPlayer;
             if(health != null)
             {
                 if (health.enemyClass == EnemyClass.Knight)
                 {
-                    bool ifAgro = other.gameObject.GetComponent<TestEnemy>().isAgro;
+                    bool ifAgro = other.gameObject.GetComponent<Knight>().isAgro;
                     if (!ifBlocking && !ifAgro)
                     {
                         health.TakeDamage(100 + damage.GetValue());
@@ -31,7 +31,7 @@ public class TestPlayerHitbox : MonoBehaviour
                 }
                 if(health.enemyClass == EnemyClass.Peasant)
                 {
-                    bool ifAgro = other.gameObject.GetComponent<TestPeasant>().isAgro;
+                    bool ifAgro = other.gameObject.GetComponent<Peasant>().isAgro;
                     if (!ifAgro)
                     {
                         health.TakeDamage(100 + damage.GetValue());
@@ -43,7 +43,7 @@ public class TestPlayerHitbox : MonoBehaviour
                 }
                 if(health.enemyClass == EnemyClass.Priest)
                 {
-                    bool ifAgro = other.gameObject.GetComponent<TestPriest>();
+                    bool ifAgro = other.gameObject.GetComponent<Priest>();
                     if (!ifAgro)
                     {
                         health.TakeDamage(100 + damage.GetValue());

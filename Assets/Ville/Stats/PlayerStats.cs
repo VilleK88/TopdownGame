@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour //CharacterStats
 {
-    public TestPlayerHealth testPlayerHealth;
-    public TestPlayerHitbox playerHitbox;
+    public PlayerHealth playerHealth;
+    public PlayerHitbox playerHitbox;
     private void Start()
     {
         EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
@@ -15,8 +15,8 @@ public class PlayerStats : MonoBehaviour //CharacterStats
     {
         if(newItem != null)
         {
-            testPlayerHealth.armor.AddModifier(newItem.armorModifier);
-            testPlayerHealth.damage.AddModifier(newItem.damageModifier);
+            playerHealth.armor.AddModifier(newItem.armorModifier);
+            playerHealth.damage.AddModifier(newItem.damageModifier);
 
             playerHitbox.armor.AddModifier(newItem.armorModifier);
             playerHitbox.damage.AddModifier(newItem.damageModifier);
@@ -24,8 +24,8 @@ public class PlayerStats : MonoBehaviour //CharacterStats
 
         if(oldItem != null)
         {
-            testPlayerHealth.armor.RemoveModifier(oldItem.armorModifier);
-            testPlayerHealth.damage.RemoveModifier(oldItem.damageModifier);
+            playerHealth.armor.RemoveModifier(oldItem.armorModifier);
+            playerHealth.damage.RemoveModifier(oldItem.damageModifier);
 
             playerHitbox.armor.RemoveModifier(oldItem.armorModifier);
             playerHitbox.damage.RemoveModifier(oldItem.damageModifier);

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
 //[RequireComponent(typeof(TestPlayerMotor))]
-public class TestPlayer : MonoBehaviour
+public class Player : MonoBehaviour
 {
     Rigidbody rb;
     [SerializeField] GameObject childSprite;

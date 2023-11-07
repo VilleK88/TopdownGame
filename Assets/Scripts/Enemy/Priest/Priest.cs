@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
 
-public class TestPriest : MonoBehaviour
+public class Priest : MonoBehaviour
 {
     [Header("Rigidbody, Colliders and Sprites")]
     Rigidbody rb;
@@ -17,7 +17,7 @@ public class TestPriest : MonoBehaviour
 
     [Header("Converting Peasants Parameters")]
     public GameObject[] peasants;
-    TestPeasant testPeasant;
+    Peasant peasant;
     public Transform[] waypoints;
     int waypointIndex;
     Vector3 waypointTarget;
@@ -41,7 +41,7 @@ public class TestPriest : MonoBehaviour
     float detectionRadius = 20;
     //public GameObject healer;
     GameObject enemy;
-    TestEnemyHealth testEnemyHealth;
+    EnemyHealth enemyHealth;
 
     [Header("Field of View Parameters")]
     public float radius = 7;
@@ -84,7 +84,7 @@ public class TestPriest : MonoBehaviour
 
     private void Update()
     {
-        deadFetch = GetComponent<TestEnemyHealth>().dead;
+        deadFetch = GetComponent<EnemyHealth>().dead;
         Death();
 
 
@@ -120,7 +120,7 @@ public class TestPriest : MonoBehaviour
                 }
                 else
                 {
-                    agent.SetDestination(testEnemyHealth.transform.position);
+                    agent.SetDestination(enemyHealth.transform.position);
                 }
             }
 
@@ -193,12 +193,12 @@ public class TestPriest : MonoBehaviour
 
                     if(path.status == NavMeshPathStatus.PathComplete)
                     {
-                        testEnemyHealth = enemy.GetComponent<TestEnemyHealth>();
+                        enemyHealth = enemy.GetComponent<EnemyHealth>();
 
-                        if (testEnemyHealth != null && testEnemyHealth.currentHealth < maxHealth &&
-                            testEnemyHealth.currentHealth > 0)
+                        if (enemyHealth != null && enemyHealth.currentHealth < maxHealth &&
+                            enemyHealth.currentHealth > 0)
                         {
-                            testEnemyHealth.currentHealth += 10;
+                            enemyHealth.currentHealth += 10;
                             particleSystemHealing.Play();
                         }
                         else
@@ -214,10 +214,10 @@ public class TestPriest : MonoBehaviour
     void Convert()
     {
         //TestPeasant testPeasant = GetCurrentPeasantScript();
-        testPeasant = GetCurrentPeasantScript();
-        if (testPeasant != null)
+        peasant = GetCurrentPeasantScript();
+        if (peasant != null)
         {
-            if (testPeasant.converted == false)
+            if (peasant.converted == false)
             {
                 agent.SetDestination(peasants[currentPeasantIndex].transform.position);
                 transform.LookAt(peasants[currentPeasantIndex].transform.position);
@@ -228,7 +228,7 @@ public class TestPriest : MonoBehaviour
                 }
                 else
                 {
-                    testPeasant.converted = true;
+                    peasant.converted = true;
                     particleSystemConverting.Stop();
                 }
             }
@@ -248,11 +248,11 @@ public class TestPriest : MonoBehaviour
         }
     }
 
-    TestPeasant GetCurrentPeasantScript()
+    Peasant GetCurrentPeasantScript()
     {
         if(currentPeasantIndex >= 0 && currentPeasantIndex < peasants.Length)
         {
-            return peasants[currentPeasantIndex].GetComponent<TestPeasant>();
+            return peasants[currentPeasantIndex].GetComponent<Peasant>();
         }
         return null;
     }
@@ -265,22 +265,22 @@ public class TestPriest : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             Transform enemyTransform = enemy.transform;
-            TestEnemy testEnemy = enemy.GetComponent<TestEnemy>();
-            TestPeasant testPeasant = enemy.GetComponent<TestPeasant>();
-            if (enemyTransform != null && testEnemy != null)
+            Knight knight = enemy.GetComponent<Knight>();
+            Peasant peasant = enemy.GetComponent<Peasant>();
+            if (enemyTransform != null && knight != null)
             {
                 float distance = Vector3.Distance(transform.position, enemyTransform.position);
                 if (distance < 20)
                 {
-                    testEnemy.isAgro = true;
+                    knight.isAgro = true;
                 }
             }
-            if (enemyTransform != null && testPeasant != null)
+            if (enemyTransform != null && peasant != null)
             {
                 float distance = Vector3.Distance(transform.position, enemyTransform.position);
                 if (distance < 20)
                 {
-                    testPeasant.isAgro = true;
+                    peasant.isAgro = true;
                 }
             }
         }

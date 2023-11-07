@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TestPlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
     //public float maxHealth = 100;
     //public float currentHealth; //{ get; set; }
@@ -38,7 +38,7 @@ public class TestPlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        blockingFetch = player.GetComponent<TestPlayer>().blocking;
+        blockingFetch = player.GetComponent<Player>().blocking;
         GameManager.manager.currentHealth = Mathf.Clamp(GameManager.manager.currentHealth, 0,
             GameManager.manager.maxHealth);
         UpdateHealthUI();

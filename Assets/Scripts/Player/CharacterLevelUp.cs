@@ -7,8 +7,8 @@ public class CharacterLevelUp : MonoBehaviour
 {
     //public int currentLevel;
     //public float currentExperience, maxExperience;
-    TestPlayerHealth playerHealtScript;
-    TestPlayer playerScript;
+    PlayerHealth playerHealtScript;
+    Player playerScript;
 
     float lerpTimer;
     float delayTimer;
@@ -27,8 +27,8 @@ public class CharacterLevelUp : MonoBehaviour
 
     private void Start()
     {
-        playerHealtScript = GetComponent<TestPlayerHealth>();
-        playerScript = GetComponent<TestPlayer>();
+        playerHealtScript = GetComponent<PlayerHealth>();
+        playerScript = GetComponent<Player>();
         frontXpBar.fillAmount = GameManager.manager.currentExperience / GameManager.manager.maxExperience;
         backXpBar.fillAmount = GameManager.manager.currentExperience / GameManager.manager.maxExperience;
         //maxExperience = CalculateRequiredXp();
