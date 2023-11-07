@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 1067344652477661545}
   - component: {fileID: 1067344652477661550}
   m_Layer: 7
-  m_Name: TestPeasant
+  m_Name: Peasant
   m_TagString: Peasant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -469,6 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySprite: {fileID: 1067344652550070822}
+  enemyClass: 0
   currentHealth: 0
   dead: 0
   playerBlockFetch: 0
@@ -489,8 +490,6 @@ MonoBehaviour:
   converted: 0
   centerPoint: {fileID: 1067344652477661559}
   childSprite: {fileID: 1067344652550070822}
-  player: {fileID: 0}
-  playerTransform: {fileID: 0}
   radius: 7
   angle: 120
   targetMask:
