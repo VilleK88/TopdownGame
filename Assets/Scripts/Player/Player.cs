@@ -137,6 +137,11 @@ public class Player : MonoBehaviour
                 {
                     SetFocus(interactable);
                 }
+                /*CharacterDialogue characterDialogue = hit.collider.GetComponent<CharacterDialogue>();
+                if(characterDialogue != null)
+                {
+                    SetFocus(characterDialogue);
+                }*/
             }
         }
     }

@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(Knight))]
+//[CustomEditor(typeof(NPC))]
 public class FieldOfViewEditor : Editor
 {
     void OnSceneGUI()
     {
         Knight fov = (Knight)target;
+        //NPC fov = (NPC)target;
         Handles.color = Color.white;
         Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.forward, 360, fov.radius);
 
