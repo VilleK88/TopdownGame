@@ -9,9 +9,4 @@ public class DialogueAsset : ScriptableObject
     [TextArea]
     public string[] dialogue;
     public new string name;
-
-    public void Print()
-    {
-
-    }
 }

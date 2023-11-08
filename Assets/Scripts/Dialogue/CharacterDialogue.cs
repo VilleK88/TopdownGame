@@ -24,7 +24,6 @@ public class CharacterDialogue : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.T))
             {
-                //DialogueBox.instance.ShowDialogue();
                 StartDialogue();
             }
         }

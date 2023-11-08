@@ -35,14 +35,6 @@ public class DialogueBox : MonoBehaviour
         Debug.Log(dialogue.dialogue[0]);
     }
 
-    private void Update()
-    {
-        /*if(Input.GetKeyDown(KeyCode.T))
-        {
-            ShowDialogue();
-        }*/
-    }
-
     public void ShowDialogue()
     {
         dialoguePanel.SetActive(true);
