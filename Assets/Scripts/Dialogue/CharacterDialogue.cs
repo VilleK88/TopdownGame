@@ -11,6 +11,9 @@ public class CharacterDialogue : MonoBehaviour
 
     public float radius = 3;
     float distance;
+    bool dialogueBoxOpen = false;
+
+    int dialogueIndex = 0;
 
     private void Start()
     {
@@ -24,7 +27,15 @@ public class CharacterDialogue : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.T))
             {
-                StartDialogue();
+                if(!dialogueBoxOpen)
+                {
+                    StartDialogue();
+                    dialogueBoxOpen = true;
+                }
+                else
+                {
+                    DialogueBox.instance.ShowNextDialogue();
+                }
             }
         }
     }

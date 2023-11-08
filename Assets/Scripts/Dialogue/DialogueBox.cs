@@ -15,6 +15,9 @@ public class DialogueBox : MonoBehaviour
 
     public static DialogueBox instance;
 
+    int dialogueIndex = 0;
+
+
     private void Awake()
     {
         instance = this;
@@ -54,6 +57,23 @@ public class DialogueBox : MonoBehaviour
         if(newDialogue != null)
         {
             dialogue = newDialogue;
+        }
+    }
+
+    public void ShowNextDialogue()
+    {
+        if(dialogueIndex <= dialogue.dialogue.Length)
+        {
+            dialogueIndex++;
+            if(dialogueIndex < dialogue.dialogue.Length)
+            {
+                StartCoroutine(TypeText(dialogue.dialogue[dialogueIndex]));
+            }
+            else
+            {
+                Debug.Log("close dialogue panel");
+                dialoguePanel.SetActive(false);
+            }
         }
     }
 }
