@@ -49,6 +49,13 @@ public class Player : MonoBehaviour
     bool isPaused = false;
     public GameObject menuButtons;
 
+    [Header("Combo Parameters")]
+    bool attack1;
+    bool attack2 = false;
+    float lastAttackMaxTime = 1.2f;
+    public float lastAttackTimer = 0;
+
+
     private void Start()
     {
         //currentStamina = maxStamina;
@@ -65,7 +72,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
         }
@@ -86,6 +93,19 @@ public class Player : MonoBehaviour
         GameManager.manager.x = transform.position.x;
         GameManager.manager.y = transform.position.y;
         GameManager.manager.z = transform.position.z;
+
+        if (attack1)
+        {
+            if (lastAttackTimer < lastAttackMaxTime)
+            {
+                lastAttackTimer += Time.deltaTime;
+            }
+            else
+            {
+                attack1 = false;
+                lastAttackTimer = 0;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -195,8 +215,17 @@ public class Player : MonoBehaviour
             running = false;
             moveSpeed = 3.5f;
         }
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) ||
+            Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        {
+            childSprite.GetComponent<Animator>().SetBool("Walking", true);
+        }
+        else
+        {
+            childSprite.GetComponent<Animator>().SetBool("Walking", false);
+        }
 
-        movement.x = Input.GetAxisRaw("Horizontal");
+            movement.x = Input.GetAxisRaw("Horizontal");
         movement.z = Input.GetAxisRaw("Vertical");
 
         if(running)
@@ -236,12 +265,19 @@ public class Player : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0) && GameManager.manager.currentStamina > 5)
         {
-            childSprite.GetComponent<Animator>().SetTrigger("AxeAttack1");
-            GameManager.manager.currentStamina -= attackCost;
-            /*if (currentStamina < 0)
+            if(attack1 == false)
             {
-                currentStamina = 0;
-            }*/
+                childSprite.GetComponent<Animator>().SetTrigger("AxeAttack1");
+                GameManager.manager.currentStamina -= attackCost;
+                attack1 = true;
+            }
+            else if(attack1 == true)
+            {
+                childSprite.GetComponent<Animator>().SetTrigger("AxeAttack2");
+                attack1 = false;
+                lastAttackTimer = 0;
+            }
+
             frontStaminaBar.fillAmount = GameManager.manager.currentStamina / GameManager.manager.maxStamina;
 
             if(recharge != null)
