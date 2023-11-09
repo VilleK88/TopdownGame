@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
@@ -26,6 +27,7 @@ public class Priest : MonoBehaviour
     float convertingCounter = 0;
     int currentPeasantIndex = 0;
     public bool convertedFetch;
+    bool converting = false;
 
     [Header("Particle Parameters")]
     [SerializeField] GameObject particleConverting;
@@ -66,6 +68,7 @@ public class Priest : MonoBehaviour
     Vector3 direction;
     Quaternion lookRotation;
     NavMeshAgent agent;
+    bool healing = false;
 
     private void Start()
     {
@@ -74,6 +77,7 @@ public class Priest : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         peasants = GameObject.FindGameObjectsWithTag("Peasant");
+        //peasants = enemies.gameObject.(GameObject.FindGameObjectsWithTag("Peasant"));
         Debug.Log("Found " + peasants.Length + " peasants.");
         particleSystemConverting = particleConverting.GetComponent<ParticleSystem>();
         particleSystemHealing = particleHealing.GetComponent<ParticleSystem>();
@@ -87,7 +91,6 @@ public class Priest : MonoBehaviour
         deadFetch = GetComponent<EnemyHealth>().dead;
         Death();
 
-
         if (!dead)
         {
             if (canSeePlayer)
@@ -95,11 +98,17 @@ public class Priest : MonoBehaviour
                 isAgro = true;
                 agroCounter = 0;
                 StartCoroutine(CallHelp());
+
+                if (!healing && !converting)
+                {
+                    transform.LookAt(player.transform.position);
+                }
             }
             else
             {
                 if (isAgro)
                 {
+
                     if (agroCounter < maxAgroCounter)
                     {
                         agroCounter += Time.deltaTime;
@@ -200,10 +209,12 @@ public class Priest : MonoBehaviour
                         {
                             enemyHealth.currentHealth += 10;
                             particleSystemHealing.Play();
+                            healing = true;
                         }
                         else
                         {
                             particleSystemHealing.Stop();
+                            healing = false;
                         }
                     }
                 }
@@ -213,7 +224,6 @@ public class Priest : MonoBehaviour
 
     void Convert()
     {
-        //TestPeasant testPeasant = GetCurrentPeasantScript();
         peasant = GetCurrentPeasantScript();
         if (peasant != null)
         {
@@ -225,6 +235,7 @@ public class Priest : MonoBehaviour
                 {
                     convertingCounter += Time.deltaTime;
                     particleSystemConverting.Play();
+                    converting = true;
                 }
                 else
                 {
@@ -245,13 +256,16 @@ public class Priest : MonoBehaviour
         else
         {
             startHealing = true;
+            converting = false;
+            Debug.Log("Not converting.");
         }
     }
 
     Peasant GetCurrentPeasantScript()
     {
-        if(currentPeasantIndex >= 0 && currentPeasantIndex < peasants.Length)
+        if (currentPeasantIndex >= 0 && currentPeasantIndex < peasants.Length)
         {
+            Debug.Log("Return peasants. CurrentPeasantIndex: " + currentPeasantIndex);
             return peasants[currentPeasantIndex].GetComponent<Peasant>();
         }
         return null;

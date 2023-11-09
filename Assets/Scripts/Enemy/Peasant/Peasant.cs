@@ -156,7 +156,7 @@ public class Peasant : MonoBehaviour
     {
         Vector3 randomPoint = center + Random.insideUnitSphere * range;
         NavMeshHit hit;
-        if(NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
         {
             result = hit.position;
             return true;
@@ -179,9 +179,9 @@ public class Peasant : MonoBehaviour
     void Convert()
     {
         string currentTag = gameObject.tag;
-        if(converted)
+        if (converted)
         {
-            if(currentTag == "Peasant")
+            if (currentTag == "Peasant")
             {
                 gameObject.tag = "Enemy";
                 sprite.color = Color.red;
