@@ -59,7 +59,8 @@ public class Player : MonoBehaviour
         cam = Camera.main;
         motor = GetComponent<TestPlayerMotor>();
         //agent = GetComponent<NavMeshAgent>();
-        transform.position = new Vector3(GameManager.manager.x, GameManager.manager.y, GameManager.manager.z);
+        //transform.position = new Vector3(GameManager.manager.x, GameManager.manager.y, GameManager.manager.z);
+        transform.position = new Vector3(transform.position.x, 3, transform.position.z);
     }
 
     private void Update()
