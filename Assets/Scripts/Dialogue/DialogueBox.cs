@@ -67,13 +67,16 @@ public class DialogueBox : MonoBehaviour
             dialogueIndex++;
             if(dialogueIndex < dialogue.dialogue.Length)
             {
+                dialogueText.text = string.Empty;
                 StartCoroutine(TypeText(dialogue.dialogue[dialogueIndex]));
             }
-            else
-            {
-                Debug.Log("close dialogue panel");
-                dialoguePanel.SetActive(false);
-            }
         }
+    }
+
+    public void CloseDialogue()
+    {
+        dialogueText.text = string.Empty;
+        dialogueIndex = 0;
+        dialoguePanel.SetActive(false);
     }
 }

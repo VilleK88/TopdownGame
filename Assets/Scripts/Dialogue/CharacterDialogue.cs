@@ -34,7 +34,21 @@ public class CharacterDialogue : MonoBehaviour
                 }
                 else
                 {
-                    DialogueBox.instance.ShowNextDialogue();
+                    if (dialogueIndex <= dialogueNPC.dialogue.Length)
+                    {
+                        dialogueIndex++;
+                        if (dialogueIndex < dialogueNPC.dialogue.Length)
+                        {
+                            DialogueBox.instance.ShowNextDialogue();
+                        }
+                        else
+                        {
+                            dialogueIndex = 0;
+                            DialogueBox.instance.CloseDialogue();
+                            dialogueBoxOpen = false;
+                        }
+                    }
+                    //DialogueBox.instance.ShowNextDialogue();
                 }
             }
         }
@@ -44,6 +58,11 @@ public class CharacterDialogue : MonoBehaviour
     {
         DialogueBox.instance.SetDialogue(dialogueNPC);
         DialogueBox.instance.ShowDialogue();
+    }
+
+    public void ContinueDialogue()
+    {
+
     }
 
     private void OnDrawGizmosSelected()
