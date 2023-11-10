@@ -21,6 +21,7 @@ public class CharacterDialogue : MonoBehaviour
     [SerializeField] int repeatStartPosition;
     public string npcName;
     public DialogueAsset dialogueAsset;
+    public DialogueTree dialogueTree;
 
     bool inConversation;
 
@@ -95,7 +96,7 @@ public class CharacterDialogue : MonoBehaviour
         }
         else
         {
-            DialogueBox.instance.StartDialogue(dialogueAsset.dialogue, StartPosition, npcName);
+            DialogueBox.instance.StartDialogue(dialogueTree, StartPosition, npcName);
         }
     }
 

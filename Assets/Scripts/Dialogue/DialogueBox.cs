@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.Rendering;
 
 public class DialogueBox : MonoBehaviour
 {
@@ -14,9 +15,13 @@ public class DialogueBox : MonoBehaviour
     [SerializeField] TextMeshProUGUI dialogueText;
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] GameObject dialoguePanel;
+    [SerializeField] GameObject answerBox;
+    [SerializeField] Button[] answerObjects;
     public static event Action OnDialogueStarted;
     public static event Action OnDialogueEnded;
     bool skipLineTriggered;
+    bool answerTriggered;
+    int answerIndex;
 
     int dialogueIndex = 0;
 
@@ -48,34 +53,77 @@ public class DialogueBox : MonoBehaviour
         //Debug.Log(dialogue.dialogue[0]);
     }
 
-    public void StartDialogue(string[] dialogue, int startPosition, string name)
+    public void StartDialogue(DialogueTree dialogueTree, int startSection, string name)
     {
+        ResetBox();
         nameText.text = name + "";
         dialoguePanel.gameObject.SetActive(true);
-        StopAllCoroutines();
-        StartCoroutine(RunDialogue(dialogue, startPosition));
+        OnDialogueStarted?.Invoke();
+        StartCoroutine(RunDialogue(dialogueTree, startSection));
     }
 
-    IEnumerator RunDialogue(string[] dialogue, int startPosition)
+    IEnumerator RunDialogue(DialogueTree dialogueTree, int section)
     {
-        skipLineTriggered = false;
-        OnDialogueStarted?.Invoke();
-        for(int i = startPosition; i < dialogue.Length; i++)
+        for(int i = 0; i < dialogueTree.sections[section].dialogue.Length; i++)
         {
-            dialogueText.text = dialogue[i];
+            dialogueText.text = dialogueTree.sections[section].dialogue[i];
             while(skipLineTriggered == false)
             {
                 yield return null;
             }
             skipLineTriggered = false;
         }
-        OnDialogueEnded?.Invoke();
-        dialoguePanel.gameObject.SetActive(false);
+        if (dialogueTree.sections[section].endAfterDialogue)
+        {
+            OnDialogueEnded?.Invoke();
+            dialoguePanel.SetActive(false);
+            yield break;
+        }
+        dialogueText.text = dialogueTree.sections[section].branchPoint.question;
+        ShowAnswers(dialogueTree.sections[section].branchPoint);
+        while(answerTriggered == false)
+        {
+            yield return null;
+        }
+        answerBox.SetActive(false);
+        answerTriggered = false;
+        StartCoroutine(RunDialogue(dialogueTree, dialogueTree.sections[section].branchPoint.answers[answerIndex].nextElement));
+    }
+
+    void ResetBox()
+    {
+        StopAllCoroutines();
+        dialoguePanel.SetActive(false);
+        skipLineTriggered = false;
+        answerTriggered = false;
+    }
+
+    void ShowAnswers(BranchPoint branchPoint)
+    {
+        answerBox.SetActive(true);
+        for(int i = 0; i < 3; i++)
+        {
+            if(i < branchPoint.answers.Length)
+            {
+                answerObjects[i].GetComponentInChildren<TextMeshProUGUI>().text = branchPoint.answers[i].answerlabel;
+                answerObjects[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                answerObjects[i].gameObject.SetActive(false);
+            }
+        }
     }
 
     public void SkipLine()
     {
         skipLineTriggered = true;
+    }
+
+    public void AnswerQuestion(int answer)
+    {
+        answerIndex = answer;
+        answerTriggered = true;
     }
 
     /*

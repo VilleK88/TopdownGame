@@ -24,3 +24,23 @@ MonoBehaviour:
         nextElement: 1
       - answerlabel: Get lost!
         nextElement: 2
+  - dialogue:
+    - Hi Tom!
+    endAfterDialogue: 1
+    branchPoint:
+      question: What's your name?
+      answers:
+      - answerlabel: It's Tom
+        nextElement: 1
+      - answerlabel: Get lost!
+        nextElement: 2
+  - dialogue:
+    - Ok.
+    endAfterDialogue: 1
+    branchPoint:
+      question: What's your name?
+      answers:
+      - answerlabel: It's Tom
+        nextElement: 1
+      - answerlabel: Get lost!
+        nextElement: 2
