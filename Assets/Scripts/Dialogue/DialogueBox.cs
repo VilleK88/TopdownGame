@@ -4,23 +4,33 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class DialogueBox : MonoBehaviour
 {
+    public static DialogueBox instance;
     public DialogueAsset dialogue;
 
     [SerializeField] TextMeshProUGUI dialogueText;
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] GameObject dialoguePanel;
-
-    public static DialogueBox instance;
+    public static event Action OnDialogueStarted;
+    public static event Action OnDialogueEnded;
+    bool skipLineTriggered;
 
     int dialogueIndex = 0;
 
 
     private void Awake()
     {
-        instance = this;
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     float charactersPerSecond = 5;
@@ -35,9 +45,40 @@ public class DialogueBox : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(dialogue.dialogue[0]);
+        //Debug.Log(dialogue.dialogue[0]);
     }
 
+    public void StartDialogue(string[] dialogue, int startPosition, string name)
+    {
+        nameText.text = name + "";
+        dialoguePanel.gameObject.SetActive(true);
+        StopAllCoroutines();
+        StartCoroutine(RunDialogue(dialogue, startPosition));
+    }
+
+    IEnumerator RunDialogue(string[] dialogue, int startPosition)
+    {
+        skipLineTriggered = false;
+        OnDialogueStarted?.Invoke();
+        for(int i = startPosition; i < dialogue.Length; i++)
+        {
+            dialogueText.text = dialogue[i];
+            while(skipLineTriggered == false)
+            {
+                yield return null;
+            }
+            skipLineTriggered = false;
+        }
+        OnDialogueEnded?.Invoke();
+        dialoguePanel.gameObject.SetActive(false);
+    }
+
+    public void SkipLine()
+    {
+        skipLineTriggered = true;
+    }
+
+    /*
     public void ShowDialogue()
     {
         dialoguePanel.SetActive(true);
@@ -79,4 +120,5 @@ public class DialogueBox : MonoBehaviour
         dialogueIndex = 0;
         dialoguePanel.SetActive(false);
     }
+    */
 }

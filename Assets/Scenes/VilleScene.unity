@@ -7912,10 +7912,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d04dff7faee1e409da5463c1b1b082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueNPC: {fileID: 11400000, guid: 3fbbe556086ef2648926809da97900cf, type: 2}
+  npc: {fileID: 393405499}
   character: {fileID: 393405505}
   speechIcon: {fileID: 780064092}
   radius: 3
+  firstInteraction: 1
+  repeatStartPosition: 0
+  npcName: Jim
+  dialogueAsset: {fileID: 11400000, guid: 3fbbe556086ef2648926809da97900cf, type: 2}
 --- !u!1 &409922544
 GameObject:
   m_ObjectHideFlags: 0

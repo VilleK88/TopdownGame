@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class CharacterDialogue : MonoBehaviour
 {
-    public DialogueAsset dialogueNPC;
+    //public DialogueAsset dialogueNPC;
     GameObject player;
+    public GameObject npc;
     public Transform character;
     [SerializeField] GameObject speechIcon;
 
@@ -15,6 +16,31 @@ public class CharacterDialogue : MonoBehaviour
     bool dialogueBoxOpen = false;
 
     int dialogueIndex = 0;
+
+    [SerializeField] bool firstInteraction = true;
+    [SerializeField] int repeatStartPosition;
+    public string npcName;
+    public DialogueAsset dialogueAsset;
+
+    bool inConversation;
+
+    [HideInInspector]
+    public int StartPosition
+    {
+        get
+        {
+            if(firstInteraction)
+            {
+                firstInteraction = false;
+                return 0;
+            }
+            else
+            {
+                return repeatStartPosition;
+            }
+        }
+    }
+
 
     private void Start()
     {
@@ -30,7 +56,8 @@ public class CharacterDialogue : MonoBehaviour
             speechIcon.SetActive(true);
             if (Input.GetKeyDown(KeyCode.T))
             {
-                if(!dialogueBoxOpen)
+                Interact();
+                /*if(!dialogueBoxOpen)
                 {
                     StartDialogue();
                     dialogueBoxOpen = true;
@@ -51,8 +78,7 @@ public class CharacterDialogue : MonoBehaviour
                             dialogueBoxOpen = false;
                         }
                     }
-                    //DialogueBox.instance.ShowNextDialogue();
-                }
+                }*/
             }
         }
         else
@@ -61,11 +87,45 @@ public class CharacterDialogue : MonoBehaviour
         }
     }
 
-    public void StartDialogue()
+    void Interact()
+    {
+        if(inConversation)
+        {
+            DialogueBox.instance.SkipLine();
+        }
+        else
+        {
+            DialogueBox.instance.StartDialogue(dialogueAsset.dialogue, StartPosition, npcName);
+        }
+    }
+
+    void JoinConversation()
+    {
+        inConversation = true;
+    }
+
+    void LeaveConversation()
+    {
+        inConversation = false;
+    }
+
+    private void OnEnable()
+    {
+        DialogueBox.OnDialogueStarted += JoinConversation;
+        DialogueBox.OnDialogueEnded += LeaveConversation;
+    }
+
+    private void OnDisable()
+    {
+        DialogueBox.OnDialogueStarted -= JoinConversation;
+        DialogueBox.OnDialogueEnded -= LeaveConversation;
+    }
+
+    /*public void StartDialogue()
     {
         DialogueBox.instance.SetDialogue(dialogueNPC);
         DialogueBox.instance.ShowDialogue();
-    }
+    }*/
 
     public void ContinueDialogue()
     {
