@@ -23,10 +23,12 @@ public class PlayerHitbox : MonoBehaviour
                     if (!ifBlocking && !ifAgro)
                     {
                         health.TakeDamage(100 + damage.GetValue());
+                        Debug.Log("Sneak kill knight.");
                     }
                     else if(!ifBlocking)
                     {
                         health.TakeDamage(10 + damage.GetValue());
+                        Debug.Log("Hit knight.");
                     }
                 }
                 if(health.enemyClass == EnemyClass.Peasant)
@@ -35,10 +37,12 @@ public class PlayerHitbox : MonoBehaviour
                     if (!ifAgro)
                     {
                         health.TakeDamage(100 + damage.GetValue());
+                        Debug.Log("Sneak kill peasant.");
                     }
                     else
                     {
                         health.TakeDamage(10 + damage.GetValue());
+                        Debug.Log("Hit peasant.");
                     }
                 }
                 if(health.enemyClass == EnemyClass.Priest)
@@ -47,10 +51,12 @@ public class PlayerHitbox : MonoBehaviour
                     if (!ifAgro)
                     {
                         health.TakeDamage(100 + damage.GetValue());
+                        Debug.Log("Sneak kill priest.");
                     }
                     else
                     {
                         health.TakeDamage(10 + damage.GetValue());
+                        Debug.Log("Hit priest.");
                     }
                 }
             }
