@@ -43,10 +43,10 @@ public class PlayerHealth : MonoBehaviour
             GameManager.manager.maxHealth);
         UpdateHealthUI();
 
-        if (Input.GetKeyDown(KeyCode.T))
+        /*if (Input.GetKeyDown(KeyCode.T))
         {
             TakeDamage(10);
-        }
+        }*/
     }
 
     public void UpdateHealthUI()
