@@ -8,6 +8,7 @@ public class CharacterDialogue : MonoBehaviour
     public DialogueAsset dialogueNPC;
     GameObject player;
     public Transform character;
+    [SerializeField] GameObject speechIcon;
 
     public float radius = 3;
     float distance;
@@ -18,6 +19,7 @@ public class CharacterDialogue : MonoBehaviour
     private void Start()
     {
         player = PlayerManager.instance.player;
+        speechIcon.SetActive(false);
     }
 
     private void Update()
@@ -25,6 +27,7 @@ public class CharacterDialogue : MonoBehaviour
         distance = Vector3.Distance(player.transform.position, character.position);
         if (distance <= radius)
         {
+            speechIcon.SetActive(true);
             if (Input.GetKeyDown(KeyCode.T))
             {
                 if(!dialogueBoxOpen)
@@ -51,6 +54,10 @@ public class CharacterDialogue : MonoBehaviour
                     //DialogueBox.instance.ShowNextDialogue();
                 }
             }
+        }
+        else
+        {
+            speechIcon.SetActive(false);
         }
     }
 
