@@ -282,6 +282,7 @@ public class Peasant : MonoBehaviour
                 capsuleCollider.enabled = false;
             }
             this.enabled = false;
+            gameObject.GetComponent<NavMeshAgent>().isStopped = true;
 
             StartCoroutine(Vanish());
         }

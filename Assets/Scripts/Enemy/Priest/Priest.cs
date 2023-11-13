@@ -311,6 +311,7 @@ public class Priest : MonoBehaviour
                 capsuleCollider.enabled = false;
             }
             this.enabled = false;
+            gameObject.GetComponent<NavMeshAgent>().isStopped = true;
             CancelInvoke("HealEnemies");
             StartCoroutine(Vanish());
         }

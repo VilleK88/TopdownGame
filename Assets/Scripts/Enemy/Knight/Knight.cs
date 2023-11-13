@@ -44,6 +44,8 @@ public class Knight : MonoBehaviour
     public Transform[] waypoints;
     int waypointIndex;
     Vector3 waypointTarget;
+    public float waypointCounter = 0;
+    float waypointMaxTime = 3;
 
     bool deadFetch; // from EnemyHealth -script
     bool dead = false;
@@ -119,6 +121,14 @@ public class Knight : MonoBehaviour
             else
             {
                 Patrol();
+                if (waypointCounter < waypointMaxTime)
+                {
+                    waypointCounter += Time.deltaTime;
+                }
+                else
+                {
+                    agent.SetDestination(waypoints[waypointIndex].position);
+                }
             }
         }
     }
@@ -128,13 +138,14 @@ public class Knight : MonoBehaviour
         if(Vector3.Distance(transform.position, waypoints[waypointIndex].transform.position) < 1.5f)
         {
             waypointIndex++;
+            waypointCounter = 0;
 
             if (waypointIndex >= waypoints.Length)
             {
                 waypointIndex = 0;
             }
             //agent.SetDestination(waypoints[waypointIndex].position);
-            StartCoroutine(NextWayPoint());
+            //StartCoroutine(NextWayPoint());
         }
     }
 
@@ -250,6 +261,7 @@ public class Knight : MonoBehaviour
                 capsuleCollider.enabled = false;
             }
             this.enabled = false;
+            gameObject.GetComponent<NavMeshAgent>().isStopped = true;
 
             StartCoroutine(Vanish());
         }

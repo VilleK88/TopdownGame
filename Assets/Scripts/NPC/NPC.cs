@@ -30,6 +30,8 @@ public class NPC : MonoBehaviour
     public Transform[] waypoints;
     int waypointIndex;
     Vector3 waypointTarget;
+    public float waypointCounter = 0;
+    float waypointMaxTime = 2;
 
 
     private void Start()
@@ -47,11 +49,21 @@ public class NPC : MonoBehaviour
     {
         if(canSeePlayer)
         {
+            gameObject.GetComponent<NavMeshAgent>().isStopped = true;
             transform.LookAt(player.transform.position);
         }
         else
         {
+            gameObject.GetComponent<NavMeshAgent>().isStopped = false;
             Patrol();
+            if(waypointCounter < waypointMaxTime)
+            {
+                waypointCounter += Time.deltaTime;
+            }
+            else
+            {
+                agent.SetDestination(waypoints[waypointIndex].position);
+            }
         }
     }
 
@@ -61,20 +73,13 @@ public class NPC : MonoBehaviour
         {
             //waypointIndex++;
             waypointIndex = Random.Range(0, 5);
+            waypointCounter = 0;
 
             if (waypointIndex >= waypoints.Length)
             {
                 waypointIndex = 0;
             }
-
-            StartCoroutine(NextWayPoint());
         }
-    }
-
-    IEnumerator NextWayPoint()
-    {
-        yield return new WaitForSeconds(1);
-        agent.SetDestination(waypoints[waypointIndex].position);
     }
 
     IEnumerator FOVRoutine()
