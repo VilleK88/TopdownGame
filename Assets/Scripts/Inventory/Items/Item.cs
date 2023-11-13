@@ -28,11 +28,20 @@ public class Item : ScriptableObject
         // Something might happen
 
         Debug.Log("Using " + name);
-        if(type == ItemType.Stamina)
+
+
+        if(type == ItemType.XpPotion)
         {
             ExperienceManager.instance.AddExperience(20); // test
         }
-        RemoveFromInventory();
+        if(type == ItemType.HealthPotion)
+        {
+            GameManager.manager.currentHealth += 20;
+        }
+        if(type == ItemType.StaminaPotion)
+        {
+            GameManager.manager.currentStamina += 20;
+        }
     }
 
     public void RemoveFromInventory()
@@ -43,5 +52,5 @@ public class Item : ScriptableObject
 
 public enum ItemType
 {
-    Health, Stamina, Axe
+    HealthPotion, StaminaPotion, Axe, XpPotion
 }

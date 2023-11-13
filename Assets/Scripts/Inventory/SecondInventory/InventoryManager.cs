@@ -25,8 +25,8 @@ public class InventoryManager : MonoBehaviour
     public InventorySlot2[] inventorySlots;
     public GameObject inventoryUI;
     public GameObject inventoryItemPrefab;
-    InventorySlot2 slot;
-    InventoryItem itemInSlot;
+    [HideInInspector] public InventorySlot2 slot;
+    [HideInInspector] public InventoryItem itemInSlot;
 
 
     private void Update()
