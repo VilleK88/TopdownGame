@@ -16,6 +16,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [HideInInspector] public int count = 1;
     [HideInInspector] public Transform parentAfterDrag;
 
+    bool dragging = false;
+
     public void InitialiseItem(Item newItem)
     {
         item = newItem;
@@ -32,12 +34,13 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //throw new System.NotImplementedException();
         //Debug.Log("Begin drag");
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling(); //
         image.raycastTarget = false;
+        countText.raycastTarget = false;
+        dragging = true;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -51,21 +54,26 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         //Debug.Log("End drag");
         transform.SetParent(parentAfterDrag);
         image.raycastTarget = true;
+        countText.raycastTarget = true;
+        dragging = false;
     }
 
     public void UseItem()
     {
         if (item != null)
         {
-            item.Use();
-            if(count > 1)
+            if(!dragging)
             {
+                item.Use();
                 count--;
-                RefreshCount();
-            }
-            else
-            {
-                Destroy(gameObject);
+                if (count > 0)
+                {
+                    RefreshCount();
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

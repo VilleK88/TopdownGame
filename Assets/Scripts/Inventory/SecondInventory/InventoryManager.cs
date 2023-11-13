@@ -42,8 +42,6 @@ public class InventoryManager : MonoBehaviour
         // Check if any slot has the same item with count lower than max
         for (int i = 0; i < inventorySlots.Length; i++)
         {
-            //InventorySlot2 slot = inventorySlots[i];
-            //InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             slot = inventorySlots[i];
             itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if (itemInSlot != null && itemInSlot.item == item && itemInSlot.count < maxStackedItems &&
