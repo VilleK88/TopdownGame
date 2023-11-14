@@ -23,7 +23,10 @@ public class InventoryManager : MonoBehaviour
 
     public int maxStackedItems = 4;
     public InventorySlot[] inventorySlots;
+    public WeaponSlot weaponSlot;
+    public bool weaponOnHand = false;
     public GameObject inventoryUI;
+    public GameObject equipmentUI;
     public GameObject inventoryItemPrefab;
     [HideInInspector] public InventorySlot slot;
     [HideInInspector] public InventoryItem itemInSlot;
@@ -34,6 +37,16 @@ public class InventoryManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
+            equipmentUI.SetActive(!equipmentUI.activeSelf);
+        }
+
+        if(weaponSlot.GetComponentInChildren<InventoryItem>() != null)
+        {
+            weaponOnHand = true;
+        }
+        else
+        {
+            weaponOnHand = false;
         }
     }
 

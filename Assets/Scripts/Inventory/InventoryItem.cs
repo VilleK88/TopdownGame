@@ -13,6 +13,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     [Header("UI")]
     [HideInInspector] public Image image;
+    [HideInInspector] public string name;
     [HideInInspector] public int count = 1;
     [HideInInspector] public Transform parentAfterDrag;
 
@@ -21,6 +22,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void InitialiseItem(Item newItem)
     {
         item = newItem;
+        name = newItem.name;
         image.sprite = newItem.icon;
         RefreshCount();
     }
@@ -72,7 +74,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 }
                 else
                 {
-                    Destroy(gameObject);
+                    if(name != "Axe")
+                        Destroy(gameObject);
                 }
             }
         }

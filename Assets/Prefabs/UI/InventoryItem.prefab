@@ -228,7 +228,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   countText: {fileID: 2126385539169575046}
+  weaponSlot: {fileID: 0}
   image: {fileID: 2126385539526410327}
+  name: 
   count: 1
   parentAfterDrag: {fileID: 2126385539526410325}
 --- !u!114 &5222561811674774035
