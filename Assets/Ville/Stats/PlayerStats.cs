@@ -6,7 +6,7 @@ public class PlayerStats : MonoBehaviour //CharacterStats
 {
     public PlayerHealth playerHealth;
     public PlayerHitbox playerHitbox;
-    private void Start()
+    /*private void Start()
     {
         EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
     }
@@ -30,5 +30,5 @@ public class PlayerStats : MonoBehaviour //CharacterStats
             playerHitbox.armor.RemoveModifier(oldItem.armorModifier);
             playerHitbox.damage.RemoveModifier(oldItem.damageModifier);
         }
-    }
+    }*/
 }

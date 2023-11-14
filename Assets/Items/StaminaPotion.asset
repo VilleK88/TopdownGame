@@ -9,17 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48294bd77cb031e499e1b40d8cdd1f86, type: 3}
-  m_Name: Helmet of Protection
+  m_Script: {fileID: 11500000, guid: 51fb805566440fd4fa26b04baf599bb1, type: 3}
+  m_Name: StaminaPotion
   m_EditorClassIdentifier: 
-  name: Helmet of Protection
+  name: Stamina potion
   isDefaultItem: 0
-  tile: {fileID: 0}
-  type: 0
-  actionType: 0
+  type: 1
   range: {x: 5, y: 4}
-  stackable: 0
-  icon: {fileID: 21300000, guid: 244affada2f283d4ab21f7e777f2e680, type: 3}
-  equipSlot: 0
-  armorModifier: 3
-  damageModifier: 0
+  stackable: 1
+  icon: {fileID: 5845185198968618096, guid: 140447aefe5ab6240b7562265d351154, type: 3}
+  description: 

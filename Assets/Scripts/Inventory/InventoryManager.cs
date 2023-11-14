@@ -22,10 +22,10 @@ public class InventoryManager : MonoBehaviour
     #endregion
 
     public int maxStackedItems = 4;
-    public InventorySlot2[] inventorySlots;
+    public InventorySlot[] inventorySlots;
     public GameObject inventoryUI;
     public GameObject inventoryItemPrefab;
-    [HideInInspector] public InventorySlot2 slot;
+    [HideInInspector] public InventorySlot slot;
     [HideInInspector] public InventoryItem itemInSlot;
 
 
@@ -56,7 +56,7 @@ public class InventoryManager : MonoBehaviour
         // Find any empty slot
         for (int i = 0; i < inventorySlots.Length; i++)
         {
-            InventorySlot2 slot = inventorySlots[i];
+            InventorySlot slot = inventorySlots[i];
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if (itemInSlot == null)
             {
@@ -68,7 +68,7 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
-    void SpawnNewItem(Item item, InventorySlot2 slot)
+    void SpawnNewItem(Item item, InventorySlot slot)
     {
         GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
         InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();

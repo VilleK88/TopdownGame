@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51fb805566440fd4fa26b04baf599bb1, type: 3}
-  m_Name: StaminaBottle
+  m_Name: HealthPotion
   m_EditorClassIdentifier: 
-  name: Stamina bottle
+  name: Healt potion
   isDefaultItem: 0
-  type: 1
+  type: 0
+  range: {x: 5, y: 4}
   stackable: 1
-  icon: {fileID: 0}
+  icon: {fileID: 693883484, guid: 3efb3c4af30e4f4409798feb4d56d1af, type: 3}
+  description: 
