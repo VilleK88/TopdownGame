@@ -276,6 +276,7 @@ public class Player : MonoBehaviour
             else if(attack1 && !attack2 && lastAttackTimer > 0.2f)
             {
                 childSprite.GetComponent<Animator>().SetTrigger("AxeAttack2");
+                GameManager.manager.currentStamina -= attackCost;
                 attack2 = true;
                 //attack1 = false;
                 //lastAttackTimer = 0;

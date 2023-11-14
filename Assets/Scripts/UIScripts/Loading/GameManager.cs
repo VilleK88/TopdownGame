@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     public float y;
     public float z;
 
+    public delegate void OnEnemyDeathCallBack(EnemyProfile enemyProfile);
+    public OnEnemyDeathCallBack onEnemyDeathCallBack;
+
 
     private void Awake()
     {

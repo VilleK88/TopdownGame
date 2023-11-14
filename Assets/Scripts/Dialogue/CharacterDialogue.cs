@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CharacterDialogue : MonoBehaviour
 {
-    //public DialogueAsset dialogueNPC;
     GameObject player;
     public GameObject npc;
     public Transform character;
@@ -13,9 +12,6 @@ public class CharacterDialogue : MonoBehaviour
 
     public float radius = 3;
     float distance;
-    bool dialogueBoxOpen = false;
-
-    int dialogueIndex = 0;
 
     [SerializeField] bool firstInteraction = true;
     [SerializeField] int repeatStartPosition;
@@ -24,6 +20,8 @@ public class CharacterDialogue : MonoBehaviour
     public DialogueTree dialogueTree;
 
     bool inConversation;
+
+    public QuestBase quest;
 
     [HideInInspector]
     public int StartPosition
@@ -47,6 +45,7 @@ public class CharacterDialogue : MonoBehaviour
     {
         player = PlayerManager.instance.player;
         speechIcon.SetActive(false);
+        quest.initializeQuest();
     }
 
     private void Update()
@@ -58,28 +57,6 @@ public class CharacterDialogue : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.T))
             {
                 Interact();
-                /*if(!dialogueBoxOpen)
-                {
-                    StartDialogue();
-                    dialogueBoxOpen = true;
-                }
-                else
-                {
-                    if (dialogueIndex <= dialogueNPC.dialogue.Length)
-                    {
-                        dialogueIndex++;
-                        if (dialogueIndex < dialogueNPC.dialogue.Length)
-                        {
-                            DialogueBox.instance.ShowNextDialogue();
-                        }
-                        else
-                        {
-                            dialogueIndex = 0;
-                            DialogueBox.instance.CloseDialogue();
-                            dialogueBoxOpen = false;
-                        }
-                    }
-                }*/
             }
         }
         else

@@ -78,7 +78,7 @@ public class Priest : MonoBehaviour
 
         peasants = GameObject.FindGameObjectsWithTag("Peasant");
         //peasants = enemies.gameObject.(GameObject.FindGameObjectsWithTag("Peasant"));
-        Debug.Log("Found " + peasants.Length + " peasants.");
+        //Debug.Log("Found " + peasants.Length + " peasants.");
         particleSystemConverting = particleConverting.GetComponent<ParticleSystem>();
         particleSystemHealing = particleHealing.GetComponent<ParticleSystem>();
         capsuleCollider = GetComponent<CapsuleCollider>();
@@ -265,7 +265,7 @@ public class Priest : MonoBehaviour
     {
         if (currentPeasantIndex >= 0 && currentPeasantIndex < peasants.Length)
         {
-            Debug.Log("Return peasants. CurrentPeasantIndex: " + currentPeasantIndex);
+            //Debug.Log("Return peasants. CurrentPeasantIndex: " + currentPeasantIndex);
             return peasants[currentPeasantIndex].GetComponent<Peasant>();
         }
         return null;

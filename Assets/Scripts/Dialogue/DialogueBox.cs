@@ -23,7 +23,7 @@ public class DialogueBox : MonoBehaviour
     bool answerTriggered;
     int answerIndex;
 
-    int dialogueIndex = 0;
+    //int dialogueIndex = 0;
 
 
     private void Awake()

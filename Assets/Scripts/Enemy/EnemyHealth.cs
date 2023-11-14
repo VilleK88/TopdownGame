@@ -11,7 +11,10 @@ public class EnemyHealth : MonoBehaviour
 {
     Animator anim;
     [SerializeField] GameObject enemySprite;
+
+    [Header("Enemy Class/Profile")]
     public EnemyClass enemyClass;
+    public EnemyProfile enemyProfile;
 
     [Header("Health")]
     //float startingHealth = 100;
@@ -114,6 +117,10 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
+        if(GameManager.manager.onEnemyDeathCallBack != null)
+        {
+            GameManager.manager.onEnemyDeathCallBack.Invoke(enemyProfile);
+        }
         ExperienceManager.instance.AddExperience(expAmount);
     }
 }

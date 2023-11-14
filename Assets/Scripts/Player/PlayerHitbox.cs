@@ -17,6 +17,22 @@ public class PlayerHitbox : MonoBehaviour
             bool ifBlocking = other.gameObject.GetComponent<EnemyHealth>().blockingPlayer;
             if(health != null)
             {
+                if (health.enemyClass == EnemyClass.Priest)
+                {
+                    bool ifAgro = other.gameObject.GetComponent<Priest>().isAgro;
+                    if (!ifAgro)
+                    {
+                        health.TakeDamage(100 + damage.GetValue());
+                        Debug.Log("Sneak kill priest.");
+                    }
+                    else
+                    {
+                        health.TakeDamage(10 + damage.GetValue());
+                        Debug.Log("Hit priest.");
+                    }
+                }
+
+
                 if (health.enemyClass == EnemyClass.Knight)
                 {
                     bool ifAgro = other.gameObject.GetComponent<Knight>().isAgro;
@@ -31,6 +47,8 @@ public class PlayerHitbox : MonoBehaviour
                         Debug.Log("Hit knight.");
                     }
                 }
+
+
                 if(health.enemyClass == EnemyClass.Peasant)
                 {
                     bool ifAgro = other.gameObject.GetComponent<Peasant>().isAgro;
@@ -45,7 +63,7 @@ public class PlayerHitbox : MonoBehaviour
                         Debug.Log("Hit peasant.");
                     }
                 }
-                if(health.enemyClass == EnemyClass.Priest)
+                /*if(health.enemyClass == EnemyClass.Priest)
                 {
                     bool ifAgro = other.gameObject.GetComponent<Priest>();
                     if (!ifAgro)
@@ -58,7 +76,7 @@ public class PlayerHitbox : MonoBehaviour
                         health.TakeDamage(10 + damage.GetValue());
                         Debug.Log("Hit priest.");
                     }
-                }
+                }*/
             }
         }
 

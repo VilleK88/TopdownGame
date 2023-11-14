@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Peasant
   - Enemy
+  - Weaponslot
   layers:
   - Default
   - TransparentFX
