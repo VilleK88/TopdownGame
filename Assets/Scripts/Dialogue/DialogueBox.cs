@@ -25,6 +25,8 @@ public class DialogueBox : MonoBehaviour
 
     //int dialogueIndex = 0;
 
+    DialogueTree currentDialogue;
+
 
     private void Awake()
     {
@@ -124,6 +126,16 @@ public class DialogueBox : MonoBehaviour
     {
         answerIndex = answer;
         answerTriggered = true;
+    }
+
+    void CheckIfDialogueQuest()
+    {
+        Debug.Log("Start Quest");
+        if(currentDialogue is DialogueQuest)
+        {
+            DialogueQuest DQ = currentDialogue as DialogueQuest;
+            QuestManager.questManager.SetQuestUI(DQ.quest);
+        }
     }
 
     /*

@@ -7,4 +7,5 @@ public struct Answer
 {
     public string answerlabel;
     public int nextElement;
+    public bool startQuest;
 }

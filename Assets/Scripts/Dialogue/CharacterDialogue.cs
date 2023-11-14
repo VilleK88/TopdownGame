@@ -16,7 +16,7 @@ public class CharacterDialogue : MonoBehaviour
     [SerializeField] bool firstInteraction = true;
     [SerializeField] int repeatStartPosition;
     public string npcName;
-    public DialogueAsset dialogueAsset;
+    //public DialogueAsset dialogueAsset;
     public DialogueTree dialogueTree;
 
     bool inConversation;
@@ -45,7 +45,7 @@ public class CharacterDialogue : MonoBehaviour
     {
         player = PlayerManager.instance.player;
         speechIcon.SetActive(false);
-        quest.initializeQuest();
+        //quest.initializeQuest();
     }
 
     private void Update()
@@ -85,6 +85,7 @@ public class CharacterDialogue : MonoBehaviour
     void LeaveConversation()
     {
         inConversation = false;
+        //quest.initializeQuest();
     }
 
     private void OnEnable()

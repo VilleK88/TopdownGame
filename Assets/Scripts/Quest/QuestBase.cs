@@ -15,6 +15,7 @@ public class QuestBase : ScriptableObject
 
     public virtual void initializeQuest()
     {
+        Debug.Log("Start Quest");
         currentAmount = new int[requiredAmount.Length];
     }
 
