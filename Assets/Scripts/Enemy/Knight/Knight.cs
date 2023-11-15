@@ -35,7 +35,7 @@ public class Knight : MonoBehaviour
     Vector3 direction;
     Quaternion lookRotation;
     NavMeshAgent agent;
-    float attackCooldown = 1;
+    float attackCooldown = 0.8f;
     float attackCooldownOriginal;
     bool ifBlockingPlayersAttackFetch; // from EnemyHealth -script
     float originalSpeed;
@@ -73,7 +73,7 @@ public class Knight : MonoBehaviour
         deadFetch = GetComponent<EnemyHealth>().dead;
         Death();
         //Debug.Log("Crusader stopping distance: " + agent.stoppingDistance);
-        Debug.Log("Distance to player " + distanceToTarget);
+        //Debug.Log("Distance to player " + distanceToTarget);
 
         if(!dead)
         {
@@ -82,6 +82,8 @@ public class Knight : MonoBehaviour
                 isAgro = true;
                 agroCounter = 0;
                 StartCoroutine(CallHelp());
+                Debug.Log("Change agent stopping distance to 2");
+                agent.stoppingDistance = 2;
             }
             else
             {
@@ -103,7 +105,14 @@ public class Knight : MonoBehaviour
             {
                 if (distanceToTarget > attackDistance)
                 {
-                    Chase();
+                    if(!ifBlockingPlayersAttackFetch)
+                    {
+                        Chase();
+                    }
+                    else
+                    {
+                        transform.LookAt(player.transform.position);
+                    }
                 }
                 else if (distanceToTarget < attackDistance)
                 {
@@ -126,6 +135,8 @@ public class Knight : MonoBehaviour
             else
             {
                 Patrol();
+                Debug.Log("Change agent stopping distance to 1.5f");
+                agent.stoppingDistance = 1.5f;
                 if (waypointCounter < waypointMaxTime)
                 {
                     waypointCounter += Time.deltaTime;
@@ -143,7 +154,7 @@ public class Knight : MonoBehaviour
     {
         agent.speed = originalSpeed;
         childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
-        if (Vector3.Distance(transform.position, waypoints[waypointIndex].transform.position) < 2f)
+        if (Vector3.Distance(transform.position, waypoints[waypointIndex].transform.position) < 1.5f)
         {
             waypointIndex++;
             waypointCounter = 0;
