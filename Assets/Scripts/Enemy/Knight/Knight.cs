@@ -35,7 +35,7 @@ public class Knight : MonoBehaviour
     Vector3 direction;
     Quaternion lookRotation;
     NavMeshAgent agent;
-    float attackCooldown = 0.8f;
+    float attackCooldown = 1f;
     float attackCooldownOriginal;
     bool ifBlockingPlayersAttackFetch; // from EnemyHealth -script
     float originalSpeed;
@@ -108,6 +108,7 @@ public class Knight : MonoBehaviour
                     if(!ifBlockingPlayersAttackFetch)
                     {
                         Chase();
+                        attackCooldown = 0.2f;
                     }
                     else
                     {
