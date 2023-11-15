@@ -37,8 +37,9 @@ public class Knight : MonoBehaviour
     NavMeshAgent agent;
     float attackCooldown = 1;
     float attackCooldownOriginal;
-
     bool ifBlockingPlayersAttackFetch; // from EnemyHealth -script
+    float originalSpeed;
+    public float attackDistance = 2;
 
     [Header("Patrol Parameters")]
     public Transform[] waypoints;
@@ -62,6 +63,8 @@ public class Knight : MonoBehaviour
         agent.SetDestination(waypoints[waypointIndex].position);
         capsuleCollider = GetComponent<CapsuleCollider>();
         attackCooldownOriginal = attackCooldown;
+        originalSpeed = agent.speed;
+        childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", true);
     }
 
     private void Update()
@@ -69,7 +72,8 @@ public class Knight : MonoBehaviour
         ifBlockingPlayersAttackFetch = GetComponent<EnemyHealth>().blockingPlayer;
         deadFetch = GetComponent<EnemyHealth>().dead;
         Death();
-
+        //Debug.Log("Crusader stopping distance: " + agent.stoppingDistance);
+        Debug.Log("Distance to player " + distanceToTarget);
 
         if(!dead)
         {
@@ -97,12 +101,13 @@ public class Knight : MonoBehaviour
 
             if (isAgro)
             {
-                if (distanceToTarget > 2)
+                if (distanceToTarget > attackDistance)
                 {
                     Chase();
                 }
-                else if (distanceToTarget <= 2)
+                else if (distanceToTarget < attackDistance)
                 {
+                    childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
                     transform.LookAt(player.transform.position);
                     if (!ifBlockingPlayersAttackFetch)
                     {
@@ -128,6 +133,7 @@ public class Knight : MonoBehaviour
                 else
                 {
                     agent.SetDestination(waypoints[waypointIndex].position);
+                    childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", true);
                 }
             }
         }
@@ -135,17 +141,18 @@ public class Knight : MonoBehaviour
 
     void Patrol()
     {
-        if(Vector3.Distance(transform.position, waypoints[waypointIndex].transform.position) < 1.5f)
+        agent.speed = originalSpeed;
+        childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
+        if (Vector3.Distance(transform.position, waypoints[waypointIndex].transform.position) < 2f)
         {
             waypointIndex++;
             waypointCounter = 0;
+            childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
 
             if (waypointIndex >= waypoints.Length)
             {
                 waypointIndex = 0;
             }
-            //agent.SetDestination(waypoints[waypointIndex].position);
-            //StartCoroutine(NextWayPoint());
         }
     }
 
@@ -178,23 +185,17 @@ public class Knight : MonoBehaviour
         }
     }
 
-    IEnumerator NextWayPoint()
-    {
-        yield return new WaitForSeconds(3);
-        if(!dead)
-        {
-            agent.SetDestination(waypoints[waypointIndex].position);
-        }
-    }
-
     void Attack()
     {
-        childSprite.GetComponent<Animator>().SetTrigger("PikeAttack1");
+        childSprite.GetComponent<Animator>().SetTrigger("CrusaderAttack1");
     }
 
     void Chase()
     {
+        childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
+        agent.speed = 3;
         agent.SetDestination(playerTransform.position);
+        childSprite.GetComponent<Animator>().SetBool("CrusaderRun", true);
     }
 
     IEnumerator FOVRoutine()

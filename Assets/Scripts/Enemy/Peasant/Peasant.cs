@@ -42,6 +42,7 @@ public class Peasant : MonoBehaviour
     NavMeshAgent agent;
     float attackCooldown = 1;
     float attackCooldownOriginal;
+    float originalSpeed;
 
     //bool ifBlockingPlayersAttackFetch; // from EnemyHealth -script
     bool gettingHitFetch; // from EnemyHealth -script
@@ -62,6 +63,7 @@ public class Peasant : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
         StartCoroutine(FOVRoutine());
         attackCooldownOriginal = attackCooldown;
+        originalSpeed = agent.speed;
     }
 
     private void Update()
@@ -105,11 +107,11 @@ public class Peasant : MonoBehaviour
 
                 if (isAgro)
                 {
-                    if (distanceToTarget > 2)
+                    if (distanceToTarget > 2.2f)
                     {
                         Chase();
                     }
-                    else if (distanceToTarget <= 2)
+                    else if (distanceToTarget <= 2.2f)
                     {
                         transform.LookAt(player.transform.position);
                         if (!gettingHitFetch)
@@ -141,6 +143,7 @@ public class Peasant : MonoBehaviour
 
     void RandomMovement()
     {
+        agent.speed = originalSpeed;
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
             Vector3 point;
@@ -173,6 +176,7 @@ public class Peasant : MonoBehaviour
 
     void Chase()
     {
+        agent.speed = 3;
         agent.SetDestination(playerTransform.position);
     }
 

@@ -77,7 +77,7 @@ public class EnemyHealth : MonoBehaviour
                 if (blockOrNot == 0)
                 {
                     blockingPlayer = true;
-                    anim.SetBool("PikeBlock", true);
+                    anim.SetBool("CrusaderBlock", true);
                     StartCoroutine(StopBlocking());
                 }
             }
@@ -111,7 +111,7 @@ public class EnemyHealth : MonoBehaviour
     IEnumerator StopBlocking()
     {
         yield return new WaitForSeconds(2);
-        anim.SetBool("PikeBlock", false);
+        anim.SetBool("CrusaderBlock", false);
         blockingPlayer = false;
     }
 
