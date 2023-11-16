@@ -21,9 +21,13 @@ public class QuestManager : MonoBehaviour
     public GameObject questUI;
     public TextMeshProUGUI questName;
     public TextMeshProUGUI questDescription;
+    public Button questAcceptButton;
+
+    public QuestBase currentQuest { get; set; }
 
     public void SetQuestUI(QuestBase newQuest)
     {
+        currentQuest = newQuest;
         questUI.SetActive(true);
         questName.text = newQuest.questName;
         questDescription.text = newQuest.questDescription;

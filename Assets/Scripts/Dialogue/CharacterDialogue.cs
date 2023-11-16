@@ -22,6 +22,7 @@ public class CharacterDialogue : MonoBehaviour
     bool inConversation;
 
     public QuestBase quest;
+    public int launchQuestIndex = 0;
 
     [HideInInspector]
     public int StartPosition
@@ -85,12 +86,11 @@ public class CharacterDialogue : MonoBehaviour
     void LeaveConversation()
     {
         inConversation = false;
-        if(DialogueBox.instance.answerIndex == 0)
+        if(DialogueBox.instance.answerIndex == launchQuestIndex)
         {
-            quest.initializeQuest();
+            //quest.initializeQuest();
             QuestManager.questManager.SetQuestUI(quest);
         }
-        //quest.initializeQuest();
     }
 
     private void OnEnable()
