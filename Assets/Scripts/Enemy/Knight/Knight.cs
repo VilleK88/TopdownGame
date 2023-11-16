@@ -212,7 +212,7 @@ public class Knight : MonoBehaviour
     void Chase()
     {
         childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
-        agent.speed = 3;
+        agent.speed = 3.5f;
         agent.SetDestination(playerTransform.position);
         childSprite.GetComponent<Animator>().SetBool("CrusaderRun", true);
     }
