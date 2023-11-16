@@ -19470,6 +19470,7 @@ MonoBehaviour:
   - {fileID: 839693560}
   - {fileID: 945920876}
   - {fileID: 276515774}
+  answerIndex: 0
 --- !u!1 &1744433713
 GameObject:
   m_ObjectHideFlags: 0

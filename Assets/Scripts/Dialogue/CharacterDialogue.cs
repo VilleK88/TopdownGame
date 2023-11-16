@@ -88,6 +88,7 @@ public class CharacterDialogue : MonoBehaviour
         if(DialogueBox.instance.answerIndex == 0)
         {
             quest.initializeQuest();
+            QuestManager.questManager.SetQuestUI(quest);
         }
         //quest.initializeQuest();
     }
