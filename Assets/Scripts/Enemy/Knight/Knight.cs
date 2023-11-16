@@ -40,6 +40,7 @@ public class Knight : MonoBehaviour
     bool ifBlockingPlayersAttackFetch; // from EnemyHealth -script
     float originalSpeed;
     public float attackDistance = 2;
+    bool gettingHit; // fetch from EnemyHealth -script
 
     [Header("Patrol Parameters")]
     public Transform[] waypoints;
@@ -71,6 +72,12 @@ public class Knight : MonoBehaviour
     {
         ifBlockingPlayersAttackFetch = GetComponent<EnemyHealth>().blockingPlayer;
         deadFetch = GetComponent<EnemyHealth>().dead;
+        gettingHit = GetComponent<EnemyHealth>().gettingHit;
+        if(gettingHit)
+        {
+            childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
+            childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
+        }
         Death();
         //Debug.Log("Crusader stopping distance: " + agent.stoppingDistance);
         //Debug.Log("Distance to player " + distanceToTarget);

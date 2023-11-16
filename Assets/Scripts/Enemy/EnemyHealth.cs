@@ -28,6 +28,7 @@ public class EnemyHealth : MonoBehaviour
     public bool blockingPlayer; // this is fetched from the Enemy -script
     int gettingHitOrNot;
     public bool gettingHit = false;
+    float blockingTime;
 
     [Header("Player XP")]
     float expAmount;
@@ -63,8 +64,8 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-
-        if(currentHealth <= 0)
+        gettingHit = true;
+        if (currentHealth <= 0)
         {
             Die();
             dead = true;
@@ -73,12 +74,17 @@ public class EnemyHealth : MonoBehaviour
         {
             if(enemyClass == EnemyClass.Knight)
             {
-                blockOrNot = Random.Range(0, 1);
+                blockOrNot = Random.Range(0, 2);
                 if (blockOrNot == 0)
                 {
                     blockingPlayer = true;
                     anim.SetBool("CrusaderBlock", true);
+                    blockingTime = Random.Range(1, 2);
                     StartCoroutine(StopBlocking());
+                }
+                else
+                {
+                    gettingHit = false;
                 }
             }
             else if(enemyClass == EnemyClass.Priest)
@@ -90,7 +96,7 @@ public class EnemyHealth : MonoBehaviour
                 gettingHitOrNot = Random.Range(0, 1);
                 if (gettingHitOrNot == 0)
                 {
-                    gettingHit = true;
+                    //gettingHit = true;
                     StartCoroutine(StopGettingHit());
                 }
             }
@@ -110,9 +116,10 @@ public class EnemyHealth : MonoBehaviour
 
     IEnumerator StopBlocking()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(blockingTime);
         anim.SetBool("CrusaderBlock", false);
         blockingPlayer = false;
+        gettingHit = false;
     }
 
     void Die()
