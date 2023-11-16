@@ -21,7 +21,7 @@ public class DialogueBox : MonoBehaviour
     public static event Action OnDialogueEnded;
     bool skipLineTriggered;
     bool answerTriggered;
-    int answerIndex;
+    [HideInInspector] public int answerIndex;
 
     //int dialogueIndex = 0;
 
@@ -48,11 +48,6 @@ public class DialogueBox : MonoBehaviour
             dialogueText.text += letter;
             yield return new WaitForSeconds(1 / charactersPerSecond);
         }
-    }
-
-    private void Start()
-    {
-        //Debug.Log(dialogue.dialogue[0]);
     }
 
     public void StartDialogue(DialogueTree dialogueTree, int startSection, string name)
@@ -137,48 +132,4 @@ public class DialogueBox : MonoBehaviour
             QuestManager.questManager.SetQuestUI(DQ.quest);
         }
     }
-
-    /*
-    public void ShowDialogue()
-    {
-        dialoguePanel.SetActive(true);
-        StartCoroutine(TypeText(dialogue.dialogue[0]));
-        nameText.text = dialogue.name + "";
-    }
-
-    public void EndDialogue()
-    {
-        nameText.text = null;
-        dialogueText.text = null; ;
-        dialoguePanel.SetActive(false);
-    }
-
-    public void SetDialogue(DialogueAsset newDialogue)
-    {
-        if(newDialogue != null)
-        {
-            dialogue = newDialogue;
-        }
-    }
-
-    public void ShowNextDialogue()
-    {
-        if(dialogueIndex <= dialogue.dialogue.Length)
-        {
-            dialogueIndex++;
-            if(dialogueIndex < dialogue.dialogue.Length)
-            {
-                dialogueText.text = string.Empty;
-                StartCoroutine(TypeText(dialogue.dialogue[dialogueIndex]));
-            }
-        }
-    }
-
-    public void CloseDialogue()
-    {
-        dialogueText.text = string.Empty;
-        dialogueIndex = 0;
-        dialoguePanel.SetActive(false);
-    }
-    */
 }

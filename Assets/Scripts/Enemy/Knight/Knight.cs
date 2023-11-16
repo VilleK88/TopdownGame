@@ -89,7 +89,6 @@ public class Knight : MonoBehaviour
                 isAgro = true;
                 agroCounter = 0;
                 StartCoroutine(CallHelp());
-                Debug.Log("Change agent stopping distance to 2");
                 agent.stoppingDistance = 2;
             }
             else
@@ -143,7 +142,6 @@ public class Knight : MonoBehaviour
             else
             {
                 Patrol();
-                Debug.Log("Change agent stopping distance to 1.5f");
                 agent.stoppingDistance = 1.5f;
                 if (waypointCounter < waypointMaxTime)
                 {

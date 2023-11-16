@@ -13,7 +13,6 @@ public class PlayerHitbox : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             EnemyHealth health = other.gameObject.GetComponent<EnemyHealth>();
-            //TestPriestHealth priestHealth = other.gameObject.GetComponent<TestPriestHealth>();
             bool ifBlocking = other.gameObject.GetComponent<EnemyHealth>().blockingPlayer;
             if(health != null)
             {
@@ -23,12 +22,12 @@ public class PlayerHitbox : MonoBehaviour
                     if (!ifAgro)
                     {
                         health.TakeDamage(100 + damage.GetValue());
-                        Debug.Log("Sneak kill priest.");
+                        //Debug.Log("Sneak kill priest.");
                     }
                     else
                     {
                         health.TakeDamage(10 + damage.GetValue());
-                        Debug.Log("Hit priest.");
+                        //Debug.Log("Hit priest.");
                     }
                 }
 
@@ -39,12 +38,12 @@ public class PlayerHitbox : MonoBehaviour
                     if (!ifBlocking && !ifAgro)
                     {
                         health.TakeDamage(100 + damage.GetValue());
-                        Debug.Log("Sneak kill knight.");
+                        //Debug.Log("Sneak kill knight.");
                     }
                     else if(!ifBlocking)
                     {
                         health.TakeDamage(10 + damage.GetValue());
-                        Debug.Log("Hit knight.");
+                        //Debug.Log("Hit knight.");
                     }
                 }
 
@@ -55,42 +54,15 @@ public class PlayerHitbox : MonoBehaviour
                     if (!ifAgro)
                     {
                         health.TakeDamage(100 + damage.GetValue());
-                        Debug.Log("Sneak kill peasant.");
+                        //Debug.Log("Sneak kill peasant.");
                     }
                     else
                     {
                         health.TakeDamage(10 + damage.GetValue());
-                        Debug.Log("Hit peasant.");
+                        //Debug.Log("Hit peasant.");
                     }
                 }
-                /*if(health.enemyClass == EnemyClass.Priest)
-                {
-                    bool ifAgro = other.gameObject.GetComponent<Priest>();
-                    if (!ifAgro)
-                    {
-                        health.TakeDamage(100 + damage.GetValue());
-                        Debug.Log("Sneak kill priest.");
-                    }
-                    else
-                    {
-                        health.TakeDamage(10 + damage.GetValue());
-                        Debug.Log("Hit priest.");
-                    }
-                }*/
             }
         }
-
-        /*if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") && other.gameObject.name == "TestPeasant")
-        {
-            TestEnemyHealth health = other.gameObject.GetComponent<TestEnemyHealth>();
-            bool ifBlocking = other.gameObject.GetComponent<TestEnemyHealth>().blockingPlayer;
-            if (health != null)
-            {
-                if (!ifBlocking)
-                {
-                    health.TakeDamage(10);
-                }
-            }
-        }*/
     }
 }

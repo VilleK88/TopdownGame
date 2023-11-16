@@ -85,6 +85,10 @@ public class CharacterDialogue : MonoBehaviour
     void LeaveConversation()
     {
         inConversation = false;
+        if(DialogueBox.instance.answerIndex == 0)
+        {
+            quest.initializeQuest();
+        }
         //quest.initializeQuest();
     }
 
@@ -98,17 +102,6 @@ public class CharacterDialogue : MonoBehaviour
     {
         DialogueBox.OnDialogueStarted -= JoinConversation;
         DialogueBox.OnDialogueEnded -= LeaveConversation;
-    }
-
-    /*public void StartDialogue()
-    {
-        DialogueBox.instance.SetDialogue(dialogueNPC);
-        DialogueBox.instance.ShowDialogue();
-    }*/
-
-    public void ContinueDialogue()
-    {
-
     }
 
     private void OnDrawGizmosSelected()

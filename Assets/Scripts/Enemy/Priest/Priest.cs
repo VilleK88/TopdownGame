@@ -248,7 +248,7 @@ public class Priest : MonoBehaviour
                 if (currentPeasantIndex < peasants.Length)
                 {
                     currentPeasantIndex++;
-                    Debug.Log("Next peasant to convert.");
+                    //Debug.Log("Next peasant to convert.");
                     convertingCounter = 0;
                 }
             }
@@ -257,7 +257,7 @@ public class Priest : MonoBehaviour
         {
             startHealing = true;
             converting = false;
-            Debug.Log("Not converting.");
+            //Debug.Log("Not converting.");
         }
     }
 
