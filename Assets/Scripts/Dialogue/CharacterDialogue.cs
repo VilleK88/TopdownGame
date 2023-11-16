@@ -24,7 +24,7 @@ public class CharacterDialogue : MonoBehaviour
     bool inConversation;
 
     public QuestBase quest;
-    public int launchQuestIndex = 0;
+    public int launchQuestAnswerIndex = 0;
     bool inQuest;
 
     [HideInInspector]
@@ -79,9 +79,33 @@ public class CharacterDialogue : MonoBehaviour
         {
             if(!QuestManager.questManager.inQuestUI)
             {
-                DialogueBox.instance.StartDialogue(dialogueTree, StartPosition, npcName);
+                /*if(quest != QuestManager.questManager.currentQuest)
+                {
+                    DialogueBox.instance.StartDialogue(dialogueTree, StartPosition, npcName);
+                }*/
+
+                if(!QuestsContainsQuest(QuestManager.questManager.quests, quest))
+                {
+                    DialogueBox.instance.StartDialogue(dialogueTree, StartPosition, npcName);
+                }
+                else
+                {
+                    DialogueBox.instance.StartDialogue(secondDialogueTree, StartPosition, npcName);
+                }
             }
         }
+    }
+
+    bool QuestsContainsQuest(QuestBase[] questArray, QuestBase questToCheck)
+    {
+        foreach(QuestBase q in questArray)
+        {
+            if(q == questToCheck)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     void JoinConversation()
@@ -92,7 +116,7 @@ public class CharacterDialogue : MonoBehaviour
     void LeaveConversation()
     {
         inConversation = false;
-        if(DialogueBox.instance.answerIndex == launchQuestIndex)
+        if(DialogueBox.instance.answerIndex == launchQuestAnswerIndex && !QuestsContainsQuest(QuestManager.questManager.quests, quest))
         {
             //quest.initializeQuest();
             QuestManager.questManager.SetQuestUI(quest);

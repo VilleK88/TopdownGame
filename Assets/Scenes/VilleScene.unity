@@ -7655,10 +7655,9 @@ GameObject:
   - component: {fileID: 393405500}
   - component: {fileID: 393405506}
   - component: {fileID: 393405507}
-  - component: {fileID: 393405508}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: NPC
-  m_TagString: Peasant
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7832,23 +7831,10 @@ MonoBehaviour:
   repeatStartPosition: 0
   npcName: Jim
   dialogueTree: {fileID: 11400000, guid: 3dc9a9d25aab3fe40ae2f585164ed767, type: 2}
-  secondDialogueTree: {fileID: 0}
+  secondDialogueTree: {fileID: 11400000, guid: 201147895a8482e4fab89cf54c1489df, type: 2}
   questFinishedDialogueTree: {fileID: 0}
   quest: {fileID: 11400000, guid: 20a97b3551b6b284ca9e64b620c7ec76, type: 2}
-  launchQuestIndex: 0
---- !u!114 &393405508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393405499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75a540a6bdc92f8489041e9e056e9407, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueQuests: []
+  launchQuestAnswerIndex: 0
 --- !u!224 &397160752 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3082930216064804867, guid: 915afda878028ef49b758583195e6a4a,
@@ -14082,7 +14068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 780064093}
   - component: {fileID: 780064094}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SpeechIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20751,6 +20737,28 @@ MonoBehaviour:
   questName: {fileID: 1817672750}
   questDescription: {fileID: 733942998}
   questAcceptButton: {fileID: 906466224}
+  quests:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  questIndex: 0
 --- !u!1 &1908419472
 GameObject:
   m_ObjectHideFlags: 0

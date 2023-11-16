@@ -17,6 +17,15 @@ public class QuestBase : ScriptableObject
     {
         Debug.Log("Start Quest");
         currentAmount = new int[requiredAmount.Length];
+
+        for (int i = 0; i < QuestManager.questManager.quests.Length; i++)
+        {
+            if (QuestManager.questManager.quests[i] == null)
+            {
+                QuestManager.questManager.quests[i] = QuestManager.questManager.currentQuest;
+            }
+            return;
+        }
     }
 
     public void Evaluate()

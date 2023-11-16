@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.PackageManager.Requests;
 
 public class QuestManager : MonoBehaviour
 {
@@ -25,6 +27,10 @@ public class QuestManager : MonoBehaviour
 
     public QuestBase currentQuest { get; set; }
     public bool inQuestUI { get; set; }
+
+    public QuestBase[] quests;
+    public int questIndex;
+
 
     public void SetQuestUI(QuestBase newQuest)
     {
