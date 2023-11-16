@@ -39,5 +39,42 @@ public class QuestBase : ScriptableObject
         }
 
         Debug.Log("Quest is Completed");
+
+        for (int i = 0; i < QuestManager.questManager.quests.Length; i++)
+        {
+            if (QuestManager.questManager.quests[i] == QuestManager.questManager.currentQuest)
+            {
+                QuestManager.questManager.quests[i] = null;
+
+                AddToFinishedQuests(QuestManager.questManager.currentQuest);
+                return;
+            }
+        }
+    }
+
+    public void MoveToFinishedQuests(QuestBase quest)
+    {
+        for(int i = 0; i < QuestManager.questManager.quests.Length; i++)
+        {
+            if (QuestManager.questManager.quests[i] == quest)
+            {
+                QuestManager.questManager.quests[i] = null;
+
+                AddToFinishedQuests(quest);
+                return;
+            }
+        }
+    }
+
+    void AddToFinishedQuests(QuestBase quest)
+    {
+        for(int i = 0; i < QuestManager.questManager.finishedQuests.Length; i++)
+        {
+            if (QuestManager.questManager.finishedQuests[i] == null)
+            {
+                QuestManager.questManager.finishedQuests[i] = quest;
+                return;
+            }
+        }
     }
 }

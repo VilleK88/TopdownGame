@@ -84,9 +84,13 @@ public class CharacterDialogue : MonoBehaviour
                     DialogueBox.instance.StartDialogue(dialogueTree, StartPosition, npcName);
                 }*/
 
-                if(!QuestsContainsQuest(QuestManager.questManager.quests, quest))
+                if(!QuestsContainsQuest(QuestManager.questManager.quests, quest) && !QuestsContainsQuest(QuestManager.questManager.finishedQuests, quest))
                 {
                     DialogueBox.instance.StartDialogue(dialogueTree, StartPosition, npcName);
+                }
+                else if(QuestsContainsQuest(QuestManager.questManager.finishedQuests, quest))
+                {
+                    DialogueBox.instance.StartDialogue(questFinishedDialogueTree, StartPosition, npcName);
                 }
                 else
                 {
@@ -116,7 +120,8 @@ public class CharacterDialogue : MonoBehaviour
     void LeaveConversation()
     {
         inConversation = false;
-        if(DialogueBox.instance.answerIndex == launchQuestAnswerIndex && !QuestsContainsQuest(QuestManager.questManager.quests, quest))
+        if(DialogueBox.instance.answerIndex == launchQuestAnswerIndex && !QuestsContainsQuest(QuestManager.questManager.quests, quest) &&
+            !QuestsContainsQuest(QuestManager.questManager.finishedQuests, quest))
         {
             //quest.initializeQuest();
             QuestManager.questManager.SetQuestUI(quest);

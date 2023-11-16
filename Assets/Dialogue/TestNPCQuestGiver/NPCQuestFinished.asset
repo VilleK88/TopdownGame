@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0c8915b1574e9745a82edae9ded192e, type: 3}
-  m_Name: NPCdialogue
+  m_Script: {fileID: 11500000, guid: db601cf79d65edb40b172c54a3d0993b, type: 3}
+  m_Name: NPCQuestFinished
   m_EditorClassIdentifier: 
-  dialogue:
-  - NPC test text..
-  - Second test text..
-  name: NPC
+  sections:
+  - dialogue:
+    - Thank you Lalli for killing the crusaders!
+    endAfterDialogue: 1
+    branchPoint:
+      question: 
+      answers: []
