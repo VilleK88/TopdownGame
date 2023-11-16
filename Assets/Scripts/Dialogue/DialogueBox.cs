@@ -19,6 +19,7 @@ public class DialogueBox : MonoBehaviour
     [SerializeField] Button[] answerObjects;
     public static event Action OnDialogueStarted;
     public static event Action OnDialogueEnded;
+    public bool inDialogue;
     bool skipLineTriggered;
     bool answerTriggered;
     [HideInInspector] public int answerIndex;
@@ -56,6 +57,7 @@ public class DialogueBox : MonoBehaviour
         nameText.text = name + "";
         dialoguePanel.gameObject.SetActive(true);
         OnDialogueStarted?.Invoke();
+        inDialogue = true;
         StartCoroutine(RunDialogue(dialogueTree, startSection));
     }
 
@@ -73,6 +75,7 @@ public class DialogueBox : MonoBehaviour
         if (dialogueTree.sections[section].endAfterDialogue)
         {
             OnDialogueEnded?.Invoke();
+            inDialogue = false;
             dialoguePanel.SetActive(false);
             yield break;
         }

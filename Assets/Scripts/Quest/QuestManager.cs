@@ -24,12 +24,26 @@ public class QuestManager : MonoBehaviour
     public Button questAcceptButton;
 
     public QuestBase currentQuest { get; set; }
+    public bool inQuestUI { get; set; }
 
     public void SetQuestUI(QuestBase newQuest)
     {
+        inQuestUI = true;
         currentQuest = newQuest;
         questUI.SetActive(true);
         questName.text = newQuest.questName;
         questDescription.text = newQuest.questDescription;
+        questAcceptButton.Select();
+    }
+
+    public void StartQuestBuffer()
+    {
+        StartCoroutine(QuestBuffer());
+    }
+
+    IEnumerator QuestBuffer()
+    {
+        yield return new WaitForSeconds(0.1f);
+        inQuestUI = false;
     }
 }

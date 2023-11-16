@@ -78,6 +78,10 @@ public class Player : MonoBehaviour
             return;
         }
 
+        TogglePause();
+
+        if (CheckFreeze()) return;
+
         MouseMovement();
         Move();
         MouseAiming();
@@ -88,8 +92,6 @@ public class Player : MonoBehaviour
             Attack();
         }
         UpdateStaminaUI();
-
-        TogglePause();
 
         GameManager.manager.x = transform.position.x;
         GameManager.manager.y = transform.position.y;
@@ -113,6 +115,30 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         FixedMove();
+    }
+
+    public bool CheckFreeze()
+    {
+        bool isFrozen;
+
+        if(DialogueBox.instance.inDialogue)
+        {
+            isFrozen = true;
+        }
+        else if(InventoryManager.instance.isInventoryActive)
+        {
+            isFrozen = true;
+        }
+        else if(isPaused)
+        {
+            isFrozen = true;
+        }
+        else
+        {
+            isFrozen = false;
+        }
+
+        return isFrozen;
     }
 
     void TogglePause()

@@ -18,11 +18,14 @@ public class CharacterDialogue : MonoBehaviour
     public string npcName;
     //public DialogueAsset dialogueAsset;
     public DialogueTree dialogueTree;
+    public DialogueTree secondDialogueTree;
+    public DialogueTree questFinishedDialogueTree;
 
     bool inConversation;
 
     public QuestBase quest;
     public int launchQuestIndex = 0;
+    bool inQuest;
 
     [HideInInspector]
     public int StartPosition
@@ -74,7 +77,10 @@ public class CharacterDialogue : MonoBehaviour
         }
         else
         {
-            DialogueBox.instance.StartDialogue(dialogueTree, StartPosition, npcName);
+            if(!QuestManager.questManager.inQuestUI)
+            {
+                DialogueBox.instance.StartDialogue(dialogueTree, StartPosition, npcName);
+            }
         }
     }
 

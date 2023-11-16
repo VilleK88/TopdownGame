@@ -30,6 +30,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject inventoryItemPrefab;
     [HideInInspector] public InventorySlot slot;
     [HideInInspector] public InventoryItem itemInSlot;
+    public bool isInventoryActive = false;
 
 
     private void Update()
@@ -38,6 +39,7 @@ public class InventoryManager : MonoBehaviour
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             equipmentUI.SetActive(!equipmentUI.activeSelf);
+            isInventoryActive = inventoryUI.activeSelf;
         }
 
         if(weaponSlot.GetComponentInChildren<InventoryItem>() != null)
