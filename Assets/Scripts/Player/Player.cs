@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
+using Microsoft.Win32.SafeHandles;
 
 //[RequireComponent(typeof(TestPlayerMotor))]
 public class Player : MonoBehaviour
@@ -23,6 +24,12 @@ public class Player : MonoBehaviour
     RaycastHit hit;
     Vector3 cursorPosition;
     bool running = false;
+
+    [SerializeField] Transform orientation;
+    float horizontalInput;
+    float verticalInput;
+    Vector3 moveDirection;
+    float groundDrag = 5;
 
 
     [Header("Jump Parameters")]
@@ -59,14 +66,11 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        //currentStamina = maxStamina;
         rb = GetComponent<Rigidbody>();
         childSprite.GetComponent<Animator>();
         Physics.gravity *= gravityModifier;
-        //Cursor.lockState = CursorLockMode.Locked;
         cam = Camera.main;
         motor = GetComponent<TestPlayerMotor>();
-        //agent = GetComponent<NavMeshAgent>();
         //transform.position = new Vector3(GameManager.manager.x, GameManager.manager.y, GameManager.manager.z);
         transform.position = new Vector3(transform.position.x, 3, transform.position.z);
     }
@@ -86,7 +90,7 @@ public class Player : MonoBehaviour
         Move();
         MouseAiming();
         Block();
-        if(!blocking)
+        if (!blocking)
         {
             Jump();
             Attack();
@@ -253,7 +257,7 @@ public class Player : MonoBehaviour
             childSprite.GetComponent<Animator>().SetBool("Walking", false);
         }
 
-            movement.x = Input.GetAxisRaw("Horizontal");
+        movement.x = Input.GetAxisRaw("Horizontal");
         movement.z = Input.GetAxisRaw("Vertical");
 
         if(running)
@@ -274,6 +278,7 @@ public class Player : MonoBehaviour
 
     void FixedMove()
     {
+        //rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 

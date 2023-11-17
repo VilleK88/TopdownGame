@@ -18203,6 +18203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   childSprite: {fileID: 35958977}
   focus: {fileID: 0}
+  orientation: {fileID: 1385117358}
   groundCheck: {fileID: 592316354}
   ground:
     serializedVersion: 2

@@ -79,8 +79,6 @@ public class Knight : MonoBehaviour
             childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
         }
         Death();
-        //Debug.Log("Crusader stopping distance: " + agent.stoppingDistance);
-        //Debug.Log("Distance to player " + distanceToTarget);
 
         if(!dead)
         {

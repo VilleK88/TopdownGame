@@ -30,5 +30,6 @@ public class PlayerManager : MonoBehaviour
     public void KillPlayer()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameManager.manager.currentHealth = GameManager.manager.maxHealth;
     }
 }
