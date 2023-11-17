@@ -21758,8 +21758,9 @@ GameObject:
   - component: {fileID: 1881851069}
   - component: {fileID: 1881851071}
   - component: {fileID: 1881851072}
+  - component: {fileID: 1881851073}
   m_Layer: 0
-  m_Name: PlayerAndQuestManager
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21832,6 +21833,26 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   questIndex: 0
+--- !u!114 &1881851073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881851067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ea0af7430c5f81448d66121d55cb7e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questName: {fileID: 1724750126}
+  questRewardIcons:
+  - {fileID: 977499916}
+  - {fileID: 43564866}
+  - {fileID: 896689843}
+  - {fileID: 353304727}
+  questRewardXp: {fileID: 1268361608}
+  questRewardUI: {fileID: 434119077}
 --- !u!1 &1908419472
 GameObject:
   m_ObjectHideFlags: 0
