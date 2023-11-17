@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: Kill Crusaders
   questDescription: Kill 2 knights and 1 priest.
+  rewards:
+    itemRewards:
+    - {fileID: 11400000, guid: 098ddfd7123fc6840b23ae6d28068cfc, type: 2}
+    - {fileID: 11400000, guid: 098ddfd7123fc6840b23ae6d28068cfc, type: 2}
+    experienceReward: 200
+    goldReward: 0
   objectives:
   - requiredEnemy: {fileID: 11400000, guid: 97e6c9d4d9bd8784f9c2005298f9a79f, type: 2}
     requiredAmount: 2

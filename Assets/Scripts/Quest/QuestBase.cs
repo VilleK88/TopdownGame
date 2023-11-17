@@ -13,6 +13,16 @@ public class QuestBase : ScriptableObject
 
     public bool isCompleted { get; set; }
 
+    [System.Serializable]
+    public class Rewards
+    {
+        public Item[] itemRewards;
+        public float experienceReward;
+        public int goldReward;
+    }
+
+    public Rewards rewards;
+
     public virtual void initializeQuest()
     {
         Debug.Log("Start Quest");
