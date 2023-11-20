@@ -17,33 +17,17 @@ public class ObjectiveTracker : MonoBehaviour
     }
     #endregion
 
-    public GameObject objectiveTrackerUI;
     public TextMeshProUGUI objectiveText;
     public Animator objectiveAnim;
-    float maxTime = 3;
-    float timer = 0;
 
     private void Start()
     {
-        objectiveText = objectiveTrackerUI.GetComponent<TextMeshProUGUI>();
-        objectiveAnim = objectiveTrackerUI.GetComponent<Animator>();
+        objectiveText.raycastTarget = false;
     }
 
     public void UpdateTracker(string newText)
     {
-        timer = 0;
-        objectiveTrackerUI.SetActive(true);
         objectiveText.text = newText;
         objectiveAnim.Play("ObjectivePopUp");
-
-        if(timer < maxTime)
-        {
-            timer += Time.deltaTime;
-        }
-        else
-        {
-            objectiveTrackerUI.SetActive(false);
-        }
-
     }
 }
