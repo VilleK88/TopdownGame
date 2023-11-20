@@ -33,6 +33,7 @@ public class QuestBase : ScriptableObject
             if (QuestManager.questManager.quests[i] == null)
             {
                 QuestManager.questManager.quests[i] = QuestManager.questManager.currentQuest;
+                QuestlogManager.instance.AddQuestLog(this);
             }
             return;
         }
