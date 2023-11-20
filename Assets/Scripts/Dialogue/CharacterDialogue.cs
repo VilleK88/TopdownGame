@@ -27,6 +27,8 @@ public class CharacterDialogue : MonoBehaviour
     public int launchQuestAnswerIndex = 0;
     bool inQuest;
 
+    bool reward = true;
+
     [HideInInspector]
     public int StartPosition
     {
@@ -91,6 +93,11 @@ public class CharacterDialogue : MonoBehaviour
                 else if(QuestsContainsQuest(QuestManager.questManager.finishedQuests, quest))
                 {
                     DialogueBox.instance.StartDialogue(questFinishedDialogueTree, StartPosition, npcName);
+                    if(reward)
+                    {
+                        RewardManager.instance.SetRewardUI(quest);
+                        reward = false;
+                    }
                 }
                 else
                 {

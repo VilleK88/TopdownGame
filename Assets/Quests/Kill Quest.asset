@@ -18,6 +18,8 @@ MonoBehaviour:
     itemRewards:
     - {fileID: 11400000, guid: 098ddfd7123fc6840b23ae6d28068cfc, type: 2}
     - {fileID: 11400000, guid: 098ddfd7123fc6840b23ae6d28068cfc, type: 2}
+    - {fileID: 11400000, guid: 098ddfd7123fc6840b23ae6d28068cfc, type: 2}
+    - {fileID: 11400000, guid: 098ddfd7123fc6840b23ae6d28068cfc, type: 2}
     experienceReward: 200
     goldReward: 0
   objectives:
