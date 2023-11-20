@@ -17,5 +17,5 @@ MonoBehaviour:
   type: 1
   range: {x: 5, y: 4}
   stackable: 1
-  icon: {fileID: 5845185198968618096, guid: 140447aefe5ab6240b7562265d351154, type: 3}
+  icon: {fileID: 21300000, guid: e3da68de176d0a04daddebfef67cfce4, type: 3}
   description: 

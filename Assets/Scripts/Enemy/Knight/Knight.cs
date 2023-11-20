@@ -8,9 +8,7 @@ public class Knight : MonoBehaviour
 {
     Rigidbody rb;
     CapsuleCollider capsuleCollider;
-    //Animator anim;
     [SerializeField] GameObject childSprite;
-    //float speed = 50; // 10 original
 
     [Header("Player GameObject and Transform")]
     GameObject player;
@@ -32,8 +30,8 @@ public class Knight : MonoBehaviour
     public bool isAgro = false;
     float maxAgroCounter = 5;
     public float agroCounter = 0;
-    Vector3 direction;
-    Quaternion lookRotation;
+    //Vector3 direction;
+    //Quaternion lookRotation;
     NavMeshAgent agent;
     float attackCooldown = 1f;
     float attackCooldownOriginal;
@@ -45,7 +43,7 @@ public class Knight : MonoBehaviour
     [Header("Patrol Parameters")]
     public Transform[] waypoints;
     int waypointIndex;
-    Vector3 waypointTarget;
+    //Vector3 waypointTarget;
     public float waypointCounter = 0;
     float waypointMaxTime = 3;
 
