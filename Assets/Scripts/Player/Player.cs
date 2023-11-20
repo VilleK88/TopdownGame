@@ -25,13 +25,6 @@ public class Player : MonoBehaviour
     Vector3 cursorPosition;
     bool running = false;
 
-    [SerializeField] Transform orientation;
-    float horizontalInput;
-    float verticalInput;
-    Vector3 moveDirection;
-    float groundDrag = 5;
-
-
     [Header("Jump Parameters")]
     float jumpForce = 5;
     float gravityModifier = 1;
@@ -42,8 +35,6 @@ public class Player : MonoBehaviour
     public bool blocking; // if player is blocking or not
 
     [Header("Stamina Parameters")]
-    //float maxStamina = 100;
-    //public float currentStamina;
     public Image frontStaminaBar;
     public Image backStaminaBar;
     float chipSpeed = 2;
@@ -56,10 +47,9 @@ public class Player : MonoBehaviour
     bool isPaused = false;
     public GameObject menuButtons;
 
-    [Header("Combo Parameters")]
+    [Header("Attack and Combo Parameters")]
     bool attack1;
-    bool attack2 = false;
-
+    public bool attacking = false;
     float lastAttackMaxTime = 0.8f;
     public float lastAttackTimer = 0;
 
@@ -110,15 +100,32 @@ public class Player : MonoBehaviour
             else
             {
                 attack1 = false;
-                attack2 = false;
                 lastAttackTimer = 0;
             }
+        }
+
+        if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Q))
+        {
+            attacking = true;
+        }
+        else if(attacking)
+        {
+            StartCoroutine(CanMove());
         }
     }
 
     private void FixedUpdate()
     {
-        FixedMove();
+        if(!attacking)
+        {
+            FixedMove();
+        }
+    }
+
+    IEnumerator CanMove()
+    {
+        yield return new WaitForSeconds(0.2f);
+        attacking = false;
     }
 
     public bool CheckFreeze()
@@ -129,10 +136,10 @@ public class Player : MonoBehaviour
         {
             isFrozen = true;
         }
-        else if(InventoryManager.instance.isInventoryActive)
+        /*else if(InventoryManager.instance.isInventoryActive)
         {
             isFrozen = true;
-        }
+        }*/
         else if(isPaused)
         {
             isFrozen = true;
@@ -173,7 +180,6 @@ public class Player : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 100, ground))
             {
-                //motor.MoveToPoint(hit.point);
                 RemoveFocus();
             }
         }
@@ -223,7 +229,6 @@ public class Player : MonoBehaviour
         }
 
         focus = null;
-        //motor.StopFollowingTarget();
     }
 
     void Move()
@@ -232,10 +237,10 @@ public class Player : MonoBehaviour
             Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
             running = true;
-            //currentStamina -= runCost * Time.deltaTime;
-            if(GameManager.manager.currentStamina > 0)
+            childSprite.GetComponent<Animator>().SetBool("Running", true);
+            if (GameManager.manager.currentStamina > 0)
             {
-                moveSpeed = 6;
+                moveSpeed = 5;
             }
             else
             {
@@ -245,12 +250,20 @@ public class Player : MonoBehaviour
         else
         {
             running = false;
+            childSprite.GetComponent<Animator>().SetBool("Running", false);
             moveSpeed = 3.5f;
         }
         if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) ||
             Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
-            childSprite.GetComponent<Animator>().SetBool("Walking", true);
+            if(!attacking && !running)
+            {
+                childSprite.GetComponent<Animator>().SetBool("Walking", true);
+            }
+            else
+            {
+                childSprite.GetComponent<Animator>().SetBool("Walking", false);
+            }
         }
         else
         {
@@ -278,7 +291,6 @@ public class Player : MonoBehaviour
 
     void FixedMove()
     {
-        //rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
@@ -298,19 +310,18 @@ public class Player : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0) && GameManager.manager.currentStamina > 5)
         {
-            if(attack1 == false && lastAttackTimer == 0)
+            if(!attack1)
             {
                 childSprite.GetComponent<Animator>().SetTrigger("AxeAttack1");
                 GameManager.manager.currentStamina -= attackCost;
                 attack1 = true;
             }
-            else if(attack1 && !attack2 && lastAttackTimer > 0.2f)
+            else if(attack1)
             {
                 childSprite.GetComponent<Animator>().SetTrigger("AxeAttack2");
                 GameManager.manager.currentStamina -= attackCost;
-                attack2 = true;
-                //attack1 = false;
-                //lastAttackTimer = 0;
+                attack1 = false;
+                lastAttackTimer = 0;
             }
 
             frontStaminaBar.fillAmount = GameManager.manager.currentStamina / GameManager.manager.maxStamina;
@@ -331,12 +342,6 @@ public class Player : MonoBehaviour
             blocking = true;
 
             frontStaminaBar.fillAmount = GameManager.manager.currentStamina / GameManager.manager.maxStamina;
-
-            /*if (recharge != null)
-            {
-                StopCoroutine(recharge);
-            }
-            recharge = StartCoroutine(RechargeStamina());*/
         }
         else
         {
