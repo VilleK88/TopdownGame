@@ -140,6 +140,10 @@ public class Player : MonoBehaviour
         {
             isFrozen = true;
         }*/
+        else if(RewardManager.instance.isRewardUIActive)
+        {
+            isFrozen = true;
+        }
         else if(isPaused)
         {
             isFrozen = true;

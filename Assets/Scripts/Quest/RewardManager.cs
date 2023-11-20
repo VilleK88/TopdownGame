@@ -24,7 +24,7 @@ public class RewardManager : MonoBehaviour
     public TextMeshProUGUI questRewardXp;
     public GameObject questRewardUI;
     public QuestBase currentQuestReward;
-
+    public bool isRewardUIActive;
 
     public void SetRewardUI(QuestBase quest)
     {
@@ -38,7 +38,9 @@ public class RewardManager : MonoBehaviour
             questRewardIcons[i].sprite = quest.rewards.itemRewards[i].icon;
         }
 
+        questRewardXp.text = "Experience Reward: " + quest.rewards.experienceReward.ToString();
         currentQuestReward = quest;
+        isRewardUIActive = true;
     }
 
     public void GetRewardButton()
@@ -47,5 +49,7 @@ public class RewardManager : MonoBehaviour
         {
             bool wasPickedUp = InventoryManager.instance.AddItem(currentQuestReward.rewards.itemRewards[i]);
         }
+        GameManager.manager.currentExperience += currentQuestReward.rewards.experienceReward;
+        isRewardUIActive = false;
     }
 }
