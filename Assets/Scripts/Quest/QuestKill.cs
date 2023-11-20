@@ -34,6 +34,7 @@ public class QuestKill : QuestBase
             if(slainEnemy == objectives[i].requiredEnemy)
             {
                 currentAmount[i]++;
+                ObjectiveTracker.instance.UpdateTracker($"You've slain {currentAmount[i] + "/" + requiredAmount[i] + " " + slainEnemy.enemyName}");
             }
         }
 
