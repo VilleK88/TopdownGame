@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CharacterDialogue : MonoBehaviour
 {
@@ -20,10 +20,12 @@ public class CharacterDialogue : MonoBehaviour
     public DialogueTree dialogueTree;
     public DialogueTree secondDialogueTree;
     public DialogueTree questFinishedDialogueTree;
+    public CharacterProfile characterProfile;
 
     bool inConversation;
 
     public QuestBase quest;
+    QuestBase npcQuest;
     public int launchQuestAnswerIndex = 0;
     bool inQuest;
 
@@ -46,12 +48,13 @@ public class CharacterDialogue : MonoBehaviour
         }
     }
 
+    public List<QuestBase> quests;
+
 
     private void Start()
     {
         player = PlayerManager.instance.player;
         speechIcon.SetActive(false);
-        //quest.initializeQuest();
     }
 
     private void Update()
@@ -59,6 +62,7 @@ public class CharacterDialogue : MonoBehaviour
         distance = Vector3.Distance(player.transform.position, character.position);
         if (distance <= radius)
         {
+            gameObject.GetComponent<NavMeshAgent>().isStopped = true;
             speechIcon.SetActive(true);
             if (Input.GetKeyDown(KeyCode.T))
             {
@@ -67,6 +71,7 @@ public class CharacterDialogue : MonoBehaviour
         }
         else
         {
+            gameObject.GetComponent<NavMeshAgent>().isStopped = false;
             speechIcon.SetActive(false);
         }
     }
@@ -81,11 +86,6 @@ public class CharacterDialogue : MonoBehaviour
         {
             if(!QuestManager.questManager.inQuestUI)
             {
-                /*if(quest != QuestManager.questManager.currentQuest)
-                {
-                    DialogueBox.instance.StartDialogue(dialogueTree, StartPosition, npcName);
-                }*/
-
                 if(!QuestsContainsQuest(QuestManager.questManager.quests, quest) && !QuestsContainsQuest(QuestManager.questManager.finishedQuests, quest))
                 {
                     DialogueBox.instance.StartDialogue(dialogueTree, StartPosition, npcName);
@@ -130,7 +130,6 @@ public class CharacterDialogue : MonoBehaviour
         if(DialogueBox.instance.answerIndex == launchQuestAnswerIndex && !QuestsContainsQuest(QuestManager.questManager.quests, quest) &&
             !QuestsContainsQuest(QuestManager.questManager.finishedQuests, quest))
         {
-            //quest.initializeQuest();
             QuestManager.questManager.SetQuestUI(quest);
         }
     }

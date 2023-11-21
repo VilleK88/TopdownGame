@@ -244,7 +244,7 @@ public class Player : MonoBehaviour
             childSprite.GetComponent<Animator>().SetBool("Running", true);
             if (GameManager.manager.currentStamina > 0)
             {
-                moveSpeed = 5;
+                moveSpeed = 7; // 5
             }
             else
             {
@@ -295,18 +295,24 @@ public class Player : MonoBehaviour
 
     void FixedMove()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if(!CheckFreeze())
+        {
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        }
     }
 
     private void MouseAiming()
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if(Physics.Raycast(ray, out hit))
+        if (!CheckFreeze())
         {
-            cursorPosition = hit.point - transform.position;
+            if (Physics.Raycast(ray, out hit))
+            {
+                cursorPosition = hit.point - transform.position;
 
-            transform.forward = new Vector3(cursorPosition.x, 0, cursorPosition.z);
+                transform.forward = new Vector3(cursorPosition.x, 0, cursorPosition.z);
+            }
         }
     }
 

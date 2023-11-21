@@ -49,12 +49,12 @@ public class NPC : MonoBehaviour
     {
         if(canSeePlayer)
         {
-            gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+            //gameObject.GetComponent<NavMeshAgent>().isStopped = true;
             transform.LookAt(player.transform.position);
         }
         else
         {
-            gameObject.GetComponent<NavMeshAgent>().isStopped = false;
+            //gameObject.GetComponent<NavMeshAgent>().isStopped = false;
             Patrol();
             if(waypointCounter < waypointMaxTime)
             {

@@ -51,4 +51,17 @@ public class QuestManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         inQuestUI = false;
     }
+
+    public void MoveToFinishedQuests(QuestBase quest)
+    {
+        for(int i = 0; i < finishedQuests.Length; i++)
+        {
+            if (finishedQuests[i] == null)
+            {
+                finishedQuests[i] = quest;
+                quests[i] = null;
+                break;
+            }
+        }
+    }
 }

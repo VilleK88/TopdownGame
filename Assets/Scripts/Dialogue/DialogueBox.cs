@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-using UnityEngine.Rendering;
 
 public class DialogueBox : MonoBehaviour
 {
@@ -77,6 +75,7 @@ public class DialogueBox : MonoBehaviour
             OnDialogueEnded?.Invoke();
             inDialogue = false;
             dialoguePanel.SetActive(false);
+            CheckIfDialogueQuest(currentDialogue);
             yield break;
         }
         dialogueText.text = dialogueTree.sections[section].branchPoint.question;
@@ -126,13 +125,12 @@ public class DialogueBox : MonoBehaviour
         answerTriggered = true;
     }
 
-    void CheckIfDialogueQuest()
+    void CheckIfDialogueQuest(DialogueTree currentDialogue)
     {
-        Debug.Log("Start Quest");
         if(currentDialogue is DialogueQuest)
         {
-            DialogueQuest DQ = currentDialogue as DialogueQuest;
-            QuestManager.questManager.SetQuestUI(DQ.quest);
+            DialogueQuest dialogueQuest = currentDialogue as DialogueQuest;
+            QuestManager.questManager.SetQuestUI(dialogueQuest.quest);
         }
     }
 }

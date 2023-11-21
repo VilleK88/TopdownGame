@@ -23,11 +23,14 @@ public class QuestlogManager : MonoBehaviour
     public Transform questHolder;
     public GameObject questlogButtonPrefab;
     public GameObject questlogUI;
+    public TextMeshProUGUI objectiveText;
+    public TextMeshProUGUI npcTurnInText;
 
     public void UpdateQuestlog(QuestBase newQuest)
     {
         questName.text = newQuest.questName;
         questDescription.text = newQuest.questDescription;
+        //npcTurnInText.text = newQuest.NPCTurnIn.characterName;
     }
 
     public void AddQuestLog(QuestBase newQuest)

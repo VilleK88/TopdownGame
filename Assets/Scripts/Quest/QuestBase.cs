@@ -13,6 +13,8 @@ public class QuestBase : ScriptableObject
 
     public bool isCompleted { get; set; }
 
+    public CharacterProfile NPCTurnIn;
+
     [System.Serializable]
     public class Rewards
     {
@@ -28,14 +30,48 @@ public class QuestBase : ScriptableObject
         Debug.Log("Start Quest");
         currentAmount = new int[requiredAmount.Length];
 
+        if(!QuestAlreadyExists(QuestManager.questManager.currentQuest))
+        {
+            AddQuestToManager(QuestManager.questManager.currentQuest);
+            QuestlogManager.instance.AddQuestLog(this);
+        }
+
+        /*bool questAdded = false;
+
         for (int i = 0; i < QuestManager.questManager.quests.Length; i++)
         {
             if (QuestManager.questManager.quests[i] == null)
             {
                 QuestManager.questManager.quests[i] = QuestManager.questManager.currentQuest;
                 QuestlogManager.instance.AddQuestLog(this);
+                questAdded = true;
+                break;
             }
-            return;
+            //return;
+        }*/
+    }
+
+    bool QuestAlreadyExists(QuestBase questToCheck)
+    {
+        foreach(QuestBase quest in QuestManager.questManager.quests)
+        {
+            if(quest == questToCheck)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void AddQuestToManager(QuestBase questToAdd)
+    {
+        for(int i = 0; i < QuestManager.questManager.quests.Length; i++)
+        {
+            if (QuestManager.questManager.quests[i] == null)
+            {
+                QuestManager.questManager.quests[i] = questToAdd;
+                break;
+            }
         }
     }
 
@@ -51,7 +87,9 @@ public class QuestBase : ScriptableObject
 
         Debug.Log("Quest is Completed");
 
-        for (int i = 0; i < QuestManager.questManager.quests.Length; i++)
+        QuestManager.questManager.MoveToFinishedQuests(this);
+
+        /*for (int i = 0; i < QuestManager.questManager.quests.Length; i++)
         {
             if (QuestManager.questManager.quests[i] == QuestManager.questManager.currentQuest)
             {
@@ -60,10 +98,10 @@ public class QuestBase : ScriptableObject
                 AddToFinishedQuests(QuestManager.questManager.currentQuest);
                 return;
             }
-        }
+        }*/
     }
 
-    public void MoveToFinishedQuests(QuestBase quest)
+    /*public void MoveToFinishedQuests(QuestBase quest)
     {
         for(int i = 0; i < QuestManager.questManager.quests.Length; i++)
         {
@@ -75,7 +113,7 @@ public class QuestBase : ScriptableObject
                 return;
             }
         }
-    }
+    }*/
 
     void AddToFinishedQuests(QuestBase quest)
     {
