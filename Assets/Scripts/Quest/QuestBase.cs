@@ -35,20 +35,6 @@ public class QuestBase : ScriptableObject
             AddQuestToManager(QuestManager.questManager.currentQuest);
             QuestlogManager.instance.AddQuestLog(this);
         }
-
-        /*bool questAdded = false;
-
-        for (int i = 0; i < QuestManager.questManager.quests.Length; i++)
-        {
-            if (QuestManager.questManager.quests[i] == null)
-            {
-                QuestManager.questManager.quests[i] = QuestManager.questManager.currentQuest;
-                QuestlogManager.instance.AddQuestLog(this);
-                questAdded = true;
-                break;
-            }
-            //return;
-        }*/
     }
 
     bool QuestAlreadyExists(QuestBase questToCheck)
@@ -88,42 +74,5 @@ public class QuestBase : ScriptableObject
         Debug.Log("Quest is Completed");
 
         QuestManager.questManager.MoveToFinishedQuests(this);
-
-        /*for (int i = 0; i < QuestManager.questManager.quests.Length; i++)
-        {
-            if (QuestManager.questManager.quests[i] == QuestManager.questManager.currentQuest)
-            {
-                QuestManager.questManager.quests[i] = null;
-
-                AddToFinishedQuests(QuestManager.questManager.currentQuest);
-                return;
-            }
-        }*/
-    }
-
-    /*public void MoveToFinishedQuests(QuestBase quest)
-    {
-        for(int i = 0; i < QuestManager.questManager.quests.Length; i++)
-        {
-            if (QuestManager.questManager.quests[i] == quest)
-            {
-                QuestManager.questManager.quests[i] = null;
-
-                AddToFinishedQuests(quest);
-                return;
-            }
-        }
-    }*/
-
-    void AddToFinishedQuests(QuestBase quest)
-    {
-        for(int i = 0; i < QuestManager.questManager.finishedQuests.Length; i++)
-        {
-            if (QuestManager.questManager.finishedQuests[i] == null)
-            {
-                QuestManager.questManager.finishedQuests[i] = quest;
-                return;
-            }
-        }
     }
 }

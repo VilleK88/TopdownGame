@@ -6199,7 +6199,7 @@ PrefabInstance:
     - target: {fileID: 820544199569943621, guid: f1d83dd687ea2374586d04a5333eef35,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 820544199569943621, guid: f1d83dd687ea2374586d04a5333eef35,
         type: 3}
@@ -6294,6 +6294,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 820544199569943623, guid: f1d83dd687ea2374586d04a5333eef35,
         type: 3}
+      propertyPath: npcQuest
+      value: 
+      objectReference: {fileID: 11400000, guid: bdcddebfba14b0e4a8104681ff6e965c,
+        type: 2}
+    - target: {fileID: 820544199569943623, guid: f1d83dd687ea2374586d04a5333eef35,
+        type: 3}
+      propertyPath: questIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 820544199569943623, guid: f1d83dd687ea2374586d04a5333eef35,
+        type: 3}
       propertyPath: dialogueTree
       value: 
       objectReference: {fileID: 11400000, guid: 9a29d6da3f59a0d48803dd118bb92655,
@@ -6306,9 +6317,26 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 820544199569943623, guid: f1d83dd687ea2374586d04a5333eef35,
         type: 3}
+      propertyPath: quest.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 820544199569943623, guid: f1d83dd687ea2374586d04a5333eef35,
+        type: 3}
       propertyPath: secondDialogueTree
       value: 
       objectReference: {fileID: 11400000, guid: d8e3f6432e61648419c133f418f3c821,
+        type: 2}
+    - target: {fileID: 820544199569943623, guid: f1d83dd687ea2374586d04a5333eef35,
+        type: 3}
+      propertyPath: quest.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 20a97b3551b6b284ca9e64b620c7ec76,
+        type: 2}
+    - target: {fileID: 820544199569943623, guid: f1d83dd687ea2374586d04a5333eef35,
+        type: 3}
+      propertyPath: quest.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: bdcddebfba14b0e4a8104681ff6e965c,
         type: 2}
     - target: {fileID: 820544199569943623, guid: f1d83dd687ea2374586d04a5333eef35,
         type: 3}
@@ -14690,7 +14718,7 @@ Transform:
   - {fileID: 756974704}
   - {fileID: 496054486}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &606959792
 PrefabInstance:
@@ -15277,7 +15305,7 @@ Transform:
   - {fileID: 2126731915}
   - {fileID: 601386723}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &754308688
 GameObject:
@@ -24909,51 +24937,6 @@ Transform:
   m_Father: {fileID: 965331355}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2048361034
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2048361036}
-  - component: {fileID: 2048361035}
-  m_Layer: 0
-  m_Name: NPCManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2048361035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2048361034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16e945da0f2b3804e8edb3897ddfb070, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npcCharacters: []
---- !u!4 &2048361036
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2048361034}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2056452406
 GameObject:
   m_ObjectHideFlags: 0
@@ -25633,7 +25616,7 @@ PrefabInstance:
     - target: {fileID: 820544199569943621, guid: f1d83dd687ea2374586d04a5333eef35,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 820544199569943621, guid: f1d83dd687ea2374586d04a5333eef35,
         type: 3}
@@ -25710,6 +25693,34 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[4]
       value: 
       objectReference: {fileID: 601386723}
+    - target: {fileID: 820544199569943623, guid: f1d83dd687ea2374586d04a5333eef35,
+        type: 3}
+      propertyPath: npcQuest
+      value: 
+      objectReference: {fileID: 11400000, guid: 20a97b3551b6b284ca9e64b620c7ec76,
+        type: 2}
+    - target: {fileID: 820544199569943623, guid: f1d83dd687ea2374586d04a5333eef35,
+        type: 3}
+      propertyPath: questIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 820544199569943623, guid: f1d83dd687ea2374586d04a5333eef35,
+        type: 3}
+      propertyPath: quest.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 820544199569943623, guid: f1d83dd687ea2374586d04a5333eef35,
+        type: 3}
+      propertyPath: quest.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 20a97b3551b6b284ca9e64b620c7ec76,
+        type: 2}
+    - target: {fileID: 820544199569943623, guid: f1d83dd687ea2374586d04a5333eef35,
+        type: 3}
+      propertyPath: quest.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: bdcddebfba14b0e4a8104681ff6e965c,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1d83dd687ea2374586d04a5333eef35, type: 3}
 --- !u!1001 &3256589296596746019

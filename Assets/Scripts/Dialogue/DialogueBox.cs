@@ -75,7 +75,7 @@ public class DialogueBox : MonoBehaviour
             OnDialogueEnded?.Invoke();
             inDialogue = false;
             dialoguePanel.SetActive(false);
-            CheckIfDialogueQuest(currentDialogue);
+            //CheckIfDialogueQuest(currentDialogue);
             yield break;
         }
         dialogueText.text = dialogueTree.sections[section].branchPoint.question;

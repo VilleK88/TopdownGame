@@ -16,7 +16,6 @@ public class CharacterDialogue : MonoBehaviour
     [SerializeField] bool firstInteraction = true;
     [SerializeField] int repeatStartPosition;
     public string npcName;
-    //public DialogueAsset dialogueAsset;
     public DialogueTree dialogueTree;
     public DialogueTree secondDialogueTree;
     public DialogueTree questFinishedDialogueTree;
@@ -24,10 +23,10 @@ public class CharacterDialogue : MonoBehaviour
 
     bool inConversation;
 
-    public QuestBase quest;
-    QuestBase npcQuest;
+    [SerializeField] QuestBase npcQuest;
+    //QuestBase npcQuest;
     public int launchQuestAnswerIndex = 0;
-    bool inQuest;
+    //bool inQuest;
 
     bool reward = true;
 
@@ -47,8 +46,6 @@ public class CharacterDialogue : MonoBehaviour
             }
         }
     }
-
-    public List<QuestBase> quests;
 
 
     private void Start()
@@ -86,16 +83,16 @@ public class CharacterDialogue : MonoBehaviour
         {
             if(!QuestManager.questManager.inQuestUI)
             {
-                if(!QuestsContainsQuest(QuestManager.questManager.quests, quest) && !QuestsContainsQuest(QuestManager.questManager.finishedQuests, quest))
+                if(!QuestsContainsQuest(QuestManager.questManager.quests, npcQuest) && !QuestsContainsQuest(QuestManager.questManager.finishedQuests, npcQuest))
                 {
                     DialogueBox.instance.StartDialogue(dialogueTree, StartPosition, npcName);
                 }
-                else if(QuestsContainsQuest(QuestManager.questManager.finishedQuests, quest))
+                else if(QuestsContainsQuest(QuestManager.questManager.finishedQuests, npcQuest))
                 {
                     DialogueBox.instance.StartDialogue(questFinishedDialogueTree, StartPosition, npcName);
                     if(reward)
                     {
-                        RewardManager.instance.SetRewardUI(quest);
+                        RewardManager.instance.SetRewardUI(npcQuest);
                         reward = false;
                     }
                 }
@@ -105,6 +102,21 @@ public class CharacterDialogue : MonoBehaviour
                 }
             }
         }
+    }
+
+    bool AnotherNPCHasQuest(QuestBase questToCheck)
+    {
+        CharacterDialogue[] allNPCDialogues = FindObjectsOfType<CharacterDialogue>();
+
+        foreach(CharacterDialogue npcDialogue in allNPCDialogues)
+        {
+            if(npcDialogue != this && npcDialogue.QuestsContainsQuest(QuestManager.questManager.quests, questToCheck))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     bool QuestsContainsQuest(QuestBase[] questArray, QuestBase questToCheck)
@@ -127,11 +139,24 @@ public class CharacterDialogue : MonoBehaviour
     void LeaveConversation()
     {
         inConversation = false;
-        if(DialogueBox.instance.answerIndex == launchQuestAnswerIndex && !QuestsContainsQuest(QuestManager.questManager.quests, quest) &&
-            !QuestsContainsQuest(QuestManager.questManager.finishedQuests, quest))
+        if(DialogueBox.instance.answerIndex == launchQuestAnswerIndex && !QuestsContainsQuest(QuestManager.questManager.quests, npcQuest) &&
+            !QuestsContainsQuest(QuestManager.questManager.finishedQuests, npcQuest))
         {
-            QuestManager.questManager.SetQuestUI(quest);
+            if(!AnotherNPCHasQuest(npcQuest))
+            {
+                if(IsThisNPCQuest(npcQuest))
+                {
+                    QuestManager.questManager.SetQuestUI(npcQuest);
+                }
+                //QuestManager.questManager.SetQuestUI(npcQuest);
+            }
+            //QuestManager.questManager.SetQuestUI(npcQuest);
         }
+    }
+
+    bool IsThisNPCQuest(QuestBase questToCheck)
+    {
+        return questToCheck == npcQuest;
     }
 
     private void OnEnable()
