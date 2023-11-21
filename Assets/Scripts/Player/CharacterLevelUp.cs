@@ -75,7 +75,8 @@ public class CharacterLevelUp : MonoBehaviour
         //playerHealtScript.currentHealth = playerHealtScript.maxHealth;
 
         GameManager.manager.currentLevel++;
-
+        //ObjectiveTracker.instance.UpdateTracker($"Level increased to {GameManager.manager.currentLevel}");
+        ObjectiveTracker.instance.UpdateLevelTracker($"Level increased to {GameManager.manager.currentLevel}");
         //currentExperience = 0;
         //maxExperience += 100;
 
