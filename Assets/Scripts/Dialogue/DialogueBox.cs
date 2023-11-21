@@ -75,7 +75,6 @@ public class DialogueBox : MonoBehaviour
             OnDialogueEnded?.Invoke();
             inDialogue = false;
             dialoguePanel.SetActive(false);
-            //CheckIfDialogueQuest(currentDialogue);
             yield break;
         }
         dialogueText.text = dialogueTree.sections[section].branchPoint.question;
@@ -123,14 +122,5 @@ public class DialogueBox : MonoBehaviour
     {
         answerIndex = answer;
         answerTriggered = true;
-    }
-
-    void CheckIfDialogueQuest(DialogueTree currentDialogue)
-    {
-        if(currentDialogue is DialogueQuest)
-        {
-            DialogueQuest dialogueQuest = currentDialogue as DialogueQuest;
-            QuestManager.questManager.SetQuestUI(dialogueQuest.quest);
-        }
     }
 }

@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
-using Microsoft.Win32.SafeHandles;
 
-//[RequireComponent(typeof(TestPlayerMotor))]
 public class Player : MonoBehaviour
 {
     Rigidbody rb;
@@ -52,6 +50,14 @@ public class Player : MonoBehaviour
     public bool attacking = false;
     float lastAttackMaxTime = 0.8f;
     public float lastAttackTimer = 0;
+
+    [Header("Dialogue")]
+    public DialogueBase dialogue;
+
+    public void TriggerDialogue()
+    {
+        DialogueManager.instance.EnqueueDialogue(dialogue);
+    }
 
 
     private void Start()
@@ -111,6 +117,18 @@ public class Player : MonoBehaviour
         else if(attacking)
         {
             StartCoroutine(CanMove());
+        }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            if(!DialogueManager.instance.inDialogue)
+            {
+                TriggerDialogue();
+            }
+            else
+            {
+                DialogueManager.instance.DequeueDialogue();
+            }
         }
     }
 

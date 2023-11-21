@@ -25,7 +25,7 @@ public class CharacterDialogue : MonoBehaviour
 
     [SerializeField] QuestBase npcQuest;
     //QuestBase npcQuest;
-    public int launchQuestAnswerIndex = 0;
+    //public int launchQuestAnswerIndex = 0;
     //bool inQuest;
 
     bool reward = true;
@@ -59,6 +59,7 @@ public class CharacterDialogue : MonoBehaviour
         distance = Vector3.Distance(player.transform.position, character.position);
         if (distance <= radius)
         {
+            //Debug.Log(npcQuest.questName);
             gameObject.GetComponent<NavMeshAgent>().isStopped = true;
             speechIcon.SetActive(true);
             if (Input.GetKeyDown(KeyCode.T))
@@ -104,21 +105,6 @@ public class CharacterDialogue : MonoBehaviour
         }
     }
 
-    bool AnotherNPCHasQuest(QuestBase questToCheck)
-    {
-        CharacterDialogue[] allNPCDialogues = FindObjectsOfType<CharacterDialogue>();
-
-        foreach(CharacterDialogue npcDialogue in allNPCDialogues)
-        {
-            if(npcDialogue != this && npcDialogue.QuestsContainsQuest(QuestManager.questManager.quests, questToCheck))
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     bool QuestsContainsQuest(QuestBase[] questArray, QuestBase questToCheck)
     {
         foreach(QuestBase q in questArray)
@@ -139,19 +125,16 @@ public class CharacterDialogue : MonoBehaviour
     void LeaveConversation()
     {
         inConversation = false;
-        if(DialogueBox.instance.answerIndex == launchQuestAnswerIndex && !QuestsContainsQuest(QuestManager.questManager.quests, npcQuest) &&
+        /*if (!QuestsContainsQuest(QuestManager.questManager.quests, npcQuest) &&
             !QuestsContainsQuest(QuestManager.questManager.finishedQuests, npcQuest))
         {
-            if(!AnotherNPCHasQuest(npcQuest))
-            {
-                if(IsThisNPCQuest(npcQuest))
-                {
-                    QuestManager.questManager.SetQuestUI(npcQuest);
-                }
-                //QuestManager.questManager.SetQuestUI(npcQuest);
-            }
-            //QuestManager.questManager.SetQuestUI(npcQuest);
-        }
+
+        }*/
+    }
+
+    void StartQuest()
+    {
+        QuestManager.questManager.SetQuestUI(npcQuest);
     }
 
     bool IsThisNPCQuest(QuestBase questToCheck)
