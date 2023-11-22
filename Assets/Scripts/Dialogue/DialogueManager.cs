@@ -37,6 +37,7 @@ public class DialogueManager : MonoBehaviour
     int optionsAmount;
     public TextMeshProUGUI questionText;
 
+    DialogueBase currentDialogue;
     bool isCurrentlyTyping;
     string completeText;
     bool buffer;
@@ -53,7 +54,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EnqueueDialogue(DialogueBase db)
     {
-        if(inDialogue)
+        if(inDialogue || QuestManager.questManager.inQuestUI)
             return;
 
         buffer = true;
@@ -62,6 +63,8 @@ public class DialogueManager : MonoBehaviour
 
         dialogueBox.SetActive(true);
         dialogueInfo.Clear();
+        currentDialogue = db;
+
         OptionsParser(db);
 
         foreach(DialogueBase.Info info in db.dialogueInfo)
@@ -136,13 +139,18 @@ public class DialogueManager : MonoBehaviour
 
     public void EndOfDialogue()
     {
-        /*if(!inDialogue)
-        {
-            dialogueBox.SetActive(false);
-        }*/
         dialogueBox.SetActive(false);
-
         OptionsLogic();
+        CheckIfDialogueQuest();
+    }
+
+    void CheckIfDialogueQuest()
+    {
+        if(currentDialogue is DialogueQuest)
+        {
+            DialogueQuest dq = currentDialogue as DialogueQuest;
+            QuestManager.questManager.SetQuestUI(dq.quest);
+        }
     }
 
     void OptionsLogic()

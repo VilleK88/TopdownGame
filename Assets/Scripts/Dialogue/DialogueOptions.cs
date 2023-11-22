@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "New Dialogue Option", menuName = "DialogueOptions")]
+[CreateAssetMenu(fileName = "New Dialogue Option", menuName = "Dialogues/DialogueOptions")]
 public class DialogueOptions : DialogueBase
 {
     [TextArea(2, 10)]

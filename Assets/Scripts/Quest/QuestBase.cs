@@ -30,14 +30,14 @@ public class QuestBase : ScriptableObject
         Debug.Log("Start Quest");
         currentAmount = new int[requiredAmount.Length];
 
-        if(!QuestAlreadyExists(QuestManager.questManager.currentQuest))
+        /*if(!QuestAlreadyExists(QuestManager.questManager.currentQuest))
         {
             AddQuestToManager(QuestManager.questManager.currentQuest);
             QuestlogManager.instance.AddQuestLog(this);
-        }
+        }*/
     }
 
-    bool QuestAlreadyExists(QuestBase questToCheck)
+    /*bool QuestAlreadyExists(QuestBase questToCheck)
     {
         foreach(QuestBase quest in QuestManager.questManager.quests)
         {
@@ -47,9 +47,9 @@ public class QuestBase : ScriptableObject
             }
         }
         return false;
-    }
+    }*/
 
-    void AddQuestToManager(QuestBase questToAdd)
+    /*void AddQuestToManager(QuestBase questToAdd)
     {
         for(int i = 0; i < QuestManager.questManager.quests.Length; i++)
         {
@@ -59,7 +59,7 @@ public class QuestBase : ScriptableObject
                 break;
             }
         }
-    }
+    }*/
 
     public void Evaluate()
     {
@@ -73,6 +73,6 @@ public class QuestBase : ScriptableObject
 
         Debug.Log("Quest is Completed");
 
-        QuestManager.questManager.MoveToFinishedQuests(this);
+        //QuestManager.questManager.MoveToFinishedQuests(this);
     }
 }

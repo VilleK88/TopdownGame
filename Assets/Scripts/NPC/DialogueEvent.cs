@@ -6,8 +6,9 @@ using UnityEngine.Events;
 [RequireComponent(typeof(DialogueTrigger))]
 public class DialogueEvent : NPCInteraction
 {
-    public int targetLine;
+    [Header("Target info")]
     public int targetIndex;
+    public int targetLine;
 
     public UnityEvent unityEvent;
 

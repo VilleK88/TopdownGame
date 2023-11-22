@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
     float lastAttackMaxTime = 0.8f;
     public float lastAttackTimer = 0;
 
-
+    //public QuestBase quest;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
         motor = GetComponent<TestPlayerMotor>();
         //transform.position = new Vector3(GameManager.manager.x, GameManager.manager.y, GameManager.manager.z);
         transform.position = new Vector3(transform.position.x, 3, transform.position.z);
+        //quest.initializeQuest();
     }
 
     private void Update()
@@ -143,6 +144,10 @@ public class Player : MonoBehaviour
             isFrozen = true;
         }*/
         else if(RewardManager.instance.isRewardUIActive)
+        {
+            isFrozen = true;
+        }
+        else if(QuestManager.questManager.inQuestUI)
         {
             isFrozen = true;
         }

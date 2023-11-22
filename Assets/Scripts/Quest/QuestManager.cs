@@ -26,8 +26,8 @@ public class QuestManager : MonoBehaviour
     public QuestBase currentQuest; //{ get; set; }
     public bool inQuestUI { get; set; }
 
-    public QuestBase[] quests;
-    public QuestBase[] finishedQuests;
+    //public QuestBase[] quests;
+    //public QuestBase[] finishedQuests;
     public int questIndex;
 
 
@@ -52,7 +52,7 @@ public class QuestManager : MonoBehaviour
         inQuestUI = false;
     }
 
-    public void MoveToFinishedQuests(QuestBase quest)
+    /*public void MoveToFinishedQuests(QuestBase quest)
     {
         for(int i = 0; i < finishedQuests.Length; i++)
         {
@@ -63,5 +63,5 @@ public class QuestManager : MonoBehaviour
                 break;
             }
         }
-    }
+    }*/
 }

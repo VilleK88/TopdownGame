@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d883b141ecfa814e81333b9764c7ccf, type: 3}
+  m_Name: First
+  m_EditorClassIdentifier: 
+  dialogueInfo:
+  - character: {fileID: 11400000, guid: 281ef917b4910124c89a1bd40f1ece3c, type: 2}
+    myText: Hi Lalli!
+    characterEmotion: 0
+  questionText: Can you kill christian peasants for me?
+  optionsInfo:
+  - buttonName: Yes
+    nextDialogue: {fileID: 11400000, guid: 9e88c8bc4ecb7ee47853dde817a359dd, type: 2}
+    myEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - buttonName: No
+    nextDialogue: {fileID: 11400000, guid: 2fb6b5333e32bdc409455697c9d65d96, type: 2}
+    myEvent:
+      m_PersistentCalls:
+        m_Calls: []
