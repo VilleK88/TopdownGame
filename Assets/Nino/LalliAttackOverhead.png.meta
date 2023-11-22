@@ -1,0 +1,329 @@
+fileFormatVersion: 2
+guid: 285eb8f5303a20e41901d7dde2accc50
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: LalliAttackOverhead_0
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 121
+        width: 76
+        height: 74
+      alignment: 9
+      pivot: {x: 0.598708, y: 0.39919156}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6d03ae3551f4914d847c6cf617fb006
+      internalID: -1027825164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LalliAttackOverhead_3
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 123
+        width: 65
+        height: 70
+      alignment: 9
+      pivot: {x: 0.53163314, y: 0.39313877}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f290a5a9904b7e4685e4253b3ff5c41
+      internalID: -926242617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LalliAttackOverhead_6
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 123
+        width: 65
+        height: 70
+      alignment: 9
+      pivot: {x: 0.53135705, y: 0.3942058}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be3435e834bbdf64eb70e5af73cf6e31
+      internalID: 2078418093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LalliAttackOverhead_9
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 124
+        width: 65
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5301166, y: 0.4748301}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6030ffc6a6d909e4fa281f1ff25869dd
+      internalID: -840114800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LalliAttackOverhead_11
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 110
+        width: 106
+        height: 79
+      alignment: 9
+      pivot: {x: 0.50332296, y: 0.50980675}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a3f4a063e472c84087dbfe0f0d26d8e
+      internalID: 1771188055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LalliAttackOverhead_12
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 43
+        width: 64
+        height: 121
+      alignment: 9
+      pivot: {x: 0.53848267, y: 0.8895761}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 856635d2da592534abd129bd259e14c6
+      internalID: 169566525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LalliAttackOverhead_13
+      rect:
+        serializedVersion: 2
+        x: 1404
+        y: 8
+        width: 64
+        height: 156
+      alignment: 9
+      pivot: {x: 0.5396881, y: 0.91373247}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c43e279e5719d9349a40d4b7403e8ce1
+      internalID: -2028056184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LalliAttackOverhead_14
+      rect:
+        serializedVersion: 2
+        x: 1624
+        y: 8
+        width: 64
+        height: 156
+      alignment: 9
+      pivot: {x: 0.5389061, y: 0.9136201}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a875267ce3dd514392e468b46e007bd
+      internalID: -146127172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LalliAttackOverhead_15
+      rect:
+        serializedVersion: 2
+        x: 1841
+        y: 7
+        width: 72
+        height: 157
+      alignment: 9
+      pivot: {x: 0.5212962, y: 0.913568}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f59cb55475e8f0344a921bee4ea102d6
+      internalID: 1519477428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 72919240a35959a4786dfadeb29c456f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      LalliAttackOverhead_0: -1027825164
+      LalliAttackOverhead_1: -1918262513
+      LalliAttackOverhead_10: -1704965074
+      LalliAttackOverhead_11: 1771188055
+      LalliAttackOverhead_12: 169566525
+      LalliAttackOverhead_13: -2028056184
+      LalliAttackOverhead_14: -146127172
+      LalliAttackOverhead_15: 1519477428
+      LalliAttackOverhead_16: 1363690836
+      LalliAttackOverhead_2: 2096423152
+      LalliAttackOverhead_3: -926242617
+      LalliAttackOverhead_4: -1582814250
+      LalliAttackOverhead_5: -2035615202
+      LalliAttackOverhead_6: 2078418093
+      LalliAttackOverhead_7: -1967732215
+      LalliAttackOverhead_8: 1736087293
+      LalliAttackOverhead_9: -840114800
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
