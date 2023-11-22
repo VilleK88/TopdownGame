@@ -7339,10 +7339,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DialogueBox, Assembly-CSharp
-        m_MethodName: AnswerQuestion
-        m_Mode: 3
+      - m_Target: {fileID: 276515777}
+        m_TargetAssemblyTypeName: UnityEventHandler, Assembly-CSharp
+        m_MethodName: IniateAction
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -16041,10 +16041,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DialogueBox, Assembly-CSharp
-        m_MethodName: AnswerQuestion
-        m_Mode: 3
+      - m_Target: {fileID: 839693563}
+        m_TargetAssemblyTypeName: UnityEventHandler, Assembly-CSharp
+        m_MethodName: IniateAction
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17189,10 +17189,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DialogueBox, Assembly-CSharp
-        m_MethodName: AnswerQuestion
-        m_Mode: 3
+      - m_Target: {fileID: 945920879}
+        m_TargetAssemblyTypeName: UnityEventHandler, Assembly-CSharp
+        m_MethodName: IniateAction
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -20762,7 +20762,6 @@ MonoBehaviour:
   menuButtons: {fileID: 371100463}
   attacking: 0
   lastAttackTimer: 0
-  dialogue: {fileID: 11400000, guid: aadc79e841234554fb5dfed4ad12b333, type: 2}
 --- !u!114 &1385117360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22734,6 +22733,7 @@ MonoBehaviour:
   dialogueName: {fileID: 2060475613}
   dialogueText: {fileID: 1162367045}
   dialoguePortrait: {fileID: 1788113007}
+  isDialogueOption: 0
   dialogueOptionUI: {fileID: 2109037150}
   inDialogue: 0
   optionButtons:
@@ -26452,15 +26452,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2076255907, guid: f1d83dd687ea2374586d04a5333eef35, type: 3}
+      propertyPath: db.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2076255907, guid: f1d83dd687ea2374586d04a5333eef35, type: 3}
+      propertyPath: db.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 81cd41b3a4bc7c64bbbed0aa00ee75bf,
+        type: 2}
+    - target: {fileID: 2076255907, guid: f1d83dd687ea2374586d04a5333eef35, type: 3}
+      propertyPath: db.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: aadc79e841234554fb5dfed4ad12b333,
+        type: 2}
+    - target: {fileID: 2076255907, guid: f1d83dd687ea2374586d04a5333eef35, type: 3}
+      propertyPath: nextDialogueOnInteract
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9201903216775813319, guid: f1d83dd687ea2374586d04a5333eef35,
         type: 3}
       propertyPath: m_Name
       value: NPC
-      objectReference: {fileID: 0}
-    - target: {fileID: 9201903216775813320, guid: f1d83dd687ea2374586d04a5333eef35,
-        type: 3}
-      propertyPath: launchQuestAnswerIndex
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9201903216775813321, guid: f1d83dd687ea2374586d04a5333eef35,
         type: 3}

@@ -39,8 +39,12 @@ public class DialogueManager : MonoBehaviour
 
     bool isCurrentlyTyping;
     string completeText;
-
+    bool buffer;
     Coroutine typeCoroutine;
+
+    public delegate void OnDialogueLineCallBack(int dialogueLine);
+    public OnDialogueLineCallBack onDialogueLineCallBack;
+    int totalLineCount;
 
     private void Start()
     {
@@ -50,13 +54,14 @@ public class DialogueManager : MonoBehaviour
     public void EnqueueDialogue(DialogueBase db)
     {
         if(inDialogue)
-        {
             return;
-        }
+
+        buffer = true;
         inDialogue = true;
+        StartCoroutine(BufferTimer());
+
         dialogueBox.SetActive(true);
         dialogueInfo.Clear();
-
         OptionsParser(db);
 
         foreach(DialogueBase.Info info in db.dialogueInfo)
@@ -64,6 +69,7 @@ public class DialogueManager : MonoBehaviour
             dialogueInfo.Enqueue(info);
         }
 
+        totalLineCount = dialogueInfo.Count;
         DequeueDialogue();
     }
 
@@ -71,6 +77,9 @@ public class DialogueManager : MonoBehaviour
     {
         if (isCurrentlyTyping == true)
         {
+            if (buffer == true)
+                return;
+
             CompleteText();
             StopCoroutine(typeCoroutine);
             isCurrentlyTyping = false;
@@ -85,8 +94,13 @@ public class DialogueManager : MonoBehaviour
         }
 
         DialogueBase.Info info = dialogueInfo.Dequeue();
-        completeText = info.myText;
 
+        if(onDialogueLineCallBack != null)
+        {
+            onDialogueLineCallBack.Invoke(totalLineCount = dialogueInfo.Count);
+        }
+
+        completeText = info.myText;
         dialogueName.text = info.character.myName;
         dialogueText.text = info.myText;
         //dialoguePortrait.sprite = info.character.myPortrait;
@@ -107,6 +121,12 @@ public class DialogueManager : MonoBehaviour
             AudioManager.instance.PlayClip(info.character.myVoice);
         }
         isCurrentlyTyping = false;
+    }
+
+    IEnumerator BufferTimer()
+    {
+        yield return new WaitForSeconds(0.1f);
+        buffer = false;
     }
 
     void CompleteText()
@@ -154,6 +174,8 @@ public class DialogueManager : MonoBehaviour
             optionsAmount = dialogueOptions.optionsInfo.Length;
             questionText.text = dialogueOptions.questionText;
 
+            optionButtons[0].GetComponent<Button>().Select();
+
             for (int i = 0; i < optionButtons.Length; i++)
             {
                 optionButtons[i].SetActive(false);
@@ -178,6 +200,17 @@ public class DialogueManager : MonoBehaviour
         else
         {
             isDialogueOption = false;
+        }
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            if(inDialogue)
+            {
+                DialogueManager.instance.DequeueDialogue();
+            }
         }
     }
 }

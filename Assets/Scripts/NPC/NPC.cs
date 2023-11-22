@@ -10,55 +10,41 @@ public class NPC : MonoBehaviour
     [SerializeField] GameObject childSprite;
     NavMeshAgent agent;
 
-    [Header("Player GameObject and Transform")]
-    GameObject player;
-    Transform playerTransform;
-    float distanceToPlayer;
-
-    [Header("Field of View Parameters")]
-    public float radius = 7;
-    [Range(0, 360)]
-    public float angle = 120;
-    public LayerMask targetMask;
-    public LayerMask obstructionMask;
-    public bool canSeePlayer;
-    Collider[] rangeChecks;
-    Transform target;
-    Vector3 directionToTarget;
-    float distanceToTarget;
-
     [Header("Patrol Parameters")]
-    public Transform[] waypoints;
+    [SerializeField] private Transform[] waypoints;
     int waypointIndex;
     Vector3 waypointTarget;
     public float waypointCounter = 0;
     float waypointMaxTime = 2;
 
+    [Header("Interact with NPC")]
+    [SerializeField] NPCInteraction npcInteraction;
+    float distance;
+    float radius;
+    [SerializeField] GameObject speechIcon;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        player = PlayerManager.instance.player;
-        playerTransform = player.transform;
         agent = GetComponent<NavMeshAgent>();
-        StartCoroutine(FOVRoutine());
         agent.SetDestination(waypoints[waypointIndex].position);
         capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
     private void Update()
     {
-        distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        Debug.Log("Distance to player: " + distanceToPlayer);
+        distance = npcInteraction.GetComponent<NPCInteraction>().distance;
+        radius = npcInteraction.GetComponent<NPCInteraction>().radius;
 
-        if(distanceToPlayer < 3)
+        if (distance <= radius)
         {
-            transform.LookAt(player.transform.position);
             gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+            speechIcon.SetActive(true);
         }
         else
         {
             gameObject.GetComponent<NavMeshAgent>().isStopped = false;
+            speechIcon.SetActive(false);
 
             Patrol();
             if (waypointCounter < waypointMaxTime)
@@ -84,50 +70,6 @@ public class NPC : MonoBehaviour
             {
                 waypointIndex = 0;
             }
-        }
-    }
-
-    IEnumerator FOVRoutine()
-    {
-        WaitForSeconds wait = new WaitForSeconds(0.2f);
-
-        while (true)
-        {
-            yield return wait;
-            FieldOfViewCheck();
-        }
-    }
-
-    void FieldOfViewCheck()
-    {
-        rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
-
-        if (rangeChecks.Length != 0)
-        {
-            target = rangeChecks[0].transform;
-            directionToTarget = (target.position - transform.position).normalized;
-
-            if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
-            {
-                distanceToTarget = Vector3.Distance(transform.position, target.position);
-
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
-                {
-                    canSeePlayer = true;
-                }
-                else
-                {
-                    canSeePlayer = false;
-                }
-            }
-            else
-            {
-                canSeePlayer = false;
-            }
-        }
-        else if (canSeePlayer)
-        {
-            canSeePlayer = false;
         }
     }
 }

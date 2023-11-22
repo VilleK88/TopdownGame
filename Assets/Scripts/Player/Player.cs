@@ -51,14 +51,6 @@ public class Player : MonoBehaviour
     float lastAttackMaxTime = 0.8f;
     public float lastAttackTimer = 0;
 
-    [Header("Dialogue")]
-    public DialogueBase dialogue;
-
-    public void TriggerDialogue()
-    {
-        DialogueManager.instance.EnqueueDialogue(dialogue);
-    }
-
 
     private void Start()
     {
@@ -118,19 +110,6 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(CanMove());
         }
-
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            if(!DialogueManager.instance.inDialogue)
-            {
-                if(!DialogueManager.instance.isDialogueOption)
-                    TriggerDialogue();
-            }
-            else
-            {
-                DialogueManager.instance.DequeueDialogue();
-            }
-        }
     }
 
     private void FixedUpdate()
@@ -151,15 +130,19 @@ public class Player : MonoBehaviour
     {
         bool isFrozen;
 
-        /*if(DialogueManager.instance.inDialogue)
+        if(DialogueManager.instance.inDialogue)
         {
             isFrozen = true;
-        }*/
+        }
+        else if(DialogueManager.instance.isDialogueOption)
+        {
+            isFrozen = true;
+        }
         /*else if(InventoryManager.instance.isInventoryActive)
         {
             isFrozen = true;
         }*/
-        if(RewardManager.instance.isRewardUIActive)
+        else if(RewardManager.instance.isRewardUIActive)
         {
             isFrozen = true;
         }

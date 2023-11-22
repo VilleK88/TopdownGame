@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba6d6cc8203e6ee4f9dccea6ffc15827, type: 3}
-  m_Name: No
+  m_Name: Lalli_Yes
   m_EditorClassIdentifier: 
   dialogueInfo:
-  - character: {fileID: 11400000, guid: 80bcf3103559c624a93ee2e7cf8f966c, type: 2}
-    myText: Ok
+  - character: {fileID: 11400000, guid: 0fcdacbaf2816e8459a4a38d60e1dba9, type: 2}
+    myText: Yes I can
+    characterEmotion: 1
