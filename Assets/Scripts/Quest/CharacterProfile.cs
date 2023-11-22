@@ -6,11 +6,11 @@ using UnityEngine;
 public class CharacterProfile : ScriptableObject
 {
     public string myName;
-    public Sprite myPortrait;
-    //Sprite myPortrait;
+    //public Sprite myPortrait;
+    Sprite myPortrait;
     public AudioClip myVoice;
 
-    /*public Sprite MyPortrait
+    public Sprite MyPortrait
     {
         get
         {
@@ -50,13 +50,13 @@ public class CharacterProfile : ScriptableObject
                 myPortrait = emotionPortraits.sad;
                 break;
         }
-    }*/
+    }
 }
 
-/*public enum EmotionType
+public enum EmotionType
 {
     Standard,
     Happy,
     Angry,
     Sad
-}*/
+}

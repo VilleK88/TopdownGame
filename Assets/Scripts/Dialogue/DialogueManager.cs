@@ -30,7 +30,7 @@ public class DialogueManager : MonoBehaviour
     public Queue<DialogueBase.Info> dialogueInfo;
 
     // options stuff
-    bool isDialogueOption;
+    public bool isDialogueOption;
     public GameObject dialogueOptionUI;
     public bool inDialogue;
     public GameObject[] optionButtons;
@@ -89,9 +89,9 @@ public class DialogueManager : MonoBehaviour
 
         dialogueName.text = info.character.myName;
         dialogueText.text = info.myText;
-        dialoguePortrait.sprite = info.character.myPortrait;
-        //info.ChangeEmotion();
-        //dialoguePortrait.sprite = info.character.MyPortrait;
+        //dialoguePortrait.sprite = info.character.myPortrait;
+        info.ChangeEmotion();
+        dialoguePortrait.sprite = info.character.MyPortrait;
 
         dialogueText.text = ""; // prevent text repetition
         typeCoroutine = StartCoroutine(TypeText(info));
@@ -142,6 +142,7 @@ public class DialogueManager : MonoBehaviour
     {
         //questionTextBubble.SetActive(false);
         dialogueOptionUI.SetActive(false);
+        isDialogueOption = false; // oma testi
     }
 
     void OptionsParser(DialogueBase db)

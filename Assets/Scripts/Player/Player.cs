@@ -123,7 +123,8 @@ public class Player : MonoBehaviour
         {
             if(!DialogueManager.instance.inDialogue)
             {
-                TriggerDialogue();
+                if(!DialogueManager.instance.isDialogueOption)
+                    TriggerDialogue();
             }
             else
             {

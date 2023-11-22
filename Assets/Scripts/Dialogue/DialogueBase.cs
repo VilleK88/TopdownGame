@@ -9,17 +9,17 @@ public class DialogueBase : ScriptableObject
     public class Info
     {
         public CharacterProfile character;
-        public string myName;
-        public Sprite portrait;
+        //public string myName;
+        //public Sprite portrait;
         [TextArea(4, 8)]
         public string myText;
 
-        //public EmotionType characterEmotion;
+        public EmotionType characterEmotion;
 
-       /* public void ChangeEmotion()
+        public void ChangeEmotion()
         {
             character.Emotion = characterEmotion;
-        }*/
+        }
     }
 
     [Header("Insert Dialogue Information Below")]

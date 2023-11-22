@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Lalli
   m_EditorClassIdentifier: 
   myName: Lalli
-  myPortrait: {fileID: 0}
   myVoice: {fileID: 0}
+  emotionPortraits:
+    standard: {fileID: 21300000, guid: b53db54545fcd5747b7ba5e450c07baf, type: 3}
+    happy: {fileID: 21300000, guid: 28b103e16acf21b45afc90eb7afb7e42, type: 3}
+    angry: {fileID: 4288251886331194031, guid: 545f9c74323fe914c829180b85afb1b7, type: 3}
+    sad: {fileID: 21300000, guid: 7c00ea4006710ea4994e82ed1d0387ac, type: 3}

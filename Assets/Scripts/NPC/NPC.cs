@@ -13,6 +13,7 @@ public class NPC : MonoBehaviour
     [Header("Player GameObject and Transform")]
     GameObject player;
     Transform playerTransform;
+    float distanceToPlayer;
 
     [Header("Field of View Parameters")]
     public float radius = 7;
@@ -47,16 +48,20 @@ public class NPC : MonoBehaviour
 
     private void Update()
     {
-        if(canSeePlayer)
+        distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        Debug.Log("Distance to player: " + distanceToPlayer);
+
+        if(distanceToPlayer < 3)
         {
-            //gameObject.GetComponent<NavMeshAgent>().isStopped = true;
             transform.LookAt(player.transform.position);
+            gameObject.GetComponent<NavMeshAgent>().isStopped = true;
         }
         else
         {
-            //gameObject.GetComponent<NavMeshAgent>().isStopped = false;
+            gameObject.GetComponent<NavMeshAgent>().isStopped = false;
+
             Patrol();
-            if(waypointCounter < waypointMaxTime)
+            if (waypointCounter < waypointMaxTime)
             {
                 waypointCounter += Time.deltaTime;
             }
