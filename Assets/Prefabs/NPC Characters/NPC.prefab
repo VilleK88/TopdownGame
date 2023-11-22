@@ -99,7 +99,6 @@ GameObject:
   - component: {fileID: 9201903216775813323}
   - component: {fileID: 9201903216775813322}
   - component: {fileID: 9201903216775813321}
-  - component: {fileID: 9201903216775813320}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -256,32 +255,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   waypointCounter: 0
---- !u!114 &9201903216775813320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9201903216775813319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0d04dff7faee1e409da5463c1b1b082, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npc: {fileID: 9201903216775813319}
-  character: {fileID: 9201903216775813327}
-  speechIcon: {fileID: 9201903216197099294}
-  radius: 3
-  firstInteraction: 1
-  repeatStartPosition: 0
-  npcName: Tapio
-  dialogueTree: {fileID: 11400000, guid: 3dc9a9d25aab3fe40ae2f585164ed767, type: 2}
-  secondDialogueTree: {fileID: 11400000, guid: 201147895a8482e4fab89cf54c1489df, type: 2}
-  questFinishedDialogueTree: {fileID: 11400000, guid: 45577ed0cf61ba94a9758342aee739f2,
-    type: 2}
-  characterProfile: {fileID: 11400000, guid: 80bcf3103559c624a93ee2e7cf8f966c, type: 2}
-  npcQuest: {fileID: 11400000, guid: 20a97b3551b6b284ca9e64b620c7ec76, type: 2}
-  launchQuestAnswerIndex: 0
 --- !u!1 &9201903216991274148
 GameObject:
   m_ObjectHideFlags: 0

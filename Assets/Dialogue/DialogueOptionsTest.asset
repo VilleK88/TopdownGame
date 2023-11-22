@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: DialogueOptionsTest
   m_EditorClassIdentifier: 
   dialogueInfo:
-  - myName: 
-    portrait: {fileID: 0}
+  - character: {fileID: 11400000, guid: 80bcf3103559c624a93ee2e7cf8f966c, type: 2}
     myText: Hi Lalli!
   questionText: Can you kill crusaders for me?
   optionsInfo:
   - buttonName: Yes
-    nextDialogue: {fileID: 11400000, guid: 63b789bef9c90564ebc0fb4659078f9a, type: 2}
+    nextDialogue: {fileID: 11400000, guid: 11ceaf7a64b5ab9428c894a37f41184e, type: 2}
     myEvent:
       m_PersistentCalls:
         m_Calls:
@@ -36,7 +35,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - buttonName: No
-    nextDialogue: {fileID: 0}
+    nextDialogue: {fileID: 11400000, guid: a60e5739200782248a53a3988fc47405, type: 2}
     myEvent:
       m_PersistentCalls:
         m_Calls:

@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c2ff09b4e1f7e649abcca329671df1f, type: 3}
   m_Name: Tapio
   m_EditorClassIdentifier: 
-  characterName: Tapio
+  myName: Tapio
+  myPortrait: {fileID: 0}
+  myVoice: {fileID: 0}

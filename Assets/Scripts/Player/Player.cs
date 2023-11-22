@@ -150,15 +150,15 @@ public class Player : MonoBehaviour
     {
         bool isFrozen;
 
-        if(DialogueBox.instance.inDialogue)
+        /*if(DialogueManager.instance.inDialogue)
         {
             isFrozen = true;
-        }
+        }*/
         /*else if(InventoryManager.instance.isInventoryActive)
         {
             isFrozen = true;
         }*/
-        else if(RewardManager.instance.isRewardUIActive)
+        if(RewardManager.instance.isRewardUIActive)
         {
             isFrozen = true;
         }
