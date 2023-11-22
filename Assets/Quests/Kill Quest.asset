@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: Kill Crusaders
   questDescription: Kill 2 knights and 1 priest.
+  NPCTurnIn: {fileID: 11400000, guid: 80bcf3103559c624a93ee2e7cf8f966c, type: 2}
+  completedQuestDialogue: {fileID: 11400000, guid: def5ba60aaf30d24eb64e0f7d7288459,
+    type: 2}
   rewards:
     itemRewards:
     - {fileID: 11400000, guid: 098ddfd7123fc6840b23ae6d28068cfc, type: 2}

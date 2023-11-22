@@ -6,6 +6,7 @@ public class QuestButtons : MonoBehaviour
 {
     public void AcceptQuest()
     {
+        QuestManager.questManager.currentQuestDialogueTrigger.hasActiveQuest = false;
         QuestManager.questManager.currentQuest.initializeQuest();
         QuestManager.questManager.StartQuestBuffer();
         QuestManager.questManager.questUI.SetActive(false);

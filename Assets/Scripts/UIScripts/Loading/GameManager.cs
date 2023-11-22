@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public float y;
     public float z;
 
+    public DialogueTrigger[] allDialogueTriggers;
+
     public delegate void OnEnemyDeathCallBack(EnemyProfile enemyProfile);
     public OnEnemyDeathCallBack onEnemyDeathCallBack;
 
@@ -40,6 +42,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        allDialogueTriggers = FindObjectsOfType<DialogueTrigger>();
     }
 
     private void Update()

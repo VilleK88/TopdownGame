@@ -4,32 +4,42 @@ using UnityEngine;
 
 public class DialogueTrigger : NPCInteraction
 {
-    [Header("Dialogue")]
+    [Header("THIS NPC")]
+    public CharacterProfile targetNPC;
+
+    [Header("Basic Dialogues Info")]
     public DialogueBase[] db;
     [HideInInspector] public int index;
     public bool nextDialogueOnInteract;
 
+    public bool hasCompletedQuest { get; set; }
+    public DialogueBase completedQuestDialogue { get; set; }
 
     public override void Interact()
     {
         if (!DialogueManager.instance.isDialogueOption)
         {
-            if (nextDialogueOnInteract && !DialogueManager.instance.inDialogue)
+            if(hasCompletedQuest)
             {
-                DialogueManager.instance.EnqueueDialogue(db[index]);
-
-                if (index < db.Length - 1)
-                {
-                    index++;
-                }
-            }
-            else
-            {
-                DialogueManager.instance.EnqueueDialogue(db[index]);
+                DialogueManager.instance.EnqueueDialogue(completedQuestDialogue);
+                hasCompletedQuest = false;
+                return;
             }
         }
 
-        base.Interact();
+        if (nextDialogueOnInteract && !DialogueManager.instance.inDialogue)
+        {
+            DialogueManager.instance.EnqueueDialogue(db[index]);
+
+            if (index < db.Length - 1)
+            {
+                index++;
+            }
+        }
+        else
+        {
+            DialogueManager.instance.EnqueueDialogue(db[index]);
+        }
     }
 
     public void SetIndex(int i)

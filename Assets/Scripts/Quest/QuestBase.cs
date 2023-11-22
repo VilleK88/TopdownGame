@@ -14,6 +14,7 @@ public class QuestBase : ScriptableObject
     public bool isCompleted { get; set; }
 
     public CharacterProfile NPCTurnIn;
+    public DialogueBase completedQuestDialogue;
 
     [System.Serializable]
     public class Rewards
@@ -29,37 +30,7 @@ public class QuestBase : ScriptableObject
     {
         Debug.Log("Start Quest");
         currentAmount = new int[requiredAmount.Length];
-
-        /*if(!QuestAlreadyExists(QuestManager.questManager.currentQuest))
-        {
-            AddQuestToManager(QuestManager.questManager.currentQuest);
-            QuestlogManager.instance.AddQuestLog(this);
-        }*/
     }
-
-    /*bool QuestAlreadyExists(QuestBase questToCheck)
-    {
-        foreach(QuestBase quest in QuestManager.questManager.quests)
-        {
-            if(quest == questToCheck)
-            {
-                return true;
-            }
-        }
-        return false;
-    }*/
-
-    /*void AddQuestToManager(QuestBase questToAdd)
-    {
-        for(int i = 0; i < QuestManager.questManager.quests.Length; i++)
-        {
-            if (QuestManager.questManager.quests[i] == null)
-            {
-                QuestManager.questManager.quests[i] = questToAdd;
-                break;
-            }
-        }
-    }*/
 
     public void Evaluate()
     {
@@ -73,6 +44,15 @@ public class QuestBase : ScriptableObject
 
         Debug.Log("Quest is Completed");
 
-        //QuestManager.questManager.MoveToFinishedQuests(this);
+        for (int i = 0; i < GameManager.manager.allDialogueTriggers.Length; i++)
+        {
+            if (GameManager.manager.allDialogueTriggers[i].targetNPC == NPCTurnIn)
+            {
+                GameManager.manager.allDialogueTriggers[i].hasCompletedQuest = true;
+                GameManager.manager.allDialogueTriggers[i].completedQuestDialogue = completedQuestDialogue;
+                Debug.Log("We Found: " + NPCTurnIn);
+                break;
+            }
+        }
     }
 }

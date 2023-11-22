@@ -23,7 +23,8 @@ public class QuestManager : MonoBehaviour
     public TextMeshProUGUI questDescription;
     public Button questAcceptButton;
 
-    public QuestBase currentQuest; //{ get; set; }
+    public QuestBase currentQuest { get; set; }
+    public QuestDialogueTrigger currentQuestDialogueTrigger { get; set; }
     public bool inQuestUI { get; set; }
 
     //public QuestBase[] quests;
