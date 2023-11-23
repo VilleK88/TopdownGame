@@ -28,8 +28,10 @@ public class QuestBase : ScriptableObject
 
     public virtual void initializeQuest()
     {
+        isCompleted = false;
         Debug.Log("Start Quest");
         currentAmount = new int[requiredAmount.Length];
+        QuestlogManager.instance.AddQuestLog(this);
     }
 
     public void Evaluate()
@@ -54,5 +56,13 @@ public class QuestBase : ScriptableObject
                 break;
             }
         }
+
+        isCompleted = true;
+        DialogueManager.instance.completedQuest = this;
+    }
+
+    public virtual string GetObjectiveList()
+    {
+        return null;
     }
 }

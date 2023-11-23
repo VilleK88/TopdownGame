@@ -47,6 +47,10 @@ public class DialogueManager : MonoBehaviour
     public OnDialogueLineCallBack onDialogueLineCallBack;
     int totalLineCount;
 
+    public QuestBase completedQuest { get; set; }
+    public bool completedQuestReady { get; set; }
+
+
     private void Start()
     {
         dialogueInfo = new Queue<DialogueBase.Info>();
@@ -54,7 +58,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EnqueueDialogue(DialogueBase db)
     {
-        if(inDialogue || QuestManager.questManager.inQuestUI)
+        if(inDialogue || QuestManager.questManager.inQuestUI || RewardManager.instance.inQuestReward)
             return;
 
         buffer = true;
@@ -142,6 +146,17 @@ public class DialogueManager : MonoBehaviour
         dialogueBox.SetActive(false);
         OptionsLogic();
         CheckIfDialogueQuest();
+        SetItemRewards();
+    }
+
+    void SetItemRewards()
+    {
+        if(completedQuestReady)
+        {
+            RewardManager.instance.SetRewardUI(completedQuest);
+
+            completedQuestReady = false;
+        }
     }
 
     void CheckIfDialogueQuest()

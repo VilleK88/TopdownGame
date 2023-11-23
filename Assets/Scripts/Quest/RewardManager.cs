@@ -25,9 +25,12 @@ public class RewardManager : MonoBehaviour
     public GameObject questRewardUI;
     public QuestBase currentQuestReward;
     public bool isRewardUIActive;
+    public bool inQuestReward { get; set; }
 
     public void SetRewardUI(QuestBase quest)
     {
+        inQuestReward = true;
+
         questRewardUI.SetActive(true);
 
         questName.text = quest.questName;
@@ -45,11 +48,22 @@ public class RewardManager : MonoBehaviour
 
     public void GetRewardButton()
     {
-        for(int i = 0; i < currentQuestReward.rewards.itemRewards.Length; i++)
+        isRewardUIActive = false;
+
+        for (int i = 0; i < currentQuestReward.rewards.itemRewards.Length; i++)
         {
             bool wasPickedUp = InventoryManager.instance.AddItem(currentQuestReward.rewards.itemRewards[i]);
         }
         GameManager.manager.currentExperience += currentQuestReward.rewards.experienceReward;
-        isRewardUIActive = false;
+
+        QuestBase currentQuest = DialogueManager.instance.completedQuest;
+
+        StartCoroutine(QuestRewardBuffer());
+    }
+
+    IEnumerator QuestRewardBuffer()
+    {
+        yield return new WaitForSeconds(0.1f);
+        inQuestReward = false;
     }
 }

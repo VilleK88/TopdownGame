@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestlogButton : MonoBehaviour
 {
     [HideInInspector] public QuestBase myQuest;
     public TextMeshProUGUI questNameText;
+    public Image uncheckBox;
+    public Sprite checkedBox;
 
     public void SetQuest(QuestBase newQuest)
     {
@@ -16,6 +19,14 @@ public class QuestlogButton : MonoBehaviour
 
     public void OnPressed()
     {
-        QuestlogManager.instance.UpdateQuestlog(myQuest);
+        QuestlogManager.instance.UpdateQuestlogUI(myQuest, myQuest.GetObjectiveList());
+    }
+
+    private void OnEnable()
+    {
+        if(myQuest.isCompleted)
+        {
+            uncheckBox.sprite = checkedBox;
+        }
     }
 }

@@ -40,4 +40,16 @@ public class QuestKill : QuestBase
 
         Evaluate();
     }
+
+    public override string GetObjectiveList()
+    {
+        string tempObjectiveList = "";
+
+        for(int i = 0; i < objectives.Length; i++)
+        {
+            tempObjectiveList += $"You've slain {currentAmount[i]} / {requiredAmount[i]} {objectives[i].requiredEnemy.enemyName}s \n";
+        }
+
+        return tempObjectiveList;
+    }
 }

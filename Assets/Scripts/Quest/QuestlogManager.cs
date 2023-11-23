@@ -25,12 +25,16 @@ public class QuestlogManager : MonoBehaviour
     public GameObject questlogUI;
     public TextMeshProUGUI objectiveText;
     public TextMeshProUGUI npcTurnInText;
+    public Image[] rewardIcons;
+    QuestBase lastDisplayedQuest;
 
-    public void UpdateQuestlog(QuestBase newQuest)
+    public void UpdateQuestlogUI(QuestBase newQuest, string objectiveList)
     {
+        lastDisplayedQuest = newQuest;
         questName.text = newQuest.questName;
         questDescription.text = newQuest.questDescription;
-        //npcTurnInText.text = newQuest.NPCTurnIn.characterName;
+        npcTurnInText.text = "Turn into " + newQuest.NPCTurnIn.myName;
+        objectiveText.text = objectiveList;
     }
 
     public void AddQuestLog(QuestBase newQuest)
@@ -44,6 +48,25 @@ public class QuestlogManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.J))
         {
             questlogUI.SetActive(!questlogUI.activeSelf);
+
+            if(questlogUI.activeSelf)
+            {
+                //if (lastDisplayedQuest == null)
+                    //return;
+
+                try
+                {
+                    var firstButton = questHolder.GetChild(0).GetComponent<Button>();
+                    firstButton.Select();
+                    UpdateQuestlogUI(lastDisplayedQuest, lastDisplayedQuest.GetObjectiveList());
+                }
+                catch
+                {
+                    return;
+                }
+
+                //UpdateQuestlogUI(lastDisplayedQuest, lastDisplayedQuest.GetObjectiveList());
+            }
         }
     }
 }
