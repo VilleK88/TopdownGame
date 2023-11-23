@@ -21,7 +21,7 @@ public class QuestBase : ScriptableObject
     {
         public Item[] itemRewards;
         public float experienceReward;
-        public int goldReward;
+        //public int goldReward;
     }
 
     public Rewards rewards;

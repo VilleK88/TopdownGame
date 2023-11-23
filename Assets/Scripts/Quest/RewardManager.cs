@@ -48,16 +48,16 @@ public class RewardManager : MonoBehaviour
 
     public void GetRewardButton()
     {
-        isRewardUIActive = false;
+        GameManager.manager.currentExperience += currentQuestReward.rewards.experienceReward;
+
+        QuestBase currentQuest = DialogueManager.instance.completedQuest;
 
         for (int i = 0; i < currentQuestReward.rewards.itemRewards.Length; i++)
         {
             bool wasPickedUp = InventoryManager.instance.AddItem(currentQuestReward.rewards.itemRewards[i]);
         }
-        GameManager.manager.currentExperience += currentQuestReward.rewards.experienceReward;
 
-        QuestBase currentQuest = DialogueManager.instance.completedQuest;
-
+        isRewardUIActive = false;
         StartCoroutine(QuestRewardBuffer());
     }
 
