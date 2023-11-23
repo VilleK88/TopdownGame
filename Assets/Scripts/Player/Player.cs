@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
     float chipSpeed = 2;
     float lerpTimer;
     float attackCost = 6;
+    float strongAttackCost = 12;
     float runCost = 15;
     float chargeRate = 33;
     Coroutine recharge;
@@ -47,9 +48,12 @@ public class Player : MonoBehaviour
 
     [Header("Attack and Combo Parameters")]
     bool attack1;
-    public bool attacking = false;
+    bool attacking = false;
     float lastAttackMaxTime = 0.8f;
-    public float lastAttackTimer = 0;
+    float lastAttackTimer = 0;
+    public bool strongAttack = true;
+    float strongAttackMaxTime = 2;
+    public float strongAttackTimer = 0;
 
     //public QuestBase quest;
     private void Start()
@@ -103,7 +107,20 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Q))
+        if(!strongAttack)
+        {
+            if(strongAttackMaxTime > strongAttackTimer)
+            {
+                strongAttackTimer += Time.deltaTime;
+            }
+            else
+            {
+                strongAttack = true;
+                strongAttackTimer = 0;
+            }
+        }
+
+        if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Q) || Input.GetMouseButtonDown(1))
         {
             attacking = true;
         }
@@ -325,7 +342,8 @@ public class Player : MonoBehaviour
 
     public void Attack()
     {
-        if(Input.GetMouseButtonDown(0) && GameManager.manager.currentStamina > 5)
+        if(Input.GetMouseButtonDown(0) && GameManager.manager.currentStamina > attackCost &&
+            !Input.GetMouseButtonDown(1))
         {
             if(!attack1)
             {
@@ -344,6 +362,21 @@ public class Player : MonoBehaviour
             frontStaminaBar.fillAmount = GameManager.manager.currentStamina / GameManager.manager.maxStamina;
 
             if(recharge != null)
+            {
+                StopCoroutine(recharge);
+            }
+            recharge = StartCoroutine(RechargeStamina());
+        }
+        else if(Input.GetMouseButtonDown(1) && GameManager.manager.currentStamina > strongAttackCost &&
+            !Input.GetMouseButtonDown(0) && strongAttack)
+        {
+            childSprite.GetComponent<Animator>().SetTrigger("StrongAxeAttack");
+            GameManager.manager.currentStamina -= strongAttackCost;
+            strongAttack = false;
+
+            frontStaminaBar.fillAmount = GameManager.manager.currentStamina / GameManager.manager.maxStamina;
+
+            if (recharge != null)
             {
                 StopCoroutine(recharge);
             }
