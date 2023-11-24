@@ -6269,21 +6269,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1067344652477661545, guid: 2f277d0751841dc4eade76cf9eb6bea3,
-        type: 3}
-      propertyPath: enemyProfile
-      value: 
-      objectReference: {fileID: 11400000, guid: 29eb18b2608f32d45b09289a487fd589,
-        type: 2}
     - target: {fileID: 1067344652477661551, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: m_Name
       value: Peasant (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1067344652477661551, guid: 2f277d0751841dc4eade76cf9eb6bea3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
@@ -6627,6 +6616,7 @@ MonoBehaviour:
   isAgro: 0
   agroCounter: 0
   convertOnlyOnce: 0
+  attackSound: {fileID: 0}
 --- !u!114 &212252327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6647,6 +6637,9 @@ MonoBehaviour:
   playerBlockFetch: 0
   blockingPlayer: 0
   gettingHit: 0
+  hitSound: {fileID: 0}
+  blockHitSound: {fileID: 0}
+  dieSound: {fileID: 0}
 --- !u!195 &212252328
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -16285,6 +16278,9 @@ MonoBehaviour:
   playerBlockFetch: 0
   blockingPlayer: 0
   gettingHit: 0
+  hitSound: {fileID: 0}
+  blockHitSound: {fileID: 0}
+  dieSound: {fileID: 0}
 --- !u!4 &880653549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3256589297461054414, guid: 67dbaf376d2b55049814c1c6563a042b,
@@ -20671,6 +20667,8 @@ MonoBehaviour:
   menuButtons: {fileID: 371100463}
   strongAttack: 1
   strongAttackTimer: 0
+  attackSound: {fileID: 8300000, guid: 7f4cc3d2fa683254984fe809f3695fd1, type: 3}
+  strongAttackSound: {fileID: 8300000, guid: c97f7300bc7ff764c9b49e131ce1002e, type: 3}
 --- !u!114 &1385117360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20695,6 +20693,9 @@ MonoBehaviour:
     baseValue: 0
   armor:
     baseValue: 0
+  hitSound: {fileID: 8300000, guid: 7850fcb2b6ea6b34bb5c6c8b57819351, type: 3}
+  blockHitSound: {fileID: 8300000, guid: 6591ca4f9365b5c4d9c83e485c15a5a1, type: 3}
+  dieSound: {fileID: 8300000, guid: 1057c4a750a751e4ebe97fa26e22bbb0, type: 3}
 --- !u!114 &1385117363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22166,11 +22167,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Crusader (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 9125619688714398318, guid: dcda6a7def1b62541a59d90fd65d17df,
-        type: 3}
-      propertyPath: waypoints.Array.size
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398318, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
@@ -25878,6 +25874,8 @@ MonoBehaviour:
   slot: {fileID: 0}
   itemInSlot: {fileID: 0}
   isInventoryActive: 0
+  drinkHealthPSound: {fileID: 8300000, guid: 854707e0396c95543a273923965d1c88, type: 3}
+  drinkStaminaPSound: {fileID: 8300000, guid: fe295fcf2cf63af4dac557a4f16c1912, type: 3}
 --- !u!1 &2109037150
 GameObject:
   m_ObjectHideFlags: 0

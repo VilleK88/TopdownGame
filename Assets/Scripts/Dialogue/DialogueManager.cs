@@ -125,7 +125,7 @@ public class DialogueManager : MonoBehaviour
         {
             yield return new WaitForSeconds(delay);
             dialogueText.text += c;
-            AudioManager.instance.PlayClip(info.character.myVoice);
+            AudioManager.instance.PlaySound(info.character.myVoice);
         }
         isCurrentlyTyping = false;
     }

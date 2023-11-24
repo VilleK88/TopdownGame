@@ -32,6 +32,10 @@ public class InventoryManager : MonoBehaviour
     [HideInInspector] public InventoryItem itemInSlot;
     public bool isInventoryActive = false;
 
+    [Header("Audio")]
+    public AudioClip drinkHealthPSound;
+    public AudioClip drinkStaminaPSound;
+
 
     private void Update()
     {

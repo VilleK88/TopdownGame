@@ -33,6 +33,11 @@ public class EnemyHealth : MonoBehaviour
     [Header("Player XP")]
     float expAmount;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip hitSound;
+    [SerializeField] AudioClip blockHitSound;
+    [SerializeField] AudioClip dieSound;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -68,6 +73,7 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+            AudioManager.instance.PlaySound(dieSound);
             dead = true;
         }
         else
@@ -77,6 +83,7 @@ public class EnemyHealth : MonoBehaviour
                 blockOrNot = Random.Range(0, 2);
                 if (blockOrNot == 0)
                 {
+                    AudioManager.instance.PlaySound(blockHitSound);
                     blockingPlayer = true;
                     anim.SetBool("CrusaderBlock", true);
                     blockingTime = Random.Range(1, 2);
@@ -84,15 +91,17 @@ public class EnemyHealth : MonoBehaviour
                 }
                 else
                 {
+                    AudioManager.instance.PlaySound(hitSound);
                     gettingHit = false;
                 }
             }
             else if(enemyClass == EnemyClass.Priest)
             {
-
+                AudioManager.instance.PlaySound(hitSound);
             }
             else if(enemyClass == EnemyClass.Peasant)
             {
+                AudioManager.instance.PlaySound(hitSound);
                 gettingHitOrNot = Random.Range(0, 1);
                 if (gettingHitOrNot == 0)
                 {

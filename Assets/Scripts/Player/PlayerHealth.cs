@@ -29,6 +29,11 @@ public class PlayerHealth : MonoBehaviour
     public Stat damage;
     public Stat armor;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip hitSound;
+    [SerializeField] AudioClip blockHitSound;
+    [SerializeField] AudioClip dieSound;
+
     private void Start()
     {
         //currentHealth = maxHealth;
@@ -81,10 +86,12 @@ public class PlayerHealth : MonoBehaviour
         }
         else if(blockingFetch)
         {
-
+            AudioManager.instance.PlaySound(blockHitSound);
         }
         else
         {
+            AudioManager.instance.PlaySound(hitSound);
+
             if(damage > armor.GetValue())
             {
                 damage -= armor.GetValue();
@@ -124,6 +131,7 @@ public class PlayerHealth : MonoBehaviour
     {
         //base.Die();
         PlayerManager.instance.KillPlayer();
+        AudioManager.instance.PlaySound(dieSound);
     }
 
     public void IncreaseHealth(int level)

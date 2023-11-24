@@ -51,6 +51,9 @@ public class Peasant : MonoBehaviour
     bool deadFetch; // from EnemyHealth -script
     bool dead = false;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip attackSound;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -172,6 +175,7 @@ public class Peasant : MonoBehaviour
     void Attack()
     {
         childSprite.GetComponent<Animator>().SetTrigger("PikeAttack1");
+        AudioManager.instance.PlaySound(attackSound);
     }
 
     void Chase()

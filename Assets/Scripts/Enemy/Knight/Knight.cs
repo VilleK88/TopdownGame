@@ -50,6 +50,10 @@ public class Knight : MonoBehaviour
     bool deadFetch; // from EnemyHealth -script
     bool dead = false;
 
+    [Header("Audio Info")]
+    [SerializeField] AudioClip attackSound;
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -201,6 +205,7 @@ public class Knight : MonoBehaviour
     void Attack()
     {
         childSprite.GetComponent<Animator>().SetTrigger("CrusaderAttack1");
+        AudioManager.instance.PlaySound(attackSound);
     }
 
     void Chase()

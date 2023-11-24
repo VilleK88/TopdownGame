@@ -56,6 +56,12 @@ public class Player : MonoBehaviour
     public float strongAttackTimer = 0;
 
     //public QuestBase quest;
+
+    [Header("Audio Info")]
+    [SerializeField] AudioClip attackSound;
+    [SerializeField] AudioClip strongAttackSound;
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -347,12 +353,14 @@ public class Player : MonoBehaviour
         {
             if(!attack1)
             {
+                AudioManager.instance.PlaySound(attackSound);
                 childSprite.GetComponent<Animator>().SetTrigger("AxeAttack1");
                 GameManager.manager.currentStamina -= attackCost;
                 attack1 = true;
             }
             else if(attack1)
             {
+                AudioManager.instance.PlaySound(attackSound);
                 childSprite.GetComponent<Animator>().SetTrigger("AxeAttack2");
                 GameManager.manager.currentStamina -= attackCost;
                 attack1 = false;
@@ -370,6 +378,7 @@ public class Player : MonoBehaviour
         else if(Input.GetMouseButtonDown(1) && GameManager.manager.currentStamina > strongAttackCost &&
             !Input.GetMouseButtonDown(0) && strongAttack)
         {
+            AudioManager.instance.PlaySound(strongAttackSound);
             childSprite.GetComponent<Animator>().SetTrigger("StrongAxeAttack");
             GameManager.manager.currentStamina -= strongAttackCost;
             strongAttack = false;
