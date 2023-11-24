@@ -20,5 +20,29 @@ public class QuestDialogueTrigger : DialogueTrigger
         {
             base.Interact();
         }
+
+        if (DialogueManager.instance.completedQuestReady)
+        {
+            SetItemRewards();
+        }
+    }
+
+    void SetItemRewards()
+    {
+        if (DialogueManager.instance.completedQuestReady)
+        {
+            //RewardManager.instance.SetRewardUI(completedQuest);
+            
+            foreach(DialogueQuest quest in dialogueQuests)
+            {
+                if(quest.quest != null)
+                {
+                    RewardManager.instance.SetRewardUI(quest.quest);
+                    DialogueManager.instance.completedQuestReady = false;
+                }
+            }
+
+            //DialogueManager.instance.completedQuestReady = false;
+        }
     }
 }

@@ -146,10 +146,10 @@ public class DialogueManager : MonoBehaviour
         dialogueBox.SetActive(false);
         OptionsLogic();
         CheckIfDialogueQuest();
-        SetItemRewards();
+        //SetItemRewards();
     }
 
-    void SetItemRewards()
+    /*void SetItemRewards()
     {
         if(completedQuestReady)
         {
@@ -157,7 +157,7 @@ public class DialogueManager : MonoBehaviour
 
             completedQuestReady = false;
         }
-    }
+    }*/
 
     void CheckIfDialogueQuest()
     {
@@ -172,7 +172,6 @@ public class DialogueManager : MonoBehaviour
     {
         if(isDialogueOption == true)
         {
-            //questionTextBubble.SetActive(true);
             dialogueOptionUI.SetActive(true);
         }
         else
@@ -183,7 +182,6 @@ public class DialogueManager : MonoBehaviour
 
     public void CloseOptions()
     {
-        //questionTextBubble.SetActive(false);
         dialogueOptionUI.SetActive(false);
         isDialogueOption = false; // oma testi
     }
