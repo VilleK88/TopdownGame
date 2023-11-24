@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
     float chargeRate = 33;
     Coroutine recharge;
 
-    bool isPaused = false;
+    [HideInInspector] public bool isPaused = false;
     public GameObject menuButtons;
 
     [Header("Attack and Combo Parameters")]
@@ -69,9 +69,11 @@ public class Player : MonoBehaviour
         Physics.gravity *= gravityModifier;
         cam = Camera.main;
         motor = GetComponent<TestPlayerMotor>();
-        //transform.position = new Vector3(GameManager.manager.x, GameManager.manager.y, GameManager.manager.z);
+        transform.position = new Vector3(GameManager.manager.x, GameManager.manager.y, GameManager.manager.z);
         transform.position = new Vector3(transform.position.x, 3, transform.position.z);
         //quest.initializeQuest();
+        RechargeStamina();
+        UpdateStaminaUI();
     }
 
     private void Update()
@@ -97,7 +99,7 @@ public class Player : MonoBehaviour
         UpdateStaminaUI();
 
         GameManager.manager.x = transform.position.x;
-        GameManager.manager.y = transform.position.y;
+        GameManager.manager.y = 1;
         GameManager.manager.z = transform.position.z;
 
         if (attack1)
@@ -186,7 +188,7 @@ public class Player : MonoBehaviour
         return isFrozen;
     }
 
-    void TogglePause()
+    public void TogglePause()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
@@ -194,13 +196,13 @@ public class Player : MonoBehaviour
             {
                 Time.timeScale = 1;
                 isPaused = false;
-                //menuButtons.gameObject.SetActive(false);
+                menuButtons.gameObject.SetActive(false);
             }
             else
             {
                 Time.timeScale = 0;
                 isPaused = true;
-                //menuButtons.gameObject.SetActive(true);
+                menuButtons.gameObject.SetActive(true);
             }
         }
     }

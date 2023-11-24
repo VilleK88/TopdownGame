@@ -7,7 +7,7 @@ public class GoToMenu : MonoBehaviour
 {
     private void Start()
     {
-        //SceneManager.LoadScene("Menu");
-        SceneManager.LoadScene("VilleScene");
+        SceneManager.LoadScene("1 - Menu");
+        //SceneManager.LoadScene("VilleScene");
     }
 }
