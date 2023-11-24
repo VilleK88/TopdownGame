@@ -146,18 +146,7 @@ public class DialogueManager : MonoBehaviour
         dialogueBox.SetActive(false);
         OptionsLogic();
         CheckIfDialogueQuest();
-        //SetItemRewards();
     }
-
-    /*void SetItemRewards()
-    {
-        if(completedQuestReady)
-        {
-            RewardManager.instance.SetRewardUI(completedQuest);
-
-            completedQuestReady = false;
-        }
-    }*/
 
     void CheckIfDialogueQuest()
     {

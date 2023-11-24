@@ -30,9 +30,7 @@ public class QuestDialogueTrigger : DialogueTrigger
     void SetItemRewards()
     {
         if (DialogueManager.instance.completedQuestReady)
-        {
-            //RewardManager.instance.SetRewardUI(completedQuest);
-            
+        {   
             foreach(DialogueQuest quest in dialogueQuests)
             {
                 if(quest.quest != null)
@@ -41,8 +39,6 @@ public class QuestDialogueTrigger : DialogueTrigger
                     DialogueManager.instance.completedQuestReady = false;
                 }
             }
-
-            //DialogueManager.instance.completedQuestReady = false;
         }
     }
 }

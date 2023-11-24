@@ -26,9 +26,6 @@ public class QuestManager : MonoBehaviour
     public QuestBase currentQuest { get; set; }
     public QuestDialogueTrigger currentQuestDialogueTrigger { get; set; }
     public bool inQuestUI { get; set; }
-
-    //public QuestBase[] quests;
-    //public QuestBase[] finishedQuests;
     public int questIndex;
 
 
