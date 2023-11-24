@@ -16278,9 +16278,9 @@ MonoBehaviour:
   playerBlockFetch: 0
   blockingPlayer: 0
   gettingHit: 0
-  hitSound: {fileID: 0}
-  blockHitSound: {fileID: 0}
-  dieSound: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: 7850fcb2b6ea6b34bb5c6c8b57819351, type: 3}
+  blockHitSound: {fileID: 8300000, guid: 6591ca4f9365b5c4d9c83e485c15a5a1, type: 3}
+  dieSound: {fileID: 8300000, guid: 1057c4a750a751e4ebe97fa26e22bbb0, type: 3}
 --- !u!4 &880653549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3256589297461054414, guid: 67dbaf376d2b55049814c1c6563a042b,
