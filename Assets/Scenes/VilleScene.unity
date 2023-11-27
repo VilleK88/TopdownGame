@@ -25273,6 +25273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2037377486}
+  bgMusic: {fileID: 8300000, guid: d1c3a292109fc9f4e91c7d3c91b74bbc, type: 3}
+  battleMusic: {fileID: 8300000, guid: 34815ccf1d5270243bb6b17d63607a31, type: 3}
 --- !u!1 &2056452406
 GameObject:
   m_ObjectHideFlags: 0
