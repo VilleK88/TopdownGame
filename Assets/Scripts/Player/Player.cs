@@ -69,8 +69,8 @@ public class Player : MonoBehaviour
         Physics.gravity *= gravityModifier;
         cam = Camera.main;
         motor = GetComponent<TestPlayerMotor>();
-        transform.position = new Vector3(GameManager.manager.x, GameManager.manager.y, GameManager.manager.z);
-        transform.position = new Vector3(transform.position.x, 3, transform.position.z);
+        //transform.position = new Vector3(GameManager.manager.x, GameManager.manager.y, GameManager.manager.z);
+        //transform.position = new Vector3(transform.position.x, 3, transform.position.z);
         //quest.initializeQuest();
         RechargeStamina();
         UpdateStaminaUI();
@@ -232,11 +232,6 @@ public class Player : MonoBehaviour
                 {
                     SetFocus(interactable);
                 }
-                /*CharacterDialogue characterDialogue = hit.collider.GetComponent<CharacterDialogue>();
-                if(characterDialogue != null)
-                {
-                    SetFocus(characterDialogue);
-                }*/
             }
         }
     }
@@ -251,7 +246,6 @@ public class Player : MonoBehaviour
             }
 
             focus = newFocus;
-            //motor.FollowTarget(newFocus);
         }
 
         newFocus.OnFocused(transform);
