@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     public delegate void OnEnemyDeathCallBack(EnemyProfile enemyProfile);
     public OnEnemyDeathCallBack onEnemyDeathCallBack;
 
+    public QuestBase[] triggeredQuests;
+    public QuestBase[] completedQuests;
+
 
     private void Awake()
     {
@@ -54,6 +57,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        allDialogueTriggers = FindObjectsOfType<DialogueTrigger>();
+    }
+
     public void Save()
     {
         Debug.Log("Game Saved!");
@@ -61,7 +79,6 @@ public class GameManager : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter(); // Tehd‰‰n uusi olio tai instanssi luokasta BinaryFormatter
         FileStream file = File.Create(Application.persistentDataPath + "/gameInfo.dat");
         GameData data = new GameData();
-        //data.currentLevel = currentLevel;
         data.currentLevel = currentLevel;
         data.currentExperience = currentExperience;
         data.maxExperience = maxExperience;
@@ -73,12 +90,16 @@ public class GameManager : MonoBehaviour
         data.x = x;
         data.y = y;
         data.z = z;
-        //data.Level1 = Level1;
-        //data.Level2 = Level2;
-        //data.Level3 = Level3;
+
+        //data.triggeredQuests = triggeredQuests;
+        //data.completedQuests = completedQuests;
+
         // Serialisoidaan GameData objekti, joka tallennetaan samalla tiedostoon.
         bf.Serialize(file, data);
         file.Close(); // Suljetaan tiedosto, ettei kukaan hakkeri p‰‰se siihen k‰siksi.
+
+        string json = ToJson(triggeredQuests, true);
+        File.WriteAllText(Application.persistentDataPath + "/quest.json", json);
     }
 
     public void Load()
@@ -97,7 +118,6 @@ public class GameManager : MonoBehaviour
 
             // Kun tieto on ladattu data objektiin, siirret‰‰n muuttujien arvot Game Manager:in muuttujiin.
 
-            //currentLevel = data.currentLevel;
             currentLevel = data.currentLevel;
             currentExperience = data.currentExperience;
             maxExperience = data.maxExperience;
@@ -109,10 +129,32 @@ public class GameManager : MonoBehaviour
             x = data.x;
             y = data.y;
             z = data.z;
-            //Level1 = data.Level1;
-            //Level2 = data.Level2;
-            //Level3 = data.Level3;
+
+            //triggeredQuests = data.triggeredQuests;
+            //completedQuests = data.completedQuests;
+
+            string json = File.ReadAllText(Application.persistentDataPath + "/quest.json");
+            triggeredQuests = FromJson<QuestBase>(json);
         }
+    }
+
+    public static string ToJson<T>(T[] array, bool prettyPrint = false)
+    {
+        Wrapper<T> wrapper = new Wrapper<T>();
+        wrapper.Quests = array;
+        return JsonUtility.ToJson(wrapper);
+    }
+
+    public static T[] FromJson<T>(string json)
+    {
+        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
+        return wrapper.Quests;
+    }
+
+    [System.Serializable]
+    class Wrapper<T>
+    {
+        public T[] Quests;
     }
 }
 
@@ -121,7 +163,6 @@ public class GameManager : MonoBehaviour
 [Serializable]
 class GameData
 {
-    //public string currentLevel;
     public int currentLevel;
     public float currentExperience;
     public float maxExperience;
@@ -136,7 +177,9 @@ class GameData
     public float x;
     public float y;
     public float z;
-    //public bool Level1;
-    //public bool Level2;
-    //public bool Level3;
+
+    public string[] dialogueTriggerNames;
+
+    public QuestBase[] triggeredQuests;
+    public QuestBase[] completedQuests;
 }

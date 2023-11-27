@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class QuestBase : ScriptableObject
 {
     public string questName;
@@ -31,6 +33,7 @@ public class QuestBase : ScriptableObject
         Debug.Log("Start Quest");
         currentAmount = new int[requiredAmount.Length];
         QuestlogManager.instance.AddQuestLog(this);
+        QuestManager.questManager.HasTriggeredQuest(this);
     }
 
     public void Evaluate()

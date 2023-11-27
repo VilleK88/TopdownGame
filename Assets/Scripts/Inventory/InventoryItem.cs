@@ -67,14 +67,22 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             if(!dragging)
             {
                 item.Use();
-                count--;
+                if(name != "Wooden axe")
+                {
+                    count--;
+                }
+                else
+                {
+
+                }
+
                 if (count > 0)
                 {
                     RefreshCount();
                 }
                 else
                 {
-                    if(name != "Axe")
+                    if(name != "Wooden axe")
                         Destroy(gameObject);
                 }
             }

@@ -13,6 +13,25 @@ public class QuestDialogueTrigger : DialogueTrigger
     {
         if(hasActiveQuest)
         {
+            if (GameManager.manager != null && GameManager.manager.triggeredQuests != null)
+            {
+                foreach(QuestBase quest in GameManager.manager.triggeredQuests)
+                {
+                    foreach(DialogueQuest dialogueQuest in dialogueQuests)
+                    {
+                        if(dialogueQuest.quest != null && quest == dialogueQuest.quest)
+                        {
+                            QuestManager.questManager.currentQuestDialogueTrigger = this;
+                            hasActiveQuest = false;
+                            if(!hasActiveQuest)
+                            {
+                                base.Interact();
+                            }
+                            return;
+                        }
+                    }
+                }
+            }
             DialogueManager.instance.EnqueueDialogue(dialogueQuests[QuestIndex]);
             QuestManager.questManager.currentQuestDialogueTrigger = this;
         }

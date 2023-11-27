@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class QuestManager : MonoBehaviour
 {
@@ -31,6 +32,18 @@ public class QuestManager : MonoBehaviour
     [SerializeField] AudioClip questStartsSound;
 
 
+    private void Start()
+    {
+        if (GameManager.manager != null && GameManager.manager.triggeredQuests != null)
+        {
+            foreach(QuestBase quest in GameManager.manager.triggeredQuests)
+            {
+                quest.initializeQuest();
+            }
+        }
+    }
+
+
     public void SetQuestUI(QuestBase newQuest)
     {
         inQuestUI = true;
@@ -55,5 +68,31 @@ public class QuestManager : MonoBehaviour
     public void QuestAcceptedSound()
     {
         AudioManager.instance.PlaySound(QuestManager.questManager.questStartsSound);
+    }
+
+    public void QuestAlreadyAccepted()
+    {
+
+    }
+
+    public void HasTriggeredQuest(QuestBase quest)
+    {
+        AddQuestToArray(quest);
+    }
+
+    public void HasCompletedQuest(QuestBase quest)
+    {
+        GameManager.manager.completedQuests.Contains(quest);
+    }
+
+    void AddQuestToArray(QuestBase quest)
+    {
+        QuestBase[] newQuestArray = new QuestBase[GameManager.manager.triggeredQuests.Length + 1];
+        for (int i = 0; i < GameManager.manager.triggeredQuests.Length; i++)
+        {
+            newQuestArray[i] = GameManager.manager.triggeredQuests[i];
+        }
+        newQuestArray[GameManager.manager.triggeredQuests.Length] = quest;
+        GameManager.manager.triggeredQuests = newQuestArray;
     }
 }

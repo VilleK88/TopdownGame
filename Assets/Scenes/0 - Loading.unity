@@ -378,6 +378,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4777458951601154714, guid: bd5f270063552f245bfd12128dc631f9,
+        type: 3}
+      propertyPath: completedQuests.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777458951601154714, guid: bd5f270063552f245bfd12128dc631f9,
+        type: 3}
+      propertyPath: triggeredQuests.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4777458951601154715, guid: bd5f270063552f245bfd12128dc631f9,
         type: 3}
       propertyPath: m_RootOrder
