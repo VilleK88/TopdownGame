@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public OnEnemyDeathCallBack onEnemyDeathCallBack;
 
     public QuestBase[] triggeredQuests;
+    public QuestBase[] completedQuestsReady;
     public QuestBase[] completedQuests;
 
 
@@ -100,6 +101,9 @@ public class GameManager : MonoBehaviour
 
         string json = ToJson(triggeredQuests, true);
         File.WriteAllText(Application.persistentDataPath + "/quest.json", json);
+
+        string jsonCompleted = ToJson(completedQuests, true);
+        File.WriteAllText(Application.persistentDataPath + "/quest.jsonCompleted", jsonCompleted);
     }
 
     public void Load()
@@ -135,6 +139,9 @@ public class GameManager : MonoBehaviour
 
             string json = File.ReadAllText(Application.persistentDataPath + "/quest.json");
             triggeredQuests = FromJson<QuestBase>(json);
+
+            string jsonCompleted = File.ReadAllText(Application.persistentDataPath + "/quest.jsonCompleted");
+            completedQuests = FromJson<QuestBase>(jsonCompleted);
         }
     }
 
@@ -181,5 +188,6 @@ class GameData
     public string[] dialogueTriggerNames;
 
     public QuestBase[] triggeredQuests;
+    public QuestBase[] completedQuestsReady;
     public QuestBase[] completedQuests;
 }

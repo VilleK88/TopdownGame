@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -56,8 +57,28 @@ public class RewardManager : MonoBehaviour
             bool wasPickedUp = InventoryManager.instance.AddItem(currentQuestReward.rewards.itemRewards[i]);
         }
 
+        HasCompletedQuest(currentQuest);
         isRewardUIActive = false;
         StartCoroutine(QuestRewardBuffer());
+    }
+
+    public void HasCompletedQuest(QuestBase quest)
+    {
+        if (!GameManager.manager.completedQuests.Contains(quest))
+        {
+            AddQuestToCompletedArray(quest);
+        }
+    }
+
+    public void AddQuestToCompletedArray(QuestBase quest)
+    {
+        QuestBase[] newQuestArray = new QuestBase[GameManager.manager.completedQuests.Length + 1];
+        for (int i = 0; i < GameManager.manager.completedQuests.Length; i++)
+        {
+            newQuestArray[i] = GameManager.manager.completedQuests[i];
+        }
+        newQuestArray[GameManager.manager.completedQuests.Length] = quest;
+        GameManager.manager.completedQuests = newQuestArray;
     }
 
     IEnumerator QuestRewardBuffer()

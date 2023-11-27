@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class QuestDialogueTrigger : DialogueTrigger
@@ -40,10 +41,30 @@ public class QuestDialogueTrigger : DialogueTrigger
             base.Interact();
         }
 
-        if (DialogueManager.instance.completedQuestReady)
+        if(!CheckIfQuestAlreadyDone() || DialogueManager.instance.completedQuestReady)
         {
             SetItemRewards();
+            /*if (DialogueManager.instance.completedQuestReady)
+            {
+                SetItemRewards();
+            }*/
         }
+    }
+
+    bool CheckIfQuestAlreadyDone()
+    {
+        foreach (QuestBase quest in GameManager.manager.completedQuests)
+        {
+            foreach (DialogueQuest dialogueQuest in dialogueQuests)
+            {
+                if (dialogueQuest.quest != null && quest == dialogueQuest.quest)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     void SetItemRewards()

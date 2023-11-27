@@ -70,14 +70,12 @@ public class QuestManager : MonoBehaviour
         AudioManager.instance.PlaySound(QuestManager.questManager.questStartsSound);
     }
 
-    public void QuestAlreadyAccepted()
-    {
-
-    }
-
     public void HasTriggeredQuest(QuestBase quest)
     {
-        AddQuestToArray(quest);
+        if(!GameManager.manager.triggeredQuests.Contains(quest))
+        {
+            AddQuestToArray(quest);
+        }
     }
 
     public void HasCompletedQuest(QuestBase quest)
