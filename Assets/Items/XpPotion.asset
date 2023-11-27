@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51fb805566440fd4fa26b04baf599bb1, type: 3}
   m_Name: XpPotion
   m_EditorClassIdentifier: 
-  name: XpPotion
+  name: Xp potion
   isDefaultItem: 0
   type: 3
   range: {x: 5, y: 4}

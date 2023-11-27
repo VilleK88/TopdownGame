@@ -37,12 +37,12 @@ public class Item : ScriptableObject
         if(type == ItemType.HealthPotion)
         {
             GameManager.manager.currentHealth += 20;
-            AudioManager.instance.PlaySound(InventoryManager.instance.drinkHealthPSound);
+            AudioManager.instance.PlaySound(InventoryManager.instance.drinkingSound);
         }
         if(type == ItemType.StaminaPotion)
         {
             GameManager.manager.currentStamina += 20;
-            AudioManager.instance.PlaySound(InventoryManager.instance.drinkStaminaPSound);
+            AudioManager.instance.PlaySound(InventoryManager.instance.drinkingSound);
         }
     }
 
@@ -54,5 +54,5 @@ public class Item : ScriptableObject
 
 public enum ItemType
 {
-    HealthPotion, StaminaPotion, Axe, XpPotion
+    HealthPotion, StaminaPotion, WoodenAxe, XpPotion
 }

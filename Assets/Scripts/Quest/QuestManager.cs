@@ -28,6 +28,8 @@ public class QuestManager : MonoBehaviour
     public bool inQuestUI { get; set; }
     public int questIndex;
 
+    [SerializeField] AudioClip questStartsSound;
+
 
     public void SetQuestUI(QuestBase newQuest)
     {
@@ -50,16 +52,8 @@ public class QuestManager : MonoBehaviour
         inQuestUI = false;
     }
 
-    /*public void MoveToFinishedQuests(QuestBase quest)
+    public void QuestAcceptedSound()
     {
-        for(int i = 0; i < finishedQuests.Length; i++)
-        {
-            if (finishedQuests[i] == null)
-            {
-                finishedQuests[i] = quest;
-                quests[i] = null;
-                break;
-            }
-        }
-    }*/
+        AudioManager.instance.PlaySound(QuestManager.questManager.questStartsSound);
+    }
 }

@@ -33,9 +33,9 @@ public class InventoryManager : MonoBehaviour
     public bool isInventoryActive = false;
 
     [Header("Audio")]
-    public AudioClip drinkHealthPSound;
-    public AudioClip drinkStaminaPSound;
-
+    public AudioClip drinkingSound;
+    public AudioClip potionPickUpSound;
+    public AudioClip weaponPickUpSound;
 
     private void Update()
     {

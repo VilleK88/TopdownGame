@@ -21,6 +21,16 @@ public class ItemPickup : Interactable
 
         if(wasPickedUp)
         {
+            if (item.type == ItemType.HealthPotion || item.type == ItemType.StaminaPotion ||
+                item.type == ItemType.XpPotion)
+            {
+                AudioManager.instance.PlaySound(InventoryManager.instance.potionPickUpSound);
+            }
+            if(item.type == ItemType.WoodenAxe)
+            {
+                AudioManager.instance.PlaySound(InventoryManager.instance.weaponPickUpSound);
+            }
+
             Destroy(gameObject);
         }
     }

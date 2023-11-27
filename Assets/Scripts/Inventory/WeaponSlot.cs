@@ -13,7 +13,7 @@ public class WeaponSlot : MonoBehaviour, IDropHandler
     {
         GameObject dropped = eventData.pointerDrag;
         InventoryItem inventoryItem = dropped.GetComponent<InventoryItem>();
-        if (transform.childCount == 0 && inventoryItem.name == "Axe")
+        if (transform.childCount == 0 && inventoryItem.name == "Wooden axe")
         {
             inventoryItem.parentAfterDrag = transform;
             //weaponOnHand = true;

@@ -9,6 +9,7 @@ public class QuestButtons : MonoBehaviour
         QuestManager.questManager.currentQuestDialogueTrigger.hasActiveQuest = false;
         QuestManager.questManager.currentQuest.initializeQuest();
         QuestManager.questManager.StartQuestBuffer();
+        QuestManager.questManager.QuestAcceptedSound();
         QuestManager.questManager.questUI.SetActive(false);
 
         ObjectiveTracker.instance.UpdateTracker($"You've accepted {QuestManager.questManager.currentQuest.questName}");
