@@ -32,4 +32,9 @@ public class PlayerManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         GameManager.manager.currentHealth = GameManager.manager.maxHealth;
     }
+
+    public GameObject GetPlayer()
+    {
+        return player;
+    }
 }
