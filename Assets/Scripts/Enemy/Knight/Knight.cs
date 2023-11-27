@@ -39,6 +39,7 @@ public class Knight : MonoBehaviour
     float originalSpeed;
     public float attackDistance = 2;
     bool gettingHit; // fetch from EnemyHealth -script
+    float distanceToPlayer;
 
     [Header("Patrol Parameters")]
     public Transform[] waypoints;
@@ -57,8 +58,8 @@ public class Knight : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //player = GameObject.FindGameObjectWithTag("Player");
-        player = PlayerManager.instance.player;
+        //player = PlayerManager.instance.player;
+        player = PlayerManager.instance.GetPlayer();
         playerTransform = player.transform;
         agent = GetComponent<NavMeshAgent>();
         childSprite.GetComponent<Animator>();
@@ -75,7 +76,8 @@ public class Knight : MonoBehaviour
         ifBlockingPlayersAttackFetch = GetComponent<EnemyHealth>().blockingPlayer;
         deadFetch = GetComponent<EnemyHealth>().dead;
         gettingHit = GetComponent<EnemyHealth>().gettingHit;
-        if(gettingHit)
+        distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        if (gettingHit)
         {
             childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
             childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
@@ -109,7 +111,7 @@ public class Knight : MonoBehaviour
 
             if (isAgro)
             {
-                if (distanceToTarget > attackDistance)
+                if (distanceToPlayer > attackDistance)
                 {
                     if(!ifBlockingPlayersAttackFetch)
                     {
@@ -121,7 +123,7 @@ public class Knight : MonoBehaviour
                         transform.LookAt(player.transform.position);
                     }
                 }
-                else if (distanceToTarget < attackDistance)
+                else if (distanceToPlayer < attackDistance)
                 {
                     childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
                     transform.LookAt(player.transform.position);
@@ -189,6 +191,7 @@ public class Knight : MonoBehaviour
                 if(distance < 20)
                 {
                     knight.isAgro = true;
+                    knight.canSeePlayer = true;
                 }
             }
             if(enemyTransform != null && peasant != null)
@@ -238,9 +241,9 @@ public class Knight : MonoBehaviour
 
             if(Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
             {
-                distanceToTarget = Vector3.Distance(transform.position, target.position);
+                distanceToPlayer = Vector3.Distance(transform.position, target.position);
 
-                if(!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                if(!Physics.Raycast(transform.position, directionToTarget, distanceToPlayer, obstructionMask))
                 {
                     canSeePlayer = true;
                 }
