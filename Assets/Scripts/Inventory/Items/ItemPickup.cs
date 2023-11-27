@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemPickup : Interactable
@@ -21,6 +20,7 @@ public class ItemPickup : Interactable
 
         if(wasPickedUp)
         {
+            AddItemToArray(item);
             if (item.type == ItemType.HealthPotion || item.type == ItemType.StaminaPotion ||
                 item.type == ItemType.XpPotion)
             {
@@ -33,5 +33,16 @@ public class ItemPickup : Interactable
 
             Destroy(gameObject);
         }
+    }
+
+    void AddItemToArray(Item item)
+    {
+        Item[] newItemArray = new Item[GameManager.manager.items.Length + 1];
+        for (int i = 0; i < GameManager.manager.items.Length; i++)
+        {
+            newItemArray[i] = GameManager.manager.items[i];
+        }
+        newItemArray[GameManager.manager.items.Length] = item;
+        GameManager.manager.items = newItemArray;
     }
 }

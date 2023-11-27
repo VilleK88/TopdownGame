@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public QuestBase[] triggeredQuests;
     public QuestBase[] completedQuestsReady;
     public QuestBase[] completedQuests;
+    public Item[] items;
 
 
     private void Awake()
@@ -104,6 +105,9 @@ public class GameManager : MonoBehaviour
 
         string jsonCompleted = ToJson(completedQuests, true);
         File.WriteAllText(Application.persistentDataPath + "/quest.jsonCompleted", jsonCompleted);
+
+        string jsonItems = ToJson(items, true);
+        File.WriteAllText(Application.persistentDataPath + "/item.jsonItems", jsonItems);
     }
 
     public void Load()
@@ -142,6 +146,9 @@ public class GameManager : MonoBehaviour
 
             string jsonCompleted = File.ReadAllText(Application.persistentDataPath + "/quest.jsonCompleted");
             completedQuests = FromJson<QuestBase>(jsonCompleted);
+
+            string jsonItems = File.ReadAllText(Application.persistentDataPath + "/item.jsonItems");
+            items = FromJson<Item>(jsonItems);
         }
     }
 
