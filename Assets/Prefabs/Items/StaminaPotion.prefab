@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 3256589297461054410}
   m_Layer: 0
   m_Name: StaminaPotion
-  m_TagString: Untagged
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,3 +198,5 @@ MonoBehaviour:
   radius: 3
   interactionTransform: {fileID: 3256589297461054414}
   item: {fileID: 11400000, guid: 121fb5a600420a74badca7614566a134, type: 2}
+  itemName: 
+  collected: 0

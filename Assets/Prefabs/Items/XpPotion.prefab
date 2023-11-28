@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 6181556930791335945}
   m_Layer: 0
   m_Name: XpPotion
-  m_TagString: Untagged
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,3 +198,5 @@ MonoBehaviour:
   radius: 3
   interactionTransform: {fileID: 6181556930791335949}
   item: {fileID: 11400000, guid: a180f4c63b92b954db59d5b7a339909d, type: 2}
+  itemName: 
+  collected: 0

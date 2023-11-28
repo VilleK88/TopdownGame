@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7657944507466521422}
   m_Layer: 0
   m_Name: HealthPotion
-  m_TagString: Untagged
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,6 +71,8 @@ MonoBehaviour:
   radius: 3
   interactionTransform: {fileID: 7657944507466521426}
   item: {fileID: 11400000, guid: 098ddfd7123fc6840b23ae6d28068cfc, type: 2}
+  itemName: 
+  collected: 0
 --- !u!1 &7657944508128443156
 GameObject:
   m_ObjectHideFlags: 0
