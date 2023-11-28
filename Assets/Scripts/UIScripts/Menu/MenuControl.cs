@@ -15,6 +15,8 @@ public class MenuControl : MonoBehaviour
 
     public void StartGame()
     {
+        //PlayerPrefs.DeleteKey("ItemCollected");
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("VilleScene");
     }
 
@@ -43,7 +45,7 @@ public class MenuControl : MonoBehaviour
         else
         {
             GameManager.manager.Load();
-            StartGame();
+            SceneManager.LoadScene("VilleScene");
         }
     }
 
