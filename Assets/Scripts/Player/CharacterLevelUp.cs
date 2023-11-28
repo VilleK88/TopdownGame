@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CharacterLevelUp : MonoBehaviour
 {
+    public ExperienceManager xpManager;
     PlayerHealth playerHealtScript;
     Player playerScript;
 
@@ -25,6 +26,7 @@ public class CharacterLevelUp : MonoBehaviour
 
     private void Start()
     {
+        xpManager = GetComponent<ExperienceManager>();
         playerHealtScript = GetComponent<PlayerHealth>();
         playerScript = GetComponent<Player>();
         frontXpBar.fillAmount = GameManager.manager.currentExperience / GameManager.manager.maxExperience;
@@ -46,7 +48,8 @@ public class CharacterLevelUp : MonoBehaviour
 
     public void OnEnable()
     {
-        ExperienceManager.instance.onExperienceChange += HandleExperienceChange;
+        //ExperienceManager.instance.onExperienceChange += HandleExperienceChange;
+        xpManager.onExperienceChange += HandleExperienceChange;
     }
 
     public void OnDisable()

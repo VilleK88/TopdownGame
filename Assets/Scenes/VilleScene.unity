@@ -15563,6 +15563,11 @@ PrefabInstance:
       objectReference: {fileID: 1269736444}
     - target: {fileID: 2286226532892020228, guid: 2c1a441859a12fc42b2aaa377d019795,
         type: 3}
+      propertyPath: xpManager
+      value: 
+      objectReference: {fileID: 7885599227045368949}
+    - target: {fileID: 2286226532892020228, guid: 2c1a441859a12fc42b2aaa377d019795,
+        type: 3}
       propertyPath: frontXpBar
       value: 
       objectReference: {fileID: 895902651}
@@ -16128,6 +16133,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28d1a5bcd76e0f044a36b596a5459f70, type: 3}
+--- !u!114 &7885599227045368949 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7885599227219011511, guid: 28d1a5bcd76e0f044a36b596a5459f70,
+    type: 3}
+  m_PrefabInstance: {fileID: 7885599227045368948}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f895ac69efe2cf479fc170f42d17a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8172979845036470932
 PrefabInstance:
   m_ObjectHideFlags: 0
