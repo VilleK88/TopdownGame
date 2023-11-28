@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class CharacterLevelUp : MonoBehaviour
 {
-    //public int currentLevel;
-    //public float currentExperience, maxExperience;
     PlayerHealth playerHealtScript;
     Player playerScript;
 
@@ -31,7 +29,6 @@ public class CharacterLevelUp : MonoBehaviour
         playerScript = GetComponent<Player>();
         frontXpBar.fillAmount = GameManager.manager.currentExperience / GameManager.manager.maxExperience;
         backXpBar.fillAmount = GameManager.manager.currentExperience / GameManager.manager.maxExperience;
-        //maxExperience = CalculateRequiredXp();
     }
 
     private void Update()
@@ -68,17 +65,8 @@ public class CharacterLevelUp : MonoBehaviour
 
     void LevelUp()
     {
-        //maxHealth += 10;
-        //currentHealth = maxHealth;
-
-        //playerHealtScript.maxHealth += 10;
-        //playerHealtScript.currentHealth = playerHealtScript.maxHealth;
-
         GameManager.manager.currentLevel++;
-        //ObjectiveTracker.instance.UpdateTracker($"Level increased to {GameManager.manager.currentLevel}");
         ObjectiveTracker.instance.UpdateLevelTracker($"Level increased to {GameManager.manager.currentLevel}");
-        //currentExperience = 0;
-        //maxExperience += 100;
 
         frontXpBar.fillAmount = 0;
         backXpBar.fillAmount = 0;
