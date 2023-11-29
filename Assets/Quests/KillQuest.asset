@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58166cea6409797409f1d7b71b52f59e, type: 3}
-  m_Name: Kill Quest
+  m_Name: KillQuest
   m_EditorClassIdentifier: 
   questName: Kill Crusaders
   questDescription: Kill 2 knights and 1 priest.

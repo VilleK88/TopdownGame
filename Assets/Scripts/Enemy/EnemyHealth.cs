@@ -38,6 +38,10 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] AudioClip blockHitSound;
     [SerializeField] AudioClip dieSound;
 
+    [Header("Enemy ID Info")]
+    public int enemyID;
+    public int questEnemyID;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -131,12 +135,24 @@ public class EnemyHealth : MonoBehaviour
         gettingHit = false;
     }
 
-    void Die()
+    public void Die()
     {
         if(GameManager.manager.onEnemyDeathCallBack != null)
         {
             GameManager.manager.onEnemyDeathCallBack.Invoke(enemyProfile);
         }
         ExperienceManager.instance.AddExperience(expAmount);
+        AddQuestEnemyIDToArray(this.questEnemyID);
+    }
+
+    void AddQuestEnemyIDToArray(int newQuestEnemyID)
+    {
+        int[] newQuestEnemyIDs = new int[GameManager.manager.questEnemyIDs.Length + 1];
+        for(int i = 0; i < GameManager.manager.questEnemyIDs.Length; i++)
+        {
+            newQuestEnemyIDs[i] = GameManager.manager.questEnemyIDs[i];
+        }
+        newQuestEnemyIDs[GameManager.manager.questEnemyIDs.Length] = newQuestEnemyID;
+        GameManager.manager.questEnemyIDs = newQuestEnemyIDs;
     }
 }

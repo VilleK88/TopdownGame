@@ -19,6 +19,8 @@ public class QuestManager : MonoBehaviour
     }
     #endregion
 
+    GameManager manager;
+
     public GameObject questUI;
     public TextMeshProUGUI questName;
     public TextMeshProUGUI questDescription;
@@ -41,6 +43,56 @@ public class QuestManager : MonoBehaviour
                 quest.initializeQuest();
             }
         }
+
+        RemoveEnemiesForCompletedQuest1();
+        RemoveEnemiesForCompletedQuest2();
+    }
+
+    public List<string> GetCompletedQuestNames()
+    {
+        List<string> completedQuestNames = new List<string>();
+
+        foreach(QuestBase quest in GameManager.manager.completedQuests)
+        {
+            completedQuestNames.Add(quest.name);
+        }
+
+        return completedQuestNames;
+    }
+
+    public void RemoveEnemiesForCompletedQuest1()
+    {
+        List<string> completedQuestNames = GetCompletedQuestNames();
+        EnemyHealth[] enemies = FindObjectsOfType<EnemyHealth>();
+        foreach(EnemyHealth enemy in enemies)
+        {
+            if (completedQuestNames.Contains("KillQuest") && enemy.questEnemyID == 1)
+            {
+                Debug.Log("Remove quest 1 enemies");
+                DestroyEnemy(enemy);
+            }
+        }
+    }
+
+    public void RemoveEnemiesForCompletedQuest2()
+    {
+        List<string> completedQuestNames = GetCompletedQuestNames();
+        EnemyHealth[] enemies = FindObjectsOfType<EnemyHealth>();
+        foreach (EnemyHealth enemy in enemies)
+        {
+            if (completedQuestNames.Contains("KillPeasants") && enemy.questEnemyID == 2)
+            {
+                Debug.Log("Remove quest 2 enemies");
+                DestroyEnemy(enemy);
+            }
+        }
+    }
+
+    void DestroyEnemy(EnemyHealth enemy)
+    {
+        enemy.Die();
+        enemy.dead = true;
+        enemy.gameObject.SetActive(false);
     }
 
 

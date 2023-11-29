@@ -31,10 +31,13 @@ public class GameManager : MonoBehaviour
     public OnEnemyDeathCallBack onEnemyDeathCallBack;
 
     public QuestBase[] triggeredQuests;
-    public QuestBase[] completedQuestsReady;
     public QuestBase[] completedQuests;
+
     public Item[] items;
     public int[] itemIDs;
+
+    public int[] enemyIDs;
+    public int[] questEnemyIDs;
 
     public bool isGameLoaded = false;
 
@@ -98,6 +101,9 @@ public class GameManager : MonoBehaviour
 
         data.itemIDs = itemIDs;
 
+        data.enemyIDs = enemyIDs;
+        data.questEnemyIDs = questEnemyIDs;
+
         // Serialisoidaan GameData objekti, joka tallennetaan samalla tiedostoon.
         bf.Serialize(file, data);
         file.Close(); // Suljetaan tiedosto, ettei kukaan hakkeri p‰‰se siihen k‰siksi.
@@ -141,6 +147,9 @@ public class GameManager : MonoBehaviour
             z = data.z;
 
             itemIDs = data.itemIDs;
+
+            enemyIDs = data.enemyIDs;
+            questEnemyIDs = data.questEnemyIDs;
 
             isGameLoaded = true;
 
@@ -198,8 +207,10 @@ class GameData
     public string[] dialogueTriggerNames;
 
     public QuestBase[] triggeredQuests;
-    public QuestBase[] completedQuestsReady;
     public QuestBase[] completedQuests;
 
     public int[] itemIDs;
+
+    public int[] enemyIDs;
+    public int[] questEnemyIDs;
 }

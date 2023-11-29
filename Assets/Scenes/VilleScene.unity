@@ -5259,6 +5259,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1067344652477661545, guid: 2f277d0751841dc4eade76cf9eb6bea3,
+        type: 3}
+      propertyPath: questEnemyID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661551, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: m_Name
@@ -5267,7 +5272,7 @@ PrefabInstance:
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
@@ -5492,6 +5497,8 @@ MonoBehaviour:
   hitSound: {fileID: 0}
   blockHitSound: {fileID: 0}
   dieSound: {fileID: 0}
+  enemyID: 0
+  questEnemyID: 0
 --- !u!195 &212252328
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5609,7 +5616,7 @@ Transform:
   - {fileID: 1982924416}
   - {fileID: 730032472}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &234118144
 GameObject:
@@ -5738,7 +5745,7 @@ PrefabInstance:
     - target: {fileID: 4777458951601154715, guid: bd5f270063552f245bfd12128dc631f9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4777458951601154715, guid: bd5f270063552f245bfd12128dc631f9,
         type: 3}
@@ -6163,6 +6170,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1067344652477661545, guid: 2f277d0751841dc4eade76cf9eb6bea3,
+        type: 3}
+      propertyPath: questEnemyID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661551, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: m_Name
@@ -6176,7 +6188,7 @@ PrefabInstance:
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
@@ -6340,7 +6352,7 @@ PrefabInstance:
     - target: {fileID: 3998814156259854370, guid: 7a223b9f9589bd045b6411060d8bc891,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3998814156259854370, guid: 7a223b9f9589bd045b6411060d8bc891,
         type: 3}
@@ -6561,6 +6573,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!224 &423864640 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7885599228530270040, guid: 28d1a5bcd76e0f044a36b596a5459f70,
+    type: 3}
+  m_PrefabInstance: {fileID: 7885599227045368948}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &453817001
 GameObject:
   m_ObjectHideFlags: 0
@@ -11547,7 +11565,7 @@ Transform:
   - {fileID: 756974704}
   - {fileID: 496054486}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &682813374
 GameObject:
@@ -11726,7 +11744,7 @@ Transform:
   - {fileID: 2126731915}
   - {fileID: 601386723}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &754308688
 GameObject:
@@ -12102,6 +12120,8 @@ MonoBehaviour:
   hitSound: {fileID: 8300000, guid: 7850fcb2b6ea6b34bb5c6c8b57819351, type: 3}
   blockHitSound: {fileID: 8300000, guid: 6591ca4f9365b5c4d9c83e485c15a5a1, type: 3}
   dieSound: {fileID: 8300000, guid: 1057c4a750a751e4ebe97fa26e22bbb0, type: 3}
+  enemyID: 0
+  questEnemyID: 1
 --- !u!4 &880653549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3256589297461054414, guid: 67dbaf376d2b55049814c1c6563a042b,
@@ -13471,6 +13491,8 @@ MonoBehaviour:
   - {fileID: 7193327353633541486}
   - {fileID: 27609748}
   - {fileID: 889177910}
+  itemIDs: 
+  index: 0
 --- !u!4 &1276529172
 Transform:
   m_ObjectHideFlags: 0
@@ -13478,13 +13500,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276529170}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06474398, y: 0.5, z: -7.908412}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -959.9159, y: -423.77795, z: -10.2804}
+  m_LocalScale: {x: 1.2999324, y: 1.2999324, z: 1.2999324}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 423864640}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1292567703
 GameObject:
@@ -13892,7 +13914,7 @@ PrefabInstance:
     - target: {fileID: 9125619688714398305, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398305, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
@@ -13948,6 +13970,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Crusader (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
+        type: 3}
+      propertyPath: questEnemyID
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398318, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
@@ -14100,7 +14127,7 @@ Transform:
   - {fileID: 965331355}
   - {fileID: 8172979845036470933}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1715061774
 GameObject:
@@ -14886,7 +14913,7 @@ PrefabInstance:
     - target: {fileID: 3979590820795200540, guid: 899040c1c437c5a43891096a02359f90,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3979590820795200540, guid: 899040c1c437c5a43891096a02359f90,
         type: 3}
@@ -15000,7 +15027,7 @@ Transform:
   - {fileID: 1817449652}
   - {fileID: 1920261573}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1920261572
 GameObject:
@@ -15377,7 +15404,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2011747820
 GameObject:
@@ -15409,7 +15436,7 @@ Transform:
   m_Children:
   - {fileID: 863605302}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2024587909
 GameObject:
@@ -15660,7 +15687,7 @@ PrefabInstance:
     - target: {fileID: 3979590820795200540, guid: 899040c1c437c5a43891096a02359f90,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3979590820795200540, guid: 899040c1c437c5a43891096a02359f90,
         type: 3}
@@ -16293,7 +16320,7 @@ PrefabInstance:
     - target: {fileID: 7885599228530270040, guid: 28d1a5bcd76e0f044a36b596a5459f70,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7885599228530270040, guid: 28d1a5bcd76e0f044a36b596a5459f70,
         type: 3}
@@ -16489,7 +16516,7 @@ PrefabInstance:
     - target: {fileID: 9125619688714398305, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398305, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
@@ -16545,6 +16572,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Crusader
+      objectReference: {fileID: 0}
+    - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
+        type: 3}
+      propertyPath: questEnemyID
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398318, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
