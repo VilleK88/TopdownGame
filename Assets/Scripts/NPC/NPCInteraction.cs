@@ -17,11 +17,6 @@ public class NPCInteraction : MonoBehaviour
     public float counter = 0;
 
 
-    private void Start()
-    {
-        //player = PlayerManager.instance.player;
-    }
-
     private void Update()
     {
         distance = Vector3.Distance(PlayerManager.instance.player.transform.position, transform.position);

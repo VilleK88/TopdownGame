@@ -148,7 +148,6 @@ public class DialogueManager : MonoBehaviour
         dialogueBox.SetActive(false);
         OptionsLogic();
         CheckIfDialogueQuest();
-        Debug.Log("Looping");
     }
 
     void CheckIfDialogueQuest()

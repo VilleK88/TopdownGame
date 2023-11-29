@@ -36,7 +36,6 @@ public class DialogueTrigger : NPCInteraction
             {
                 index++;
             }
-            //Debug.Log("Looping here");
         }
         else
         {
