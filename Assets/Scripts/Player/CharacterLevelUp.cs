@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CharacterLevelUp : MonoBehaviour
 {
+    GameManager manager;
     public ExperienceManager xpManager;
     PlayerHealth playerHealtScript;
     Player playerScript;

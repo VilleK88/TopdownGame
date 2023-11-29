@@ -40,7 +40,7 @@ public class QuestManager : MonoBehaviour
         {
             foreach(QuestBase quest in GameManager.manager.triggeredQuests)
             {
-                quest.initializeQuest();
+                quest.initializeQuest(); // a reminder to yourself: if an error occurs it's propably because there are no quests to initialize?
             }
         }
 
