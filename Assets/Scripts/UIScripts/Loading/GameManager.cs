@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     public QuestBase[] completedQuestsReady;
     public QuestBase[] completedQuests;
     public Item[] items;
-    public ItemPickup[] collectedItems;
+    public int[] itemIDs;
 
     public bool isGameLoaded = false;
 
@@ -60,17 +60,6 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Menu");
         }
-    }
-
-    public void AddItemPickupToArray(ItemPickup itemPickup)
-    {
-        ItemPickup[] newItemPickupArray = new ItemPickup[GameManager.manager.collectedItems.Length + 1];
-        for (int i = 0; i < GameManager.manager.collectedItems.Length; i++)
-        {
-            newItemPickupArray[i] = GameManager.manager.collectedItems[i];
-        }
-        newItemPickupArray[GameManager.manager.collectedItems.Length] = itemPickup;
-        GameManager.manager.collectedItems = newItemPickupArray;
     }
 
     private void OnEnable()
@@ -107,6 +96,8 @@ public class GameManager : MonoBehaviour
         data.y = y;
         data.z = z;
 
+        data.itemIDs = itemIDs;
+
         // Serialisoidaan GameData objekti, joka tallennetaan samalla tiedostoon.
         bf.Serialize(file, data);
         file.Close(); // Suljetaan tiedosto, ettei kukaan hakkeri pääse siihen käsiksi.
@@ -119,9 +110,6 @@ public class GameManager : MonoBehaviour
 
         string jsonItems = ToJson(items, true);
         File.WriteAllText(Application.persistentDataPath + "/item.jsonItems", jsonItems);
-
-        string jsonCollectedItems = ToJson(collectedItems, true);
-        File.WriteAllText(Application.persistentDataPath + "/item.jsonCollectedItems", jsonCollectedItems);
     }
 
     public void Load()
@@ -152,6 +140,8 @@ public class GameManager : MonoBehaviour
             y = data.y;
             z = data.z;
 
+            itemIDs = data.itemIDs;
+
             isGameLoaded = true;
 
             string json = File.ReadAllText(Application.persistentDataPath + "/quest.json");
@@ -162,9 +152,6 @@ public class GameManager : MonoBehaviour
 
             string jsonItems = File.ReadAllText(Application.persistentDataPath + "/item.jsonItems");
             items = FromJson<Item>(jsonItems);
-
-            string jsonCollectedItems = File.ReadAllText(Application.persistentDataPath + "/item.jsonCollectedItems");
-            collectedItems = FromJson<ItemPickup>(jsonCollectedItems);
         }
     }
 
@@ -214,5 +201,5 @@ class GameData
     public QuestBase[] completedQuestsReady;
     public QuestBase[] completedQuests;
 
-    public ItemPickup[] collectedItems;
+    public int[] itemIDs;
 }

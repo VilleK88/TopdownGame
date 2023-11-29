@@ -7,6 +7,7 @@ public class ItemPickup : Interactable
 {
     public Item item;
     public string itemName;
+    public int itemID;
 
     private void Start()
     {
@@ -38,8 +39,8 @@ public class ItemPickup : Interactable
         if(wasPickedUp)
         {
             AddItemToArray(item);
-            GameManager.manager.AddItemPickupToArray(this);
             //CollectItem();
+            AddItemIDToArray(this.itemID);
             if (item.type == ItemType.HealthPotion || item.type == ItemType.StaminaPotion ||
                 item.type == ItemType.XpPotion)
             {
@@ -66,16 +67,16 @@ public class ItemPickup : Interactable
         GameManager.manager.items = newItemArray;
     }
 
-    /*void AddItemPickupToArray(ItemPickup itemPickup)
+    void AddItemIDToArray(int newItemID)
     {
-        ItemPickup[] newItemPickupArray = new ItemPickup[GameManager.manager.collectedItems.Length + 1];
-        for(int i = 0; i < GameManager.manager.collectedItems.Length; i++)
+        int[] newItemIDs = new int[GameManager.manager.itemIDs.Length + 1];
+        for(int i = 0; i < GameManager.manager.itemIDs.Length; i++)
         {
-            newItemPickupArray[i] = GameManager.manager.collectedItems[i];
+            newItemIDs[i] = GameManager.manager.itemIDs[i];
         }
-        newItemPickupArray[GameManager.manager.collectedItems.Length] = itemPickup;
-        GameManager.manager.collectedItems = newItemPickupArray;
-    }*/
+        newItemIDs[GameManager.manager.itemIDs.Length] = newItemID;
+        GameManager.manager.itemIDs = newItemIDs;
+    }
 
     void CollectItem()
     {

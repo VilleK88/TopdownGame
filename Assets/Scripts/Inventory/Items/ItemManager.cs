@@ -1,28 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
     GameManager manager;
     public ItemPickup[] itemPickups;
+    public int[] itemIDs;
+    public int index;
 
     private void Start()
     {
         manager = FindObjectOfType<GameManager>();
+        ItemPickup[] pickupsInScene = FindObjectsOfType<ItemPickup>();
 
-        if (manager != null && manager.collectedItems != null)
+        foreach(ItemPickup pickup in pickupsInScene)
         {
-            foreach(ItemPickup pickup in itemPickups)
+            if(GameManager.manager.itemIDs.Contains(pickup.itemID))
             {
-                foreach(ItemPickup collectedItem in manager.collectedItems)
-                {
-                    if(pickup.name == collectedItem.itemName)
-                    {
-                        pickup.gameObject.SetActive(false);
-                        break;
-                    }
-                }
+                Destroy(pickup.gameObject);
             }
         }
     }
