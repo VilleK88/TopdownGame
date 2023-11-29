@@ -1,0 +1,343 @@
+fileFormatVersion: 2
+guid: f12edfb111878334d9df0b8b705c2d3c
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PeasantWalk_0
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 124
+        width: 80
+        height: 53
+      alignment: 9
+      pivot: {x: 0.40565157, y: 0.68738455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63bffbc33ad2f8c41a5739a8b9284a9c
+      internalID: 1359292643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantWalk_1
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 123
+        width: 80
+        height: 53
+      alignment: 9
+      pivot: {x: 0.3940441, y: 0.7074225}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfe6e25ed15678c4f8685d85a512abeb
+      internalID: 1997481008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantWalk_2
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 124
+        width: 80
+        height: 53
+      alignment: 9
+      pivot: {x: 0.40729293, y: 0.6874142}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 562352f3bc133c14d92279e323e69dfa
+      internalID: 1680669249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantWalk_3
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 125
+        width: 80
+        height: 52
+      alignment: 9
+      pivot: {x: 0.43167877, y: 0.68224305}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 865f05791cd2c4b49b3658bc7ede13ed
+      internalID: -2077639237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantWalk_4
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 125
+        width: 80
+        height: 52
+      alignment: 9
+      pivot: {x: 0.44353408, y: 0.6819159}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c047924bd34a0140b88b8bb71edd279
+      internalID: 820774030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantWalk_5
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 34
+        width: 80
+        height: 53
+      alignment: 9
+      pivot: {x: 0.4564682, y: 0.687194}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b81a5198b368fc4aaea5604e4c5c8d4
+      internalID: 1194613433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantWalk_6
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 33
+        width: 80
+        height: 53
+      alignment: 9
+      pivot: {x: 0.46832734, y: 0.6872472}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2441e5a98b3ac444dadda3736884dc93
+      internalID: 1609141229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantWalk_7
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 34
+        width: 80
+        height: 53
+      alignment: 9
+      pivot: {x: 0.45684052, y: 0.6877775}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 393b8a5a61000d54cb5bf86b2ea991ec
+      internalID: 398681727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantWalk_8
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 35
+        width: 80
+        height: 52
+      alignment: 9
+      pivot: {x: 0.44447938, y: 0.6819706}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba7919438f5417c45bb04485305d1207
+      internalID: 281522245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantWalk_9
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 35
+        width: 80
+        height: 52
+      alignment: 9
+      pivot: {x: 0.43133622, y: 0.6809902}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2d37ff028e6b4c4a8138558fdea97cd
+      internalID: -1675951900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 08c53d77c82e7224583926983cb5387a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      PeasantWalk_0: 1359292643
+      PeasantWalk_1: 1997481008
+      PeasantWalk_2: 1680669249
+      PeasantWalk_3: -2077639237
+      PeasantWalk_4: 820774030
+      PeasantWalk_5: 1194613433
+      PeasantWalk_6: 1609141229
+      PeasantWalk_7: 398681727
+      PeasantWalk_8: 281522245
+      PeasantWalk_9: -1675951900
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
