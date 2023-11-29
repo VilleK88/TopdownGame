@@ -24,10 +24,10 @@ public class QuestDialogueTrigger : DialogueTrigger
                         {
                             QuestManager.questManager.currentQuestDialogueTrigger = this;
                             hasActiveQuest = false;
-                            if(!hasActiveQuest)
+                            /*if(!hasActiveQuest)
                             {
                                 base.Interact();
-                            }
+                            }*/
                             return;
                         }
                     }
@@ -44,10 +44,6 @@ public class QuestDialogueTrigger : DialogueTrigger
         if(!CheckIfQuestAlreadyDone() || DialogueManager.instance.completedQuestReady)
         {
             SetItemRewards();
-            /*if (DialogueManager.instance.completedQuestReady)
-            {
-                SetItemRewards();
-            }*/
         }
     }
 

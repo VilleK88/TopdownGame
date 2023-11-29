@@ -28,7 +28,7 @@ public class DialogueTrigger : NPCInteraction
             }
         }
 
-        if (nextDialogueOnInteract && !DialogueManager.instance.inDialogue)
+        if (nextDialogueOnInteract && DialogueManager.instance.inDialogue)
         {
             DialogueManager.instance.EnqueueDialogue(db[index]);
 
@@ -36,6 +36,7 @@ public class DialogueTrigger : NPCInteraction
             {
                 index++;
             }
+            //Debug.Log("Looping here");
         }
         else
         {

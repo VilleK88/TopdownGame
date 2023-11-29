@@ -12,6 +12,10 @@ public class NPCInteraction : MonoBehaviour
     [HideInInspector] public float radius = 3;
     [HideInInspector] public float distance;
 
+    bool startCounting = false;
+    float maxTime = 0.2f;
+    public float counter = 0;
+
 
     private void Start()
     {
@@ -27,9 +31,13 @@ public class NPCInteraction : MonoBehaviour
             transform.LookAt(PlayerManager.instance.player.transform.position);
             gameObject.GetComponent<NavMeshAgent>().isStopped = true;
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && !DialogueManager.instance.inDialogue)
             {
                 Interact();
+            }
+            else if (Input.GetKeyDown(KeyCode.E) && DialogueManager.instance.inDialogue)
+            {
+                DialogueManager.instance.DequeueDialogue();
             }
         }
         else

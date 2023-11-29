@@ -58,8 +58,10 @@ public class DialogueManager : MonoBehaviour
 
     public void EnqueueDialogue(DialogueBase db)
     {
-        if(inDialogue || QuestManager.questManager.inQuestUI || RewardManager.instance.inQuestReward)
+        if (inDialogue || QuestManager.questManager.inQuestUI || RewardManager.instance.inQuestReward)
+        {
             return;
+        }
 
         buffer = true;
         inDialogue = true;
@@ -146,6 +148,7 @@ public class DialogueManager : MonoBehaviour
         dialogueBox.SetActive(false);
         OptionsLogic();
         CheckIfDialogueQuest();
+        Debug.Log("Looping");
     }
 
     void CheckIfDialogueQuest()
@@ -210,17 +213,6 @@ public class DialogueManager : MonoBehaviour
         else
         {
             isDialogueOption = false;
-        }
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            if(inDialogue)
-            {
-                DialogueManager.instance.DequeueDialogue();
-            }
         }
     }
 }
