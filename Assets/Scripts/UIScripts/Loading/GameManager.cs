@@ -33,8 +33,13 @@ public class GameManager : MonoBehaviour
     public QuestBase[] triggeredQuests;
     public QuestBase[] completedQuests;
 
+    public int[] triggeredQuestIDs;
+    public int[] completedQuestIDs;
+
     public Item[] items;
+
     public int[] itemIDs;
+    public int[] pickUpItemIDs;
 
     public int[] enemyIDs;
     public int[] questEnemyIDs;
@@ -100,9 +105,13 @@ public class GameManager : MonoBehaviour
         data.z = z;
 
         data.itemIDs = itemIDs;
+        data.pickUpItemIDs = pickUpItemIDs;
 
         data.enemyIDs = enemyIDs;
         data.questEnemyIDs = questEnemyIDs;
+
+        data.triggeredQuestIDs = triggeredQuestIDs;
+        data.completedQuestIDs = completedQuestIDs;
 
         // Serialisoidaan GameData objekti, joka tallennetaan samalla tiedostoon.
         bf.Serialize(file, data);
@@ -147,9 +156,13 @@ public class GameManager : MonoBehaviour
             z = data.z;
 
             itemIDs = data.itemIDs;
+            pickUpItemIDs = data.pickUpItemIDs;
 
             enemyIDs = data.enemyIDs;
             questEnemyIDs = data.questEnemyIDs;
+
+            triggeredQuestIDs = data.triggeredQuestIDs;
+            completedQuestIDs = data.completedQuestIDs;
 
             isGameLoaded = true;
 
@@ -209,7 +222,11 @@ class GameData
     public QuestBase[] triggeredQuests;
     public QuestBase[] completedQuests;
 
+    public int[] triggeredQuestIDs;
+    public int[] completedQuestIDs;
+
     public int[] itemIDs;
+    public int[] pickUpItemIDs;
 
     public int[] enemyIDs;
     public int[] questEnemyIDs;

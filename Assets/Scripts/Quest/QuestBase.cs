@@ -7,6 +7,7 @@ using UnityEngine;
 public class QuestBase : ScriptableObject
 {
     public string questName;
+    public int questID = 0;
     [TextArea(5, 10)]
     public string questDescription;
 

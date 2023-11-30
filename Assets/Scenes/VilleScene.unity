@@ -5141,6 +5141,11 @@ PrefabInstance:
       propertyPath: itemID
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3256589297461054410, guid: 67dbaf376d2b55049814c1c6563a042b,
+        type: 3}
+      propertyPath: pickUpItemID
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3256589297461054411, guid: 67dbaf376d2b55049814c1c6563a042b,
         type: 3}
       propertyPath: m_Name
@@ -5262,7 +5267,7 @@ PrefabInstance:
     - target: {fileID: 1067344652477661545, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: questEnemyID
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661551, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
@@ -6170,6 +6175,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1067344652477661545, guid: 2f277d0751841dc4eade76cf9eb6bea3,
+        type: 3}
+      propertyPath: questEnemyID
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661551, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: m_Name
@@ -11686,7 +11696,7 @@ MonoBehaviour:
   interactionTransform: {fileID: 754308693}
   item: {fileID: 11400000, guid: 4eb4cc6f41e009141ba2746c2e3d2be2, type: 2}
   itemName: 
-  itemID: 0
+  pickUpItemID: 0
 --- !u!65 &754308690
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12158,7 +12168,7 @@ MonoBehaviour:
   blockHitSound: {fileID: 8300000, guid: 6591ca4f9365b5c4d9c83e485c15a5a1, type: 3}
   dieSound: {fileID: 8300000, guid: 1057c4a750a751e4ebe97fa26e22bbb0, type: 3}
   enemyID: 0
-  questEnemyID: 1
+  questEnemyID: 0
 --- !u!4 &880653549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3256589297461054414, guid: 67dbaf376d2b55049814c1c6563a042b,
@@ -12291,6 +12301,11 @@ PrefabInstance:
         type: 3}
       propertyPath: itemID
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256589297461054410, guid: 67dbaf376d2b55049814c1c6563a042b,
+        type: 3}
+      propertyPath: pickUpItemID
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3256589297461054411, guid: 67dbaf376d2b55049814c1c6563a042b,
         type: 3}
@@ -12833,6 +12848,11 @@ PrefabInstance:
       propertyPath: itemName
       value: healthpotion3
       objectReference: {fileID: 0}
+    - target: {fileID: 7657944507466521422, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
+        type: 3}
+      propertyPath: pickUpItemID
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7657944507466521423, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
         type: 3}
       propertyPath: m_Name
@@ -13057,6 +13077,11 @@ PrefabInstance:
         type: 3}
       propertyPath: itemName
       value: healthpotion2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657944507466521422, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
+        type: 3}
+      propertyPath: pickUpItemID
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7657944507466521423, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
         type: 3}
@@ -13294,6 +13319,11 @@ PrefabInstance:
     - target: {fileID: 7657944507466521422, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
         type: 3}
       propertyPath: itemID
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657944507466521422, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
+        type: 3}
+      propertyPath: pickUpItemID
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7657944507466521423, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
@@ -13905,7 +13935,7 @@ PrefabInstance:
     - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
       propertyPath: questEnemyID
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398318, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
@@ -14535,6 +14565,11 @@ PrefabInstance:
     - target: {fileID: 7657944507466521422, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
         type: 3}
       propertyPath: itemID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657944507466521422, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
+        type: 3}
+      propertyPath: pickUpItemID
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7657944507466521423, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
@@ -15434,7 +15469,7 @@ MonoBehaviour:
   interactionTransform: {fileID: 2036151283}
   item: {fileID: 11400000, guid: 541b704949bbd604089828953971961f, type: 2}
   itemName: 
-  itemID: 0
+  pickUpItemID: 0
 --- !u!65 &2036151280
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15801,6 +15836,11 @@ PrefabInstance:
       propertyPath: itemID
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3256589297461054410, guid: 67dbaf376d2b55049814c1c6563a042b,
+        type: 3}
+      propertyPath: pickUpItemID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3256589297461054411, guid: 67dbaf376d2b55049814c1c6563a042b,
         type: 3}
       propertyPath: m_Name
@@ -15890,6 +15930,11 @@ PrefabInstance:
     - target: {fileID: 6181556930791335945, guid: 30e3a90f46d69d84085188da3d035b88,
         type: 3}
       propertyPath: itemID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181556930791335945, guid: 30e3a90f46d69d84085188da3d035b88,
+        type: 3}
+      propertyPath: pickUpItemID
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6181556930791335949, guid: 30e3a90f46d69d84085188da3d035b88,
@@ -16505,7 +16550,7 @@ PrefabInstance:
     - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
       propertyPath: questEnemyID
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398318, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}

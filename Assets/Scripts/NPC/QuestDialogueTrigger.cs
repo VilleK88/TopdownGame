@@ -75,6 +75,82 @@ public class QuestDialogueTrigger : DialogueTrigger
                     DialogueManager.instance.completedQuestReady = false;
                 }
             }
+
+            foreach (DialogueQuest dialogueQuest in dialogueQuests)
+            {
+                if (dialogueQuest.quest != null)
+                {
+                    AddQuestIDToCompletedArray(dialogueQuest.quest.questID);
+                    RemoveQuestIDFromTriggeredArray();
+                    AddQuestToCompletedArray(dialogueQuest.quest);
+                    RemoveQuestFromTriggeredQuestsArray(dialogueQuest.quest);
+                    return;
+                }
+            }
+        }
+    }
+
+    void AddQuestIDToCompletedArray(int newCompletedQuestID)
+    {
+        int[] newCompletedQuestIDs = new int[GameManager.manager.completedQuestIDs.Length + 1];
+        for(int i = 0; i < GameManager.manager.completedQuestIDs.Length; i++)
+        {
+            newCompletedQuestIDs[i] = GameManager.manager.completedQuestIDs[i];
+        }
+        newCompletedQuestIDs[GameManager.manager.completedQuestIDs.Length] = newCompletedQuestID;
+        GameManager.manager.completedQuestIDs = newCompletedQuestIDs;
+    }
+
+    void RemoveQuestIDFromTriggeredArray()
+    {
+        List<int> triggeredQuestIDs = GameManager.manager.triggeredQuestIDs.ToList();
+
+        foreach (int questID in GameManager.manager.completedQuestIDs)
+        {
+            if (triggeredQuestIDs.Contains(questID))
+            {
+                triggeredQuestIDs.Remove(questID);
+            }
+        }
+
+        GameManager.manager.triggeredQuestIDs = triggeredQuestIDs.ToArray();
+    }
+
+    void RemoveQuestFromTriggeredQuestsArray(QuestBase quest)
+    {
+        for(int i = 0; i < GameManager.manager.triggeredQuests.Length; i++)
+        {
+            if (GameManager.manager.triggeredQuests[i] == quest)
+            {
+                GameManager.manager.triggeredQuests = GameManager.manager.triggeredQuests.Where((val, idx) => idx != i).ToArray();
+                return;
+            }
+        }
+    }
+
+    public void HasCompletedQuest(QuestBase quest)
+    {
+        foreach(DialogueQuest dialogueQuest in dialogueQuests)
+        {
+            if(dialogueQuest.quest != null)
+            {
+                AddQuestToCompletedArray(quest);
+                return;
+            }
+        }
+    }
+
+    public void AddQuestToCompletedArray(QuestBase quest)
+    {
+        if(!GameManager.manager.completedQuests.Contains(quest))
+        {
+            QuestBase[] newQuestArray = new QuestBase[GameManager.manager.completedQuests.Length + 1];
+            for (int i = 0; i < GameManager.manager.completedQuests.Length; i++)
+            {
+                newQuestArray[i] = GameManager.manager.completedQuests[i];
+            }
+            newQuestArray[GameManager.manager.completedQuests.Length] = quest;
+            GameManager.manager.completedQuests = newQuestArray;
         }
     }
 }

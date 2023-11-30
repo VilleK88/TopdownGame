@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: KillPeasants
   m_EditorClassIdentifier: 
   questName: Kill the christians peasants!
+  questID: 1
   questDescription: Kill 2 christian peasants
   NPCTurnIn: {fileID: 11400000, guid: 281ef917b4910124c89a1bd40f1ece3c, type: 2}
   completedQuestDialogue: {fileID: 11400000, guid: af197f647d4a1094aa7c54acc5537f6f,
@@ -24,7 +25,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 121fb5a600420a74badca7614566a134, type: 2}
     - {fileID: 11400000, guid: 121fb5a600420a74badca7614566a134, type: 2}
     experienceReward: 100
-    goldReward: 0
   objectives:
   - requiredEnemy: {fileID: 11400000, guid: 29eb18b2608f32d45b09289a487fd589, type: 2}
     requiredAmount: 2

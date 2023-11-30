@@ -37,11 +37,12 @@ public class InventoryManager : MonoBehaviour
     public AudioClip potionPickUpSound;
     public AudioClip weaponPickUpSound;
 
+
     private void Start()
     {
-        if(GameManager.manager != null && GameManager.manager.items != null)
+        if (GameManager.manager != null && GameManager.manager.items != null)
         {
-            foreach(Item item in GameManager.manager.items)
+            foreach (Item item in GameManager.manager.items)
             {
                 AddItem(item);
             }
