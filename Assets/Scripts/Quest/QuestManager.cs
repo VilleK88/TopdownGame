@@ -44,17 +44,20 @@ public class QuestManager : MonoBehaviour
             }
         }
 
-        RemoveEnemiesForCompletedQuest1();
-        RemoveEnemiesForCompletedQuest2();
+        //RemoveEnemiesForCompletedQuest1();
+        //RemoveEnemiesForCompletedQuest2();
     }
 
     public List<string> GetCompletedQuestNames()
     {
         List<string> completedQuestNames = new List<string>();
 
-        foreach(QuestBase quest in GameManager.manager.completedQuests)
+        if(GameManager.manager.completedQuests != null)
         {
-            completedQuestNames.Add(quest.name);
+            foreach (QuestBase quest in GameManager.manager.completedQuests)
+            {
+                completedQuestNames.Add(quest.name);
+            }
         }
 
         return completedQuestNames;

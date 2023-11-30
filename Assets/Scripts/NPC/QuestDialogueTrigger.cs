@@ -75,6 +75,54 @@ public class QuestDialogueTrigger : DialogueTrigger
                     DialogueManager.instance.completedQuestReady = false;
                 }
             }
+
+            foreach (DialogueQuest dialogueQuest in dialogueQuests)
+            {
+                if (dialogueQuest.quest != null)
+                {
+                    AddQuestToCompletedArray(dialogueQuest.quest);
+                    RemoveQuestFromTriggeredQuestsArray(dialogueQuest.quest);
+                    return;
+                }
+            }
+        }
+    }
+
+    void RemoveQuestFromTriggeredQuestsArray(QuestBase quest)
+    {
+        for(int i = 0; i < GameManager.manager.triggeredQuests.Length; i++)
+        {
+            if (GameManager.manager.triggeredQuests[i] == quest)
+            {
+                GameManager.manager.triggeredQuests = GameManager.manager.triggeredQuests.Where((val, idx) => idx != i).ToArray();
+                return;
+            }
+        }
+    }
+
+    public void HasCompletedQuest(QuestBase quest)
+    {
+        foreach(DialogueQuest dialogueQuest in dialogueQuests)
+        {
+            if(dialogueQuest.quest != null)
+            {
+                AddQuestToCompletedArray(quest);
+                return;
+            }
+        }
+    }
+
+    public void AddQuestToCompletedArray(QuestBase quest)
+    {
+        if(!GameManager.manager.completedQuests.Contains(quest))
+        {
+            QuestBase[] newQuestArray = new QuestBase[GameManager.manager.completedQuests.Length + 1];
+            for (int i = 0; i < GameManager.manager.completedQuests.Length; i++)
+            {
+                newQuestArray[i] = GameManager.manager.completedQuests[i];
+            }
+            newQuestArray[GameManager.manager.completedQuests.Length] = quest;
+            GameManager.manager.completedQuests = newQuestArray;
         }
     }
 }
