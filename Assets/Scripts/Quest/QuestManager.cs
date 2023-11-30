@@ -46,7 +46,10 @@ public class QuestManager : MonoBehaviour
 
         //RemoveEnemiesForCompletedQuest1();
         //RemoveEnemiesForCompletedQuest2();
+        RemoveEnemiesForCompletedQuests();
     }
+
+
 
     public List<string> GetCompletedQuestNames()
     {
@@ -63,15 +66,16 @@ public class QuestManager : MonoBehaviour
         return completedQuestNames;
     }
 
-    public void RemoveEnemiesForCompletedQuest1()
+    public void RemoveEnemiesForCompletedQuests()
     {
-        List<string> completedQuestNames = GetCompletedQuestNames();
+        int[] completedQuestIDs = GameManager.manager.completedQuestIDs;
+
         EnemyHealth[] enemies = FindObjectsOfType<EnemyHealth>();
-        foreach(EnemyHealth enemy in enemies)
+        foreach (EnemyHealth enemy in enemies)
         {
-            if (completedQuestNames.Contains("KillQuest") && enemy.questEnemyID == 1)
+            if (completedQuestIDs != null && completedQuestIDs.Contains(enemy.questEnemyID))
             {
-                Debug.Log("Remove quest 1 enemies");
+                Debug.Log("Removing enemy with questEnemyID: " + enemy.questEnemyID);
                 DestroyEnemy(enemy);
             }
         }
@@ -130,6 +134,7 @@ public class QuestManager : MonoBehaviour
         if(!GameManager.manager.triggeredQuests.Contains(quest))
         {
             AddQuestToArray(quest);
+            AddQuestIDToArray(quest.questID);
         }
     }
 
@@ -147,5 +152,16 @@ public class QuestManager : MonoBehaviour
         }
         newQuestArray[GameManager.manager.triggeredQuests.Length] = quest;
         GameManager.manager.triggeredQuests = newQuestArray;
+    }
+
+    void AddQuestIDToArray(int newTriggeredQuestID)
+    {
+        int[] newTriggeredQuestIDs = new int[GameManager.manager.triggeredQuestIDs.Length + 1];
+        for(int i = 0; i < GameManager.manager.triggeredQuestIDs.Length; i++)
+        {
+            newTriggeredQuestIDs[i] = GameManager.manager.triggeredQuestIDs[i];
+        }
+        newTriggeredQuestIDs[GameManager.manager.triggeredQuestIDs.Length] = newTriggeredQuestID;
+        GameManager.manager.triggeredQuestIDs = newTriggeredQuestIDs;
     }
 }

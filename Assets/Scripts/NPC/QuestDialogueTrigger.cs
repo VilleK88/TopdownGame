@@ -80,12 +80,40 @@ public class QuestDialogueTrigger : DialogueTrigger
             {
                 if (dialogueQuest.quest != null)
                 {
+                    AddQuestIDToCompletedArray(dialogueQuest.quest.questID);
+                    RemoveQuestIDFromTriggeredArray();
                     AddQuestToCompletedArray(dialogueQuest.quest);
                     RemoveQuestFromTriggeredQuestsArray(dialogueQuest.quest);
                     return;
                 }
             }
         }
+    }
+
+    void AddQuestIDToCompletedArray(int newCompletedQuestID)
+    {
+        int[] newCompletedQuestIDs = new int[GameManager.manager.completedQuestIDs.Length + 1];
+        for(int i = 0; i < GameManager.manager.completedQuestIDs.Length; i++)
+        {
+            newCompletedQuestIDs[i] = GameManager.manager.completedQuestIDs[i];
+        }
+        newCompletedQuestIDs[GameManager.manager.completedQuestIDs.Length] = newCompletedQuestID;
+        GameManager.manager.completedQuestIDs = newCompletedQuestIDs;
+    }
+
+    void RemoveQuestIDFromTriggeredArray()
+    {
+        List<int> triggeredQuestIDs = GameManager.manager.triggeredQuestIDs.ToList();
+
+        foreach (int questID in GameManager.manager.completedQuestIDs)
+        {
+            if (triggeredQuestIDs.Contains(questID))
+            {
+                triggeredQuestIDs.Remove(questID);
+            }
+        }
+
+        GameManager.manager.triggeredQuestIDs = triggeredQuestIDs.ToArray();
     }
 
     void RemoveQuestFromTriggeredQuestsArray(QuestBase quest)

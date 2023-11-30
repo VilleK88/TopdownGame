@@ -5262,7 +5262,7 @@ PrefabInstance:
     - target: {fileID: 1067344652477661545, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: questEnemyID
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661551, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
@@ -6170,6 +6170,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1067344652477661545, guid: 2f277d0751841dc4eade76cf9eb6bea3,
+        type: 3}
+      propertyPath: questEnemyID
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661551, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: m_Name
@@ -12158,7 +12163,7 @@ MonoBehaviour:
   blockHitSound: {fileID: 8300000, guid: 6591ca4f9365b5c4d9c83e485c15a5a1, type: 3}
   dieSound: {fileID: 8300000, guid: 1057c4a750a751e4ebe97fa26e22bbb0, type: 3}
   enemyID: 0
-  questEnemyID: 1
+  questEnemyID: 0
 --- !u!4 &880653549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3256589297461054414, guid: 67dbaf376d2b55049814c1c6563a042b,
@@ -13905,7 +13910,7 @@ PrefabInstance:
     - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
       propertyPath: questEnemyID
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398318, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
@@ -16505,7 +16510,7 @@ PrefabInstance:
     - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
       propertyPath: questEnemyID
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398318, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
