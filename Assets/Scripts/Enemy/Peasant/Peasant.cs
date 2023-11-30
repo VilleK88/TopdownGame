@@ -47,8 +47,15 @@ public class Peasant : MonoBehaviour
     bool gettingHitFetch; // from EnemyHealth -script
     public int convertOnlyOnce = 0;
 
+    [Header("Death Parameters")]
     bool deadFetch; // from EnemyHealth -script
     bool dead = false;
+
+    [Header("Patrol")]
+    //Transform[] waypoints;
+    int waypointIndex;
+    Vector3[] waypoints;
+    Vector3 waypoint1, waypoint2;
 
     [Header("Audio")]
     [SerializeField] AudioClip attackSound;
@@ -65,6 +72,10 @@ public class Peasant : MonoBehaviour
         StartCoroutine(FOVRoutine());
         attackCooldownOriginal = attackCooldown;
         originalSpeed = agent.speed;
+        //waypoint1 = waypoints[0];
+        waypoint1 = transform.position;
+        waypoint2 = waypoints[1];
+        waypoint2 = new Vector3(0, 1, 0);
     }
 
     private void Update()
@@ -140,11 +151,13 @@ public class Peasant : MonoBehaviour
                 else
                 {
                     RandomMovement();
+                    //Patrol();
                 }
             }
             else
             {
                 RandomMovement();
+                //Patrol();
             }
         }
     }
@@ -170,6 +183,22 @@ public class Peasant : MonoBehaviour
                 agent.SetDestination(point);
             }
         }
+    }
+
+    void Patrol()
+    {
+        agent.speed = originalSpeed;
+        childSprite.GetComponent<Animator>().SetBool("Walking", true);
+        if(Vector3.Distance(transform.position, waypoints[waypointIndex]) < 1.5f)
+        {
+            waypointIndex++;
+
+            if(waypointIndex >= waypoints.Length)
+            {
+                waypointIndex = 0;
+            }
+        }
+        agent.SetDestination(waypoints[waypointIndex]);
     }
 
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
@@ -319,5 +348,14 @@ public class Peasant : MonoBehaviour
         childSprite.GetComponentInChildren<SpriteRenderer>().enabled = false;
         //yield return new WaitForSeconds(2);
         gameObject.SetActive(false);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if(waypoint1 != null && waypoint2 != null)
+        {
+            Gizmos.DrawLine(transform.position, waypoint1);
+            Gizmos.DrawLine(transform.position, waypoint2);
+        }
     }
 }
