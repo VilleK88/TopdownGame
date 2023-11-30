@@ -352,10 +352,10 @@ public class Peasant : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if(waypoint1 != null && waypoint2 != null)
+        /*if(waypoint1 != null && waypoint2 != null)
         {
             Gizmos.DrawLine(transform.position, waypoint1);
             Gizmos.DrawLine(transform.position, waypoint2);
-        }
+        }*/
     }
 }

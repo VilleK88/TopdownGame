@@ -33,6 +33,7 @@ public class Item : ScriptableObject
         if(type == ItemType.XpPotion)
         {
             ExperienceManager.instance.AddExperience(20); // test
+            AudioManager.instance.PlaySound(InventoryManager.instance.drinkingSound);
         }
         if(type == ItemType.HealthPotion)
         {
