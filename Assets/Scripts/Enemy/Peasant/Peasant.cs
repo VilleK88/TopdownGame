@@ -31,7 +31,7 @@ public class Peasant : MonoBehaviour
     Collider[] rangeChecks;
     Transform target;
     Vector3 directionToTarget;
-    float distanceToTarget;
+    float distanceToPlayer;
 
     [Header("Chase, Attack and Agro Parameters")]
     public bool isAgro = false;
@@ -71,8 +71,9 @@ public class Peasant : MonoBehaviour
     {
         gettingHitFetch = GetComponent<EnemyHealth>().gettingHit;
         deadFetch = GetComponent<EnemyHealth>().dead;
+        distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-        if(gettingHitFetch)
+        if (gettingHitFetch)
         {
             childSprite.GetComponent<Animator>().SetBool("Walking", false);
         }
@@ -112,11 +113,12 @@ public class Peasant : MonoBehaviour
 
                 if (isAgro)
                 {
-                    if (distanceToTarget > 2.2f)
+                    if (distanceToPlayer > 2.2f)
                     {
                         Chase();
+                        attackCooldown = 0.2f;
                     }
-                    else if (distanceToTarget <= 2.2f)
+                    else if (distanceToPlayer <= 2.2f)
                     {
                         childSprite.GetComponent<Animator>().SetBool("Walking", false);
                         transform.LookAt(player.transform.position);
@@ -149,7 +151,15 @@ public class Peasant : MonoBehaviour
 
     void RandomMovement()
     {
-        childSprite.GetComponent<Animator>().SetBool("Walking", true);
+        if(converted)
+        {
+            childSprite.GetComponent<Animator>().SetBool("Walking", true);
+        }
+        else
+        {
+            childSprite.GetComponent<Animator>().SetBool("NotTurnedWalk", true);
+        }
+
         agent.speed = originalSpeed;
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
@@ -198,6 +208,7 @@ public class Peasant : MonoBehaviour
             {
                 gameObject.tag = "Enemy";
                 //sprite.color = Color.red;
+                childSprite.GetComponent<Animator>().SetBool("NotTurnedWalk", false);
             }
         }
     }
@@ -253,9 +264,9 @@ public class Peasant : MonoBehaviour
 
             if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
             {
-                distanceToTarget = Vector3.Distance(transform.position, target.position);
+                distanceToPlayer = Vector3.Distance(transform.position, target.position);
 
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToPlayer, obstructionMask))
                 {
                     canSeePlayer = true;
                 }
