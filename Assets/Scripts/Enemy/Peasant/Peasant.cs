@@ -44,7 +44,6 @@ public class Peasant : MonoBehaviour
     float attackCooldownOriginal;
     float originalSpeed;
 
-    //bool ifBlockingPlayersAttackFetch; // from EnemyHealth -script
     bool gettingHitFetch; // from EnemyHealth -script
     public int convertOnlyOnce = 0;
 
@@ -57,7 +56,6 @@ public class Peasant : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //player = GameObject.FindGameObjectWithTag("Player");
         player = PlayerManager.instance.player;
         playerTransform = player.transform;
         agent = GetComponent<NavMeshAgent>();
@@ -71,11 +69,15 @@ public class Peasant : MonoBehaviour
 
     private void Update()
     {
-        //ifBlockingPlayersAttackFetch = GetComponent<TestEnemyHealth>().blockingPlayer;
         gettingHitFetch = GetComponent<EnemyHealth>().gettingHit;
         deadFetch = GetComponent<EnemyHealth>().dead;
-        Death();
 
+        if(gettingHitFetch)
+        {
+            childSprite.GetComponent<Animator>().SetBool("Walking", false);
+        }
+
+        Death();
 
         if (!dead)
         {
@@ -116,6 +118,7 @@ public class Peasant : MonoBehaviour
                     }
                     else if (distanceToTarget <= 2.2f)
                     {
+                        childSprite.GetComponent<Animator>().SetBool("Walking", false);
                         transform.LookAt(player.transform.position);
                         if (!gettingHitFetch)
                         {
@@ -146,6 +149,7 @@ public class Peasant : MonoBehaviour
 
     void RandomMovement()
     {
+        childSprite.GetComponent<Animator>().SetBool("Walking", true);
         agent.speed = originalSpeed;
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
@@ -182,6 +186,7 @@ public class Peasant : MonoBehaviour
     {
         agent.speed = 3;
         agent.SetDestination(playerTransform.position);
+        childSprite.GetComponent<Animator>().SetBool("Walking", true);
     }
 
     void Convert()
