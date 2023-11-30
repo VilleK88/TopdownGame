@@ -192,7 +192,7 @@ public class Peasant : MonoBehaviour
             if (currentTag == "Peasant")
             {
                 gameObject.tag = "Enemy";
-                sprite.color = Color.red;
+                //sprite.color = Color.red;
             }
         }
     }

@@ -14,41 +14,7 @@ AnimationClip:
   m_RotationCurves: []
   m_CompressedRotationCurves: []
   m_EulerCurves: []
-  m_PositionCurves:
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: {x: 0.295, y: 0.191, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 0.14285715
-        value: {x: 0.295, y: 0.746, z: -0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 0.2857143
-        value: {x: 0.295, y: 0.191, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: Pike
+  m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves:
   - curve:
@@ -64,7 +30,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.14285715
+        time: 0.115384616
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -73,7 +39,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.17142858
+        time: 0.23076923
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -85,11 +51,32 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: Pike/PikeBlade
+    path: PikeBlade
     classID: 65
     script: {fileID: 0}
-  m_PPtrCurves: []
-  m_SampleRate: 70
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: -89205741, guid: d361894ddccfc4a4296e5df3d8f36266, type: 3}
+    - time: 0.03846154
+      value: {fileID: -1069067414, guid: d361894ddccfc4a4296e5df3d8f36266, type: 3}
+    - time: 0.07692308
+      value: {fileID: -480978894, guid: d361894ddccfc4a4296e5df3d8f36266, type: 3}
+    - time: 0.115384616
+      value: {fileID: -1398538593, guid: d361894ddccfc4a4296e5df3d8f36266, type: 3}
+    - time: 0.15384616
+      value: {fileID: -1755897924, guid: d361894ddccfc4a4296e5df3d8f36266, type: 3}
+    - time: 0.1923077
+      value: {fileID: 649869426, guid: d361894ddccfc4a4296e5df3d8f36266, type: 3}
+    - time: 0.23076923
+      value: {fileID: -1801213087, guid: d361894ddccfc4a4296e5df3d8f36266, type: 3}
+    - time: 0.26923078
+      value: {fileID: -1803286440, guid: d361894ddccfc4a4296e5df3d8f36266, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+  m_SampleRate: 26
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -97,26 +84,34 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 379455402
-      attribute: 1
-      script: {fileID: 0}
-      typeID: 4
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 4079119660
+      path: 2900930895
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 65
       customType: 0
       isPPtrCurve: 0
-    pptrCurveMapping: []
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: -89205741, guid: d361894ddccfc4a4296e5df3d8f36266, type: 3}
+    - {fileID: -1069067414, guid: d361894ddccfc4a4296e5df3d8f36266, type: 3}
+    - {fileID: -480978894, guid: d361894ddccfc4a4296e5df3d8f36266, type: 3}
+    - {fileID: -1398538593, guid: d361894ddccfc4a4296e5df3d8f36266, type: 3}
+    - {fileID: -1755897924, guid: d361894ddccfc4a4296e5df3d8f36266, type: 3}
+    - {fileID: 649869426, guid: d361894ddccfc4a4296e5df3d8f36266, type: 3}
+    - {fileID: -1801213087, guid: d361894ddccfc4a4296e5df3d8f36266, type: 3}
+    - {fileID: -1803286440, guid: d361894ddccfc4a4296e5df3d8f36266, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.2857143
+    m_StopTime: 0.30769232
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -137,117 +132,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.295
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.14285715
-        value: 0.295
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.2857143
-        value: 0.295
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalPosition.x
-    path: Pike
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.191
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.14285715
-        value: 0.746
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.2857143
-        value: 0.191
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalPosition.y
-    path: Pike
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.14285715
-        value: -0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.2857143
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalPosition.z
-    path: Pike
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -256,7 +140,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.14285715
+        time: 0.115384616
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -265,7 +149,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.17142858
+        time: 0.23076923
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -277,7 +161,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: Pike/PikeBlade
+    path: PikeBlade
     classID: 65
     script: {fileID: 0}
   m_EulerEditorCurves: []

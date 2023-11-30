@@ -6170,20 +6170,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1067344652477661545, guid: 2f277d0751841dc4eade76cf9eb6bea3,
-        type: 3}
-      propertyPath: questEnemyID
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661551, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: m_Name
       value: Peasant
-      objectReference: {fileID: 0}
-    - target: {fileID: 1067344652477661551, guid: 2f277d0751841dc4eade76cf9eb6bea3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
@@ -14211,7 +14201,7 @@ SpriteRenderer:
   m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b,
     type: 3}
-  m_Color: {r: 0.62352943, g: 0.070070386, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
