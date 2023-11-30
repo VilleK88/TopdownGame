@@ -60,6 +60,9 @@ public class Player : MonoBehaviour
     [Header("Audio Info")]
     [SerializeField] AudioClip attackSound;
     [SerializeField] AudioClip strongAttackSound;
+    [SerializeField] AudioSource walkSound;
+    [SerializeField] AudioSource runningSound;
+    [SerializeField] AudioClip jumpSound;
 
 
     private void Start()
@@ -270,15 +273,32 @@ public class Player : MonoBehaviour
             childSprite.GetComponent<Animator>().SetBool("Running", true);
             if (GameManager.manager.currentStamina > 0)
             {
+                if(!runningSound.isPlaying)
+                {
+                    runningSound.Play();
+                }
                 moveSpeed = 7; // 5
             }
             else
             {
+                if (runningSound.isPlaying)
+                {
+                    runningSound.Stop();
+                }
+
+                if (!walkSound.isPlaying)
+                {
+                    walkSound.Play();
+                }
                 moveSpeed = 3.5f;
             }
         }
         else
         {
+            if (runningSound.isPlaying)
+            {
+                runningSound.Stop();
+            }
             running = false;
             childSprite.GetComponent<Animator>().SetBool("Running", false);
             moveSpeed = 3.5f;
@@ -286,17 +306,30 @@ public class Player : MonoBehaviour
         if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) ||
             Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
-            if(!attacking && !running)
+            if (!attacking && !running)
             {
+                if(!walkSound.isPlaying)
+                {
+                    walkSound.Play();
+                }
                 childSprite.GetComponent<Animator>().SetBool("Walking", true);
+                //AudioManager.instance.PlaySound(walkSound);
             }
             else
             {
+                if(walkSound.isPlaying)
+                {
+                    walkSound.Stop();
+                }
                 childSprite.GetComponent<Animator>().SetBool("Walking", false);
             }
         }
         else
         {
+            if (walkSound.isPlaying)
+            {
+                walkSound.Stop();
+            }
             childSprite.GetComponent<Animator>().SetBool("Walking", false);
         }
 
@@ -425,11 +458,13 @@ public class Player : MonoBehaviour
         {
             jumps = 0;
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+            AudioManager.instance.PlaySound(jumpSound);
         }
         else if (Input.GetKeyDown(KeyCode.Space) && jumps < 1)
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
             jumps++;
+            AudioManager.instance.PlaySound(jumpSound);
         }
     }
 
