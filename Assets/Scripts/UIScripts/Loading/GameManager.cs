@@ -37,7 +37,9 @@ public class GameManager : MonoBehaviour
     public int[] completedQuestIDs;
 
     public Item[] items;
+
     public int[] itemIDs;
+    public int[] pickUpItemIDs;
 
     public int[] enemyIDs;
     public int[] questEnemyIDs;
@@ -103,6 +105,7 @@ public class GameManager : MonoBehaviour
         data.z = z;
 
         data.itemIDs = itemIDs;
+        data.pickUpItemIDs = pickUpItemIDs;
 
         data.enemyIDs = enemyIDs;
         data.questEnemyIDs = questEnemyIDs;
@@ -153,6 +156,7 @@ public class GameManager : MonoBehaviour
             z = data.z;
 
             itemIDs = data.itemIDs;
+            pickUpItemIDs = data.pickUpItemIDs;
 
             enemyIDs = data.enemyIDs;
             questEnemyIDs = data.questEnemyIDs;
@@ -222,6 +226,7 @@ class GameData
     public int[] completedQuestIDs;
 
     public int[] itemIDs;
+    public int[] pickUpItemIDs;
 
     public int[] enemyIDs;
     public int[] questEnemyIDs;

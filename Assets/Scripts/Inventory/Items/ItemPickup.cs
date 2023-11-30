@@ -7,7 +7,7 @@ public class ItemPickup : Interactable
 {
     public Item item;
     public string itemName;
-    public int itemID;
+    public int pickUpItemID;
 
     private void Start()
     {
@@ -40,7 +40,7 @@ public class ItemPickup : Interactable
         {
             AddItemToArray(item);
             //CollectItem();
-            AddItemIDToArray(this.itemID);
+            AddItemIDToArray(this.pickUpItemID);
             if (item.type == ItemType.HealthPotion || item.type == ItemType.StaminaPotion ||
                 item.type == ItemType.XpPotion)
             {
@@ -69,13 +69,13 @@ public class ItemPickup : Interactable
 
     void AddItemIDToArray(int newItemID)
     {
-        int[] newItemIDs = new int[GameManager.manager.itemIDs.Length + 1];
-        for(int i = 0; i < GameManager.manager.itemIDs.Length; i++)
+        int[] newItemIDs = new int[GameManager.manager.pickUpItemIDs.Length + 1];
+        for(int i = 0; i < GameManager.manager.pickUpItemIDs.Length; i++)
         {
-            newItemIDs[i] = GameManager.manager.itemIDs[i];
+            newItemIDs[i] = GameManager.manager.pickUpItemIDs[i];
         }
-        newItemIDs[GameManager.manager.itemIDs.Length] = newItemID;
-        GameManager.manager.itemIDs = newItemIDs;
+        newItemIDs[GameManager.manager.pickUpItemIDs.Length] = newItemID;
+        GameManager.manager.pickUpItemIDs = newItemIDs;
     }
 
     void CollectItem()

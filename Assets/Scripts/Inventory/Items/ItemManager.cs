@@ -17,7 +17,7 @@ public class ItemManager : MonoBehaviour
 
         foreach(ItemPickup pickup in pickupsInScene)
         {
-            if(GameManager.manager.itemIDs.Contains(pickup.itemID))
+            if(GameManager.manager.pickUpItemIDs.Contains(pickup.pickUpItemID))
             {
                 Destroy(pickup.gameObject);
             }

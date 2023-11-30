@@ -5141,6 +5141,11 @@ PrefabInstance:
       propertyPath: itemID
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3256589297461054410, guid: 67dbaf376d2b55049814c1c6563a042b,
+        type: 3}
+      propertyPath: pickUpItemID
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3256589297461054411, guid: 67dbaf376d2b55049814c1c6563a042b,
         type: 3}
       propertyPath: m_Name
@@ -11691,7 +11696,7 @@ MonoBehaviour:
   interactionTransform: {fileID: 754308693}
   item: {fileID: 11400000, guid: 4eb4cc6f41e009141ba2746c2e3d2be2, type: 2}
   itemName: 
-  itemID: 0
+  pickUpItemID: 0
 --- !u!65 &754308690
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12297,6 +12302,11 @@ PrefabInstance:
       propertyPath: itemID
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 3256589297461054410, guid: 67dbaf376d2b55049814c1c6563a042b,
+        type: 3}
+      propertyPath: pickUpItemID
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3256589297461054411, guid: 67dbaf376d2b55049814c1c6563a042b,
         type: 3}
       propertyPath: m_Name
@@ -12838,6 +12848,11 @@ PrefabInstance:
       propertyPath: itemName
       value: healthpotion3
       objectReference: {fileID: 0}
+    - target: {fileID: 7657944507466521422, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
+        type: 3}
+      propertyPath: pickUpItemID
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7657944507466521423, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
         type: 3}
       propertyPath: m_Name
@@ -13062,6 +13077,11 @@ PrefabInstance:
         type: 3}
       propertyPath: itemName
       value: healthpotion2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657944507466521422, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
+        type: 3}
+      propertyPath: pickUpItemID
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7657944507466521423, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
         type: 3}
@@ -13299,6 +13319,11 @@ PrefabInstance:
     - target: {fileID: 7657944507466521422, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
         type: 3}
       propertyPath: itemID
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657944507466521422, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
+        type: 3}
+      propertyPath: pickUpItemID
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7657944507466521423, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
@@ -14542,6 +14567,11 @@ PrefabInstance:
       propertyPath: itemID
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7657944507466521422, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
+        type: 3}
+      propertyPath: pickUpItemID
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7657944507466521423, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
         type: 3}
       propertyPath: m_Name
@@ -15439,7 +15469,7 @@ MonoBehaviour:
   interactionTransform: {fileID: 2036151283}
   item: {fileID: 11400000, guid: 541b704949bbd604089828953971961f, type: 2}
   itemName: 
-  itemID: 0
+  pickUpItemID: 0
 --- !u!65 &2036151280
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15806,6 +15836,11 @@ PrefabInstance:
       propertyPath: itemID
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3256589297461054410, guid: 67dbaf376d2b55049814c1c6563a042b,
+        type: 3}
+      propertyPath: pickUpItemID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3256589297461054411, guid: 67dbaf376d2b55049814c1c6563a042b,
         type: 3}
       propertyPath: m_Name
@@ -15895,6 +15930,11 @@ PrefabInstance:
     - target: {fileID: 6181556930791335945, guid: 30e3a90f46d69d84085188da3d035b88,
         type: 3}
       propertyPath: itemID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181556930791335945, guid: 30e3a90f46d69d84085188da3d035b88,
+        type: 3}
+      propertyPath: pickUpItemID
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6181556930791335949, guid: 30e3a90f46d69d84085188da3d035b88,
