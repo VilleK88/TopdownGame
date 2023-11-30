@@ -1,0 +1,343 @@
+fileFormatVersion: 2
+guid: bf80f7bd9f2876243b9288cb2c34d3b1
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PeasantTurnedWalk_0
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 124
+        width: 80
+        height: 53
+      alignment: 9
+      pivot: {x: 0.4057869, y: 0.687918}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b714e16ad41589d48917c04162414ae3
+      internalID: -934557300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantTurnedWalk_1
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 123
+        width: 80
+        height: 53
+      alignment: 9
+      pivot: {x: 0.3935547, y: 0.7061154}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7177a8e2f884fb646af32f146ea4afed
+      internalID: -1371043796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantTurnedWalk_2
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 124
+        width: 80
+        height: 53
+      alignment: 9
+      pivot: {x: 0.40616378, y: 0.68858105}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a08fb17a4261df468462978bf0a58ad
+      internalID: -1503142888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantTurnedWalk_3
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 125
+        width: 80
+        height: 52
+      alignment: 9
+      pivot: {x: 0.43120423, y: 0.68104583}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ca4b87d9d154e9459a0b4c53885464b
+      internalID: 1499955678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantTurnedWalk_4
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 125
+        width: 80
+        height: 52
+      alignment: 9
+      pivot: {x: 0.44434357, y: 0.68216383}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f892f018e8cae343a97ae3c00089e1d
+      internalID: 1483796855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantTurnedWalk_5
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 34
+        width: 80
+        height: 53
+      alignment: 9
+      pivot: {x: 0.45678252, y: 0.6875469}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 254a2d25a1e18b444bebc8ae66543a68
+      internalID: -1999200878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantTurnedWalk_6
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 33
+        width: 80
+        height: 53
+      alignment: 9
+      pivot: {x: 0.4691227, y: 0.70476735}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a5ab15f0981aee4ca6dea0b72f803a1
+      internalID: -1202580050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantTurnedWalk_7
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 34
+        width: 80
+        height: 53
+      alignment: 9
+      pivot: {x: 0.457016, y: 0.6868272}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be1ff2f3fe6143d4bb3461c6f92522c3
+      internalID: -749592608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantTurnedWalk_8
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 35
+        width: 80
+        height: 52
+      alignment: 9
+      pivot: {x: 0.44363937, y: 0.68199277}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5beb681ea388ad448a3cd5ddc7d3ca3b
+      internalID: -2008307961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantTurnedWalk_9
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 35
+        width: 80
+        height: 52
+      alignment: 9
+      pivot: {x: 0.431987, y: 0.681416}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61dc9078724c1cd45b33b94d0242c0dd
+      internalID: 1233039024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 7be1114d8f632b84c93a1b290d365989
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      PeasantTurnedWalk_0: -934557300
+      PeasantTurnedWalk_1: -1371043796
+      PeasantTurnedWalk_2: -1503142888
+      PeasantTurnedWalk_3: 1499955678
+      PeasantTurnedWalk_4: 1483796855
+      PeasantTurnedWalk_5: -1999200878
+      PeasantTurnedWalk_6: -1202580050
+      PeasantTurnedWalk_7: -749592608
+      PeasantTurnedWalk_8: -2008307961
+      PeasantTurnedWalk_9: 1233039024
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
