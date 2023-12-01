@@ -16105,6 +16105,11 @@ PrefabInstance:
       propertyPath: itemName
       value: healthpotion1
       objectReference: {fileID: 0}
+    - target: {fileID: 7657944507466521422, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
+        type: 3}
+      propertyPath: pickUpItemID
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7657944507466521423, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
         type: 3}
       propertyPath: m_Name

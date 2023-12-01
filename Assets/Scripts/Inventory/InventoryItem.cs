@@ -83,7 +83,13 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 else
                 {
                     if(name != "Wooden axe")
+                    {
                         Destroy(gameObject);
+                        /*if (GameManager.manager.itemIDs.Contains(itemID))
+                        {
+                            GameManager.manager.itemIDs = GameManager.manager.itemIDs.Where(id => id != itemID).ToArray();
+                        }*/
+                    }
                 }
             }
         }

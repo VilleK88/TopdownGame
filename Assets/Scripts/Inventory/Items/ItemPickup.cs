@@ -24,9 +24,9 @@ public class ItemPickup : Interactable
 
         if(wasPickedUp)
         {
-            AddItemToArray(item);
-            //CollectItem();
-            AddItemIDToArray(this.pickUpItemID);
+            item.itemID = pickUpItemID;
+            AddItemIDToArray(this.item.itemID);
+            AddPickUpItemIDToArray(this.pickUpItemID);
             if (item.type == ItemType.HealthPotion || item.type == ItemType.StaminaPotion ||
                 item.type == ItemType.XpPotion)
             {
@@ -42,30 +42,37 @@ public class ItemPickup : Interactable
         }
     }
 
-    void AddItemToArray(Item item)
+    public void PickUpFromGameManager()
     {
-        Item[] newItemArray = new Item[GameManager.manager.items.Length + 1];
-        for (int i = 0; i < GameManager.manager.items.Length; i++)
+        Debug.Log("Picking up item " + item.name);
+        bool wasPickedUp = InventoryManager.instance.AddItem(item);
+
+        if (wasPickedUp)
         {
-            newItemArray[i] = GameManager.manager.items[i];
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
         }
-        newItemArray[GameManager.manager.items.Length] = item;
-        GameManager.manager.items = newItemArray;
     }
 
     void AddItemIDToArray(int newItemID)
     {
-        int[] newItemIDs = new int[GameManager.manager.pickUpItemIDs.Length + 1];
-        for(int i = 0; i < GameManager.manager.pickUpItemIDs.Length; i++)
+        int[] newItemIDs = new int[GameManager.manager.itemIDs.Length + 1];
+        for(int i = 0; i < GameManager.manager.itemIDs.Length; i++)
         {
-            newItemIDs[i] = GameManager.manager.pickUpItemIDs[i];
+            newItemIDs[i] = GameManager.manager.itemIDs[i];
         }
-        newItemIDs[GameManager.manager.pickUpItemIDs.Length] = newItemID;
-        GameManager.manager.pickUpItemIDs = newItemIDs;
+        newItemIDs[GameManager.manager.itemIDs.Length] = newItemID;
+        GameManager.manager.itemIDs = newItemIDs;
     }
 
-    void CollectItem()
+    void AddPickUpItemIDToArray(int newPickUpItemID)
     {
-        //PlayerPrefs.SetInt("ItemCollected", 1);
+        int[] newPickUpItemIDs = new int[GameManager.manager.pickUpItemIDs.Length + 1];
+        for(int i = 0; i < GameManager.manager.pickUpItemIDs.Length; i++)
+        {
+            newPickUpItemIDs[i] = GameManager.manager.pickUpItemIDs[i];
+        }
+        newPickUpItemIDs[GameManager.manager.pickUpItemIDs.Length] = newPickUpItemID;
+        GameManager.manager.pickUpItemIDs = newPickUpItemIDs;
     }
 }

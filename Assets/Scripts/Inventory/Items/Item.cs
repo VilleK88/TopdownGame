@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -6,6 +7,7 @@ using UnityEngine.Tilemaps;
 public class Item : ScriptableObject
 {
     new public string name = "New Item";
+    public int itemID;
     public bool isDefaultItem = false;
 
     [Header("Only gameplay")]

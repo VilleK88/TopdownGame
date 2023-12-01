@@ -24,15 +24,35 @@ public class QuestDialogueTrigger : DialogueTrigger
                         {
                             QuestManager.questManager.currentQuestDialogueTrigger = this;
                             hasActiveQuest = false;
-                            /*if(!hasActiveQuest)
+                            if(!hasActiveQuest)
                             {
                                 base.Interact();
-                            }*/
+                            }
                             return;
                         }
                     }
                 }
             }
+
+            /*if(GameManager.manager != null && GameManager.manager.triggeredQuestIDs != null)
+            {
+                foreach(int questID in GameManager.manager.triggeredQuestIDs)
+                {
+                    foreach(DialogueQuest dialogueQuest in dialogueQuests)
+                    {
+                        if(dialogueQuest.quest != null && questID == dialogueQuest.quest.questID)
+                        {
+                            QuestManager.questManager.currentQuestDialogueTrigger = this;
+                            hasActiveQuest = false;
+                            if (!hasActiveQuest)
+                            {
+                                base.Interact();
+                            }
+                            return;
+                        }
+                    }
+                }
+            }*/
             DialogueManager.instance.EnqueueDialogue(dialogueQuests[QuestIndex]);
             QuestManager.questManager.currentQuestDialogueTrigger = this;
         }
