@@ -309,7 +309,7 @@ MonoBehaviour:
   blockHitSound: {fileID: 8300000, guid: 6591ca4f9365b5c4d9c83e485c15a5a1, type: 3}
   dieSound: {fileID: 8300000, guid: 1057c4a750a751e4ebe97fa26e22bbb0, type: 3}
   enemyID: 0
-  questEnemyID: 2
+  questEnemyID: 1
 --- !u!114 &1067344652477661550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,7 +413,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -934557300, guid: bf80f7bd9f2876243b9288cb2c34d3b1, type: 3}
+  m_Sprite: {fileID: -1422208904, guid: 9e5dc13c8e15e0b4995807f3225cdcc4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

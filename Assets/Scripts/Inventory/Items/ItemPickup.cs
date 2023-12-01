@@ -9,20 +9,6 @@ public class ItemPickup : Interactable
     public string itemName;
     public int pickUpItemID;
 
-    private void Start()
-    {
-        /*if(GameManager.manager != null && GameManager.manager.isGameLoaded)
-        {
-            if (PlayerPrefs.GetInt("ItemCollected", 0) == 1)
-            {
-                GameObject healthPotion = GameObject.Find("HealthPotion");
-                if (healthPotion != null)
-                {
-                    Destroy(healthPotion);
-                }
-            }
-        }*/
-    }
 
     public override void Interact()
     {
