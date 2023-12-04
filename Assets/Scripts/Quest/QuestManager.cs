@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class QuestManager : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class QuestManager : MonoBehaviour
     public TextMeshProUGUI questDescription;
     public Button questAcceptButton;
 
+    public QuestBase[] allQuests;
+
     public QuestBase currentQuest { get; set; }
     public QuestDialogueTrigger currentQuestDialogueTrigger { get; set; }
     public bool inQuestUI { get; set; }
@@ -36,23 +39,62 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.manager != null && GameManager.manager.triggeredQuests != null)
+        if(GameManager.manager != null && GameManager.manager.triggeredQuestIDs != null)
         {
-            foreach(QuestBase quest in GameManager.manager.triggeredQuests)
+            foreach(int questID in GameManager.manager.triggeredQuestIDs)
             {
-                quest.initializeQuest(); // a reminder to yourself: if an error occurs it's propably because there are no quests to initialize?
+                for(int i = 0; i < allQuests.Length; i++)
+                {
+                    if (allQuests[i].questID == questID)
+                    {
+                        allQuests[i].initializeQuest();
+                    }
+                }
             }
         }
 
-        if (GameManager.manager != null && GameManager.manager.completedQuests != null)
+        if(GameManager.manager != null && GameManager.manager.completedQuestIDs != null)
+        {
+            foreach(int questID in GameManager.manager.completedQuestIDs)
+            {
+                for(int i = 0; i < allQuests.Length; i++)
+                {
+                    if (allQuests[i].questID == questID)
+                    {
+                        allQuests[i].InitializeCompletedQuest();
+
+                        if (!GameManager.manager.completedQuests.Contains(allQuests[i]))
+                        {
+                            AddQuestToCompletedArray(allQuests[i]);
+                        }
+                    }
+                }
+            }
+        }
+
+        /*if (GameManager.manager != null && GameManager.manager.completedQuests != null)
         {
             foreach (QuestBase quest in GameManager.manager.completedQuests)
             {
                 quest.InitializeCompletedQuest();
             }
-        }
+        }*/
 
         RemoveEnemiesForCompletedQuests();
+    }
+
+    public void AddQuestToCompletedArray(QuestBase quest)
+    {
+        if (!GameManager.manager.completedQuests.Contains(quest))
+        {
+            QuestBase[] newQuestArray = new QuestBase[GameManager.manager.completedQuests.Length + 1];
+            for (int i = 0; i < GameManager.manager.completedQuests.Length; i++)
+            {
+                newQuestArray[i] = GameManager.manager.completedQuests[i];
+            }
+            newQuestArray[GameManager.manager.completedQuests.Length] = quest;
+            GameManager.manager.completedQuests = newQuestArray;
+        }
     }
 
 
@@ -126,7 +168,10 @@ public class QuestManager : MonoBehaviour
         if(!GameManager.manager.triggeredQuests.Contains(quest))
         {
             AddQuestToArray(quest);
-            AddQuestIDToArray(quest.questID);
+            if(!GameManager.manager.triggeredQuestIDs.Contains(quest.questID))
+            {
+                AddQuestIDToArray(quest.questID);
+            }
         }
     }
 

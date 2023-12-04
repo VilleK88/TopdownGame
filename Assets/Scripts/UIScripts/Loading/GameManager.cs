@@ -118,11 +118,11 @@ public class GameManager : MonoBehaviour
         file.Close(); // Suljetaan tiedosto, ettei kukaan hakkeri p‰‰se siihen k‰siksi.
 
         //string json = ToJson(triggeredQuests, true);
-        JsonUtility.ToJson(triggeredQuests);
+        //JsonUtility.ToJson(triggeredQuests);
         //File.WriteAllText(Application.persistentDataPath + "/quest.json", json);
 
         //string jsonCompleted = ToJson(completedQuests, true);
-        JsonUtility.ToJson(completedQuests);
+        //JsonUtility.ToJson(completedQuests);
         //File.WriteAllText(Application.persistentDataPath + "/quest.jsonCompleted", jsonCompleted);
 
         //string jsonItems = ToJson(items, true);

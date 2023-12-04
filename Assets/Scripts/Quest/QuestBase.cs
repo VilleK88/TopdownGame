@@ -37,6 +37,12 @@ public class QuestBase : ScriptableObject
         QuestManager.questManager.HasTriggeredQuest(this);
     }
 
+    public virtual void InitializeUnfinishedSavedQuest()
+    {
+        isCompleted = false;
+        currentAmount = new int[requiredAmount.Length];
+    }
+
     public virtual void InitializeCompletedQuest()
     {
         isCompleted = true;
