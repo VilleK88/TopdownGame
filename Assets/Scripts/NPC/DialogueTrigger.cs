@@ -37,9 +37,10 @@ public class DialogueTrigger : NPCInteraction
                 index++;
             }
         }
-        else
+        else if(!DialogueManager.instance.inDialogue)
         {
             DialogueManager.instance.EnqueueDialogue(db[index]);
+            Debug.Log("Debuggaa t‰‰ll‰");
         }
     }
 

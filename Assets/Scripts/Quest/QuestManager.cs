@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using Unity.VisualScripting;
+using System;
 
 public class QuestManager : MonoBehaviour
 {
@@ -26,6 +28,8 @@ public class QuestManager : MonoBehaviour
     public TextMeshProUGUI questDescription;
     public Button questAcceptButton;
 
+    public QuestBase[] allQuests;
+
     public QuestBase currentQuest { get; set; }
     public QuestDialogueTrigger currentQuestDialogueTrigger { get; set; }
     public bool inQuestUI { get; set; }
@@ -36,17 +40,164 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.manager != null && GameManager.manager.triggeredQuests != null)
+        /*if(GameManager.manager != null && GameManager.manager.triggeredQuestIDs != null)
         {
-            foreach(QuestBase quest in GameManager.manager.triggeredQuests)
+            foreach(int questID in GameManager.manager.triggeredQuestIDs)
             {
-                quest.initializeQuest(); // a reminder to yourself: if an error occurs it's propably because there are no quests to initialize?
+                for(int i = 0; i < allQuests.Length; i++)
+                {
+                    if (allQuests[i].questID == questID)
+                    {
+                        if (!GameManager.manager.rewardReadyQuests.Contains(allQuests[i]))
+                        {
+                            allQuests[i].initializeQuest();
+                        }
+                        //allQuests[i].initializeQuest();
+                    }
+                }
+            }
+        }*/
+
+        RemoveCompletedQuests();
+
+        if(GameManager.manager !=  null && GameManager.manager.completedQuestIDs != null)
+        {
+            foreach(int completedQuestID in GameManager.manager.completedQuestIDs)
+            {
+                for(int i = 0; i < allQuests.Length; i++)
+                {
+                    if (allQuests[i].questID == completedQuestID)
+                    {
+                        //allQuests[i].InitializeCompletedQuest();
+                        if (!GameManager.manager.completedQuests.Contains(allQuests[i]))
+                        {
+                            //allQuests[i].InitializeCompletedQuest();
+                            AddQuestToCompletedArray(allQuests[i]);
+                        }
+                    }
+                }
             }
         }
 
-        //RemoveEnemiesForCompletedQuest1();
-        //RemoveEnemiesForCompletedQuest2();
+        if(GameManager.manager != null && GameManager.manager.rewardReadyQuestIDs != null)
+        {
+            foreach(int rewardReadyQuestID in GameManager.manager.rewardReadyQuestIDs)
+            {
+                for(int i = 0; i < allQuests.Length; i++)
+                {
+                    if (allQuests[i].questID == rewardReadyQuestID)
+                    {
+                        //allQuests[i].InitializeRewardReadyQuest();
+                        if (!GameManager.manager.rewardReadyQuests.Contains(allQuests[i]))
+                        {
+                            if (!GameManager.manager.completedQuests.Contains(allQuests[i]))
+                            {
+                                allQuests[i].InitializeRewardReadyQuest();
+                                AddQuestToRewardReadyArray(allQuests[i]);
+                            }
+                            //AddQuestToRewardReadyArray(allQuests[i]);
+                        }
+                    }
+                }
+            }
+        }
+
+
+        if (GameManager.manager != null && GameManager.manager.triggeredQuestIDs != null)
+        {
+            foreach (int questID in GameManager.manager.triggeredQuestIDs)
+            {
+                for (int i = 0; i < allQuests.Length; i++)
+                {
+                    if (allQuests[i].questID == questID)
+                    {
+                        if (!GameManager.manager.rewardReadyQuests.Contains(allQuests[i]))
+                        {
+                            if (!GameManager.manager.completedQuests.Contains(allQuests[i]))
+                            {
+                                allQuests[i].initializeQuest();
+                            }
+                            //allQuests[i].initializeQuest();
+                        }
+                        //allQuests[i].initializeQuest();
+                    }
+                }
+            }
+        }
+
+
+        if (GameManager.manager != null && GameManager.manager.completedQuestIDs != null)
+        {
+            foreach(int questID in GameManager.manager.completedQuestIDs)
+            {
+                for(int i = 0; i < allQuests.Length; i++)
+                {
+                    if (allQuests[i].questID == questID)
+                    {
+                        allQuests[i].InitializeCompletedQuest();
+
+                        if (!GameManager.manager.completedQuests.Contains(allQuests[i]))
+                        {
+                            AddQuestToCompletedArray(allQuests[i]);
+                        }
+                    }
+                }
+            }
+        }
+
+        RemoveEnemiesForRewardReadyQuests();
         RemoveEnemiesForCompletedQuests();
+    }
+
+    public void RemoveCompletedQuests()
+    {
+        if(GameManager.manager != null && GameManager.manager.triggeredQuestIDs != null &&
+            GameManager.manager.rewardReadyQuestIDs != null && GameManager.manager.completedQuestIDs != null)
+        {
+            List<int> questsToRemove = new List<int>();
+
+            foreach(int questID in GameManager.manager.triggeredQuestIDs)
+            {
+                if (Array.IndexOf(GameManager.manager.completedQuestIDs, questID) != -1)
+                {
+                    questsToRemove.Add(questID);
+                }
+            }
+
+            foreach (int questIDToRemove in questsToRemove)
+            {
+                GameManager.manager.triggeredQuestIDs = Array.FindAll(GameManager.manager.triggeredQuestIDs, id => id != questIDToRemove);
+                GameManager.manager.rewardReadyQuestIDs = Array.FindAll(GameManager.manager.rewardReadyQuestIDs, id => id != questIDToRemove);
+            }
+        }
+    }
+
+    public void AddQuestToRewardReadyArray(QuestBase quest)
+    {
+        if(!GameManager.manager.rewardReadyQuests.Contains(quest))
+        {
+            QuestBase[] newRewardReadyQuests = new QuestBase[GameManager.manager.rewardReadyQuests.Length + 1];
+            for(int i = 0; i < GameManager.manager.rewardReadyQuests.Length; i++)
+            {
+                newRewardReadyQuests[i] = GameManager.manager.rewardReadyQuests[i];
+            }
+            newRewardReadyQuests[GameManager.manager.rewardReadyQuests.Length] = quest;
+            GameManager.manager.rewardReadyQuests = newRewardReadyQuests;
+        }
+    }
+
+    public void AddQuestToCompletedArray(QuestBase quest)
+    {
+        if (!GameManager.manager.completedQuests.Contains(quest))
+        {
+            QuestBase[] newQuestArray = new QuestBase[GameManager.manager.completedQuests.Length + 1];
+            for (int i = 0; i < GameManager.manager.completedQuests.Length; i++)
+            {
+                newQuestArray[i] = GameManager.manager.completedQuests[i];
+            }
+            newQuestArray[GameManager.manager.completedQuests.Length] = quest;
+            GameManager.manager.completedQuests = newQuestArray;
+        }
     }
 
 
@@ -66,6 +217,20 @@ public class QuestManager : MonoBehaviour
         return completedQuestNames;
     }
 
+    public void RemoveEnemiesForRewardReadyQuests()
+    {
+        int[] rewardReadyQuestIDs = GameManager.manager.rewardReadyQuestIDs;
+
+        EnemyHealth[] enemies = FindObjectsOfType<EnemyHealth>();
+        foreach(EnemyHealth enemy in enemies)
+        {
+            if(rewardReadyQuestIDs != null && rewardReadyQuestIDs.Contains(enemy.questEnemyID))
+            {
+                DestroyEnemy(enemy);
+            }
+        }
+    }
+
     public void RemoveEnemiesForCompletedQuests()
     {
         int[] completedQuestIDs = GameManager.manager.completedQuestIDs;
@@ -76,20 +241,6 @@ public class QuestManager : MonoBehaviour
             if (completedQuestIDs != null && completedQuestIDs.Contains(enemy.questEnemyID))
             {
                 Debug.Log("Removing enemy with questEnemyID: " + enemy.questEnemyID);
-                DestroyEnemy(enemy);
-            }
-        }
-    }
-
-    public void RemoveEnemiesForCompletedQuest2()
-    {
-        List<string> completedQuestNames = GetCompletedQuestNames();
-        EnemyHealth[] enemies = FindObjectsOfType<EnemyHealth>();
-        foreach (EnemyHealth enemy in enemies)
-        {
-            if (completedQuestNames.Contains("KillPeasants") && enemy.questEnemyID == 2)
-            {
-                Debug.Log("Remove quest 2 enemies");
                 DestroyEnemy(enemy);
             }
         }
@@ -134,7 +285,10 @@ public class QuestManager : MonoBehaviour
         if(!GameManager.manager.triggeredQuests.Contains(quest))
         {
             AddQuestToArray(quest);
-            AddQuestIDToArray(quest.questID);
+            if(!GameManager.manager.triggeredQuestIDs.Contains(quest.questID))
+            {
+                AddQuestIDToArray(quest.questID);
+            }
         }
     }
 
@@ -163,5 +317,27 @@ public class QuestManager : MonoBehaviour
         }
         newTriggeredQuestIDs[GameManager.manager.triggeredQuestIDs.Length] = newTriggeredQuestID;
         GameManager.manager.triggeredQuestIDs = newTriggeredQuestIDs;
+    }
+
+    void AddRewardReadyQuestToArray(QuestBase newRewardReadyQuest)
+    {
+        QuestBase[] newRewardReadyQuests = new QuestBase[GameManager.manager.rewardReadyQuests.Length + 1];
+        for(int i = 0; i < GameManager.manager.rewardReadyQuests.Length; i++)
+        {
+            newRewardReadyQuests[i] = GameManager.manager.rewardReadyQuests[i];
+        }
+        newRewardReadyQuests[GameManager.manager.rewardReadyQuests.Length] = newRewardReadyQuest;
+        GameManager.manager.rewardReadyQuests = newRewardReadyQuests;
+    }
+
+    public void AddQuestIDToRewardReadyArray(int newRewardReadyQuestID)
+    {
+        int[] newRewardReadyQuestIDs = new int[GameManager.manager.rewardReadyQuestIDs.Length + 1];
+        for (int i = 0; i < GameManager.manager.rewardReadyQuestIDs.Length; i++)
+        {
+            newRewardReadyQuestIDs[i] = GameManager.manager.rewardReadyQuestIDs[i];
+        }
+        newRewardReadyQuestIDs[GameManager.manager.rewardReadyQuestIDs.Length] = newRewardReadyQuestID;
+        GameManager.manager.rewardReadyQuestIDs = newRewardReadyQuestIDs;
     }
 }

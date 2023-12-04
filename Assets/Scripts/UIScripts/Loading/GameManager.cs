@@ -31,14 +31,13 @@ public class GameManager : MonoBehaviour
     public OnEnemyDeathCallBack onEnemyDeathCallBack;
 
     public QuestBase[] triggeredQuests;
+    public QuestBase[] rewardReadyQuests;
     public QuestBase[] completedQuests;
 
     public int[] triggeredQuestIDs;
+    public int[] rewardReadyQuestIDs;
     public int[] completedQuestIDs;
 
-    public Item[] items;
-
-    public int[] itemIDs;
     public int[] pickUpItemIDs;
 
     public int[] enemyIDs;
@@ -104,27 +103,18 @@ public class GameManager : MonoBehaviour
         data.y = y;
         data.z = z;
 
-        data.itemIDs = itemIDs;
         data.pickUpItemIDs = pickUpItemIDs;
 
         data.enemyIDs = enemyIDs;
         data.questEnemyIDs = questEnemyIDs;
 
         data.triggeredQuestIDs = triggeredQuestIDs;
+        data.rewardReadyQuestIDs = rewardReadyQuestIDs;
         data.completedQuestIDs = completedQuestIDs;
 
         // Serialisoidaan GameData objekti, joka tallennetaan samalla tiedostoon.
         bf.Serialize(file, data);
         file.Close(); // Suljetaan tiedosto, ettei kukaan hakkeri p‰‰se siihen k‰siksi.
-
-        string json = ToJson(triggeredQuests, true);
-        File.WriteAllText(Application.persistentDataPath + "/quest.json", json);
-
-        string jsonCompleted = ToJson(completedQuests, true);
-        File.WriteAllText(Application.persistentDataPath + "/quest.jsonCompleted", jsonCompleted);
-
-        string jsonItems = ToJson(items, true);
-        File.WriteAllText(Application.persistentDataPath + "/item.jsonItems", jsonItems);
     }
 
     public void Load()
@@ -155,45 +145,17 @@ public class GameManager : MonoBehaviour
             y = data.y;
             z = data.z;
 
-            itemIDs = data.itemIDs;
             pickUpItemIDs = data.pickUpItemIDs;
 
             enemyIDs = data.enemyIDs;
             questEnemyIDs = data.questEnemyIDs;
 
             triggeredQuestIDs = data.triggeredQuestIDs;
+            rewardReadyQuestIDs = data.rewardReadyQuestIDs;
             completedQuestIDs = data.completedQuestIDs;
 
             isGameLoaded = true;
-
-            string json = File.ReadAllText(Application.persistentDataPath + "/quest.json");
-            triggeredQuests = FromJson<QuestBase>(json);
-
-            string jsonCompleted = File.ReadAllText(Application.persistentDataPath + "/quest.jsonCompleted");
-            completedQuests = FromJson<QuestBase>(jsonCompleted);
-
-            string jsonItems = File.ReadAllText(Application.persistentDataPath + "/item.jsonItems");
-            items = FromJson<Item>(jsonItems);
         }
-    }
-
-    public static string ToJson<T>(T[] array, bool prettyPrint = false)
-    {
-        Wrapper<T> wrapper = new Wrapper<T>();
-        wrapper.Quests = array;
-        return JsonUtility.ToJson(wrapper);
-    }
-
-    public static T[] FromJson<T>(string json)
-    {
-        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
-        return wrapper.Quests;
-    }
-
-    [System.Serializable]
-    class Wrapper<T>
-    {
-        public T[] Quests;
     }
 }
 
@@ -219,13 +181,13 @@ class GameData
 
     public string[] dialogueTriggerNames;
 
-    public QuestBase[] triggeredQuests;
-    public QuestBase[] completedQuests;
+    //public QuestBase[] triggeredQuests;
+    //public QuestBase[] completedQuests;
 
     public int[] triggeredQuestIDs;
+    public int[] rewardReadyQuestIDs;
     public int[] completedQuestIDs;
 
-    public int[] itemIDs;
     public int[] pickUpItemIDs;
 
     public int[] enemyIDs;

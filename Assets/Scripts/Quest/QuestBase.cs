@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -37,6 +38,20 @@ public class QuestBase : ScriptableObject
         QuestManager.questManager.HasTriggeredQuest(this);
     }
 
+    public virtual void InitializeRewardReadyQuest()
+    {
+        isCompleted = false;
+        currentAmount = new int[requiredAmount.Length];
+        QuestlogManager.instance.AddQuestLog(this);
+    }
+
+    public virtual void InitializeCompletedQuest()
+    {
+        isCompleted = true;
+        currentAmount = new int[requiredAmount.Length];
+        QuestlogManager.instance.AddQuestLog(this);
+    }
+
     public void Evaluate()
     {
         for(int i = 0; i < requiredAmount.Length; i++)
@@ -54,6 +69,10 @@ public class QuestBase : ScriptableObject
             if (GameManager.manager.allDialogueTriggers[i].targetNPC == NPCTurnIn)
             {
                 GameManager.manager.allDialogueTriggers[i].hasCompletedQuest = true;
+                if(!GameManager.manager.rewardReadyQuestIDs.Contains(this.questID))
+                {
+                    QuestManager.questManager.AddQuestIDToRewardReadyArray(this.questID);
+                }
                 GameManager.manager.allDialogueTriggers[i].completedQuestDialogue = completedQuestDialogue;
                 Debug.Log("We Found: " + NPCTurnIn);
                 break;
@@ -62,9 +81,15 @@ public class QuestBase : ScriptableObject
 
         isCompleted = true;
         DialogueManager.instance.completedQuest = this;
+        //QuestManager.questManager.AddQuestIDToRewardReadyArray(this.questID);
     }
 
     public virtual string GetObjectiveList()
+    {
+        return null;
+    }
+
+    public virtual string GetCompletedObjectiveList()
     {
         return null;
     }
