@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,6 +29,7 @@ public class QuestlogManager : MonoBehaviour
     public TextMeshProUGUI npcTurnInText;
     public Image[] rewardIcons;
     QuestBase lastDisplayedQuest;
+
 
     public void UpdateQuestlogUI(QuestBase newQuest, string objectiveList)
     {
@@ -58,7 +61,24 @@ public class QuestlogManager : MonoBehaviour
                 {
                     var firstButton = questHolder.GetChild(0).GetComponent<Button>();
                     firstButton.Select();
-                    UpdateQuestlogUI(lastDisplayedQuest, lastDisplayedQuest.GetObjectiveList());
+                    if(GameManager.manager != null && GameManager.manager.completedQuests != null &&
+                        GameManager.manager.completedQuests.Contains(lastDisplayedQuest))
+                    {
+                        QuestBase completedQuest = Array.Find(GameManager.manager.completedQuests, quest => quest == lastDisplayedQuest);
+                        if(completedQuest != null)
+                        {
+                            //lastDisplayedQuest.currentAmount = completedQuest.requiredAmount;
+                            //lastDisplayedQuest.currentAmount = completedQuest.requiredAmount;
+                            UpdateQuestlogUI(completedQuest, completedQuest.GetCompletedObjectiveList());
+                            Debug.Log("Completed quest list");
+                        }
+                    }
+                    else if(GameManager.manager != null && GameManager.manager.triggeredQuests != null &&
+                        GameManager.manager.triggeredQuests.Contains(lastDisplayedQuest))
+                    {
+                        UpdateQuestlogUI(lastDisplayedQuest, lastDisplayedQuest.GetObjectiveList());
+                        Debug.Log("Triggered quest list");
+                    }
                 }
                 catch
                 {

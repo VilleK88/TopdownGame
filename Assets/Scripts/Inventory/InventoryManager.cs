@@ -40,13 +40,13 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.manager != null && GameManager.manager.items != null)
+        /*if (GameManager.manager != null && GameManager.manager.items != null)
         {
             foreach (Item item in GameManager.manager.items)
             {
                 AddItem(item);
             }
-        }
+        }*/
     }
 
     private void Update()

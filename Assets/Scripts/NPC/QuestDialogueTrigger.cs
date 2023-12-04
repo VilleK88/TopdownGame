@@ -53,8 +53,15 @@ public class QuestDialogueTrigger : DialogueTrigger
                     }
                 }
             }*/
-            DialogueManager.instance.EnqueueDialogue(dialogueQuests[QuestIndex]);
-            QuestManager.questManager.currentQuestDialogueTrigger = this;
+            if(!CheckIfQuestAlreadyDone())
+            {
+                DialogueManager.instance.EnqueueDialogue(dialogueQuests[QuestIndex]);
+                QuestManager.questManager.currentQuestDialogueTrigger = this;
+            }
+            else
+            {
+                hasActiveQuest = false;
+            }
         }
         else
         {

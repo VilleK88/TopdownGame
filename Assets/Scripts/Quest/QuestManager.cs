@@ -44,8 +44,14 @@ public class QuestManager : MonoBehaviour
             }
         }
 
-        //RemoveEnemiesForCompletedQuest1();
-        //RemoveEnemiesForCompletedQuest2();
+        if (GameManager.manager != null && GameManager.manager.completedQuests != null)
+        {
+            foreach (QuestBase quest in GameManager.manager.completedQuests)
+            {
+                quest.InitializeCompletedQuest();
+            }
+        }
+
         RemoveEnemiesForCompletedQuests();
     }
 
@@ -76,20 +82,6 @@ public class QuestManager : MonoBehaviour
             if (completedQuestIDs != null && completedQuestIDs.Contains(enemy.questEnemyID))
             {
                 Debug.Log("Removing enemy with questEnemyID: " + enemy.questEnemyID);
-                DestroyEnemy(enemy);
-            }
-        }
-    }
-
-    public void RemoveEnemiesForCompletedQuest2()
-    {
-        List<string> completedQuestNames = GetCompletedQuestNames();
-        EnemyHealth[] enemies = FindObjectsOfType<EnemyHealth>();
-        foreach (EnemyHealth enemy in enemies)
-        {
-            if (completedQuestNames.Contains("KillPeasants") && enemy.questEnemyID == 2)
-            {
-                Debug.Log("Remove quest 2 enemies");
                 DestroyEnemy(enemy);
             }
         }

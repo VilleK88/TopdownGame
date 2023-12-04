@@ -37,6 +37,13 @@ public class QuestBase : ScriptableObject
         QuestManager.questManager.HasTriggeredQuest(this);
     }
 
+    public virtual void InitializeCompletedQuest()
+    {
+        isCompleted = true;
+        currentAmount = new int[requiredAmount.Length];
+        QuestlogManager.instance.AddQuestLog(this);
+    }
+
     public void Evaluate()
     {
         for(int i = 0; i < requiredAmount.Length; i++)
@@ -65,6 +72,11 @@ public class QuestBase : ScriptableObject
     }
 
     public virtual string GetObjectiveList()
+    {
+        return null;
+    }
+
+    public virtual string GetCompletedObjectiveList()
     {
         return null;
     }
