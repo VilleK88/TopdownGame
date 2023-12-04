@@ -36,9 +36,6 @@ public class GameManager : MonoBehaviour
     public int[] triggeredQuestIDs;
     public int[] completedQuestIDs;
 
-    //public Item[] items;
-
-    //public int[] itemIDs;
     public int[] pickUpItemIDs;
 
     public int[] enemyIDs;
@@ -104,7 +101,6 @@ public class GameManager : MonoBehaviour
         data.y = y;
         data.z = z;
 
-        //data.itemIDs = itemIDs;
         data.pickUpItemIDs = pickUpItemIDs;
 
         data.enemyIDs = enemyIDs;
@@ -116,17 +112,6 @@ public class GameManager : MonoBehaviour
         // Serialisoidaan GameData objekti, joka tallennetaan samalla tiedostoon.
         bf.Serialize(file, data);
         file.Close(); // Suljetaan tiedosto, ettei kukaan hakkeri p‰‰se siihen k‰siksi.
-
-        //string json = ToJson(triggeredQuests, true);
-        //JsonUtility.ToJson(triggeredQuests);
-        //File.WriteAllText(Application.persistentDataPath + "/quest.json", json);
-
-        //string jsonCompleted = ToJson(completedQuests, true);
-        //JsonUtility.ToJson(completedQuests);
-        //File.WriteAllText(Application.persistentDataPath + "/quest.jsonCompleted", jsonCompleted);
-
-        //string jsonItems = ToJson(items, true);
-        //File.WriteAllText(Application.persistentDataPath + "/item.jsonItems", jsonItems);
     }
 
     public void Load()
@@ -157,7 +142,6 @@ public class GameManager : MonoBehaviour
             y = data.y;
             z = data.z;
 
-            //itemIDs = data.itemIDs;
             pickUpItemIDs = data.pickUpItemIDs;
 
             enemyIDs = data.enemyIDs;
@@ -167,36 +151,8 @@ public class GameManager : MonoBehaviour
             completedQuestIDs = data.completedQuestIDs;
 
             isGameLoaded = true;
-
-            //string json = File.ReadAllText(Application.persistentDataPath + "/quest.json");
-            //triggeredQuests = FromJson<QuestBase>(json);
-
-            //string jsonCompleted = File.ReadAllText(Application.persistentDataPath + "/quest.jsonCompleted");
-            //completedQuests = FromJson<QuestBase>(jsonCompleted);
-
-            //string jsonItems = File.ReadAllText(Application.persistentDataPath + "/item.jsonItems");
-            //items = FromJson<Item>(jsonItems);
         }
     }
-
-    /*public static string ToJson<T>(T[] array, bool prettyPrint = false)
-    {
-        Wrapper<T> wrapper = new Wrapper<T>();
-        wrapper.Quests = array;
-        return JsonUtility.ToJson(wrapper);
-    }*/
-
-    /*public static T[] FromJson<T>(string json)
-    {
-        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
-        return wrapper.Quests;
-    }*/
-
-    /*[System.Serializable]
-    class Wrapper<T>
-    {
-        public T[] Quests;
-    }*/
 }
 
 // Toinen luokka, joka voidaan serialisoida. Pit‰‰ sis‰ll‰‰n vaan sen datan mit‰ halutaan serialisoida ja tallentaa.
@@ -227,7 +183,6 @@ class GameData
     public int[] triggeredQuestIDs;
     public int[] completedQuestIDs;
 
-    //public int[] itemIDs;
     public int[] pickUpItemIDs;
 
     public int[] enemyIDs;
