@@ -39,7 +39,7 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        if(GameManager.manager != null && GameManager.manager.triggeredQuestIDs != null)
+        /*if(GameManager.manager != null && GameManager.manager.triggeredQuestIDs != null)
         {
             foreach(int questID in GameManager.manager.triggeredQuestIDs)
             {
@@ -47,13 +47,81 @@ public class QuestManager : MonoBehaviour
                 {
                     if (allQuests[i].questID == questID)
                     {
-                        allQuests[i].initializeQuest();
+                        if (!GameManager.manager.rewardReadyQuests.Contains(allQuests[i]))
+                        {
+                            allQuests[i].initializeQuest();
+                        }
+                        //allQuests[i].initializeQuest();
+                    }
+                }
+            }
+        }*/
+
+        if(GameManager.manager !=  null && GameManager.manager.completedQuestIDs != null)
+        {
+            foreach(int completedQuestID in GameManager.manager.completedQuestIDs)
+            {
+                for(int i = 0; i < allQuests.Length; i++)
+                {
+                    if (allQuests[i].questID == completedQuestID)
+                    {
+                        allQuests[i].InitializeCompletedQuest();
+                        if (!GameManager.manager.completedQuests.Contains(allQuests[i]))
+                        {
+                            AddQuestToCompletedArray(allQuests[i]);
+                        }
                     }
                 }
             }
         }
 
-        if(GameManager.manager != null && GameManager.manager.completedQuestIDs != null)
+        if(GameManager.manager != null && GameManager.manager.rewardReadyQuestIDs != null)
+        {
+            foreach(int rewardReadyQuestID in GameManager.manager.rewardReadyQuestIDs)
+            {
+                for(int i = 0; i < allQuests.Length; i++)
+                {
+                    if (allQuests[i].questID == rewardReadyQuestID)
+                    {
+                        allQuests[i].InitializeRewardReadyQuest();
+                        if (!GameManager.manager.rewardReadyQuests.Contains(allQuests[i]))
+                        {
+                            if (!GameManager.manager.completedQuests.Contains(allQuests[i]))
+                            {
+                                AddQuestToRewardReadyArray(allQuests[i]);
+                            }
+                            //AddQuestToRewardReadyArray(allQuests[i]);
+                        }
+                    }
+                }
+            }
+        }
+
+
+        if (GameManager.manager != null && GameManager.manager.triggeredQuestIDs != null)
+        {
+            foreach (int questID in GameManager.manager.triggeredQuestIDs)
+            {
+                for (int i = 0; i < allQuests.Length; i++)
+                {
+                    if (allQuests[i].questID == questID)
+                    {
+                        if (!GameManager.manager.rewardReadyQuests.Contains(allQuests[i]))
+                        {
+                            if (!GameManager.manager.completedQuests.Contains(allQuests[i]))
+                            {
+                                allQuests[i].initializeQuest();
+                            }
+                            //allQuests[i].initializeQuest();
+                        }
+                        //allQuests[i].initializeQuest();
+                    }
+                }
+            }
+        }
+
+
+        if (GameManager.manager != null && GameManager.manager.completedQuestIDs != null)
         {
             foreach(int questID in GameManager.manager.completedQuestIDs)
             {
@@ -72,15 +140,21 @@ public class QuestManager : MonoBehaviour
             }
         }
 
-        /*if (GameManager.manager != null && GameManager.manager.completedQuests != null)
-        {
-            foreach (QuestBase quest in GameManager.manager.completedQuests)
-            {
-                quest.InitializeCompletedQuest();
-            }
-        }*/
-
         RemoveEnemiesForCompletedQuests();
+    }
+
+    public void AddQuestToRewardReadyArray(QuestBase quest)
+    {
+        if(!GameManager.manager.rewardReadyQuests.Contains(quest))
+        {
+            QuestBase[] newRewardReadyQuests = new QuestBase[GameManager.manager.rewardReadyQuests.Length + 1];
+            for(int i = 0; i < GameManager.manager.rewardReadyQuests.Length; i++)
+            {
+                newRewardReadyQuests[i] = GameManager.manager.rewardReadyQuests[i];
+            }
+            newRewardReadyQuests[GameManager.manager.rewardReadyQuests.Length] = quest;
+            GameManager.manager.rewardReadyQuests = newRewardReadyQuests;
+        }
     }
 
     public void AddQuestToCompletedArray(QuestBase quest)
@@ -200,5 +274,27 @@ public class QuestManager : MonoBehaviour
         }
         newTriggeredQuestIDs[GameManager.manager.triggeredQuestIDs.Length] = newTriggeredQuestID;
         GameManager.manager.triggeredQuestIDs = newTriggeredQuestIDs;
+    }
+
+    void AddRewardReadyQuestToArray(QuestBase newRewardReadyQuest)
+    {
+        QuestBase[] newRewardReadyQuests = new QuestBase[GameManager.manager.rewardReadyQuests.Length + 1];
+        for(int i = 0; i < GameManager.manager.rewardReadyQuests.Length; i++)
+        {
+            newRewardReadyQuests[i] = GameManager.manager.rewardReadyQuests[i];
+        }
+        newRewardReadyQuests[GameManager.manager.rewardReadyQuests.Length] = newRewardReadyQuest;
+        GameManager.manager.rewardReadyQuests = newRewardReadyQuests;
+    }
+
+    public void AddQuestIDToRewardReadyArray(int newRewardReadyQuestID)
+    {
+        int[] newRewardReadyQuestIDs = new int[GameManager.manager.rewardReadyQuestIDs.Length + 1];
+        for (int i = 0; i < GameManager.manager.rewardReadyQuestIDs.Length; i++)
+        {
+            newRewardReadyQuestIDs[i] = GameManager.manager.rewardReadyQuestIDs[i];
+        }
+        newRewardReadyQuestIDs[GameManager.manager.rewardReadyQuestIDs.Length] = newRewardReadyQuestID;
+        GameManager.manager.rewardReadyQuestIDs = newRewardReadyQuestIDs;
     }
 }

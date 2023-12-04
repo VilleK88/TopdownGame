@@ -31,9 +31,11 @@ public class GameManager : MonoBehaviour
     public OnEnemyDeathCallBack onEnemyDeathCallBack;
 
     public QuestBase[] triggeredQuests;
+    public QuestBase[] rewardReadyQuests;
     public QuestBase[] completedQuests;
 
     public int[] triggeredQuestIDs;
+    public int[] rewardReadyQuestIDs;
     public int[] completedQuestIDs;
 
     public int[] pickUpItemIDs;
@@ -107,6 +109,7 @@ public class GameManager : MonoBehaviour
         data.questEnemyIDs = questEnemyIDs;
 
         data.triggeredQuestIDs = triggeredQuestIDs;
+        data.rewardReadyQuestIDs = rewardReadyQuestIDs;
         data.completedQuestIDs = completedQuestIDs;
 
         // Serialisoidaan GameData objekti, joka tallennetaan samalla tiedostoon.
@@ -148,6 +151,7 @@ public class GameManager : MonoBehaviour
             questEnemyIDs = data.questEnemyIDs;
 
             triggeredQuestIDs = data.triggeredQuestIDs;
+            rewardReadyQuestIDs = data.rewardReadyQuestIDs;
             completedQuestIDs = data.completedQuestIDs;
 
             isGameLoaded = true;
@@ -177,10 +181,11 @@ class GameData
 
     public string[] dialogueTriggerNames;
 
-    public QuestBase[] triggeredQuests;
-    public QuestBase[] completedQuests;
+    //public QuestBase[] triggeredQuests;
+    //public QuestBase[] completedQuests;
 
     public int[] triggeredQuestIDs;
+    public int[] rewardReadyQuestIDs;
     public int[] completedQuestIDs;
 
     public int[] pickUpItemIDs;

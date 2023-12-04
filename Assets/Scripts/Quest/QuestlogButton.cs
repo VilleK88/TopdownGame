@@ -27,6 +27,12 @@ public class QuestlogButton : MonoBehaviour
             QuestBase triggeredQuest = Array.Find(GameManager.manager.triggeredQuests, quest => quest == myQuest);
             QuestlogManager.instance.UpdateQuestlogUI(myQuest, myQuest.GetObjectiveList());
         }
+        else if(GameManager.manager != null && GameManager.manager.rewardReadyQuests != null &&
+            GameManager.manager.rewardReadyQuests.Contains(myQuest))
+        {
+            QuestBase rewardReadyQuest = Array.Find(GameManager.manager.rewardReadyQuests, quest => quest == myQuest);
+            QuestlogManager.instance.UpdateQuestlogUI(myQuest, myQuest.GetCompletedObjectiveList());
+        }
         else if(GameManager.manager != null && GameManager.manager.completedQuests != null &&
             GameManager.manager.completedQuests.Contains(myQuest))
         {

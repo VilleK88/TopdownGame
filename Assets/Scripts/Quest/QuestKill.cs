@@ -27,6 +27,18 @@ public class QuestKill : QuestBase
         base.initializeQuest();
     }
 
+    public override void InitializeRewardReadyQuest()
+    {
+        requiredAmount = new int[objectives.Length];
+
+        for (int i = 0; i < objectives.Length; i++)
+        {
+            requiredAmount[i] = objectives[i].requiredAmount;
+        }
+
+        base.InitializeRewardReadyQuest();
+    }
+
     public override void InitializeCompletedQuest()
     {
         requiredAmount = new int[objectives.Length];
