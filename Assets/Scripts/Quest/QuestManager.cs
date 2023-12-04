@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 using Unity.VisualScripting;
+using System;
 
 public class QuestManager : MonoBehaviour
 {
@@ -57,6 +58,8 @@ public class QuestManager : MonoBehaviour
             }
         }*/
 
+        RemoveCompletedQuests();
+
         if(GameManager.manager !=  null && GameManager.manager.completedQuestIDs != null)
         {
             foreach(int completedQuestID in GameManager.manager.completedQuestIDs)
@@ -65,9 +68,10 @@ public class QuestManager : MonoBehaviour
                 {
                     if (allQuests[i].questID == completedQuestID)
                     {
-                        allQuests[i].InitializeCompletedQuest();
+                        //allQuests[i].InitializeCompletedQuest();
                         if (!GameManager.manager.completedQuests.Contains(allQuests[i]))
                         {
+                            //allQuests[i].InitializeCompletedQuest();
                             AddQuestToCompletedArray(allQuests[i]);
                         }
                     }
@@ -83,11 +87,12 @@ public class QuestManager : MonoBehaviour
                 {
                     if (allQuests[i].questID == rewardReadyQuestID)
                     {
-                        allQuests[i].InitializeRewardReadyQuest();
+                        //allQuests[i].InitializeRewardReadyQuest();
                         if (!GameManager.manager.rewardReadyQuests.Contains(allQuests[i]))
                         {
                             if (!GameManager.manager.completedQuests.Contains(allQuests[i]))
                             {
+                                allQuests[i].InitializeRewardReadyQuest();
                                 AddQuestToRewardReadyArray(allQuests[i]);
                             }
                             //AddQuestToRewardReadyArray(allQuests[i]);
@@ -140,7 +145,31 @@ public class QuestManager : MonoBehaviour
             }
         }
 
+        RemoveEnemiesForRewardReadyQuests();
         RemoveEnemiesForCompletedQuests();
+    }
+
+    public void RemoveCompletedQuests()
+    {
+        if(GameManager.manager != null && GameManager.manager.triggeredQuestIDs != null &&
+            GameManager.manager.rewardReadyQuestIDs != null && GameManager.manager.completedQuestIDs != null)
+        {
+            List<int> questsToRemove = new List<int>();
+
+            foreach(int questID in GameManager.manager.triggeredQuestIDs)
+            {
+                if (Array.IndexOf(GameManager.manager.completedQuestIDs, questID) != -1)
+                {
+                    questsToRemove.Add(questID);
+                }
+            }
+
+            foreach (int questIDToRemove in questsToRemove)
+            {
+                GameManager.manager.triggeredQuestIDs = Array.FindAll(GameManager.manager.triggeredQuestIDs, id => id != questIDToRemove);
+                GameManager.manager.rewardReadyQuestIDs = Array.FindAll(GameManager.manager.rewardReadyQuestIDs, id => id != questIDToRemove);
+            }
+        }
     }
 
     public void AddQuestToRewardReadyArray(QuestBase quest)
@@ -186,6 +215,20 @@ public class QuestManager : MonoBehaviour
         }
 
         return completedQuestNames;
+    }
+
+    public void RemoveEnemiesForRewardReadyQuests()
+    {
+        int[] rewardReadyQuestIDs = GameManager.manager.rewardReadyQuestIDs;
+
+        EnemyHealth[] enemies = FindObjectsOfType<EnemyHealth>();
+        foreach(EnemyHealth enemy in enemies)
+        {
+            if(rewardReadyQuestIDs != null && rewardReadyQuestIDs.Contains(enemy.questEnemyID))
+            {
+                DestroyEnemy(enemy);
+            }
+        }
     }
 
     public void RemoveEnemiesForCompletedQuests()
