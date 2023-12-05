@@ -16353,6 +16353,24 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7885599228063228217, guid: 28d1a5bcd76e0f044a36b596a5459f70,
+        type: 3}
+      propertyPath: xpPotion
+      value: 
+      objectReference: {fileID: 11400000, guid: a180f4c63b92b954db59d5b7a339909d,
+        type: 2}
+    - target: {fileID: 7885599228063228217, guid: 28d1a5bcd76e0f044a36b596a5459f70,
+        type: 3}
+      propertyPath: healthPotion
+      value: 
+      objectReference: {fileID: 11400000, guid: 098ddfd7123fc6840b23ae6d28068cfc,
+        type: 2}
+    - target: {fileID: 7885599228063228217, guid: 28d1a5bcd76e0f044a36b596a5459f70,
+        type: 3}
+      propertyPath: staminaPotion
+      value: 
+      objectReference: {fileID: 11400000, guid: 121fb5a600420a74badca7614566a134,
+        type: 2}
     - target: {fileID: 7885599228284926914, guid: 28d1a5bcd76e0f044a36b596a5459f70,
         type: 3}
       propertyPath: m_AnchorMax.y

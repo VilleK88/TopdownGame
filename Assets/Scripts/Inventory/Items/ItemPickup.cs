@@ -37,6 +37,19 @@ public class ItemPickup : Interactable
                 AudioManager.instance.PlaySound(InventoryManager.instance.weaponPickUpSound);
             }
 
+            if(item.type == ItemType.HealthPotion)
+            {
+                GameManager.manager.healthPotions++;
+            }
+            if (item.type == ItemType.StaminaPotion)
+            {
+                GameManager.manager.staminaPotions++;
+            }
+            if (item.type == ItemType.XpPotion)
+            {
+                GameManager.manager.xpPotions++;
+            }
+
             gameObject.SetActive(false);
             //Destroy(gameObject);
         }

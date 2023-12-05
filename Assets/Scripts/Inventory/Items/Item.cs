@@ -36,16 +36,19 @@ public class Item : ScriptableObject
         {
             ExperienceManager.instance.AddExperience(20); // test
             AudioManager.instance.PlaySound(InventoryManager.instance.drinkingSound);
+            GameManager.manager.xpPotions--;
         }
         if(type == ItemType.HealthPotion)
         {
             GameManager.manager.currentHealth += 20;
             AudioManager.instance.PlaySound(InventoryManager.instance.drinkingSound);
+            GameManager.manager.healthPotions--;
         }
         if(type == ItemType.StaminaPotion)
         {
             GameManager.manager.currentStamina += 20;
             AudioManager.instance.PlaySound(InventoryManager.instance.drinkingSound);
+            GameManager.manager.staminaPotions--;
         }
     }
 

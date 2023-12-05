@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
     public int[] completedQuestIDs;
 
     public int[] pickUpItemIDs;
+    public int healthPotions;
+    public int staminaPotions;
+    public int xpPotions;
 
     public int[] enemyIDs;
     public int[] questEnemyIDs;
@@ -104,6 +107,9 @@ public class GameManager : MonoBehaviour
         data.z = z;
 
         data.pickUpItemIDs = pickUpItemIDs;
+        data.healthPotions = healthPotions;
+        data.staminaPotions = staminaPotions;
+        data.xpPotions = xpPotions;
 
         data.enemyIDs = enemyIDs;
         data.questEnemyIDs = questEnemyIDs;
@@ -146,6 +152,9 @@ public class GameManager : MonoBehaviour
             z = data.z;
 
             pickUpItemIDs = data.pickUpItemIDs;
+            healthPotions = data.healthPotions;
+            staminaPotions = data.staminaPotions;
+            xpPotions = data.xpPotions;
 
             enemyIDs = data.enemyIDs;
             questEnemyIDs = data.questEnemyIDs;
@@ -181,14 +190,14 @@ class GameData
 
     public string[] dialogueTriggerNames;
 
-    //public QuestBase[] triggeredQuests;
-    //public QuestBase[] completedQuests;
-
     public int[] triggeredQuestIDs;
     public int[] rewardReadyQuestIDs;
     public int[] completedQuestIDs;
 
     public int[] pickUpItemIDs;
+    public int healthPotions;
+    public int staminaPotions;
+    public int xpPotions;
 
     public int[] enemyIDs;
     public int[] questEnemyIDs;

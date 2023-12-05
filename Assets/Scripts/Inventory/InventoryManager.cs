@@ -37,6 +37,11 @@ public class InventoryManager : MonoBehaviour
     public AudioClip potionPickUpSound;
     public AudioClip weaponPickUpSound;
 
+    [Header("Items")]
+    [SerializeField] Item healthPotion;
+    [SerializeField] Item staminaPotion;
+    [SerializeField] Item xpPotion;
+
 
     private void Start()
     {
@@ -47,6 +52,19 @@ public class InventoryManager : MonoBehaviour
                 AddItem(item);
             }
         }*/
+
+        if(GameManager.manager != null)
+        {
+            int healthPotionCount = GameManager.manager.healthPotions;
+
+            if(healthPotionCount != 0)
+            {
+                for (int i = 0; i < healthPotionCount; i++)
+                {
+                    AddItem(healthPotion);
+                }
+            }
+        }
     }
 
     private void Update()
