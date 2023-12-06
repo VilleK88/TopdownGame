@@ -15,14 +15,6 @@ public class ItemManager : MonoBehaviour
         manager = FindObjectOfType<GameManager>();
         ItemPickup[] pickupsInScene = FindObjectsOfType<ItemPickup>();
 
-        /*foreach(ItemPickup pickup in pickupsInScene)
-        {
-            if(GameManager.manager.itemIDs.Contains(pickup.pickUpItemID))
-            {
-                pickup.PickUpFromGameManager();
-            }
-        }*/
-
         foreach(ItemPickup pickup in pickupsInScene)
         {
             if(GameManager.manager.pickUpItemIDs.Contains(pickup.pickUpItemID))

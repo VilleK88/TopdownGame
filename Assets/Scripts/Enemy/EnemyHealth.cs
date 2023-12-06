@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum EnemyClass
 {
-    Knight, Peasant, Priest, Dog
+    Knight, Peasant, Priest, Dog, Longbowman
 }
 
 public class EnemyHealth : MonoBehaviour
@@ -57,6 +57,10 @@ public class EnemyHealth : MonoBehaviour
     void HowMuchXp()
     {
         if (enemyClass == EnemyClass.Knight)
+        {
+            expAmount = 50;
+        }
+        if(enemyClass == EnemyClass.Longbowman)
         {
             expAmount = 50;
         }

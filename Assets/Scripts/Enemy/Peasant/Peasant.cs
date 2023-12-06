@@ -252,6 +252,7 @@ public class Peasant : MonoBehaviour
             Transform enemyTransform = enemy.transform;
             Knight knight = enemy.GetComponent<Knight>();
             Peasant peasant = enemy.GetComponent<Peasant>();
+            Longbowman longbowman = enemy.GetComponent<Longbowman>();
             if (enemyTransform != null && knight != null)
             {
                 float distance = Vector3.Distance(transform.position, enemyTransform.position);
@@ -266,6 +267,14 @@ public class Peasant : MonoBehaviour
                 if (distance < 20)
                 {
                     peasant.isAgro = true;
+                }
+            }
+            if (enemyTransform != null && longbowman != null)
+            {
+                float distance = Vector3.Distance(transform.position, enemyTransform.position);
+                if (distance < 20)
+                {
+                    longbowman.isAgro = true;
                 }
             }
         }

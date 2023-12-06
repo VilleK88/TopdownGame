@@ -47,8 +47,23 @@ public class PlayerHitbox : MonoBehaviour
                     }
                 }
 
+                if (health.enemyClass == EnemyClass.Longbowman)
+                {
+                    bool ifAgro = other.gameObject.GetComponent<Longbowman>().isAgro;
+                    if (!ifBlocking && !ifAgro)
+                    {
+                        health.TakeDamage(100 + damage.GetValue());
+                        //Debug.Log("Sneak kill knight.");
+                    }
+                    else if (!ifBlocking)
+                    {
+                        health.TakeDamage(10 + damage.GetValue());
+                        //Debug.Log("Hit knight.");
+                    }
+                }
 
-                if(health.enemyClass == EnemyClass.Peasant)
+
+                if (health.enemyClass == EnemyClass.Peasant)
                 {
                     bool ifAgro = other.gameObject.GetComponent<Peasant>().isAgro;
                     if (!ifAgro)

@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Knight : MonoBehaviour
+public class Longbowman : MonoBehaviour
 {
     Rigidbody rb;
     CapsuleCollider capsuleCollider;
@@ -30,16 +29,16 @@ public class Knight : MonoBehaviour
     public bool isAgro = false;
     float maxAgroCounter = 5;
     public float agroCounter = 0;
-    //Vector3 direction;
-    //Quaternion lookRotation;
     NavMeshAgent agent;
     float attackCooldown = 1f;
     float attackCooldownOriginal;
     bool ifBlockingPlayersAttackFetch; // from EnemyHealth -script
     float originalSpeed;
-    public float attackDistance = 2;
+    public float attackDistance = 5;
     bool gettingHit; // fetch from EnemyHealth -script
     float distanceToPlayer;
+    [SerializeField] Transform shotPoint;
+    [SerializeField] GameObject arrowPrefab;
 
     [Header("Patrol Parameters")]
     public Transform[] waypoints;
@@ -80,12 +79,12 @@ public class Knight : MonoBehaviour
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         if (gettingHit)
         {
-            childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
-            childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
+            //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
+            //childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
         }
         Death();
 
-        if(!dead)
+        if (!dead)
         {
             if (canSeePlayer)
             {
@@ -114,7 +113,7 @@ public class Knight : MonoBehaviour
             {
                 if (distanceToPlayer > attackDistance)
                 {
-                    if(!ifBlockingPlayersAttackFetch)
+                    if (!ifBlockingPlayersAttackFetch)
                     {
                         Chase();
                         attackCooldown = 0.2f;
@@ -126,11 +125,11 @@ public class Knight : MonoBehaviour
                 }
                 else if (distanceToPlayer < attackDistance)
                 {
-                    childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
+                    //childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
                     transform.LookAt(player.transform.position);
                     if (!ifBlockingPlayersAttackFetch)
                     {
-                        if(attackCooldown >= 0)
+                        if (attackCooldown >= 0)
                         {
                             attackCooldown -= Time.deltaTime;
                         }
@@ -153,7 +152,7 @@ public class Knight : MonoBehaviour
                 else
                 {
                     agent.SetDestination(waypoints[waypointIndex].position);
-                    childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", true);
+                    //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", true);
                 }
             }
         }
@@ -162,10 +161,10 @@ public class Knight : MonoBehaviour
     void Patrol()
     {
         agent.speed = originalSpeed;
-        childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
+        //childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
         if (Vector3.Distance(transform.position, waypoints[waypointIndex].transform.position) < 1.5f)
         {
-            if(randomPatrol)
+            if (randomPatrol)
             {
                 waypointIndex = Random.Range(0, 5);
             }
@@ -174,7 +173,7 @@ public class Knight : MonoBehaviour
                 waypointIndex++;
             }
             waypointCounter = 0;
-            childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
+            //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
 
             if (waypointIndex >= waypoints.Length)
             {
@@ -188,22 +187,21 @@ public class Knight : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach(GameObject enemy in enemies)
+        foreach (GameObject enemy in enemies)
         {
             Transform enemyTransform = enemy.transform;
             Knight knight = enemy.GetComponent<Knight>();
             Peasant peasant = enemy.GetComponent<Peasant>();
-            Longbowman longbowman = enemy.GetComponent<Longbowman>();
-            if(enemyTransform != null && knight != null)
+            if (enemyTransform != null && knight != null)
             {
                 float distance = Vector3.Distance(transform.position, enemyTransform.position);
-                if(distance < 20)
+                if (distance < 20)
                 {
                     knight.isAgro = true;
                     knight.canSeePlayer = true;
                 }
             }
-            if(enemyTransform != null && peasant != null)
+            if (enemyTransform != null && peasant != null)
             {
                 float distance = Vector3.Distance(transform.position, enemyTransform.position);
                 if (distance < 20)
@@ -211,36 +209,29 @@ public class Knight : MonoBehaviour
                     peasant.isAgro = true;
                 }
             }
-            if (enemyTransform != null && longbowman != null)
-            {
-                float distance = Vector3.Distance(transform.position, enemyTransform.position);
-                if (distance < 20)
-                {
-                    longbowman.isAgro = true;
-                }
-            }
         }
     }
 
     void Attack()
     {
-        childSprite.GetComponent<Animator>().SetTrigger("CrusaderAttack1");
-        AudioManager.instance.PlaySound(attackSound);
+        //childSprite.GetComponent<Animator>().SetTrigger("CrusaderAttack1");
+        //AudioManager.instance.PlaySound(attackSound);
+        Instantiate(arrowPrefab, shotPoint.position, shotPoint.rotation);
     }
 
     void Chase()
     {
-        childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
+        //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
         agent.speed = 3.5f;
         agent.SetDestination(playerTransform.position);
-        childSprite.GetComponent<Animator>().SetBool("CrusaderRun", true);
+        //childSprite.GetComponent<Animator>().SetBool("CrusaderRun", true);
     }
 
     IEnumerator FOVRoutine()
     {
         WaitForSeconds wait = new WaitForSeconds(0.2f);
 
-        while(true)
+        while (true)
         {
             yield return wait;
             FieldOfViewCheck();
@@ -251,16 +242,16 @@ public class Knight : MonoBehaviour
     {
         rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
 
-        if(rangeChecks.Length != 0)
+        if (rangeChecks.Length != 0)
         {
             target = rangeChecks[0].transform;
             directionToTarget = (target.position - transform.position).normalized;
 
-            if(Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+            if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
             {
                 distanceToPlayer = Vector3.Distance(transform.position, target.position);
 
-                if(!Physics.Raycast(transform.position, directionToTarget, distanceToPlayer, obstructionMask))
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToPlayer, obstructionMask))
                 {
                     canSeePlayer = true;
                 }
@@ -274,7 +265,7 @@ public class Knight : MonoBehaviour
                 canSeePlayer = false;
             }
         }
-        else if(canSeePlayer)
+        else if (canSeePlayer)
         {
             canSeePlayer = false;
         }
@@ -282,7 +273,7 @@ public class Knight : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             isAgro = true;
             agroCounter = 0;

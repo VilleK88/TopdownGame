@@ -37,16 +37,44 @@ public class InventoryManager : MonoBehaviour
     public AudioClip potionPickUpSound;
     public AudioClip weaponPickUpSound;
 
+    [Header("Items")]
+    [SerializeField] Item healthPotion;
+    [SerializeField] Item staminaPotion;
+    [SerializeField] Item xpPotion;
+
 
     private void Start()
     {
-        /*if (GameManager.manager != null && GameManager.manager.items != null)
+        if(GameManager.manager != null)
         {
-            foreach (Item item in GameManager.manager.items)
+            int healthPotionCount = GameManager.manager.healthPotions;
+            int staminaPotionCount = GameManager.manager.staminaPotions;
+            int xpPotionCount = GameManager.manager.xpPotions; ;
+
+            if(healthPotionCount != 0)
             {
-                AddItem(item);
+                for (int i = 0; i < healthPotionCount; i++)
+                {
+                    AddItem(healthPotion);
+                }
             }
-        }*/
+
+            if (staminaPotionCount != 0)
+            {
+                for (int i = 0; i < staminaPotionCount; i++)
+                {
+                    AddItem(staminaPotion);
+                }
+            }
+
+            if (xpPotionCount != 0)
+            {
+                for (int i = 0; i < xpPotionCount; i++)
+                {
+                    AddItem(xpPotion);
+                }
+            }
+        }
     }
 
     private void Update()
