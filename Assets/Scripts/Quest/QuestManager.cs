@@ -58,7 +58,7 @@ public class QuestManager : MonoBehaviour
             }
         }*/
 
-        RemoveCompletedQuests();
+        RemoveCompletedQuestIDs();
 
         if(GameManager.manager !=  null && GameManager.manager.completedQuestIDs != null)
         {
@@ -149,7 +149,7 @@ public class QuestManager : MonoBehaviour
         RemoveEnemiesForCompletedQuests();
     }
 
-    public void RemoveCompletedQuests()
+    public void RemoveCompletedQuestIDs()
     {
         if(GameManager.manager != null && GameManager.manager.triggeredQuestIDs != null &&
             GameManager.manager.rewardReadyQuestIDs != null && GameManager.manager.completedQuestIDs != null)

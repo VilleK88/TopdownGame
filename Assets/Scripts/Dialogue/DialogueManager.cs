@@ -37,7 +37,7 @@ public class DialogueManager : MonoBehaviour
     int optionsAmount;
     public TextMeshProUGUI questionText;
 
-    DialogueBase currentDialogue;
+    [HideInInspector] public DialogueBase currentDialogue;
     bool isCurrentlyTyping;
     string completeText;
     bool buffer;
@@ -127,7 +127,7 @@ public class DialogueManager : MonoBehaviour
         {
             yield return new WaitForSeconds(delay);
             dialogueText.text += c;
-            AudioManager.instance.PlaySound(info.character.myVoice);
+            //AudioManager.instance.PlaySound(info.character.myVoice);
         }
         isCurrentlyTyping = false;
     }

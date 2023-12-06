@@ -68,7 +68,7 @@ public class Longbowman : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
         attackCooldownOriginal = attackCooldown;
         originalSpeed = agent.speed;
-        childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", true);
+        //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", true);
     }
 
     private void Update()

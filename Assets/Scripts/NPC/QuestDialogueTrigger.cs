@@ -52,7 +52,6 @@ public class QuestDialogueTrigger : DialogueTrigger
                 {
                     DialogueManager.instance.EnqueueDialogue(dialogueQuests[QuestIndex]);
                     QuestManager.questManager.currentQuestDialogueTrigger = this;
-                    //Debug.Log("Debuggaa t‰‰ll‰");
                 }
             }
             else
@@ -66,10 +65,12 @@ public class QuestDialogueTrigger : DialogueTrigger
             {
                 if (CheckIfQuestRewardReady())
                 {
+                    //DialogueManager.instance.currentDialogue = dialogueQuests[QuestIndex];
                     hasCompletedQuest = true;
+                    //DialogueManager.instance.EnqueueDialogue(completedQuestDialogue);
                     DialogueManager.instance.completedQuestReady = true;
+                    //base.Interact();
                     SetItemRewards();
-                    base.Interact();
                 }
                 else
                 {
@@ -91,13 +92,11 @@ public class QuestDialogueTrigger : DialogueTrigger
             {
                 if(dialogueQuest.quest != null && quest == dialogueQuest.quest)
                 {
-                    Debug.Log("True");
                     return true;
                 }
             }
         }
 
-        Debug.Log("False");
         return false;
     }
 
