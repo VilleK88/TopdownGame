@@ -352,7 +352,7 @@ PrefabInstance:
     - target: {fileID: 3998814155695880502, guid: 7a223b9f9589bd045b6411060d8bc891,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3998814155695880503, guid: 7a223b9f9589bd045b6411060d8bc891,
         type: 3}
@@ -373,6 +373,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3998814155785165096, guid: 7a223b9f9589bd045b6411060d8bc891,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3998814155785165097, guid: 7a223b9f9589bd045b6411060d8bc891,
         type: 3}
@@ -523,6 +528,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MenuCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3998814156259854374, guid: 7a223b9f9589bd045b6411060d8bc891,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3998814156319169527, guid: 7a223b9f9589bd045b6411060d8bc891,
         type: 3}

@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     public bool isGameLoaded = false;
 
     public int savedSceneID;
+    public bool loadPlayerPosition;
 
 
     private void Awake()
@@ -119,6 +120,7 @@ public class GameManager : MonoBehaviour
         data.completedQuestIDs = completedQuestIDs;
 
         data.savedSceneID = savedSceneID;
+        data.loadPlayerPosition = loadPlayerPosition;
 
         // Serialisoidaan GameData objekti, joka tallennetaan samalla tiedostoon.
         bf.Serialize(file, data);
@@ -171,6 +173,7 @@ public class GameManager : MonoBehaviour
             isGameLoaded = true;
 
             savedSceneID = data.savedSceneID;
+            loadPlayerPosition = data.loadPlayerPosition;
         }
     }
 }
@@ -212,4 +215,5 @@ class GameData
     public int[] questEnemyIDs;
 
     public int savedSceneID;
+    public bool loadPlayerPosition;
 }

@@ -55,6 +55,7 @@ public class Player : MonoBehaviour
     public float strongAttackTimer = 0;
 
     public VectorValue startingPosition;
+    //public bool loadPlayerPosition;
 
     [Header("Audio Info")]
     [SerializeField] AudioClip attackSound;
@@ -74,9 +75,20 @@ public class Player : MonoBehaviour
         //transform.position = new Vector3(GameManager.manager.x, GameManager.manager.y, GameManager.manager.z);
         //transform.position = new Vector3(transform.position.x, 3, transform.position.z);
         //quest.initializeQuest();
+        GameManager.manager.currentStamina = GameManager.manager.maxStamina;
         RechargeStamina();
         UpdateStaminaUI();
-        transform.position = startingPosition.initialValue;
+        if(GameManager.manager.loadPlayerPosition)
+        {
+            LoadPlayerTransformPosition();
+            Debug.Log("Debuggaa t‰‰ll‰");
+            GameManager.manager.loadPlayerPosition = false;
+        }
+        else
+        {
+            transform.position = startingPosition.initialValue;
+        }
+        //transform.position = startingPosition.initialValue;
     }
 
     private void Update()

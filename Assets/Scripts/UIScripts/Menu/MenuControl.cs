@@ -92,6 +92,7 @@ public class MenuControl : MonoBehaviour
 
     public void Load()
     {
+        GameManager.manager.loadPlayerPosition = true;
         GameManager.manager.Load();
         LoadSaveSceneID();
         //player.GetComponent<Player>().LoadPlayerTransformPosition();
