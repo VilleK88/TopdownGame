@@ -25,13 +25,24 @@ public class CharacterLevelUp : MonoBehaviour
     [Range(7, 14)]
     public float divisionMultiplier = 7;
 
+    public float awakeCurrentExperience;
+    public int awakeCurrentLevel;
+
+    private void Awake()
+    {
+        awakeCurrentLevel = GameManager.manager.currentLevel;
+        awakeCurrentExperience = GameManager.manager.currentExperience;
+    }
+
     private void Start()
     {
         xpManager = GetComponent<ExperienceManager>();
-        playerHealtScript = GetComponent<PlayerHealth>();
         playerScript = GetComponent<Player>();
+        playerHealtScript = GetComponent<PlayerHealth>();
         frontXpBar.fillAmount = GameManager.manager.currentExperience / GameManager.manager.maxExperience;
         backXpBar.fillAmount = GameManager.manager.currentExperience / GameManager.manager.maxExperience;
+        GameManager.manager.currentLevel = awakeCurrentLevel;
+        GameManager.manager.currentExperience = awakeCurrentExperience;
     }
 
     private void Update()

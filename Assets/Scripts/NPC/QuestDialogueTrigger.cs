@@ -63,13 +63,9 @@ public class QuestDialogueTrigger : DialogueTrigger
         {
             if(!CheckIfQuestAlreadyDone())
             {
-                if (CheckIfQuestRewardReady())
+                if (CheckIfQuestRewardReady() || DialogueManager.instance.completedQuestReady)
                 {
-                    //DialogueManager.instance.currentDialogue = dialogueQuests[QuestIndex];
-                    hasCompletedQuest = true;
-                    //DialogueManager.instance.EnqueueDialogue(completedQuestDialogue);
                     DialogueManager.instance.completedQuestReady = true;
-                    //base.Interact();
                     SetItemRewards();
                 }
                 else
@@ -80,6 +76,7 @@ public class QuestDialogueTrigger : DialogueTrigger
             else
             {
                 base.Interact();
+                Debug.Log("Debuggaa t‰‰ll‰");
             }
         }
     }
