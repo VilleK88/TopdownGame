@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
 
     [Header("Attack and Combo Parameters")]
     bool attack1;
+    bool attack2;
     bool attacking = false;
     float lastAttackMaxTime = 0.8f;
     float lastAttackTimer = 0;
@@ -130,6 +131,7 @@ public class Player : MonoBehaviour
             else
             {
                 attack1 = false;
+                attack2 = false;
                 lastAttackTimer = 0;
             }
         }
@@ -414,14 +416,16 @@ public class Player : MonoBehaviour
                 childSprite.GetComponent<Animator>().SetTrigger("AxeAttack1");
                 GameManager.manager.currentStamina -= attackCost;
                 attack1 = true;
+                attack2 = true;
             }
-            else if(attack1)
+            else if(attack1 && attack2)
             {
                 AudioManager.instance.PlaySound(attackSound);
                 childSprite.GetComponent<Animator>().SetTrigger("AxeAttack2");
                 GameManager.manager.currentStamina -= attackCost;
-                attack1 = false;
-                lastAttackTimer = 0;
+                attack2 = false;
+                //attack1 = false;
+                //lastAttackTimer = 0;
             }
 
             frontStaminaBar.fillAmount = GameManager.manager.currentStamina / GameManager.manager.maxStamina;
