@@ -97,7 +97,11 @@ public class Player : MonoBehaviour
         if (!blocking)
         {
             Jump();
-            Attack();
+            if(InventoryManager.instance.weaponOnHand)
+            {
+                Attack();
+            }
+            //Attack();
         }
         UpdateStaminaUI();
 

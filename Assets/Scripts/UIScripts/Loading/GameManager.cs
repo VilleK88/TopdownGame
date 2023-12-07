@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     public int healthPotions;
     public int staminaPotions;
     public int xpPotions;
+    public int weaponSlot;
 
     public int[] enemyIDs;
     public int[] questEnemyIDs;
@@ -103,6 +104,7 @@ public class GameManager : MonoBehaviour
         data.healthPotions = healthPotions;
         data.staminaPotions = staminaPotions;
         data.xpPotions = xpPotions;
+        data.weaponSlot = weaponSlot;
 
         data.enemyIDs = enemyIDs;
         data.questEnemyIDs = questEnemyIDs;
@@ -148,6 +150,7 @@ public class GameManager : MonoBehaviour
             healthPotions = data.healthPotions;
             staminaPotions = data.staminaPotions;
             xpPotions = data.xpPotions;
+            weaponSlot = data.weaponSlot;
 
             enemyIDs = data.enemyIDs;
             questEnemyIDs = data.questEnemyIDs;
@@ -191,6 +194,7 @@ class GameData
     public int healthPotions;
     public int staminaPotions;
     public int xpPotions;
+    public int weaponSlot;
 
     public int[] enemyIDs;
     public int[] questEnemyIDs;

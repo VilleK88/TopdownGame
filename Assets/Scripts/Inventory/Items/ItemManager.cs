@@ -19,6 +19,17 @@ public class ItemManager : MonoBehaviour
         {
             if(GameManager.manager.pickUpItemIDs.Contains(pickup.pickUpItemID))
             {
+                if(pickup.pickUpItemID == 0)
+                {
+                    if(GameManager.manager.weaponSlot == 1)
+                    {
+                        InventoryManager.instance.AddWeapon(pickup.item);
+                    }
+                    else
+                    {
+                        InventoryManager.instance.AddItem(pickup.item);
+                    }
+                }
                 Destroy(pickup.gameObject);
             }
         }

@@ -16,6 +16,7 @@ public class WeaponSlot : MonoBehaviour, IDropHandler
         if (transform.childCount == 0 && inventoryItem.name == "Wooden axe")
         {
             inventoryItem.parentAfterDrag = transform;
+            GameManager.manager.weaponSlot = 1;
             //weaponOnHand = true;
         }
     }

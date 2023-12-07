@@ -93,6 +93,7 @@ public class InventoryManager : MonoBehaviour
         else
         {
             weaponOnHand = false;
+            GameManager.manager.weaponSlot = 0;
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha1))

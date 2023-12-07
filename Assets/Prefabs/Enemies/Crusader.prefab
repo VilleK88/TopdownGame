@@ -294,6 +294,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   waypointCounter: 0
+  randomPatrol: 0
   attackSound: {fileID: 8300000, guid: 7f4cc3d2fa683254984fe809f3695fd1, type: 3}
 --- !u!195 &9125619688714398319
 NavMeshAgent:
