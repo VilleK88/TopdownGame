@@ -15,7 +15,7 @@ public class Knight : MonoBehaviour
     Transform playerTransform;
 
     [Header("Field of View Parameters")]
-    public float radius = 7;
+    public float radius = 12;
     [Range(0, 360)]
     public float angle = 120;
     public LayerMask targetMask;
