@@ -52,10 +52,12 @@ public class Peasant : MonoBehaviour
     bool dead = false;
 
     [Header("Patrol")]
-    //Transform[] waypoints;
+    [Header("Patrol Parameters")]
+    public Transform[] waypoints;
     int waypointIndex;
-    Vector3[] waypoints;
-    Vector3 waypoint1, waypoint2;
+    public float waypointCounter = 0;
+    float waypointMaxTime = 3;
+    public bool randomPatrol = false;
 
     [Header("Audio")]
     [SerializeField] AudioClip attackSound;
@@ -144,20 +146,27 @@ public class Peasant : MonoBehaviour
                                 Attack();
                                 attackCooldown = attackCooldownOriginal;
                             }
-                            //Attack();
                         }
                     }
                 }
                 else
                 {
-                    RandomMovement();
-                    //Patrol();
+                    Patrol();
+                    agent.stoppingDistance = 1.5f;
+                    if (waypointCounter < waypointMaxTime)
+                    {
+                        waypointCounter += Time.deltaTime;
+                    }
+                    else
+                    {
+                        agent.SetDestination(waypoints[waypointIndex].position);
+                        childSprite.GetComponent<Animator>().SetBool("Walking", true);
+                    }
                 }
             }
             else
             {
                 RandomMovement();
-                //Patrol();
             }
         }
     }
@@ -187,18 +196,26 @@ public class Peasant : MonoBehaviour
 
     void Patrol()
     {
-        /*agent.speed = originalSpeed;
-        childSprite.GetComponent<Animator>().SetBool("Walking", true);
-        if(Vector3.Distance(transform.position, waypoints[waypointIndex]) < 1.5f)
+        agent.speed = originalSpeed;
+        // Add running false
+        if (Vector3.Distance(transform.position, waypoints[waypointIndex].transform.position) < 1.5f)
         {
-            waypointIndex++;
+            if (randomPatrol)
+            {
+                waypointIndex = Random.Range(0, 5);
+            }
+            else
+            {
+                waypointIndex++;
+            }
+            waypointCounter = 0;
+            childSprite.GetComponent<Animator>().SetBool("Walking", false);
 
-            if(waypointIndex >= waypoints.Length)
+            if (waypointIndex >= waypoints.Length)
             {
                 waypointIndex = 0;
             }
         }
-        agent.SetDestination(waypoints[waypointIndex]);*/
     }
 
     bool RandomPoint(Vector3 center, float range, out Vector3 result)

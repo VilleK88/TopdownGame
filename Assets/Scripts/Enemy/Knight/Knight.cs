@@ -44,7 +44,6 @@ public class Knight : MonoBehaviour
     [Header("Patrol Parameters")]
     public Transform[] waypoints;
     int waypointIndex;
-    //Vector3 waypointTarget;
     public float waypointCounter = 0;
     float waypointMaxTime = 3;
     public bool randomPatrol = false;

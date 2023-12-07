@@ -17,7 +17,7 @@ public class Priest : MonoBehaviour
     bool deadFetch; // from TestPriestHealth -script
 
     [Header("Converting Peasants Parameters")]
-    public GameObject[] peasants;
+    public Peasant[] peasants;
     Peasant peasant;
     public Transform[] waypoints;
     int waypointIndex;
@@ -76,7 +76,8 @@ public class Priest : MonoBehaviour
         playerTransform = player.transform;
         agent = GetComponent<NavMeshAgent>();
 
-        peasants = GameObject.FindGameObjectsWithTag("Peasant");
+        //peasants = GameObject.FindGameObjectsWithTag("Peasant");
+        peasants = FindObjectsOfType<Peasant>();
         //peasants = enemies.gameObject.(GameObject.FindGameObjectsWithTag("Peasant"));
         //Debug.Log("Found " + peasants.Length + " peasants.");
         particleSystemConverting = particleConverting.GetComponent<ParticleSystem>();
