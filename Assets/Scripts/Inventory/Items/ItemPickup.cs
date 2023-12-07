@@ -67,17 +67,6 @@ public class ItemPickup : Interactable
         }
     }
 
-    /*void AddItemIDToArray(int newItemID)
-    {
-        int[] newItemIDs = new int[GameManager.manager.itemIDs.Length + 1];
-        for(int i = 0; i < GameManager.manager.itemIDs.Length; i++)
-        {
-            newItemIDs[i] = GameManager.manager.itemIDs[i];
-        }
-        newItemIDs[GameManager.manager.itemIDs.Length] = newItemID;
-        GameManager.manager.itemIDs = newItemIDs;
-    }*/
-
     void AddPickUpItemIDToArray(int newPickUpItemID)
     {
         int[] newPickUpItemIDs = new int[GameManager.manager.pickUpItemIDs.Length + 1];

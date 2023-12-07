@@ -30,8 +30,13 @@ public class CharacterLevelUp : MonoBehaviour
 
     private void Awake()
     {
-        awakeCurrentLevel = GameManager.manager.currentLevel;
-        awakeCurrentExperience = GameManager.manager.currentExperience;
+        if(GameManager.manager != null)
+        {
+            awakeCurrentLevel = GameManager.manager.currentLevel;
+            awakeCurrentExperience = GameManager.manager.currentExperience;
+        }
+        //awakeCurrentLevel = GameManager.manager.currentLevel;
+        //awakeCurrentExperience = GameManager.manager.currentExperience;
     }
 
     private void Start()

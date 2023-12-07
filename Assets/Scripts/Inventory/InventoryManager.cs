@@ -94,6 +94,29 @@ public class InventoryManager : MonoBehaviour
         {
             weaponOnHand = false;
         }
+
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            UseInventorySlot(0);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            UseInventorySlot(1);
+        }
+    }
+
+    public void UseInventorySlot(int slotIndex)
+    {
+        if (slotIndex >= 0 && slotIndex < inventorySlots.Length)
+        {
+            InventorySlot slot = inventorySlots[slotIndex];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+
+            if (itemInSlot != null)
+            {
+                itemInSlot.UseItem();
+            }
+        }
     }
 
     public bool AddItem(Item item)
