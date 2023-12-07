@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class MenuControl : MonoBehaviour
 {
     Scene currentScene;
-    string savedSceneName = "";
 
     private void Start()
     {
@@ -17,14 +16,15 @@ public class MenuControl : MonoBehaviour
     {
         //PlayerPrefs.DeleteKey("ItemCollected");
         PlayerPrefs.DeleteAll();
-        SceneManager.LoadScene("VilleScene");
+        SceneManager.LoadScene("2 - LallisHouse");
+        //SceneManager.LoadScene("VilleScene");
     }
 
     public void Save()
     {
         if(currentScene.name != "1 - Menu")
         {
-            savedSceneName = currentScene.name;
+            SaveSceneID();
             GameManager.manager.Save();
             PlayerManager.instance.player.GetComponent<Player>().isPaused = false;
             PlayerManager.instance.player.GetComponent<Player>().menuButtons.gameObject.SetActive(false);
@@ -32,21 +32,34 @@ public class MenuControl : MonoBehaviour
         }
     }
 
+    public void SaveSceneID()
+    {
+        if (currentScene.name == "2 - LallisHouse")
+        {
+            GameManager.manager.savedSceneID = 2;
+        }
+        if (currentScene.name == "3 - Village")
+        {
+            GameManager.manager.savedSceneID = 3;
+        }
+    }
+
+    public void LoadSaveSceneID()
+    {
+        if(GameManager.manager.savedSceneID == 2)
+        {
+            SceneManager.LoadScene("2 - LallisHouse");
+        }
+        if(GameManager.manager.savedSceneID == 3)
+        {
+            SceneManager.LoadScene("3 - Village");
+        }
+    }
+
     public void Load()
     {
-        if(currentScene.name != "1 - Menu")
-        {
-            GameManager.manager.Load();
-            if (!string.IsNullOrEmpty(savedSceneName))
-            {
-                SceneManager.LoadScene(savedSceneName);
-            }
-        }
-        else
-        {
-            GameManager.manager.Load();
-            SceneManager.LoadScene("VilleScene");
-        }
+        GameManager.manager.Load();
+        LoadSaveSceneID();
     }
 
     public void QuitGame()

@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/1 - Menu.unity
     guid: bcd1462c43c0b934690e4b7d0978a964
   - enabled: 1
+    path: Assets/Scenes/2 - LallisHouse.unity
+    guid: d72adc9b11efd45438f29b06bc4abef4
+  - enabled: 1
+    path: Assets/Scenes/3 - Village.unity
+    guid: 4418376e9d9f4304ebedacfbc6b7a08d
+  - enabled: 0
     path: Assets/Scenes/VilleScene.unity
     guid: f11168a91633f2b46a8f43b169291911
   m_configObjects: {}

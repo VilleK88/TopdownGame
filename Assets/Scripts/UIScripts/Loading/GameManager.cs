@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
 
     public bool isGameLoaded = false;
 
+    public int savedSceneID;
+
 
     private void Awake()
     {
@@ -113,6 +115,8 @@ public class GameManager : MonoBehaviour
         data.rewardReadyQuestIDs = rewardReadyQuestIDs;
         data.completedQuestIDs = completedQuestIDs;
 
+        data.savedSceneID = savedSceneID;
+
         // Serialisoidaan GameData objekti, joka tallennetaan samalla tiedostoon.
         bf.Serialize(file, data);
         file.Close(); // Suljetaan tiedosto, ettei kukaan hakkeri p‰‰se siihen k‰siksi.
@@ -160,6 +164,8 @@ public class GameManager : MonoBehaviour
             completedQuestIDs = data.completedQuestIDs;
 
             isGameLoaded = true;
+
+            savedSceneID = data.savedSceneID;
         }
     }
 }
@@ -198,4 +204,6 @@ class GameData
 
     public int[] enemyIDs;
     public int[] questEnemyIDs;
+
+    public int savedSceneID;
 }
