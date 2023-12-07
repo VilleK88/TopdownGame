@@ -58,19 +58,19 @@ public class EnemyHealth : MonoBehaviour
     {
         if (enemyClass == EnemyClass.Knight)
         {
-            expAmount = 50;
+            expAmount = 25;
         }
         if(enemyClass == EnemyClass.Longbowman)
         {
-            expAmount = 50;
+            expAmount = 25;
         }
         if (enemyClass == EnemyClass.Peasant)
         {
-            expAmount = 25;
+            expAmount = 15;
         }
         if (enemyClass == EnemyClass.Priest)
         {
-            expAmount = 100;
+            expAmount = 50;
         }
     }
 

@@ -17,7 +17,7 @@ public class Knight : MonoBehaviour
     [Header("Field of View Parameters")]
     public float radius = 12;
     [Range(0, 360)]
-    public float angle = 120;
+    public float angle = 160;
     public LayerMask targetMask;
     public LayerMask obstructionMask;
     public bool canSeePlayer;

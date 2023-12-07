@@ -325,7 +325,7 @@ MonoBehaviour:
   converted: 0
   centerPoint: {fileID: 1067344652477661559}
   childSprite: {fileID: 1067344652550070822}
-  radius: 7
+  radius: 12
   angle: 120
   targetMask:
     serializedVersion: 2
@@ -337,6 +337,13 @@ MonoBehaviour:
   isAgro: 0
   agroCounter: 0
   convertOnlyOnce: 0
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  waypointCounter: 0
+  randomPatrol: 0
   attackSound: {fileID: 8300000, guid: 7f4cc3d2fa683254984fe809f3695fd1, type: 3}
 --- !u!1 &1067344652550070822
 GameObject:

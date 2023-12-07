@@ -6409,11 +6409,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1067344652477661550, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
-      propertyPath: waypoints.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1067344652477661550, guid: 2f277d0751841dc4eade76cf9eb6bea3,
-        type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
       objectReference: {fileID: 1535191922}
@@ -17079,11 +17074,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Crusader
-      objectReference: {fileID: 0}
-    - target: {fileID: 9125619688714398318, guid: dcda6a7def1b62541a59d90fd65d17df,
-        type: 3}
-      propertyPath: radius
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398318, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}

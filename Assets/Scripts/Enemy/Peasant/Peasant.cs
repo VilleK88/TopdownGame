@@ -22,9 +22,9 @@ public class Peasant : MonoBehaviour
     Transform playerTransform;
 
     [Header("Field of View Parameters")]
-    public float radius = 6;
+    public float radius = 12;
     [Range(0, 360)]
-    public float angle = 90;
+    public float angle = 160;
     public LayerMask targetMask;
     public LayerMask obstructionMask;
     public bool canSeePlayer;
