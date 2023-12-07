@@ -64,13 +64,6 @@ public class GameManager : MonoBehaviour
         allDialogueTriggers = FindObjectsOfType<DialogueTrigger>();
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.M))
-        {
-            SceneManager.LoadScene("Menu");
-        }
-    }
 
     private void OnEnable()
     {

@@ -40,38 +40,24 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        /*if(GameManager.manager != null && GameManager.manager.triggeredQuestIDs != null)
-        {
-            foreach(int questID in GameManager.manager.triggeredQuestIDs)
-            {
-                for(int i = 0; i < allQuests.Length; i++)
-                {
-                    if (allQuests[i].questID == questID)
-                    {
-                        if (!GameManager.manager.rewardReadyQuests.Contains(allQuests[i]))
-                        {
-                            allQuests[i].initializeQuest();
-                        }
-                        //allQuests[i].initializeQuest();
-                    }
-                }
-            }
-        }*/
-
         RemoveCompletedQuestIDs();
+        RemoveAllCompletedQuestsOnStart();
+        RemoveEnemiesForRewardReadyQuests();
+        RemoveEnemiesForCompletedQuests();
+    }
 
-        if(GameManager.manager !=  null && GameManager.manager.completedQuestIDs != null)
+    void RemoveAllCompletedQuestsOnStart()
+    {
+        if (GameManager.manager != null && GameManager.manager.completedQuestIDs != null)
         {
-            foreach(int completedQuestID in GameManager.manager.completedQuestIDs)
+            foreach (int completedQuestID in GameManager.manager.completedQuestIDs)
             {
-                for(int i = 0; i < allQuests.Length; i++)
+                for (int i = 0; i < allQuests.Length; i++)
                 {
                     if (allQuests[i].questID == completedQuestID)
                     {
-                        //allQuests[i].InitializeCompletedQuest();
                         if (!GameManager.manager.completedQuests.Contains(allQuests[i]))
                         {
-                            //allQuests[i].InitializeCompletedQuest();
                             AddQuestToCompletedArray(allQuests[i]);
                         }
                     }
@@ -79,15 +65,14 @@ public class QuestManager : MonoBehaviour
             }
         }
 
-        if(GameManager.manager != null && GameManager.manager.rewardReadyQuestIDs != null)
+        if (GameManager.manager != null && GameManager.manager.rewardReadyQuestIDs != null)
         {
-            foreach(int rewardReadyQuestID in GameManager.manager.rewardReadyQuestIDs)
+            foreach (int rewardReadyQuestID in GameManager.manager.rewardReadyQuestIDs)
             {
-                for(int i = 0; i < allQuests.Length; i++)
+                for (int i = 0; i < allQuests.Length; i++)
                 {
                     if (allQuests[i].questID == rewardReadyQuestID)
                     {
-                        //allQuests[i].InitializeRewardReadyQuest();
                         if (!GameManager.manager.rewardReadyQuests.Contains(allQuests[i]))
                         {
                             if (!GameManager.manager.completedQuests.Contains(allQuests[i]))
@@ -95,7 +80,6 @@ public class QuestManager : MonoBehaviour
                                 allQuests[i].InitializeRewardReadyQuest();
                                 AddQuestToRewardReadyArray(allQuests[i]);
                             }
-                            //AddQuestToRewardReadyArray(allQuests[i]);
                         }
                     }
                 }
@@ -117,9 +101,7 @@ public class QuestManager : MonoBehaviour
                             {
                                 allQuests[i].initializeQuest();
                             }
-                            //allQuests[i].initializeQuest();
                         }
-                        //allQuests[i].initializeQuest();
                     }
                 }
             }
@@ -128,9 +110,9 @@ public class QuestManager : MonoBehaviour
 
         if (GameManager.manager != null && GameManager.manager.completedQuestIDs != null)
         {
-            foreach(int questID in GameManager.manager.completedQuestIDs)
+            foreach (int questID in GameManager.manager.completedQuestIDs)
             {
-                for(int i = 0; i < allQuests.Length; i++)
+                for (int i = 0; i < allQuests.Length; i++)
                 {
                     if (allQuests[i].questID == questID)
                     {
@@ -144,9 +126,6 @@ public class QuestManager : MonoBehaviour
                 }
             }
         }
-
-        RemoveEnemiesForRewardReadyQuests();
-        RemoveEnemiesForCompletedQuests();
     }
 
     public void RemoveCompletedQuestIDs()

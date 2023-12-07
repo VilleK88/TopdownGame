@@ -76,7 +76,6 @@ public class QuestDialogueTrigger : DialogueTrigger
             else
             {
                 base.Interact();
-                Debug.Log("Debuggaa t‰‰ll‰");
             }
         }
     }
@@ -115,18 +114,6 @@ public class QuestDialogueTrigger : DialogueTrigger
 
     void SetItemRewards()
     {
-        /*if(DialogueManager.instance.completedQuestReady)
-        {
-            foreach(DialogueQuest quest in dialogueQuests)
-            {
-                if(quest.quest != null)
-                {
-                    RewardManager.instance.SetRewardUI(quest.quest);
-                    DialogueManager.instance.completedQuestReady = false;
-                }
-            }
-        }*/
-
         if (DialogueManager.instance.completedQuestReady)
         {   
             foreach(DialogueQuest quest in dialogueQuests)
@@ -143,11 +130,9 @@ public class QuestDialogueTrigger : DialogueTrigger
                 if (dialogueQuest.quest != null)
                 {
                     AddQuestIDToCompletedArray(dialogueQuest.quest.questID);
-                    //RemoveQuestIDFromTriggeredArray();
                     RemoveRewardReadyQuestIDFromArray();
                     AddQuestToCompletedArray(dialogueQuest.quest);
                     RemoveRewardReadyQuestsArray(dialogueQuest.quest);
-                    //RemoveQuestFromTriggeredQuestsArray(dialogueQuest.quest);
                     return;
                 }
             }
@@ -189,21 +174,6 @@ public class QuestDialogueTrigger : DialogueTrigger
         }
     }
 
-    void RemoveQuestIDFromTriggeredArray()
-    {
-        List<int> triggeredQuestIDs = GameManager.manager.triggeredQuestIDs.ToList();
-
-        foreach (int questID in GameManager.manager.completedQuestIDs)
-        {
-            if (triggeredQuestIDs.Contains(questID))
-            {
-                triggeredQuestIDs.Remove(questID);
-            }
-        }
-
-        GameManager.manager.triggeredQuestIDs = triggeredQuestIDs.ToArray();
-    }
-
     void RemoveRewardReadyQuestsArray(QuestBase quest)
     {
         for(int i = 0; i < GameManager.manager.rewardReadyQuests.Length; i++)
@@ -211,18 +181,6 @@ public class QuestDialogueTrigger : DialogueTrigger
             if (GameManager.manager.rewardReadyQuests[i] == quest)
             {
                 GameManager.manager.rewardReadyQuests = GameManager.manager.rewardReadyQuests.Where((val, idx) => idx != i).ToArray();
-                return;
-            }
-        }
-    }
-
-    void RemoveQuestFromTriggeredQuestsArray(QuestBase quest)
-    {
-        for(int i = 0; i < GameManager.manager.triggeredQuests.Length; i++)
-        {
-            if (GameManager.manager.triggeredQuests[i] == quest)
-            {
-                GameManager.manager.triggeredQuests = GameManager.manager.triggeredQuests.Where((val, idx) => idx != i).ToArray();
                 return;
             }
         }

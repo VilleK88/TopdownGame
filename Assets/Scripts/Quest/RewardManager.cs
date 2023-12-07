@@ -57,7 +57,6 @@ public class RewardManager : MonoBehaviour
             bool wasPickedUp = InventoryManager.instance.AddItem(currentQuestReward.rewards.itemRewards[i]);
         }
 
-        //HasCompletedQuest(currentQuest);
         isRewardUIActive = false;
         StartCoroutine(QuestRewardBuffer());
     }
