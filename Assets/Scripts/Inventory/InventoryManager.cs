@@ -150,6 +150,25 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
+    public bool AddWeapon(Item item)
+    {
+        InventoryItem weaponInSlot = weaponSlot.GetComponentInChildren<InventoryItem>();
+        if(weaponInSlot == null)
+        {
+            SpawnNewWeapon(item, weaponSlot);
+            return true;
+        }
+
+        return false;
+    }
+
+    void SpawnNewWeapon(Item item, WeaponSlot slot)
+    {
+        GameObject newWeaponGo = Instantiate(inventoryItemPrefab, slot.transform);
+        InventoryItem inventoryItem = newWeaponGo.GetComponent<InventoryItem>();
+        inventoryItem.InitialiseItem(item);
+    }
+
     void SpawnNewItem(Item item, InventorySlot slot)
     {
         GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
