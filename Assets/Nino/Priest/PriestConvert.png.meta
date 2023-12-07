@@ -1,0 +1,387 @@
+fileFormatVersion: 2
+guid: abbb44114c2c3564d8191f8558668a0e
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PriestConvert_0
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 119
+        width: 67
+        height: 60
+      alignment: 9
+      pivot: {x: 0.54492253, y: 0.7563924}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeb536ecc602fc04aa02e216c2f2fc44
+      internalID: 1808513940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestConvert_1
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 119
+        width: 67
+        height: 60
+      alignment: 9
+      pivot: {x: 0.54489684, y: 0.7594874}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d700c7b36b9d30243bc9afe255a116e0
+      internalID: 1451617541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestConvert_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 116
+        width: 68
+        height: 63
+      alignment: 9
+      pivot: {x: 0.55079025, y: 0.76993114}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9e5c5adc27bc454199ab4680a621a52
+      internalID: -511779017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestConvert_3
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 116
+        width: 68
+        height: 63
+      alignment: 9
+      pivot: {x: 0.5500587, y: 0.77016073}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7d3b7c87e8ebef4d9f78a8b23c15624
+      internalID: -1285937864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestConvert_4
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 116
+        width: 80
+        height: 63
+      alignment: 9
+      pivot: {x: 0.6194733, y: 0.76971}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf606556f8b02c542a2005ad5bdf31e1
+      internalID: -1040138572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestConvert_5
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 116
+        width: 80
+        height: 63
+      alignment: 9
+      pivot: {x: 0.6192505, y: 0.76801455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1069c4e93915bb945b89fa2ecc5379bf
+      internalID: 2134994651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestConvert_6
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 22
+        width: 82
+        height: 64
+      alignment: 9
+      pivot: {x: 0.6280493, y: 0.77462566}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ca0e57fba4dfc9439139cd086e78717
+      internalID: 702125986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestConvert_7
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 22
+        width: 82
+        height: 64
+      alignment: 9
+      pivot: {x: 0.62806964, y: 0.77361536}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5ee895058e4625469519fcba71a827e
+      internalID: -453024441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestConvert_8
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 21
+        width: 71
+        height: 65
+      alignment: 9
+      pivot: {x: 0.569942, y: 0.77636284}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad7d9ef9a90e65c4aa01e026db3a3d53
+      internalID: 227927783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestConvert_9
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 21
+        width: 71
+        height: 65
+      alignment: 9
+      pivot: {x: 0.5702334, y: 0.77761513}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2df259e6811946f4390170f645fe4319
+      internalID: -477123311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestConvert_10
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 22
+        width: 67
+        height: 64
+      alignment: 9
+      pivot: {x: 0.54632753, y: 0.77299595}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03c82497d6578dd4383bbf3252ccfd27
+      internalID: 2021343511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestConvert_11
+      rect:
+        serializedVersion: 2
+        x: 1174
+        y: 22
+        width: 67
+        height: 64
+      alignment: 9
+      pivot: {x: 0.54458845, y: 0.7739949}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef262b32feff5c94ea5adaea28938a5f
+      internalID: -1564057443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: c3de278dcfebb354f94e30bcf173b992
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      PriestConvert_0: 1808513940
+      PriestConvert_1: 1451617541
+      PriestConvert_10: 2021343511
+      PriestConvert_11: -1564057443
+      PriestConvert_2: -511779017
+      PriestConvert_3: -1285937864
+      PriestConvert_4: -1040138572
+      PriestConvert_5: 2134994651
+      PriestConvert_6: 702125986
+      PriestConvert_7: -453024441
+      PriestConvert_8: 227927783
+      PriestConvert_9: -477123311
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
