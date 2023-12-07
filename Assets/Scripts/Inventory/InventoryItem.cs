@@ -73,7 +73,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 }
                 else
                 {
-
+                    InventoryItem weaponInSlot = InventoryManager.instance.weaponSlot.GetComponentInChildren<InventoryItem>();
+                    if(weaponInSlot == null)
+                    {
+                        count--;
+                        InventoryManager.instance.AddWeapon(item);
+                    }
                 }
 
                 if (count > 0)
@@ -82,10 +87,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 }
                 else
                 {
-                    if(name != "Wooden axe")
+                    /*if(name != "Wooden axe")
                     {
                         Destroy(gameObject);
-                    }
+                    }*/
+                    Destroy(gameObject);
                 }
             }
         }
