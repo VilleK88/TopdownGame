@@ -78,6 +78,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                     {
                         count--;
                         InventoryManager.instance.AddWeapon(item);
+                        GameManager.manager.weaponSlot = 1;
                     }
                 }
 
