@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     //NavMeshAgent agent;
     public Interactable focus;
 
-
     [Header("Player Movement and Mouse Aiming Parameters")]
     float moveSpeed = 3.5f;
     Vector3 movement;
@@ -55,7 +54,7 @@ public class Player : MonoBehaviour
     float strongAttackMaxTime = 2;
     public float strongAttackTimer = 0;
 
-    //public QuestBase quest;
+    public VectorValue startingPosition;
 
     [Header("Audio Info")]
     [SerializeField] AudioClip attackSound;
@@ -77,6 +76,7 @@ public class Player : MonoBehaviour
         //quest.initializeQuest();
         RechargeStamina();
         UpdateStaminaUI();
+        transform.position = startingPosition.initialValue;
     }
 
     private void Update()
@@ -105,9 +105,9 @@ public class Player : MonoBehaviour
         }
         UpdateStaminaUI();
 
-        GameManager.manager.x = transform.position.x;
-        GameManager.manager.y = 1;
-        GameManager.manager.z = transform.position.z;
+        //GameManager.manager.x = transform.position.x;
+        //GameManager.manager.y = 1.2f;
+        //GameManager.manager.z = transform.position.z;
 
         if (attack1)
         {
@@ -151,6 +151,18 @@ public class Player : MonoBehaviour
         {
             FixedMove();
         }
+    }
+
+    public void SavePlayerTransformPosition()
+    {
+        GameManager.manager.x = transform.position.x;
+        GameManager.manager.y = 1.2f;
+        GameManager.manager.z = transform.position.z;
+    }
+
+    public void LoadPlayerTransformPosition()
+    {
+        transform.position = new Vector3(GameManager.manager.x, GameManager.manager.y, GameManager.manager.z);
     }
 
     IEnumerator CanMove()

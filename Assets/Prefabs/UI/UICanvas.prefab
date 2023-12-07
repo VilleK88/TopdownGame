@@ -6118,6 +6118,7 @@ MonoBehaviour:
   healthPotion: {fileID: 11400000, guid: 098ddfd7123fc6840b23ae6d28068cfc, type: 2}
   staminaPotion: {fileID: 11400000, guid: 121fb5a600420a74badca7614566a134, type: 2}
   xpPotion: {fileID: 11400000, guid: a180f4c63b92b954db59d5b7a339909d, type: 2}
+  woodenAxe: {fileID: 11400000, guid: f39059101e1f6f94992926d28994b8ae, type: 2}
 --- !u!1 &7885599228123182285
 GameObject:
   m_ObjectHideFlags: 0

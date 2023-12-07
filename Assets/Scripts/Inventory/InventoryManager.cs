@@ -42,39 +42,13 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] Item staminaPotion;
     [SerializeField] Item xpPotion;
 
+    [Header("Weapons")]
+    [SerializeField] Item woodenAxe;
+
 
     private void Start()
     {
-        if(GameManager.manager != null)
-        {
-            int healthPotionCount = GameManager.manager.healthPotions;
-            int staminaPotionCount = GameManager.manager.staminaPotions;
-            int xpPotionCount = GameManager.manager.xpPotions; ;
-
-            if(healthPotionCount != 0)
-            {
-                for (int i = 0; i < healthPotionCount; i++)
-                {
-                    AddItem(healthPotion);
-                }
-            }
-
-            if (staminaPotionCount != 0)
-            {
-                for (int i = 0; i < staminaPotionCount; i++)
-                {
-                    AddItem(staminaPotion);
-                }
-            }
-
-            if (xpPotionCount != 0)
-            {
-                for (int i = 0; i < xpPotionCount; i++)
-                {
-                    AddItem(xpPotion);
-                }
-            }
-        }
+        AddCollectedItemsAndWeapons();
     }
 
     private void Update()
@@ -103,6 +77,53 @@ public class InventoryManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Alpha2))
         {
             UseInventorySlot(1);
+        }
+    }
+
+    void AddCollectedItemsAndWeapons()
+    {
+        if (GameManager.manager != null)
+        {
+            int healthPotionCount = GameManager.manager.healthPotions;
+            int staminaPotionCount = GameManager.manager.staminaPotions;
+            int xpPotionCount = GameManager.manager.xpPotions;
+            bool woodenAxeCollected = GameManager.manager.woodenAxeCollected;
+
+            if (healthPotionCount != 0)
+            {
+                for (int i = 0; i < healthPotionCount; i++)
+                {
+                    AddItem(healthPotion);
+                }
+            }
+
+            if (staminaPotionCount != 0)
+            {
+                for (int i = 0; i < staminaPotionCount; i++)
+                {
+                    AddItem(staminaPotion);
+                }
+            }
+
+            if (xpPotionCount != 0)
+            {
+                for (int i = 0; i < xpPotionCount; i++)
+                {
+                    AddItem(xpPotion);
+                }
+            }
+
+            if(woodenAxeCollected)
+            {
+                if(GameManager.manager.weaponSlot == 1)
+                {
+                    AddWeapon(woodenAxe);
+                }
+                else
+                {
+                    AddItem(woodenAxe);
+                }
+            }
         }
     }
 

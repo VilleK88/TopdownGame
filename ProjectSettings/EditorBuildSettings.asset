@@ -17,6 +17,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/3 - Village.unity
     guid: 4418376e9d9f4304ebedacfbc6b7a08d
+  - enabled: 1
+    path: Assets/Scenes/4 - Fields.unity
+    guid: cdaf313bed9ecd14bb886c1bb8cc776f
+  - enabled: 1
+    path: Assets/Scenes/5 - DeepForest.unity
+    guid: 1f1ef1480625506448bedc705830bb20
+  - enabled: 1
+    path: Assets/Scenes/6 - Fortress.unity
+    guid: 4b960e5fb12ed534798da345c98d0da0
+  - enabled: 1
+    path: Assets/Scenes/7 - FrozenLake.unity
+    guid: 6f7955fe2ac12cd4695b8e011a0984b4
   - enabled: 0
     path: Assets/Scenes/VilleScene.unity
     guid: f11168a91633f2b46a8f43b169291911

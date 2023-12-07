@@ -35,6 +35,7 @@ public class ItemPickup : Interactable
             if(item.type == ItemType.WoodenAxe)
             {
                 AudioManager.instance.PlaySound(InventoryManager.instance.weaponPickUpSound);
+                GameManager.manager.woodenAxeCollected = true;
             }
 
             if(item.type == ItemType.HealthPotion)

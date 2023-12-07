@@ -264,6 +264,7 @@ MonoBehaviour:
   menuButtons: {fileID: 0}
   strongAttack: 1
   strongAttackTimer: 0
+  startingPosition: {fileID: 11400000, guid: e5d37605c6cb4864faccbe321908b976, type: 2}
   attackSound: {fileID: 8300000, guid: 7f4cc3d2fa683254984fe809f3695fd1, type: 3}
   strongAttackSound: {fileID: 8300000, guid: c97f7300bc7ff764c9b49e131ce1002e, type: 3}
   walkSound: {fileID: 1385117367}

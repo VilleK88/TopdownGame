@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     public int healthPotions;
     public int staminaPotions;
     public int xpPotions;
+    public bool woodenAxeCollected;
     public int weaponSlot;
 
     public int[] enemyIDs;
@@ -106,6 +107,8 @@ public class GameManager : MonoBehaviour
         data.healthPotions = healthPotions;
         data.staminaPotions = staminaPotions;
         data.xpPotions = xpPotions;
+
+        data.woodenAxeCollected = woodenAxeCollected;
         data.weaponSlot = weaponSlot;
 
         data.enemyIDs = enemyIDs;
@@ -154,6 +157,8 @@ public class GameManager : MonoBehaviour
             healthPotions = data.healthPotions;
             staminaPotions = data.staminaPotions;
             xpPotions = data.xpPotions;
+
+            woodenAxeCollected = data.woodenAxeCollected;
             weaponSlot = data.weaponSlot;
 
             enemyIDs = data.enemyIDs;
@@ -200,6 +205,7 @@ class GameData
     public int healthPotions;
     public int staminaPotions;
     public int xpPotions;
+    public bool woodenAxeCollected;
     public int weaponSlot;
 
     public int[] enemyIDs;

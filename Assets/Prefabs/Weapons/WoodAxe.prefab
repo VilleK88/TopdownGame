@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7193327352714103698}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.62, y: 1, z: -5.43}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -114,6 +114,8 @@ MonoBehaviour:
   radius: 3
   interactionTransform: {fileID: 7193327352714103405}
   item: {fileID: 11400000, guid: f39059101e1f6f94992926d28994b8ae, type: 2}
+  itemName: 
+  pickUpItemID: 0
 --- !u!1 &7193327353611201265
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +188,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 69b81a99fa8cae4478c01d7bc8675483, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
