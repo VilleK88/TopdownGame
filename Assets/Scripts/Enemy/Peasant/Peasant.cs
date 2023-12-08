@@ -62,6 +62,8 @@ public class Peasant : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioClip attackSound;
 
+    public bool activated;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -86,6 +88,11 @@ public class Peasant : MonoBehaviour
         deadFetch = GetComponent<EnemyHealth>().dead;
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
+        if(distanceToPlayer < 30)
+        {
+            activated = true;
+        }
+
         if (gettingHitFetch)
         {
             childSprite.GetComponent<Animator>().SetBool("Walking", false);
@@ -93,7 +100,7 @@ public class Peasant : MonoBehaviour
 
         Death();
 
-        if (!dead)
+        if (!dead && activated)
         {
             if (converted)
             {

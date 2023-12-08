@@ -65,6 +65,9 @@ public class Priest : MonoBehaviour
     //Quaternion lookRotation;
     NavMeshAgent agent;
     bool healing = false;
+    float distanceToPlayer;
+
+    public bool activated;
 
 
     private void Start()
@@ -86,10 +89,15 @@ public class Priest : MonoBehaviour
 
     private void Update()
     {
+        distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         deadFetch = GetComponent<EnemyHealth>().dead;
         Death();
+        if(distanceToPlayer < 30)
+        {
+            activated = true;
+        }
 
-        if (!dead)
+        if (!dead && activated)
         {
             if (canSeePlayer)
             {
