@@ -10508,7 +10508,7 @@ PrefabInstance:
     - target: {fileID: 1067344652477661545, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: questEnemyID
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661550, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
@@ -15594,7 +15594,7 @@ PrefabInstance:
     - target: {fileID: 1067344652477661545, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: questEnemyID
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661550, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
