@@ -73,9 +73,6 @@ public class Player : MonoBehaviour
         Physics.gravity *= gravityModifier;
         cam = Camera.main;
         motor = GetComponent<TestPlayerMotor>();
-        //transform.position = new Vector3(GameManager.manager.x, GameManager.manager.y, GameManager.manager.z);
-        //transform.position = new Vector3(transform.position.x, 3, transform.position.z);
-        //quest.initializeQuest();
         GameManager.manager.currentStamina = GameManager.manager.maxStamina;
         RechargeStamina();
         UpdateStaminaUI();
@@ -89,7 +86,6 @@ public class Player : MonoBehaviour
         {
             transform.position = startingPosition.initialValue;
         }
-        //transform.position = startingPosition.initialValue;
     }
 
     private void Update()
@@ -118,9 +114,6 @@ public class Player : MonoBehaviour
         }
         UpdateStaminaUI();
 
-        //GameManager.manager.x = transform.position.x;
-        //GameManager.manager.y = 1.2f;
-        //GameManager.manager.z = transform.position.z;
 
         if (attack1)
         {
@@ -424,8 +417,6 @@ public class Player : MonoBehaviour
                 childSprite.GetComponent<Animator>().SetTrigger("AxeAttack2");
                 GameManager.manager.currentStamina -= attackCost;
                 attack2 = false;
-                //attack1 = false;
-                //lastAttackTimer = 0;
             }
 
             frontStaminaBar.fillAmount = GameManager.manager.currentStamina / GameManager.manager.maxStamina;
