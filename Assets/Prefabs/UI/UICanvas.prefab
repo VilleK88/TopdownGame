@@ -5324,8 +5324,8 @@ MonoBehaviour:
   questDescription: {fileID: 7885599226667548834}
   questAcceptButton: {fileID: 7885599226877822916}
   allQuests:
-  - {fileID: 11400000, guid: 20a97b3551b6b284ca9e64b620c7ec76, type: 2}
-  - {fileID: 11400000, guid: bdcddebfba14b0e4a8104681ff6e965c, type: 2}
+  - {fileID: 11400000, guid: 4a29b149051236f4a92e4fd0b2cb1042, type: 2}
+  - {fileID: 11400000, guid: e3863e10ab57167459731c98dbf5e05c, type: 2}
   questIndex: 0
   questStartsSound: {fileID: 8300000, guid: 5c94a706f1993ce44b7240ab360954a5, type: 3}
 --- !u!114 &7885599227848986805

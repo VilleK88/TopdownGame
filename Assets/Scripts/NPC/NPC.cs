@@ -16,6 +16,7 @@ public class NPC : MonoBehaviour
     Vector3 waypointTarget;
     public float waypointCounter = 0;
     float waypointMaxTime = 2;
+    public bool patrol = false;
 
     [Header("Interact with NPC")]
     [SerializeField] NPCInteraction npcInteraction;
@@ -46,14 +47,17 @@ public class NPC : MonoBehaviour
             gameObject.GetComponent<NavMeshAgent>().isStopped = false;
             speechIcon.SetActive(false);
 
-            Patrol();
-            if (waypointCounter < waypointMaxTime)
+            if(patrol)
             {
-                waypointCounter += Time.deltaTime;
-            }
-            else
-            {
-                agent.SetDestination(waypoints[waypointIndex].position);
+                Patrol();
+                if (waypointCounter < waypointMaxTime)
+                {
+                    waypointCounter += Time.deltaTime;
+                }
+                else
+                {
+                    agent.SetDestination(waypoints[waypointIndex].position);
+                }
             }
         }
     }

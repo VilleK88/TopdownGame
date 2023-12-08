@@ -14,7 +14,11 @@ public class QuestDialogueTrigger : DialogueTrigger
     {
         if(CheckIfQuestRewardReady())
         {
-
+            //hasActiveQuest = false;
+        }
+        if(CheckIfQuestAlreadyDone())
+        {
+            //hasActiveQuest = false;
         }
     }
 

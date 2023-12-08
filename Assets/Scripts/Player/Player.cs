@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
     bool attack1;
     bool attack2;
     bool attacking = false;
-    float lastAttackMaxTime = 0.8f;
+    float lastAttackMaxTime = 0.7f;
     float lastAttackTimer = 0;
     public bool strongAttack = true;
     float strongAttackMaxTime = 2;
@@ -79,7 +79,6 @@ public class Player : MonoBehaviour
         if(GameManager.manager.loadPlayerPosition)
         {
             LoadPlayerTransformPosition();
-            Debug.Log("Debuggaa t‰‰ll‰");
             GameManager.manager.loadPlayerPosition = false;
         }
         else

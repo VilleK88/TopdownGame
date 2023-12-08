@@ -55,6 +55,21 @@ public class RewardManager : MonoBehaviour
         for (int i = 0; i < currentQuestReward.rewards.itemRewards.Length; i++)
         {
             bool wasPickedUp = InventoryManager.instance.AddItem(currentQuestReward.rewards.itemRewards[i]);
+
+            if (currentQuestReward.rewards.itemRewards[i].type == ItemType.HealthPotion)
+            {
+                GameManager.manager.healthPotions++;
+            }
+
+            if (currentQuestReward.rewards.itemRewards[i].type == ItemType.StaminaPotion)
+            {
+                GameManager.manager.staminaPotions++;
+            }
+
+            if (currentQuestReward.rewards.itemRewards[i].type == ItemType.XpPotion)
+            {
+                GameManager.manager.xpPotions++;
+            }
         }
 
         isRewardUIActive = false;
