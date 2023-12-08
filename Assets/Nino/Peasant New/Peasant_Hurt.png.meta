@@ -1,0 +1,343 @@
+fileFormatVersion: 2
+guid: a7d6b4f6ea6e5f64bbe1f53ebd96a0ab
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Peasant_Hurt_0
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 125
+        width: 88
+        height: 54
+      alignment: 9
+      pivot: {x: 0.3923709, y: 0.6568024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edb625f96ef5a6246a000e7d07cfe876
+      internalID: 893567934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peasant_Hurt_1
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 125
+        width: 88
+        height: 54
+      alignment: 9
+      pivot: {x: 0.3923052, y: 0.6563068}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f4b99b2315ac624a8502250066ff944
+      internalID: -1025297081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peasant_Hurt_2
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 124
+        width: 88
+        height: 54
+      alignment: 9
+      pivot: {x: 0.39250737, y: 0.6759313}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3755ebaa846213a479949c26a3ee3188
+      internalID: -1313559922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peasant_Hurt_3
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 124
+        width: 88
+        height: 54
+      alignment: 9
+      pivot: {x: 0.39255384, y: 0.6758095}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5782f49018544ba4a96daabbd7c9d0f9
+      internalID: -665483809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peasant_Hurt_4
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 123
+        width: 88
+        height: 54
+      alignment: 9
+      pivot: {x: 0.39257118, y: 0.69480926}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76ea8f47d9bd7524d9e193375d1df94d
+      internalID: -973096574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peasant_Hurt_5
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 27
+        width: 88
+        height: 54
+      alignment: 9
+      pivot: {x: 0.39221546, y: 0.6919129}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a232144de032aa44a9008aad912dcdf5
+      internalID: 53316215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peasant_Hurt_6
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 26
+        width: 88
+        height: 54
+      alignment: 9
+      pivot: {x: 0.39137095, y: 0.7137358}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a81222e3589a93041a53de67283c5687
+      internalID: -1424895440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peasant_Hurt_7
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 26
+        width: 88
+        height: 54
+      alignment: 9
+      pivot: {x: 0.39169312, y: 0.7120025}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6a70c2dd55029543985a641020b12be
+      internalID: -2125629044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peasant_Hurt_8
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 24
+        width: 88
+        height: 57
+      alignment: 9
+      pivot: {x: 0.39250252, y: 0.7104132}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51379260178aebf48a911535f951f286
+      internalID: 56399031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peasant_Hurt_9
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 24
+        width: 88
+        height: 57
+      alignment: 9
+      pivot: {x: 0.39208362, y: 0.7098367}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 294ef269937b1ab4cb380b34fa6af0ef
+      internalID: -2018270816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 05268b0c0ac699d4e82116e6af12c8a2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Peasant_Hurt_0: 893567934
+      Peasant_Hurt_1: -1025297081
+      Peasant_Hurt_2: -1313559922
+      Peasant_Hurt_3: -665483809
+      Peasant_Hurt_4: -973096574
+      Peasant_Hurt_5: 53316215
+      Peasant_Hurt_6: -1424895440
+      Peasant_Hurt_7: -2125629044
+      Peasant_Hurt_8: 56399031
+      Peasant_Hurt_9: -2018270816
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
