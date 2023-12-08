@@ -19,10 +19,6 @@ public class Priest : MonoBehaviour
     [Header("Converting Peasants Parameters")]
     public Peasant[] peasants;
     Peasant peasant;
-    //public Transform[] waypoints;
-    //int waypointIndex;
-    //Vector3 waypointTarget;
-    //bool stopConverting = false;
     float convertingMaxTime = 3;
     float convertingCounter = 0;
     int currentPeasantIndex = 0;
@@ -41,9 +37,9 @@ public class Priest : MonoBehaviour
     float maxHealth = 100;
     string enemyTag = "Enemy";
     float detectionRadius = 20;
-    //public GameObject healer;
     GameObject enemy;
     EnemyHealth enemyHealth;
+    GameObject previousEnemy;
 
     [Header("Field of View Parameters")]
     public float radius = 12;
@@ -65,8 +61,8 @@ public class Priest : MonoBehaviour
     public bool isAgro = false;
     float maxAgroCounter = 5;
     public float agroCounter = 0;
-    Vector3 direction;
-    Quaternion lookRotation;
+    //Vector3 direction;
+    //Quaternion lookRotation;
     NavMeshAgent agent;
     bool healing = false;
 
@@ -210,13 +206,11 @@ public class Priest : MonoBehaviour
                             enemyHealth.currentHealth > 0)
                         {
                             enemyHealth.currentHealth += 10;
-                            //particleSystemHealing.Play();
                             childSprite.GetComponent<Animator>().SetBool("Converting", true);
                             healing = true;
                         }
                         else
                         {
-                            //particleSystemHealing.Stop();
                             childSprite.GetComponent<Animator>().SetBool("Converting", false);
                             healing = false;
                         }
