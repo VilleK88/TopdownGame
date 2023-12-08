@@ -66,12 +66,13 @@ public class PlayerHitbox : MonoBehaviour
                 if (health.enemyClass == EnemyClass.Peasant)
                 {
                     bool ifAgro = other.gameObject.GetComponent<Peasant>().isAgro;
-                    if (!ifAgro)
+                    bool ifConverted = other.gameObject.GetComponent<Peasant>().converted;
+                    if (!ifAgro && ifConverted)
                     {
                         health.TakeDamage(100 + damage.GetValue());
                         //Debug.Log("Sneak kill peasant.");
                     }
-                    else
+                    else if(ifConverted)
                     {
                         health.TakeDamage(10 + damage.GetValue());
                         //Debug.Log("Hit peasant.");

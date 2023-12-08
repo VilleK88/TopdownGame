@@ -307,7 +307,7 @@ public class Player : MonoBehaviour
                 {
                     runningSound.Play();
                 }
-                moveSpeed = 7; // 5
+                moveSpeed = 5.5f; // 5
             }
             else
             {

@@ -14,9 +14,9 @@ public class Longbowman : MonoBehaviour
     Transform playerTransform;
 
     [Header("Field of View Parameters")]
-    public float radius = 7;
+    public float radius = 12;
     [Range(0, 360)]
-    public float angle = 120;
+    public float angle = 160;
     public LayerMask targetMask;
     public LayerMask obstructionMask;
     public bool canSeePlayer;
@@ -192,6 +192,9 @@ public class Longbowman : MonoBehaviour
             Transform enemyTransform = enemy.transform;
             Knight knight = enemy.GetComponent<Knight>();
             Peasant peasant = enemy.GetComponent<Peasant>();
+            Longbowman longbowman = enemy.GetComponent<Longbowman>();
+            Priest priest = enemy.GetComponent<Priest>();
+
             if (enemyTransform != null && knight != null)
             {
                 float distance = Vector3.Distance(transform.position, enemyTransform.position);
@@ -207,6 +210,22 @@ public class Longbowman : MonoBehaviour
                 if (distance < 20)
                 {
                     peasant.isAgro = true;
+                }
+            }
+            if (enemyTransform != null && longbowman != null)
+            {
+                float distance = Vector3.Distance(transform.position, enemyTransform.position);
+                if (distance < 20)
+                {
+                    longbowman.isAgro = true;
+                }
+            }
+            if (enemyTransform != null && priest != null)
+            {
+                float distance = Vector3.Distance(transform.position, enemyTransform.position);
+                if (distance < 20)
+                {
+                    priest.isAgro = true;
                 }
             }
         }

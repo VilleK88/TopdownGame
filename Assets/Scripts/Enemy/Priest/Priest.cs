@@ -19,9 +19,9 @@ public class Priest : MonoBehaviour
     [Header("Converting Peasants Parameters")]
     public Peasant[] peasants;
     Peasant peasant;
-    public Transform[] waypoints;
-    int waypointIndex;
-    Vector3 waypointTarget;
+    //public Transform[] waypoints;
+    //int waypointIndex;
+    //Vector3 waypointTarget;
     //bool stopConverting = false;
     float convertingMaxTime = 3;
     float convertingCounter = 0;
@@ -46,9 +46,9 @@ public class Priest : MonoBehaviour
     EnemyHealth enemyHealth;
 
     [Header("Field of View Parameters")]
-    public float radius = 7;
+    public float radius = 12;
     [Range(0, 360)]
-    public float angle = 120;
+    public float angle = 160;
     public LayerMask targetMask;
     public LayerMask obstructionMask;
     public bool canSeePlayer;
@@ -69,6 +69,7 @@ public class Priest : MonoBehaviour
     Quaternion lookRotation;
     NavMeshAgent agent;
     bool healing = false;
+
 
     private void Start()
     {
@@ -136,7 +137,7 @@ public class Priest : MonoBehaviour
 
             if (deadFetch)
             {
-                particleSystemConverting.Stop();
+                childSprite.GetComponent<Animator>().SetBool("Converting", false);
             }
         }
     }
@@ -209,12 +210,14 @@ public class Priest : MonoBehaviour
                             enemyHealth.currentHealth > 0)
                         {
                             enemyHealth.currentHealth += 10;
-                            particleSystemHealing.Play();
+                            //particleSystemHealing.Play();
+                            childSprite.GetComponent<Animator>().SetBool("Converting", true);
                             healing = true;
                         }
                         else
                         {
-                            particleSystemHealing.Stop();
+                            //particleSystemHealing.Stop();
+                            childSprite.GetComponent<Animator>().SetBool("Converting", false);
                             healing = false;
                         }
                     }
@@ -235,13 +238,13 @@ public class Priest : MonoBehaviour
                 if (convertingMaxTime >= convertingCounter)
                 {
                     convertingCounter += Time.deltaTime;
-                    particleSystemConverting.Play();
+                    childSprite.GetComponent<Animator>().SetBool("Converting", true);
                     converting = true;
                 }
                 else
                 {
                     peasant.converted = true;
-                    particleSystemConverting.Stop();
+                    childSprite.GetComponent<Animator>().SetBool("Converting", false);
                 }
             }
             else
@@ -249,7 +252,6 @@ public class Priest : MonoBehaviour
                 if (currentPeasantIndex < peasants.Length)
                 {
                     currentPeasantIndex++;
-                    //Debug.Log("Next peasant to convert.");
                     convertingCounter = 0;
                 }
             }
@@ -258,7 +260,6 @@ public class Priest : MonoBehaviour
         {
             startHealing = true;
             converting = false;
-            //Debug.Log("Not converting.");
         }
     }
 
@@ -266,7 +267,6 @@ public class Priest : MonoBehaviour
     {
         if (currentPeasantIndex >= 0 && currentPeasantIndex < peasants.Length)
         {
-            //Debug.Log("Return peasants. CurrentPeasantIndex: " + currentPeasantIndex);
             return peasants[currentPeasantIndex].GetComponent<Peasant>();
         }
         return null;
@@ -282,6 +282,9 @@ public class Priest : MonoBehaviour
             Transform enemyTransform = enemy.transform;
             Knight knight = enemy.GetComponent<Knight>();
             Peasant peasant = enemy.GetComponent<Peasant>();
+            Longbowman longbowman = enemy.GetComponent<Longbowman>();
+            Priest priest = enemy.GetComponent<Priest>();
+
             if (enemyTransform != null && knight != null)
             {
                 float distance = Vector3.Distance(transform.position, enemyTransform.position);
@@ -296,6 +299,22 @@ public class Priest : MonoBehaviour
                 if (distance < 20)
                 {
                     peasant.isAgro = true;
+                }
+            }
+            if (enemyTransform != null && longbowman != null)
+            {
+                float distance = Vector3.Distance(transform.position, enemyTransform.position);
+                if (distance < 20)
+                {
+                    longbowman.isAgro = true;
+                }
+            }
+            if (enemyTransform != null && priest != null)
+            {
+                float distance = Vector3.Distance(transform.position, enemyTransform.position);
+                if (distance < 20)
+                {
+                    priest.isAgro = true;
                 }
             }
         }
