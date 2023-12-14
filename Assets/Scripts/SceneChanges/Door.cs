@@ -13,6 +13,7 @@ public class Door : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            GameManager.manager.SaveOnSceneChange();
             playerSpawnPosition.initialValue = playerPosition;
             SceneManager.LoadScene(sceneToLoad);
         }
