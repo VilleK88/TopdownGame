@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 [Serializable]
@@ -72,6 +73,7 @@ public class QuestBase : ScriptableObject
                 if(!GameManager.manager.rewardReadyQuestIDs.Contains(this.questID))
                 {
                     QuestManager.questManager.AddQuestIDToRewardReadyArray(this.questID);
+                    QuestManager.questManager.AddQuestToRewardReadyArray(this);
                 }
                 GameManager.manager.allDialogueTriggers[i].completedQuestDialogue = completedQuestDialogue;
                 Debug.Log("We Found: " + NPCTurnIn);
@@ -81,7 +83,6 @@ public class QuestBase : ScriptableObject
 
         isCompleted = true;
         DialogueManager.instance.completedQuest = this;
-        //QuestManager.questManager.AddQuestIDToRewardReadyArray(this.questID);
     }
 
     public virtual string GetObjectiveList()

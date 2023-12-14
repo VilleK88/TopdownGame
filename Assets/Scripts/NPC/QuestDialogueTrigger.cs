@@ -10,17 +10,6 @@ public class QuestDialogueTrigger : DialogueTrigger
     public DialogueQuest[] dialogueQuests;
     public int QuestIndex { get; set; }
 
-    private void Start()
-    {
-        if(CheckIfQuestRewardReady())
-        {
-            //hasActiveQuest = false;
-        }
-        if(CheckIfQuestAlreadyDone())
-        {
-            //hasActiveQuest = false;
-        }
-    }
 
     public override void Interact()
     {

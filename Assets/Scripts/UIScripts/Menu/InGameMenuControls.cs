@@ -98,6 +98,7 @@ public class InGameMenuControls : MonoBehaviour
 
     public void QuitGame()
     {
+        //SceneManager.LoadScene("0 - Loading");
         Application.Quit();
     }
 }

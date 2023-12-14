@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public Interactable focus;
 
     [Header("Player Movement and Mouse Aiming Parameters")]
-    float moveSpeed = 3.5f;
+    float moveSpeed = 10f; // 3.5f
     Vector3 movement;
     Ray ray;
     RaycastHit hit;
@@ -299,7 +299,7 @@ public class Player : MonoBehaviour
                 {
                     runningSound.Play();
                 }
-                moveSpeed = 5.5f; // 5
+                moveSpeed = 20f; // 5.5f
             }
             else
             {
@@ -312,7 +312,7 @@ public class Player : MonoBehaviour
                 {
                     walkSound.Play();
                 }
-                moveSpeed = 3.5f;
+                moveSpeed = 10f; // 3.5f
             }
         }
         else
@@ -323,7 +323,7 @@ public class Player : MonoBehaviour
             }
             running = false;
             childSprite.GetComponent<Animator>().SetBool("Running", false);
-            moveSpeed = 3.5f;
+            moveSpeed = 10; // 3.5f
         }
         if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) ||
             Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
