@@ -343,6 +343,10 @@ MonoBehaviour:
   dieSound: {fileID: 8300000, guid: 1057c4a750a751e4ebe97fa26e22bbb0, type: 3}
   enemyID: 0
   questEnemyID: 0
+  healthPotion: {fileID: 7657944507466521422, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
+    type: 3}
+  staminaPotion: {fileID: 3256589297461054410, guid: 67dbaf376d2b55049814c1c6563a042b,
+    type: 3}
 --- !u!1 &9125619689206134125
 GameObject:
   m_ObjectHideFlags: 0

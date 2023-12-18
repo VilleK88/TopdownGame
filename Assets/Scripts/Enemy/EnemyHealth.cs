@@ -42,6 +42,10 @@ public class EnemyHealth : MonoBehaviour
     public int enemyID;
     public int questEnemyID;
 
+    [Header("Loot Items")]
+    [SerializeField] ItemPickup healthPotion;
+    [SerializeField] ItemPickup staminaPotion;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -147,6 +151,7 @@ public class EnemyHealth : MonoBehaviour
         }
         ExperienceManager.instance.AddExperience(expAmount);
         AddQuestEnemyIDToArray(this.questEnemyID);
+        SpawnLoot();
     }
 
     void AddQuestEnemyIDToArray(int newQuestEnemyID)
@@ -158,5 +163,18 @@ public class EnemyHealth : MonoBehaviour
         }
         newQuestEnemyIDs[GameManager.manager.questEnemyIDs.Length] = newQuestEnemyID;
         GameManager.manager.questEnemyIDs = newQuestEnemyIDs;
+    }
+
+    void SpawnLoot()
+    {
+        int itemToSpawn = Random.Range(0, 2);
+        if(itemToSpawn == 0)
+        {
+            Instantiate(healthPotion, transform.position, Quaternion.identity);
+        }
+        else if(itemToSpawn == 1)
+        {
+            Instantiate(staminaPotion, transform.position, Quaternion.identity);
+        }
     }
 }

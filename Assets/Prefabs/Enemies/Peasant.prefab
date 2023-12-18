@@ -309,7 +309,11 @@ MonoBehaviour:
   blockHitSound: {fileID: 8300000, guid: 6591ca4f9365b5c4d9c83e485c15a5a1, type: 3}
   dieSound: {fileID: 8300000, guid: 1057c4a750a751e4ebe97fa26e22bbb0, type: 3}
   enemyID: 0
-  questEnemyID: 1
+  questEnemyID: 0
+  healthPotion: {fileID: 7657944507466521422, guid: b66a4e61d8d1d444abfc6cd37a2c7e7c,
+    type: 3}
+  staminaPotion: {fileID: 3256589297461054410, guid: 67dbaf376d2b55049814c1c6563a042b,
+    type: 3}
 --- !u!114 &1067344652477661550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2b1b8a23a256747869bd597e4d7acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  converted: 0
+  converted: 1
   centerPoint: {fileID: 1067344652477661559}
   childSprite: {fileID: 1067344652550070822}
   radius: 12
@@ -341,10 +345,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   waypointCounter: 0
   randomPatrol: 0
   attackSound: {fileID: 8300000, guid: 7f4cc3d2fa683254984fe809f3695fd1, type: 3}
+  activated: 0
 --- !u!1 &1067344652550070822
 GameObject:
   m_ObjectHideFlags: 0
