@@ -78,4 +78,9 @@ public class ItemPickup : Interactable
         newPickUpItemIDs[GameManager.manager.pickUpItemIDs.Length] = newPickUpItemID;
         GameManager.manager.pickUpItemIDs = newPickUpItemIDs;
     }
+
+    public void GenerateID()
+    {
+        pickUpItemID = UnityEngine.Random.Range(0, 1000000);
+    }
 }
