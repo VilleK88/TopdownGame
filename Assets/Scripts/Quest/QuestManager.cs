@@ -225,7 +225,6 @@ public class QuestManager : MonoBehaviour
 
     void DestroyEnemy(EnemyHealth enemy)
     {
-        enemy.Die();
         enemy.dead = true;
         enemy.gameObject.SetActive(false);
     }
