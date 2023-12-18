@@ -94,6 +94,9 @@ public class InGameMenuControls : MonoBehaviour
     {
         GameManager.manager.Load();
         LoadSaveSceneID();
+
+        PlayerManager.instance.player.GetComponent<Player>().isPaused = false;
+        Time.timeScale = 1;
     }
 
     public void QuitGame()

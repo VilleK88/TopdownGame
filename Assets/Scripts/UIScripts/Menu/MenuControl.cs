@@ -95,7 +95,6 @@ public class MenuControl : MonoBehaviour
         GameManager.manager.loadPlayerPosition = true;
         GameManager.manager.Load();
         LoadSaveSceneID();
-        //player.GetComponent<Player>().LoadPlayerTransformPosition();
     }
 
     public void QuitGame()

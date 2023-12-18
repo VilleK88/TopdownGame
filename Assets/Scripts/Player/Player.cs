@@ -85,6 +85,9 @@ public class Player : MonoBehaviour
         {
             transform.position = startingPosition.initialValue;
         }
+
+        PlayerManager.instance.player.GetComponent<Player>().isPaused = false;
+        Time.timeScale = 1;
     }
 
     private void Update()
