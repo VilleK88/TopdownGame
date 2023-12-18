@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58166cea6409797409f1d7b71b52f59e, type: 3}
   m_Name: KillTheInvadingCrusaders
   m_EditorClassIdentifier: 
-  questName: KillTheInvadingCrusaders
+  questName: Kill the invading crusaders
   questID: 0
   questDescription: Crusaders have invaded Lalli's village. Kill them all.
   NPCTurnIn: {fileID: 11400000, guid: 80bcf3103559c624a93ee2e7cf8f966c, type: 2}
