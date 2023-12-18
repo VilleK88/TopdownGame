@@ -15,6 +15,6 @@ MonoBehaviour:
   dialogueInfo:
   - character: {fileID: 11400000, guid: 80bcf3103559c624a93ee2e7cf8f966c, type: 2}
     myText: Help us, Lalli! The crusaders have invaded the village and are killing
-      everyone who doesn't convert to Christianity.
+      everyone who doesn't convert.
     characterEmotion: 0
   quest: {fileID: 11400000, guid: 4a29b149051236f4a92e4fd0b2cb1042, type: 2}
