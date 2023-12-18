@@ -42,7 +42,7 @@ public class PlayerHitbox : MonoBehaviour
                     }
                     else if(!ifBlocking)
                     {
-                        health.TakeDamage(100 + damage.GetValue());
+                        health.TakeDamage(10 + damage.GetValue());
                         //Debug.Log("Hit knight.");
                     }
                 }
@@ -74,7 +74,7 @@ public class PlayerHitbox : MonoBehaviour
                     }
                     else if(ifConverted)
                     {
-                        health.TakeDamage(100 + damage.GetValue());
+                        health.TakeDamage(10 + damage.GetValue());
                         //Debug.Log("Hit peasant.");
                     }
                 }
