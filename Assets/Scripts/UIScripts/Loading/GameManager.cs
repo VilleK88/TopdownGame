@@ -85,45 +85,6 @@ public class GameManager : MonoBehaviour
         allDialogueTriggers = FindObjectsOfType<DialogueTrigger>();
     }
 
-    public void SaveOnSceneChange()
-    {
-        Debug.Log("Game Saved when changing scene!");
-
-        BinaryFormatter bf = new BinaryFormatter(); // Tehd‰‰n uusi olio tai instanssi luokasta BinaryFormatter
-        FileStream file = File.Create(Application.persistentDataPath + "/gameInfo.dat");
-        GameData data = new GameData();
-
-        data.triggeredQuestIDs = triggeredQuestIDs;
-        data.rewardReadyQuestIDs = rewardReadyQuestIDs;
-        data.completedQuestIDs = completedQuestIDs;
-
-        // Serialisoidaan GameData objekti, joka tallennetaan samalla tiedostoon.
-        bf.Serialize(file, data);
-        file.Close(); // Suljetaan tiedosto, ettei kukaan hakkeri p‰‰se siihen k‰siksi.
-    }
-
-    public void LoadOnSceneChange()
-    {
-        // Muista aina kun lataat tiedostoa mist‰ tahansa, tarkista ett‰ se on edes olemassa.
-        // Jos on, niin sitten vasta jatka prosessia.
-        if (File.Exists(Application.persistentDataPath + "/gameInfo.dat"))
-        {
-            Debug.Log("Game Loaded when changing scene!");
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/gameInfo.dat", FileMode.Open);
-            // Deserialisoidaan ja muunnetaan data GameData -muotoon. Me tied‰mme, ett‰ data on GameData objectin informaatio
-            GameData data = (GameData)bf.Deserialize(file);
-            // T‰rke‰. Muista sulkea tiedosto, ettei hakkerit p‰‰se k‰siksi.
-            file.Close();
-
-            // Kun tieto on ladattu data objektiin, siirret‰‰n muuttujien arvot Game Manager:in muuttujiin.
-
-            triggeredQuestIDs = data.triggeredQuestIDs;
-            rewardReadyQuestIDs = data.rewardReadyQuestIDs;
-            completedQuestIDs = data.completedQuestIDs;
-        }
-    }
-
     public void Save()
     {
         Debug.Log("Game Saved!");

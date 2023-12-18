@@ -317,4 +317,24 @@ public class QuestManager : MonoBehaviour
         newRewardReadyQuestIDs[GameManager.manager.rewardReadyQuestIDs.Length] = newRewardReadyQuestID;
         GameManager.manager.rewardReadyQuestIDs = newRewardReadyQuestIDs;
     }
+
+    public void RemoveQuestFromTriggeredQuestsArray(QuestBase quest)
+    {
+        List<QuestBase> triggeredQuestsList = new List<QuestBase>(GameManager.manager.triggeredQuests);
+        if (triggeredQuestsList.Contains(quest))
+        {
+            triggeredQuestsList.Remove(quest);
+        }
+        GameManager.manager.triggeredQuests = triggeredQuestsList.ToArray();
+    }
+
+    public void RemoveQuestFromTriggeredQuestIdsArray(int questID)
+    {
+        List<int> triggeredQuestIDsList = new List<int>(GameManager.manager.triggeredQuestIDs);
+        if (triggeredQuestIDsList.Contains(questID))
+        {
+            triggeredQuestIDsList.Remove(questID);
+        }
+        GameManager.manager.triggeredQuestIDs = triggeredQuestIDsList.ToArray();
+    }
 }

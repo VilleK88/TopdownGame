@@ -74,6 +74,8 @@ public class QuestBase : ScriptableObject
                 {
                     QuestManager.questManager.AddQuestIDToRewardReadyArray(this.questID);
                     QuestManager.questManager.AddQuestToRewardReadyArray(this);
+                    QuestManager.questManager.RemoveQuestFromTriggeredQuestIdsArray(this.questID);
+                    QuestManager.questManager.RemoveQuestFromTriggeredQuestsArray(this);
                 }
                 GameManager.manager.allDialogueTriggers[i].completedQuestDialogue = completedQuestDialogue;
                 Debug.Log("We Found: " + NPCTurnIn);
