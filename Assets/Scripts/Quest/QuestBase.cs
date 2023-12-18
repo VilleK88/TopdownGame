@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 
 [Serializable]
@@ -29,6 +28,7 @@ public class QuestBase : ScriptableObject
     }
 
     public Rewards rewards;
+
 
     public virtual void initializeQuest()
     {
@@ -85,6 +85,8 @@ public class QuestBase : ScriptableObject
 
         isCompleted = true;
         DialogueManager.instance.completedQuest = this;
+        QuestManager.questManager.RemoveCompletedQuestIDs();
+        QuestManager.questManager.RemoveAllCompletedQuestsOnStart();
     }
 
     public virtual string GetObjectiveList()

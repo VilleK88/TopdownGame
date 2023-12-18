@@ -42,8 +42,8 @@ public class QuestManager : MonoBehaviour
     {
         RemoveCompletedQuestIDs();
         RemoveAllCompletedQuestsOnStart();
-        RemoveEnemiesForRewardReadyQuests();
-        RemoveEnemiesForCompletedQuests();
+        //RemoveEnemiesForRewardReadyQuests();
+        //RemoveEnemiesForCompletedQuests();
     }
 
     public void RemoveAllCompletedQuestsOnStart()

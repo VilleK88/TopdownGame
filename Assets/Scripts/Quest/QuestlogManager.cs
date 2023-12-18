@@ -67,22 +67,24 @@ public class QuestlogManager : MonoBehaviour
                         QuestBase completedQuest = Array.Find(GameManager.manager.completedQuests, quest => quest == lastDisplayedQuest);
                         if(completedQuest != null)
                         {
+                            Debug.Log("CompletedQuests debuggaa");
                             UpdateQuestlogUI(completedQuest, completedQuest.GetCompletedObjectiveList());
                         }
                     }
                     if(GameManager.manager != null && GameManager.manager.rewardReadyQuests != null &&
                         GameManager.manager.rewardReadyQuests.Contains(lastDisplayedQuest))
                     {
-                        Debug.Log("Debuggaa täällä");
                         QuestBase rewardReadyQuest = Array.Find(GameManager.manager.rewardReadyQuests, quest => quest == lastDisplayedQuest);
                         if(rewardReadyQuest != null)
                         {
+                            Debug.Log("RewardReadyQuests debuggaa");
                             UpdateQuestlogUI(rewardReadyQuest, rewardReadyQuest.GetCompletedObjectiveList());
                         }
                     }
                     if(GameManager.manager != null && GameManager.manager.triggeredQuests != null &&
                         GameManager.manager.triggeredQuests.Contains(lastDisplayedQuest))
                     {
+                        Debug.Log("TriggeredQuests debuggaa");
                         UpdateQuestlogUI(lastDisplayedQuest, lastDisplayedQuest.GetObjectiveList());
                     }
                 }
