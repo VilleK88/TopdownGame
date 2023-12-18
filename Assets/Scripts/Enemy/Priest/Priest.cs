@@ -66,8 +66,15 @@ public class Priest : MonoBehaviour
     NavMeshAgent agent;
     bool healing = false;
     float distanceToPlayer;
-
     public bool activated;
+
+    [Header("Hurt")]
+    bool gettingHit;
+    float hitMaxTime = 0.25f;
+    public float hitCounter = 0;
+
+    [Header("Audio")]
+    AudioSource convertingSound;
 
 
     private void Start()
@@ -75,7 +82,7 @@ public class Priest : MonoBehaviour
         player = PlayerManager.instance.player;
         playerTransform = player.transform;
         agent = GetComponent<NavMeshAgent>();
-
+        convertingSound = GetComponent<AudioSource>();
         //peasants = GameObject.FindGameObjectsWithTag("Peasant");
         peasants = FindObjectsOfType<Peasant>();
         //peasants = enemies.gameObject.(GameObject.FindGameObjectsWithTag("Peasant"));
@@ -90,6 +97,7 @@ public class Priest : MonoBehaviour
     private void Update()
     {
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        gettingHit = GetComponent<EnemyHealth>().gettingHit;
         deadFetch = GetComponent<EnemyHealth>().dead;
         Death();
         if(distanceToPlayer < 30)
@@ -241,12 +249,14 @@ public class Priest : MonoBehaviour
                 {
                     convertingCounter += Time.deltaTime;
                     childSprite.GetComponent<Animator>().SetBool("Converting", true);
+                    convertingSound.Play();
                     converting = true;
                 }
                 else
                 {
                     peasant.converted = true;
                     childSprite.GetComponent<Animator>().SetBool("Converting", false);
+                    convertingSound.Stop();
                 }
             }
             else
@@ -327,6 +337,7 @@ public class Priest : MonoBehaviour
         if (deadFetch)
         {
             dead = true;
+            convertingSound.Stop();
             //childSprite.GetComponent<Animator>();
             if (capsuleCollider != null)
             {
