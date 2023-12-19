@@ -47,4 +47,9 @@ public class Settings : MonoBehaviour
     {
         QualitySettings.SetQualityLevel(qualityIndex);
     }
+
+    public void SetFullScreen(bool isFullScreen)
+    {
+        Screen.fullScreen = isFullScreen;
+    }
 }
