@@ -8,6 +8,7 @@ public class MenuControl : MonoBehaviour
 {
     //public Player player;
     Scene currentScene;
+    public GameObject settingsUI;
 
     private void Start()
     {
@@ -102,6 +103,11 @@ public class MenuControl : MonoBehaviour
         GameManager.manager.loadPlayerPosition = true;
         GameManager.manager.Load();
         LoadSaveSceneID();
+    }
+
+    public void Settings()
+    {
+        settingsUI.SetActive(true);
     }
 
     public void QuitGame()
