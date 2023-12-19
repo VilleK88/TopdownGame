@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public bool isPaused = false;
     public GameObject menuButtons;
+    public GameObject settingsUI;
 
     [Header("Attack and Combo Parameters")]
     bool attack1;
@@ -192,10 +193,10 @@ public class Player : MonoBehaviour
         {
             isFrozen = true;
         }
-        /*else if(InventoryManager.instance.isInventoryActive)
+        else if(InventoryManager.instance.isInventoryActive)
         {
             isFrozen = true;
-        }*/
+        }
         else if(RewardManager.instance.isRewardUIActive)
         {
             isFrozen = true;
@@ -225,6 +226,7 @@ public class Player : MonoBehaviour
                 Time.timeScale = 1;
                 isPaused = false;
                 menuButtons.gameObject.SetActive(false);
+                settingsUI.gameObject.SetActive(false);
             }
             else
             {

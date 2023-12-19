@@ -22,13 +22,6 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource audioSource;
 
-
-
-    private void Start()
-    {
-
-    }
-
     public void PlaySound(AudioClip clip)
     {
         audioSource.PlayOneShot(clip);
