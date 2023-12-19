@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum EnemyClass
 {
-    Knight, Peasant, Priest, Dog, Longbowman
+    Knight, Peasant, Priest, Dog, Longbowman, Bear, Bishop
 }
 
 public class EnemyHealth : MonoBehaviour
