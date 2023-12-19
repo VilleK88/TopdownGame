@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,12 @@ public class MenuControl : MonoBehaviour
 
     public void StartGame()
     {
+        GameManager.manager.woodenAxeCollected = false;
+        Array.Clear(GameManager.manager.pickUpItemIDs, 0, GameManager.manager.pickUpItemIDs.Length);
+        GameManager.manager.weaponSlot = 0;
+        GameManager.manager.healthPotions = 0;
+        GameManager.manager.staminaPotions = 0;
+        GameManager.manager.xpPotions = 0;
         //PlayerPrefs.DeleteKey("ItemCollected");
         //PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("2 - LallisHouse");
