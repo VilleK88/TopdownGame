@@ -42,4 +42,9 @@ public class Settings : MonoBehaviour
     {
         volumeSlider.value = PlayerPrefs.GetFloat("volume");
     }
+
+    public void SetQuality(int qualityIndex)
+    {
+        QualitySettings.SetQualityLevel(qualityIndex);
+    }
 }
