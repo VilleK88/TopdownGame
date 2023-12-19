@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class QuestlogManager : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class QuestlogManager : MonoBehaviour
     public TextMeshProUGUI npcTurnInText;
     public Image[] rewardIcons;
     QuestBase lastDisplayedQuest;
+    Scene currentScene;
 
 
     public void UpdateQuestlogUI(QuestBase newQuest, string objectiveList)
