@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class InGameMenuControls : MonoBehaviour
 {
     public Player player;
+    public GameObject settingsUI;
     Scene currentScene;
 
     private void Start()
@@ -97,6 +98,11 @@ public class InGameMenuControls : MonoBehaviour
 
         PlayerManager.instance.player.GetComponent<Player>().isPaused = false;
         Time.timeScale = 1;
+    }
+
+    public void Settings()
+    {
+        settingsUI.SetActive(true);
     }
 
     public void QuitGame()
