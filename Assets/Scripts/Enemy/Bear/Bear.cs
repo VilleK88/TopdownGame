@@ -29,8 +29,6 @@ public class Bear : MonoBehaviour
     public bool isAgro = false;
     float maxAgroCounter = 5;
     public float agroCounter = 0;
-    //Vector3 direction;
-    //Quaternion lookRotation;
     NavMeshAgent agent;
     float attackCooldown = 1f;
     float attackCooldownOriginal;
