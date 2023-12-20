@@ -95,12 +95,32 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
+        TogglePause();
+
+        /*if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
+        }*/
+
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            PointerEventData pointerData = new PointerEventData(EventSystem.current)
+            {
+                position = Input.mousePosition
+            };
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointerData, results);
+
+            foreach(RaycastResult result in results)
+            {
+                if(result.gameObject.layer == LayerMask.NameToLayer("UI"))
+                {
+                    return;
+                }
+            }
         }
 
-        TogglePause();
+
 
         if (CheckFreeze()) return;
 
