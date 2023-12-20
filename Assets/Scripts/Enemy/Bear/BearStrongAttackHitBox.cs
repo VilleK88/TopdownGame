@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHitBox : MonoBehaviour
+public class BearStrongAttackHitBox : MonoBehaviour
 {
     BoxCollider boxCollider;
 
@@ -18,14 +18,14 @@ public class EnemyHitBox : MonoBehaviour
             PlayerHealth health = other.gameObject.GetComponent<PlayerHealth>();
             if (health != null)
             {
-                health.TakeDamage(5);
+                health.TakeDamage(30);
             }
             Player player = other.gameObject.GetComponent<Player>();
-            if(player != null)
+            if (player != null)
             {
-                if(player.blocking)
+                if (player.blocking)
                 {
-                    GameManager.manager.currentStamina -= 2.5f;
+                    GameManager.manager.currentStamina -= 100;
                 }
             }
         }

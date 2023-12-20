@@ -286,6 +286,8 @@ public class Bear : MonoBehaviour
 
     void Charge()
     {
+        childSprite.GetComponent<Animator>().SetBool("Walk", false);
+        childSprite.GetComponent<Animator>().SetBool("Charge", true);
         agent.speed = 4.5f;
         agent.SetDestination(playerChargePosition);
 
@@ -295,9 +297,9 @@ public class Bear : MonoBehaviour
             playRoarOnlyOnce = false;
         }
 
-        //AudioManager.instance.PlaySound(roar);
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
+            childSprite.GetComponent<Animator>().SetBool("Charge", false);
             StrongAttack();
             agent.speed = 3.5f;
             strongAttack = false;
@@ -311,7 +313,6 @@ public class Bear : MonoBehaviour
     void StrongAttack()
     {
         childSprite.GetComponent<Animator>().SetTrigger("StrongAttack");
-        //AudioManager.instance.PlaySound(attackSound);
     }
 
     void Chase()
