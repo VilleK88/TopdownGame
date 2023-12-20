@@ -49,6 +49,7 @@ public class Bear : MonoBehaviour
     public bool randomTime = true;
     Vector3 playerChargePosition;
     bool checkPlayerPosition = true;
+    bool playRoarOnlyOnce = true;
 
     [Header("Patrol Parameters")]
     public Transform[] waypoints;
@@ -287,7 +288,14 @@ public class Bear : MonoBehaviour
     {
         agent.speed = 4.5f;
         agent.SetDestination(playerChargePosition);
-        AudioManager.instance.PlaySound(roar);
+
+        if(playRoarOnlyOnce)
+        {
+            AudioManager.instance.PlaySound(roar);
+            playRoarOnlyOnce = false;
+        }
+
+        //AudioManager.instance.PlaySound(roar);
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
             StrongAttack();
@@ -296,6 +304,7 @@ public class Bear : MonoBehaviour
             checkPlayerPosition = true;
             nextChargeTimeCounter = 0;
             randomTime = true;
+            playRoarOnlyOnce = true;
         }
     }
 
