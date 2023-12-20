@@ -25,7 +25,7 @@ public class BearStrongAttackHitBox : MonoBehaviour
             {
                 if (player.blocking)
                 {
-                    GameManager.manager.currentStamina -= 100;
+                    GameManager.manager.currentStamina -= 50;
                 }
             }
         }

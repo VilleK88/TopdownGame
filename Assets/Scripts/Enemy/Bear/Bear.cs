@@ -102,7 +102,6 @@ public class Bear : MonoBehaviour
             {
                 isAgro = true;
                 agroCounter = 0;
-                //StartCoroutine(CallHelp());
                 agent.stoppingDistance = 2.9f;
             }
             else
@@ -225,55 +224,6 @@ public class Bear : MonoBehaviour
             if (waypointIndex >= waypoints.Length)
             {
                 waypointIndex = 0;
-            }
-        }
-    }
-
-    IEnumerator CallHelp()
-    {
-        yield return new WaitForSeconds(0.5f);
-
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
-        {
-            Transform enemyTransform = enemy.transform;
-            Knight knight = enemy.GetComponent<Knight>();
-            Peasant peasant = enemy.GetComponent<Peasant>();
-            Longbowman longbowman = enemy.GetComponent<Longbowman>();
-            Priest priest = enemy.GetComponent<Priest>();
-
-            if (enemyTransform != null && knight != null)
-            {
-                float distance = Vector3.Distance(transform.position, enemyTransform.position);
-                if (distance < 20)
-                {
-                    knight.isAgro = true;
-                    knight.canSeePlayer = true;
-                }
-            }
-            if (enemyTransform != null && peasant != null)
-            {
-                float distance = Vector3.Distance(transform.position, enemyTransform.position);
-                if (distance < 20)
-                {
-                    peasant.isAgro = true;
-                }
-            }
-            if (enemyTransform != null && longbowman != null)
-            {
-                float distance = Vector3.Distance(transform.position, enemyTransform.position);
-                if (distance < 20)
-                {
-                    longbowman.isAgro = true;
-                }
-            }
-            if (enemyTransform != null && priest != null)
-            {
-                float distance = Vector3.Distance(transform.position, enemyTransform.position);
-                if (distance < 20)
-                {
-                    priest.isAgro = true;
-                }
             }
         }
     }
