@@ -104276,8 +104276,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861041078}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.028, y: -2.04, z: 0}
-  m_LocalScale: {x: 2, y: 1.5, z: 1}
+  m_LocalPosition: {x: 0.028, y: -2.86, z: -0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4377464301838966308}
@@ -108283,7 +108283,7 @@ MonoBehaviour:
   enemySprite: {fileID: 4377464301838966306}
   enemyClass: 5
   enemyProfile: {fileID: 11400000, guid: a61da9226dd34a943a5b14fcd05499bb, type: 2}
-  currentHealth: 200
+  currentHealth: 300
   dead: 0
   playerBlockFetch: 0
   blockingPlayer: 0

@@ -140,6 +140,7 @@ public class Bear : MonoBehaviour
                         {
                             playerChargePosition = player.transform.position;
                             checkPlayerPosition = false;
+                            StartChargeTowardsPosition();
                         }
                     }
                 }
@@ -234,12 +235,17 @@ public class Bear : MonoBehaviour
         AudioManager.instance.PlaySound(attackSound);
     }
 
+    void StartChargeTowardsPosition()
+    {
+        agent.SetDestination(playerChargePosition);
+    }
+
     void Charge()
     {
         childSprite.GetComponent<Animator>().SetBool("Walk", false);
         childSprite.GetComponent<Animator>().SetBool("Charge", true);
-        agent.speed = 4.5f;
-        agent.SetDestination(playerChargePosition);
+        agent.speed = 8;
+        //agent.SetDestination(playerChargePosition);
 
         if(playRoarOnlyOnce)
         {
@@ -247,7 +253,7 @@ public class Bear : MonoBehaviour
             playRoarOnlyOnce = false;
         }
 
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        /*if (agent.remainingDistance <= agent.stoppingDistance)
         {
             childSprite.GetComponent<Animator>().SetBool("Charge", false);
             StrongAttack();
@@ -257,12 +263,28 @@ public class Bear : MonoBehaviour
             nextChargeTimeCounter = 0;
             randomTime = true;
             playRoarOnlyOnce = true;
+        }*/
+
+        if(Vector3.Distance(transform.position, playerChargePosition) <= agent.stoppingDistance)
+        {
+            childSprite.GetComponent<Animator>().SetBool("Charge", false);
+            ResetChargeState();
         }
     }
 
     void StrongAttack()
     {
         childSprite.GetComponent<Animator>().SetTrigger("StrongAttack");
+    }
+
+    void ResetChargeState()
+    {
+        agent.speed = 3.5f;
+        strongAttack = false;
+        checkPlayerPosition = true;
+        nextChargeTimeCounter = 0;
+        randomTime = true;
+        playRoarOnlyOnce = true;
     }
 
     void Chase()
