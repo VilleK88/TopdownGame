@@ -17,9 +17,8 @@ public class EnemyHealth : MonoBehaviour
     public EnemyProfile enemyProfile;
 
     [Header("Health")]
-    //float startingHealth = 100;
     float maxHealth = 100;
-    public float currentHealth; //{ get; set; }
+    public float currentHealth;
     public bool dead = false;
 
     [Header("Blocking Or Getting Hit")]
@@ -48,14 +47,21 @@ public class EnemyHealth : MonoBehaviour
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        //currentHealth = maxHealth;
         anim = enemySprite.GetComponent<Animator>();
         HowMuchXp();
     }
 
     private void Update()
     {
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        if(enemyClass == EnemyClass.Bear)
+        {
+            currentHealth = Mathf.Clamp(currentHealth, 0, currentHealth);
+        }
+        else
+        {
+            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        }
     }
 
     void HowMuchXp()
@@ -75,6 +81,10 @@ public class EnemyHealth : MonoBehaviour
         if (enemyClass == EnemyClass.Priest)
         {
             expAmount = 50;
+        }
+        if(enemyClass == EnemyClass.Bear)
+        {
+            expAmount = 100;
         }
     }
 

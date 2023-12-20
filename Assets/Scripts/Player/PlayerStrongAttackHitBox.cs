@@ -62,6 +62,19 @@ public class PlayerStrongAttackHitBox : MonoBehaviour
                         //Debug.Log("Hit peasant.");
                     }
                 }
+
+                if (health.enemyClass == EnemyClass.Bear)
+                {
+                    bool ifAgro = other.gameObject.GetComponent<Bear>().isAgro;
+                    if (!ifAgro)
+                    {
+                        health.TakeDamage(30 + damage.GetValue());
+                    }
+                    else
+                    {
+                        health.TakeDamage(20 + damage.GetValue());
+                    }
+                }
             }
         }
     }

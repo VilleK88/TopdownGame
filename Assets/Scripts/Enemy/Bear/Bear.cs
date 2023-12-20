@@ -102,7 +102,6 @@ public class Bear : MonoBehaviour
             {
                 isAgro = true;
                 agroCounter = 0;
-                //StartCoroutine(CallHelp());
                 agent.stoppingDistance = 2.9f;
             }
             else
@@ -141,6 +140,7 @@ public class Bear : MonoBehaviour
                         {
                             playerChargePosition = player.transform.position;
                             checkPlayerPosition = false;
+                            StartChargeTowardsPosition();
                         }
                     }
                 }
@@ -229,65 +229,23 @@ public class Bear : MonoBehaviour
         }
     }
 
-    IEnumerator CallHelp()
-    {
-        yield return new WaitForSeconds(0.5f);
-
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
-        {
-            Transform enemyTransform = enemy.transform;
-            Knight knight = enemy.GetComponent<Knight>();
-            Peasant peasant = enemy.GetComponent<Peasant>();
-            Longbowman longbowman = enemy.GetComponent<Longbowman>();
-            Priest priest = enemy.GetComponent<Priest>();
-
-            if (enemyTransform != null && knight != null)
-            {
-                float distance = Vector3.Distance(transform.position, enemyTransform.position);
-                if (distance < 20)
-                {
-                    knight.isAgro = true;
-                    knight.canSeePlayer = true;
-                }
-            }
-            if (enemyTransform != null && peasant != null)
-            {
-                float distance = Vector3.Distance(transform.position, enemyTransform.position);
-                if (distance < 20)
-                {
-                    peasant.isAgro = true;
-                }
-            }
-            if (enemyTransform != null && longbowman != null)
-            {
-                float distance = Vector3.Distance(transform.position, enemyTransform.position);
-                if (distance < 20)
-                {
-                    longbowman.isAgro = true;
-                }
-            }
-            if (enemyTransform != null && priest != null)
-            {
-                float distance = Vector3.Distance(transform.position, enemyTransform.position);
-                if (distance < 20)
-                {
-                    priest.isAgro = true;
-                }
-            }
-        }
-    }
-
     void Attack()
     {
         childSprite.GetComponent<Animator>().SetTrigger("BiteAttack");
         AudioManager.instance.PlaySound(attackSound);
     }
 
+    void StartChargeTowardsPosition()
+    {
+        agent.SetDestination(playerChargePosition);
+    }
+
     void Charge()
     {
-        agent.speed = 4.5f;
-        agent.SetDestination(playerChargePosition);
+        childSprite.GetComponent<Animator>().SetBool("Walk", false);
+        childSprite.GetComponent<Animator>().SetBool("Charge", true);
+        agent.speed = 8;
+        //agent.SetDestination(playerChargePosition);
 
         if(playRoarOnlyOnce)
         {
@@ -295,9 +253,9 @@ public class Bear : MonoBehaviour
             playRoarOnlyOnce = false;
         }
 
-        //AudioManager.instance.PlaySound(roar);
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        /*if (agent.remainingDistance <= agent.stoppingDistance)
         {
+            childSprite.GetComponent<Animator>().SetBool("Charge", false);
             StrongAttack();
             agent.speed = 3.5f;
             strongAttack = false;
@@ -305,13 +263,28 @@ public class Bear : MonoBehaviour
             nextChargeTimeCounter = 0;
             randomTime = true;
             playRoarOnlyOnce = true;
+        }*/
+
+        if(Vector3.Distance(transform.position, playerChargePosition) <= agent.stoppingDistance)
+        {
+            childSprite.GetComponent<Animator>().SetBool("Charge", false);
+            ResetChargeState();
         }
     }
 
     void StrongAttack()
     {
         childSprite.GetComponent<Animator>().SetTrigger("StrongAttack");
-        //AudioManager.instance.PlaySound(attackSound);
+    }
+
+    void ResetChargeState()
+    {
+        agent.speed = 3.5f;
+        strongAttack = false;
+        checkPlayerPosition = true;
+        nextChargeTimeCounter = 0;
+        randomTime = true;
+        playRoarOnlyOnce = true;
     }
 
     void Chase()
