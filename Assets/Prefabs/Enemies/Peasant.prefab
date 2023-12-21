@@ -180,6 +180,7 @@ Transform:
   m_Children:
   - {fileID: 1067344652550070819}
   - {fileID: 1067344651268757641}
+  - {fileID: 6270765300624401626}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -300,7 +301,7 @@ MonoBehaviour:
   enemySprite: {fileID: 1067344652550070822}
   enemyClass: 1
   enemyProfile: {fileID: 11400000, guid: 29eb18b2608f32d45b09289a487fd589, type: 2}
-  currentHealth: 0
+  currentHealth: 100
   dead: 0
   playerBlockFetch: 0
   blockingPlayer: 0
@@ -314,6 +315,7 @@ MonoBehaviour:
     type: 3}
   staminaPotion: {fileID: 3256589297461054410, guid: 67dbaf376d2b55049814c1c6563a042b,
     type: 3}
+  bloodSplatterAnim: {fileID: 6270765300624401624}
 --- !u!114 &1067344652477661550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2b1b8a23a256747869bd597e4d7acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  converted: 1
+  converted: 0
   centerPoint: {fileID: 1067344652477661559}
   childSprite: {fileID: 1067344652550070822}
   radius: 12
@@ -345,8 +347,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   waypointCounter: 0
-  randomPatrol: 0
+  randomPatrol: 1
   attackSound: {fileID: 8300000, guid: 7f4cc3d2fa683254984fe809f3695fd1, type: 3}
   activated: 0
 --- !u!1 &1067344652550070822
@@ -456,3 +462,84 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1001 &7605519929240853978
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1067344652477661559}
+    m_Modifications:
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152771, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_Name
+      value: BloodSplatter
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7dbadf56380e7bd45adff10ed0c0f679, type: 3}
+--- !u!95 &6270765300624401624 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4506422921289152770, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+    type: 3}
+  m_PrefabInstance: {fileID: 7605519929240853978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6270765300624401626 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+    type: 3}
+  m_PrefabInstance: {fileID: 7605519929240853978}
+  m_PrefabAsset: {fileID: 0}

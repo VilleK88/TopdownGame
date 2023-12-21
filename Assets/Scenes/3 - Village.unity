@@ -1480,26 +1480,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 958704499}
     m_Modifications:
-    - target: {fileID: 1067344652477661545, guid: 2f277d0751841dc4eade76cf9eb6bea3,
-        type: 3}
-      propertyPath: currentHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1067344652477661550, guid: 2f277d0751841dc4eade76cf9eb6bea3,
-        type: 3}
-      propertyPath: converted
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1067344652477661550, guid: 2f277d0751841dc4eade76cf9eb6bea3,
-        type: 3}
-      propertyPath: randomPatrol
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1067344652477661550, guid: 2f277d0751841dc4eade76cf9eb6bea3,
-        type: 3}
-      propertyPath: waypoints.Array.size
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661550, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -1548,7 +1528,7 @@ PrefabInstance:
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.05
+      value: 16.58
       objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
@@ -1558,7 +1538,7 @@ PrefabInstance:
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.28
+      value: -2.2
       objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661559, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
@@ -6621,7 +6601,7 @@ PrefabInstance:
     - target: {fileID: 5381059141635268843, guid: 64f62cbe37009914ba0f42714790a738,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.19
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5381059141635268843, guid: 64f62cbe37009914ba0f42714790a738,
         type: 3}
@@ -6631,7 +6611,7 @@ PrefabInstance:
     - target: {fileID: 5381059141635268843, guid: 64f62cbe37009914ba0f42714790a738,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5381059141635268843, guid: 64f62cbe37009914ba0f42714790a738,
         type: 3}
@@ -14445,7 +14425,7 @@ PrefabInstance:
     - target: {fileID: 9125619688714398305, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.29
+      value: 15.33
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398305, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
@@ -14455,7 +14435,7 @@ PrefabInstance:
     - target: {fileID: 9125619688714398305, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.85
+      value: 11.43
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398305, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
@@ -14496,11 +14476,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Crusader
-      objectReference: {fileID: 0}
-    - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
-        type: 3}
-      propertyPath: currentHealth
-      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398318, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
@@ -108360,6 +108335,7 @@ MonoBehaviour:
     type: 3}
   staminaPotion: {fileID: 3256589297461054410, guid: 67dbaf376d2b55049814c1c6563a042b,
     type: 3}
+  bloodSplatterAnim: {fileID: 0}
 --- !u!114 &4377464301422657841
 MonoBehaviour:
   m_ObjectHideFlags: 0

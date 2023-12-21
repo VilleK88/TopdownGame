@@ -45,6 +45,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] ItemPickup healthPotion;
     [SerializeField] ItemPickup staminaPotion;
 
+    [SerializeField] Animator bloodSplatterAnim;
+
     private void Start()
     {
         //currentHealth = maxHealth;
@@ -114,16 +116,19 @@ public class EnemyHealth : MonoBehaviour
                 else
                 {
                     AudioManager.instance.PlaySound(hitSound);
+                    bloodSplatterAnim.SetTrigger("Hit");
                     gettingHit = false;
                 }
             }
             else if(enemyClass == EnemyClass.Priest)
             {
                 AudioManager.instance.PlaySound(hitSound);
+                bloodSplatterAnim.SetTrigger("Hit");
             }
             else if(enemyClass == EnemyClass.Peasant)
             {
                 AudioManager.instance.PlaySound(hitSound);
+                bloodSplatterAnim.SetTrigger("Hit");
                 gettingHitOrNot = Random.Range(0, 1);
                 if (gettingHitOrNot == 0)
                 {

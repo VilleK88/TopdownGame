@@ -180,6 +180,7 @@ Transform:
   m_Children:
   - {fileID: 9125619689206134123}
   - {fileID: 9125619688329374380}
+  - {fileID: 6806146048563962413}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -333,7 +334,7 @@ MonoBehaviour:
   enemySprite: {fileID: 9125619689206134125}
   enemyClass: 0
   enemyProfile: {fileID: 11400000, guid: 97e6c9d4d9bd8784f9c2005298f9a79f, type: 2}
-  currentHealth: 0
+  currentHealth: 100
   dead: 0
   playerBlockFetch: 0
   blockingPlayer: 0
@@ -347,6 +348,7 @@ MonoBehaviour:
     type: 3}
   staminaPotion: {fileID: 3256589297461054410, guid: 67dbaf376d2b55049814c1c6563a042b,
     type: 3}
+  bloodSplatterAnim: {fileID: 6806146048563962415}
 --- !u!1 &9125619689206134125
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,3 +456,84 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1001 &6989109434119838509
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 9125619688714398305}
+    m_Modifications:
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152771, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_Name
+      value: BloodSplatter
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7dbadf56380e7bd45adff10ed0c0f679, type: 3}
+--- !u!4 &6806146048563962413 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+    type: 3}
+  m_PrefabInstance: {fileID: 6989109434119838509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6806146048563962415 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4506422921289152770, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+    type: 3}
+  m_PrefabInstance: {fileID: 6989109434119838509}
+  m_PrefabAsset: {fileID: 0}
