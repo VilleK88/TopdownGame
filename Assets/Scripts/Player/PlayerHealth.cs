@@ -36,6 +36,8 @@ public class PlayerHealth : MonoBehaviour
 
     public bool dead;
 
+    [SerializeField] Animator splatterAnim;
+
     private void Start()
     {
         //currentHealth = maxHealth;
@@ -94,6 +96,7 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             AudioManager.instance.PlaySound(hitSound);
+            splatterAnim.SetTrigger("Hit");
 
             if(damage > armor.GetValue())
             {

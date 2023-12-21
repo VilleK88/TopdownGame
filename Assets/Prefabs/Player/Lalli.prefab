@@ -241,6 +241,7 @@ Transform:
   - {fileID: 2286226533707253876}
   - {fileID: 2286226533156339570}
   - {fileID: 1295676964}
+  - {fileID: 4506422921337577350}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -347,6 +348,7 @@ MonoBehaviour:
   backStaminaBar: {fileID: 0}
   isPaused: 0
   menuButtons: {fileID: 0}
+  settingsUI: {fileID: 0}
   strongAttack: 1
   strongAttackTimer: 0
   startingPosition: {fileID: 11400000, guid: e5d37605c6cb4864faccbe321908b976, type: 2}
@@ -382,6 +384,8 @@ MonoBehaviour:
   hitSound: {fileID: 8300000, guid: 7850fcb2b6ea6b34bb5c6c8b57819351, type: 3}
   blockHitSound: {fileID: 8300000, guid: 6591ca4f9365b5c4d9c83e485c15a5a1, type: 3}
   dieSound: {fileID: 8300000, guid: 1057c4a750a751e4ebe97fa26e22bbb0, type: 3}
+  dead: 0
+  splatterAnim: {fileID: 4506422921337577348}
 --- !u!114 &2286226532892020227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -980,3 +984,84 @@ MonoBehaviour:
     baseValue: 0
   armor:
     baseValue: 0
+--- !u!1001 &220145286
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2286226532892020254}
+    m_Modifications:
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506422921289152771, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+        type: 3}
+      propertyPath: m_Name
+      value: BloodSplatter
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7dbadf56380e7bd45adff10ed0c0f679, type: 3}
+--- !u!95 &4506422921337577348 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4506422921289152770, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+    type: 3}
+  m_PrefabInstance: {fileID: 220145286}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4506422921337577350 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4506422921289152768, guid: 7dbadf56380e7bd45adff10ed0c0f679,
+    type: 3}
+  m_PrefabInstance: {fileID: 220145286}
+  m_PrefabAsset: {fileID: 0}
