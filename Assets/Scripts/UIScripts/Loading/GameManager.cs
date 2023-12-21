@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     public delegate void OnEnemyDeathCallBack(EnemyProfile enemyProfile);
     public OnEnemyDeathCallBack onEnemyDeathCallBack;
 
+    public delegate void OnCharacterSaveCallBack(CharacterProfile characterProfile);
+    public OnCharacterSaveCallBack onCharacterSaveCallBack;
+
     public QuestBase[] triggeredQuests;
     public QuestBase[] rewardReadyQuests;
     public QuestBase[] completedQuests;
