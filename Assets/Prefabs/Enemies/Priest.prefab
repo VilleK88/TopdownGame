@@ -10037,7 +10037,7 @@ MonoBehaviour:
   enemySprite: {fileID: 5381059140246943443}
   enemyClass: 2
   enemyProfile: {fileID: 11400000, guid: f5c6434752c913d41adba8b512e37520, type: 2}
-  currentHealth: 0
+  currentHealth: 100
   dead: 0
   playerBlockFetch: 0
   blockingPlayer: 0

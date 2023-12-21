@@ -220,12 +220,12 @@ public class Priest : MonoBehaviour
                             enemyHealth.currentHealth > 0)
                         {
                             enemyHealth.currentHealth += 10;
-                            childSprite.GetComponent<Animator>().SetBool("Converting", true);
+                            childSprite.GetComponent<Animator>().SetBool("Healing", true);
                             healing = true;
                         }
                         else
                         {
-                            childSprite.GetComponent<Animator>().SetBool("Converting", false);
+                            childSprite.GetComponent<Animator>().SetBool("Healing", false);
                             healing = false;
                         }
                     }
