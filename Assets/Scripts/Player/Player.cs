@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
     [SerializeField] AudioSource runningSound;
     [SerializeField] AudioClip jumpSound;
 
+    bool deadFetch; // from PlayerHealth -script
 
     private void Start()
     {
@@ -95,6 +96,13 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        deadFetch = GetComponent<PlayerHealth>().dead;
+        if(deadFetch)
+        {
+            childSprite.GetComponent<Animator>().SetBool("Walking", false);
+            childSprite.GetComponent<Animator>().SetBool("Running", false);
+            return;
+        }
         TogglePause();
 
         /*if (EventSystem.current.IsPointerOverGameObject())
@@ -179,7 +187,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!attacking)
+        if(!attacking && !deadFetch)
         {
             FixedMove();
         }

@@ -26,23 +26,21 @@ public class GameOver : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    void GameOverScreenOn()
+    public void GameOverScreenOn()
     {
         anim.SetBool("GameOver", true);
-
-        if(maxTime >= counter)
-        {
-            counter += Time.deltaTime;
-        }
-        else
-        {
-            SceneManager.LoadScene("0 - Loading");
-            GameManager.manager.currentHealth = GameManager.manager.maxHealth;
-        }
+        StartCoroutine(Count());
     }
 
-    void GameOverScreenOff()
+    public void GameOverScreenOff()
     {
         anim.SetBool("GameOver", false);
+    }
+    
+    IEnumerator Count()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("0 - Loading");
+        GameManager.manager.currentHealth = GameManager.manager.maxHealth;
     }
 }

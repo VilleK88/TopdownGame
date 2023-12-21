@@ -63,6 +63,8 @@ public class Bear : MonoBehaviour
     [SerializeField] AudioClip attackSound;
     [SerializeField] AudioClip roar;
 
+    bool playerDeadFetch;
+
 
     private void Start()
     {
@@ -87,6 +89,7 @@ public class Bear : MonoBehaviour
         deadFetch = GetComponent<EnemyHealth>().dead;
         gettingHit = GetComponent<EnemyHealth>().gettingHit;
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        playerDeadFetch = player.GetComponent<PlayerHealth>().dead;
         if (gettingHit)
         {
             childSprite.GetComponent<Animator>().SetBool("Walk", false);
@@ -96,7 +99,7 @@ public class Bear : MonoBehaviour
 
         if (!dead)
         {
-            if (canSeePlayer)
+            if (canSeePlayer && !playerDeadFetch)
             {
                 isAgro = true;
                 agroCounter = 0;
@@ -118,7 +121,7 @@ public class Bear : MonoBehaviour
                 }
             }
 
-            if (isAgro)
+            if (isAgro && !playerDeadFetch)
             {
                 if(randomTime)
                 {

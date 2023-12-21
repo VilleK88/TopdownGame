@@ -34,9 +34,12 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] AudioClip blockHitSound;
     [SerializeField] AudioClip dieSound;
 
+    public bool dead;
+
     private void Start()
     {
         //currentHealth = maxHealth;
+        dead = false;
         spriteRend = playerSprite.GetComponent<SpriteRenderer>();
         originalColor = spriteRend.color;
     }
@@ -130,8 +133,10 @@ public class PlayerHealth : MonoBehaviour
     public virtual void Die()
     {
         //base.Die();
-        PlayerManager.instance.KillPlayer();
+        //PlayerManager.instance.KillPlayer();
+        dead = true;
         AudioManager.instance.PlaySound(dieSound);
+        GameOver.instance.GameOverScreenOn();
     }
 
     public void IncreaseHealth(int level)
