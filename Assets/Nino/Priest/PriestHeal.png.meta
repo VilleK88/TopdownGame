@@ -1,0 +1,387 @@
+fileFormatVersion: 2
+guid: dc9cb19ddeeda6545aa78b44f61d8948
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PriestHeal_0
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 126
+        width: 67
+        height: 60
+      alignment: 9
+      pivot: {x: 0.54505545, y: 0.7583054}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a5a758e85597b34794879eabc78e0f3
+      internalID: 721397444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestHeal_1
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 126
+        width: 67
+        height: 60
+      alignment: 9
+      pivot: {x: 0.54502344, y: 0.7576625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e297bf9e148c61f46a6ad6558df63e79
+      internalID: 597745393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestHeal_2
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 123
+        width: 68
+        height: 63
+      alignment: 9
+      pivot: {x: 0.5498801, y: 0.77053666}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e01b135d99b193f47a0841e199a4ed62
+      internalID: -705476371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestHeal_3
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 123
+        width: 68
+        height: 63
+      alignment: 9
+      pivot: {x: 0.55166894, y: 0.7703044}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8bed5d8da00440409d2c45bc2451fe5
+      internalID: 988760184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestHeal_4
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 123
+        width: 80
+        height: 63
+      alignment: 9
+      pivot: {x: 0.61887056, y: 0.7695606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d9bfce75f78d2146877c129b3d3d24e
+      internalID: -1775948155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestHeal_5
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 123
+        width: 80
+        height: 63
+      alignment: 9
+      pivot: {x: 0.61815643, y: 0.7678162}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4f63130529b12146acfa10690d1f224
+      internalID: -1343578322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestHeal_6
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 21
+        width: 82
+        height: 64
+      alignment: 9
+      pivot: {x: 0.62807536, y: 0.7718972}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a411a28954a9285408f86fdf1506ce2c
+      internalID: -1986036530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestHeal_7
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 21
+        width: 82
+        height: 64
+      alignment: 9
+      pivot: {x: 0.62830555, y: 0.7732179}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8cb20091da295c41b51b60e3927bb84
+      internalID: 1954542429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestHeal_8
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 20
+        width: 71
+        height: 65
+      alignment: 9
+      pivot: {x: 0.5700649, y: 0.7793803}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9254bcdf81cb105498c453b104da20c4
+      internalID: -243220768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestHeal_9
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 20
+        width: 71
+        height: 65
+      alignment: 9
+      pivot: {x: 0.5694038, y: 0.77474034}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1a05fda2b73d254585b8ac551928727
+      internalID: -1624446862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestHeal_10
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 21
+        width: 67
+        height: 64
+      alignment: 9
+      pivot: {x: 0.54507583, y: 0.772208}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41217903ffdd1124da2ad9f2bca0cd15
+      internalID: 1631738785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PriestHeal_11
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 21
+        width: 67
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5432803, y: 0.77249205}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 485953f39e2b80440ae6c15eda24a875
+      internalID: 1673389288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 20e88a1eba4390e41ac38e9cee7c2bc2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      PriestHeal_0: 721397444
+      PriestHeal_1: 597745393
+      PriestHeal_10: 1631738785
+      PriestHeal_11: 1673389288
+      PriestHeal_2: -705476371
+      PriestHeal_3: 988760184
+      PriestHeal_4: -1775948155
+      PriestHeal_5: -1343578322
+      PriestHeal_6: -1986036530
+      PriestHeal_7: 1954542429
+      PriestHeal_8: -243220768
+      PriestHeal_9: -1624446862
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
