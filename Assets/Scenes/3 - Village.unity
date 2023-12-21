@@ -6987,16 +6987,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3979590820795200538, guid: 899040c1c437c5a43891096a02359f90,
         type: 3}
-      propertyPath: childSprite
-      value: 
-      objectReference: {fileID: 750407036}
-    - target: {fileID: 3979590820795200538, guid: 899040c1c437c5a43891096a02359f90,
-        type: 3}
-      propertyPath: waypoints.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3979590820795200538, guid: 899040c1c437c5a43891096a02359f90,
-        type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
       objectReference: {fileID: 1468359643}
@@ -7060,29 +7050,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5226958418766744180, guid: 899040c1c437c5a43891096a02359f90,
-        type: 3}
-      propertyPath: db.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 896aa1e5d4c79004fbc10c31840601c7,
-        type: 2}
-    - target: {fileID: 5226958418766744180, guid: 899040c1c437c5a43891096a02359f90,
-        type: 3}
-      propertyPath: dialogueQuests.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 5b3f7e55a83fda1419c1890b0d2eed36,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 899040c1c437c5a43891096a02359f90, type: 3}
 --- !u!4 &750407035 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3979590820795200540, guid: 899040c1c437c5a43891096a02359f90,
-    type: 3}
-  m_PrefabInstance: {fileID: 750407034}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &750407036 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3979590821083362779, guid: 899040c1c437c5a43891096a02359f90,
     type: 3}
   m_PrefabInstance: {fileID: 750407034}
   m_PrefabAsset: {fileID: 0}
