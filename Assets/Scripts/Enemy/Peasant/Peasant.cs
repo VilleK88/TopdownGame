@@ -64,6 +64,8 @@ public class Peasant : MonoBehaviour
 
     public bool activated;
 
+    bool playerDeadFetch;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -87,8 +89,9 @@ public class Peasant : MonoBehaviour
         gettingHitFetch = GetComponent<EnemyHealth>().gettingHit;
         deadFetch = GetComponent<EnemyHealth>().dead;
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        playerDeadFetch = player.GetComponent<PlayerHealth>().dead;
 
-        if(distanceToPlayer < 30)
+        if (distanceToPlayer < 30)
         {
             activated = true;
         }
@@ -109,7 +112,7 @@ public class Peasant : MonoBehaviour
                     Convert();
                     convertOnlyOnce = 1;
                 }
-                if (canSeePlayer)
+                if (canSeePlayer && !playerDeadFetch)
                 {
                     isAgro = true;
                     agroCounter = 0;
@@ -131,14 +134,14 @@ public class Peasant : MonoBehaviour
                     }
                 }
 
-                if (isAgro)
+                if (isAgro && !playerDeadFetch)
                 {
                     if (distanceToPlayer > 2.2f)
                     {
                         Chase();
                         attackCooldown = 0.2f;
                     }
-                    else if (distanceToPlayer <= 2.2f)
+                    else if (distanceToPlayer <= 2.2f && !playerDeadFetch)
                     {
                         childSprite.GetComponent<Animator>().SetBool("Walking", false);
                         transform.LookAt(player.transform.position);

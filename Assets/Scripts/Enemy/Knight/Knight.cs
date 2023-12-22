@@ -54,6 +54,7 @@ public class Knight : MonoBehaviour
     [Header("Audio Info")]
     [SerializeField] AudioClip attackSound;
 
+    bool playerDeadFetch;
 
     private void Start()
     {
@@ -77,6 +78,8 @@ public class Knight : MonoBehaviour
         deadFetch = GetComponent<EnemyHealth>().dead;
         gettingHit = GetComponent<EnemyHealth>().gettingHit;
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        playerDeadFetch = player.GetComponent<PlayerHealth>().dead;
+
         if (gettingHit)
         {
             childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
@@ -86,7 +89,7 @@ public class Knight : MonoBehaviour
 
         if(!dead)
         {
-            if (canSeePlayer)
+            if (canSeePlayer && !playerDeadFetch)
             {
                 isAgro = true;
                 agroCounter = 0;
@@ -111,7 +114,7 @@ public class Knight : MonoBehaviour
 
             if (isAgro)
             {
-                if (distanceToPlayer > attackDistance)
+                if (distanceToPlayer > attackDistance && !playerDeadFetch)
                 {
                     if(!ifBlockingPlayersAttackFetch)
                     {
@@ -123,7 +126,7 @@ public class Knight : MonoBehaviour
                         transform.LookAt(player.transform.position);
                     }
                 }
-                else if (distanceToPlayer < attackDistance)
+                else if (distanceToPlayer < attackDistance && !playerDeadFetch)
                 {
                     childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
                     transform.LookAt(player.transform.position);
