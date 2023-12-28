@@ -26,6 +26,7 @@ public class QuestlogManager : MonoBehaviour
     public Transform questHolder;
     public GameObject questlogButtonPrefab;
     public GameObject questlogUI;
+    public bool isQuestlogActive = false;
     public TextMeshProUGUI objectiveText;
     public TextMeshProUGUI npcTurnInText;
     public Image[] rewardIcons;
@@ -53,6 +54,7 @@ public class QuestlogManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.J))
         {
             questlogUI.SetActive(!questlogUI.activeSelf);
+            isQuestlogActive = questlogUI.activeSelf;
 
             if(questlogUI.activeSelf)
             {

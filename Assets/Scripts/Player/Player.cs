@@ -235,6 +235,14 @@ public class Player : MonoBehaviour
         {
             isFrozen = true;
         }
+        else if(SkillTree.instance.isSkillTreeActive)
+        {
+            isFrozen = true;
+        }
+        else if(QuestlogManager.instance.isQuestlogActive)
+        {
+            isFrozen = true;
+        }
         else if(isPaused)
         {
             isFrozen = true;
