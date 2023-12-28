@@ -118,6 +118,8 @@ public class SkillTree : MonoBehaviour
             GameManager.manager.skillPoints -= 2;
             RefreshSkillPointsCount();
             GameManager.manager.healthPlusFirst = true;
+            GameManager.manager.maxHealth += 25;
+            GameManager.manager.currentHealth = GameManager.manager.maxHealth;
         }
     }
 
@@ -132,6 +134,8 @@ public class SkillTree : MonoBehaviour
             GameManager.manager.skillPoints -= 2;
             RefreshSkillPointsCount();
             GameManager.manager.healthPlusSecond = true;
+            GameManager.manager.maxHealth += 25;
+            GameManager.manager.currentHealth = GameManager.manager.maxHealth;
         }
     }
 }
