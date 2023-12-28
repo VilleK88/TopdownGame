@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public int currentLevel;
     public float currentExperience;
     public float maxExperience;
+    public int skillPoints;
 
     public float health;
     public float currentHealth;
@@ -95,14 +96,19 @@ public class GameManager : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter(); // Tehd‰‰n uusi olio tai instanssi luokasta BinaryFormatter
         FileStream file = File.Create(Application.persistentDataPath + "/gameInfo.dat");
         GameData data = new GameData();
+
         data.currentLevel = currentLevel;
         data.currentExperience = currentExperience;
         data.maxExperience = maxExperience;
+        data.skillPoints = skillPoints;
+
         data.health = health;
         data.currentHealth = currentHealth;
         data.maxHealth = maxHealth;
+
         data.currentStamina = currentStamina;
         data.maxStamina = maxStamina;
+
         data.x = x;
         data.y = y;
         data.z = z;
@@ -149,6 +155,7 @@ public class GameManager : MonoBehaviour
             currentLevel = data.currentLevel;
             currentExperience = data.currentExperience;
             maxExperience = data.maxExperience;
+            skillPoints = data.skillPoints;
 
             health = data.health;
             currentHealth = data.currentHealth;
@@ -192,6 +199,7 @@ class GameData
     public int currentLevel;
     public float currentExperience;
     public float maxExperience;
+    public int skillPoints;
 
     public float health;
     public float currentHealth;

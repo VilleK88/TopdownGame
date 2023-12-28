@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SkillTree : MonoBehaviour
@@ -22,6 +23,7 @@ public class SkillTree : MonoBehaviour
 
     public GameObject skillTreeUI;
     public bool isSkillTreeActive = false;
+    public TextMeshProUGUI countText;
 
     private void Update()
     {
@@ -30,5 +32,10 @@ public class SkillTree : MonoBehaviour
             skillTreeUI.SetActive(!skillTreeUI.activeSelf);
             isSkillTreeActive = skillTreeUI.activeSelf;
         }
+    }
+
+    public void RefreshSkillPointsCount()
+    {
+        countText.text = "Skill points: " + GameManager.manager.skillPoints;
     }
 }

@@ -308,7 +308,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'skill points: 0'
+  m_text: 'Skill points: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba949fff4a412e6438f9ecee6c55c3fc, type: 2}
   m_sharedMaterial: {fileID: -6089625575126085153, guid: ba949fff4a412e6438f9ecee6c55c3fc,
@@ -1758,6 +1758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillTreeUI: {fileID: 1254576613}
   isSkillTreeActive: 0
+  countText: {fileID: 548506675}
 --- !u!1 &1276529170
 GameObject:
   m_ObjectHideFlags: 0
