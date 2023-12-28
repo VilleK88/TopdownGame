@@ -35,6 +35,15 @@ public class SkillTree : MonoBehaviour
     public Sprite healthPotionPlusSelected;
     public Sprite healthPlusSelected;
 
+    public GameObject staminaRegenB;
+    public GameObject staminaPotionPlusB;
+    public GameObject staminaPlusFirstB;
+    public GameObject staminaPlusSecondB;
+
+    public Sprite staminaRegenSelected;
+    public Sprite staminaPotionPlusSelected;
+    public Sprite staminaPlusSelected;
+
     private void Start()
     {
         RefreshSkillPointsCount();
@@ -136,6 +145,65 @@ public class SkillTree : MonoBehaviour
             GameManager.manager.healthPlusSecond = true;
             GameManager.manager.maxHealth += 25;
             GameManager.manager.currentHealth = GameManager.manager.maxHealth;
+        }
+    }
+
+    public void SelectStaminaRegen()
+    {
+        if (!GameManager.manager.staminaRegen && GameManager.manager.skillPoints > 0)
+        {
+            Image changeImage;
+            changeImage = staminaRegenB.gameObject.GetComponent<Image>();
+            changeImage.sprite = staminaRegenSelected;
+            GameManager.manager.skillPoints--;
+            RefreshSkillPointsCount();
+            GameManager.manager.staminaRegen = true;
+        }
+    }
+
+    public void SelectStaminaPotionPlus()
+    {
+        if (!GameManager.manager.staminaPotionPlus && GameManager.manager.skillPoints >= 2 &&
+    GameManager.manager.staminaRegen)
+        {
+            Image changeImage;
+            changeImage = staminaPotionPlusB.gameObject.GetComponent<Image>();
+            changeImage.sprite = staminaPotionPlusSelected;
+            GameManager.manager.skillPoints -= 2;
+            RefreshSkillPointsCount();
+            GameManager.manager.staminaPotionPlus = true;
+        }
+    }
+
+    public void SelectStaminaPlusFirst()
+    {
+        if (!GameManager.manager.staminaPlusFirst && GameManager.manager.skillPoints >= 2 &&
+    GameManager.manager.staminaPotionPlus)
+        {
+            Image changeImage;
+            changeImage = staminaPlusFirstB.gameObject.GetComponent<Image>();
+            changeImage.sprite = staminaPlusSelected;
+            GameManager.manager.skillPoints -= 2;
+            RefreshSkillPointsCount();
+            GameManager.manager.staminaPlusFirst = true;
+            GameManager.manager.maxStamina += 25;
+            GameManager.manager.currentStamina = GameManager.manager.maxStamina;
+        }
+    }
+
+    public void SelectStaminaPlusSecond()
+    {
+        if (!GameManager.manager.staminaPlusSecond && GameManager.manager.skillPoints >= 2 &&
+GameManager.manager.staminaPlusFirst)
+        {
+            Image changeImage;
+            changeImage = staminaPlusSecondB.gameObject.GetComponent<Image>();
+            changeImage.sprite = staminaPlusSelected;
+            GameManager.manager.skillPoints -= 2;
+            RefreshSkillPointsCount();
+            GameManager.manager.staminaPlusSecond = true;
+            GameManager.manager.maxStamina += 25;
+            GameManager.manager.currentStamina = GameManager.manager.maxStamina;
         }
     }
 }

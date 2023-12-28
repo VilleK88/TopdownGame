@@ -289,8 +289,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000039101, y: 277}
-  m_SizeDelta: {x: 217.6658, y: 50}
+  m_AnchoredPosition: {x: 8.884393, y: 277}
+  m_SizeDelta: {x: 235.4347, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &548506676
 CanvasRenderer:
@@ -1096,7 +1096,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 953114493}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1259646449}
+        m_TargetAssemblyTypeName: SkillTree, Assembly-CSharp
+        m_MethodName: SelectStaminaPotionPlus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1014720227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,7 +1419,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1181998036}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1259646449}
+        m_TargetAssemblyTypeName: SkillTree, Assembly-CSharp
+        m_MethodName: SelectStaminaPlusSecond
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1187372101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,7 +1552,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1187372104}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1259646449}
+        m_TargetAssemblyTypeName: SkillTree, Assembly-CSharp
+        m_MethodName: SelectStaminaRegen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1189122554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,6 +1840,16 @@ MonoBehaviour:
   healthPotionPlusSelected: {fileID: 21300000, guid: 120d62b7b134b974bba853d97f6168e6,
     type: 3}
   healthPlusSelected: {fileID: 21300000, guid: 891e2b90cb167c64898312b3a54d1ed6, type: 3}
+  staminaRegenB: {fileID: 1187372101}
+  staminaPotionPlusB: {fileID: 953114490}
+  staminaPlusFirstB: {fileID: 1901214396}
+  staminaPlusSecondB: {fileID: 1181998033}
+  staminaRegenSelected: {fileID: 21300000, guid: 08c899ce1a646ac4ab58e9ee2a9ceab5,
+    type: 3}
+  staminaPotionPlusSelected: {fileID: 21300000, guid: bca97266ee4bc9f42825e51f895ae951,
+    type: 3}
+  staminaPlusSelected: {fileID: 21300000, guid: 5d288857a81a0b847b2e0dd49f3f7509,
+    type: 3}
 --- !u!1 &1276529170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,7 +2271,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1901214399}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1259646449}
+        m_TargetAssemblyTypeName: SkillTree, Assembly-CSharp
+        m_MethodName: SelectStaminaPlusFirst
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7885599226490518486
 GameObject:
   m_ObjectHideFlags: 0
