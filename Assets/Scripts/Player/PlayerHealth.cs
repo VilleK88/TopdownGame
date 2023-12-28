@@ -38,6 +38,13 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] Animator splatterAnim;
 
+    [Header("Upgrades")]
+    float hrMaxTime = 20;
+    public float hrCounter = 20;
+    public bool regenHealth = false;
+    float chargeMaxTime = 5;
+    public float chargeCounter = 0;
+
     private void Start()
     {
         //currentHealth = maxHealth;
@@ -51,12 +58,47 @@ public class PlayerHealth : MonoBehaviour
         blockingFetch = player.GetComponent<Player>().blocking;
         GameManager.manager.currentHealth = Mathf.Clamp(GameManager.manager.currentHealth, 0,
             GameManager.manager.maxHealth);
-        UpdateHealthUI();
 
-        /*if (Input.GetKeyDown(KeyCode.T))
+        if (GameManager.manager.healthRegen)
         {
-            TakeDamage(10);
-        }*/
+            if (hrCounter >= hrMaxTime)
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha3))
+                {
+                    regenHealth = true;
+                    hrCounter = 0;
+                }
+            }
+            else
+            {
+                hrCounter += Time.deltaTime;
+            }
+        }
+
+        if (regenHealth)
+        {
+            if(GameManager.manager.currentHealth < GameManager.manager.maxHealth)
+            {
+                GameManager.manager.currentHealth += 20 * Time.deltaTime;
+                if (GameManager.manager.currentHealth > GameManager.manager.maxHealth)
+                {
+                    GameManager.manager.currentHealth = GameManager.manager.maxHealth;
+                }
+            }
+
+            if(chargeMaxTime >= chargeCounter)
+            {
+                chargeCounter += Time.deltaTime;
+            }
+            else
+            {
+                regenHealth = false;
+                hrCounter = 0;
+                chargeCounter = 0;
+            }
+        }
+
+        UpdateHealthUI();
     }
 
     public void UpdateHealthUI()

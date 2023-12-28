@@ -120,7 +120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 124494020}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1259646449}
+        m_TargetAssemblyTypeName: SkillTree, Assembly-CSharp
+        m_MethodName: SelectHealthPlusFirst
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &239704780
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,7 +631,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 693581674}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1259646449}
+        m_TargetAssemblyTypeName: SkillTree, Assembly-CSharp
+        m_MethodName: SelectHealthPotionPlus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &775688366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1625,7 +1649,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1189122557}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1259646449}
+        m_TargetAssemblyTypeName: SkillTree, Assembly-CSharp
+        m_MethodName: SelectHealthPlusSecond
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1254576613
 GameObject:
   m_ObjectHideFlags: 0
@@ -1759,6 +1795,15 @@ MonoBehaviour:
   skillTreeUI: {fileID: 1254576613}
   isSkillTreeActive: 0
   countText: {fileID: 548506675}
+  healthRegenB: {fileID: 1422369587}
+  healthPotionPlusB: {fileID: 693581671}
+  healthPlusFirstB: {fileID: 124494017}
+  healthPlusSecondB: {fileID: 1189122554}
+  healthRegenSelected: {fileID: 21300000, guid: 1a7f1c74aa09ba94a84b2ed00079c3f0,
+    type: 3}
+  healthPotionPlusSelected: {fileID: 21300000, guid: 120d62b7b134b974bba853d97f6168e6,
+    type: 3}
+  healthPlusSelected: {fileID: 21300000, guid: 891e2b90cb167c64898312b3a54d1ed6, type: 3}
 --- !u!1 &1276529170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1936,7 +1981,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1422369590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1259646449}
+        m_TargetAssemblyTypeName: SkillTree, Assembly-CSharp
+        m_MethodName: SelectHealthRegen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1490582943
 GameObject:
   m_ObjectHideFlags: 0
