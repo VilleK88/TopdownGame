@@ -40,13 +40,27 @@ public class Item : ScriptableObject
         }
         if(type == ItemType.HealthPotion)
         {
-            GameManager.manager.currentHealth += 20;
+            if(GameManager.manager.healthPotionPlus)
+            {
+                GameManager.manager.currentHealth += 30;
+            }
+            else
+            {
+                GameManager.manager.currentHealth += 20;
+            }
             AudioManager.instance.PlaySound(InventoryManager.instance.drinkingSound);
             GameManager.manager.healthPotions--;
         }
         if(type == ItemType.StaminaPotion)
         {
-            GameManager.manager.currentStamina += 20;
+            if(GameManager.manager.staminaPotionPlus)
+            {
+                GameManager.manager.currentStamina += 30;
+            }
+            else
+            {
+                GameManager.manager.currentStamina += 20;
+            }
             AudioManager.instance.PlaySound(InventoryManager.instance.drinkingSound);
             GameManager.manager.staminaPotions--;
         }
