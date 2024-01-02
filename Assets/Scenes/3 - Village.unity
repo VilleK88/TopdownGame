@@ -6268,7 +6268,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetNPC: {fileID: 750407035}
-  offset: {x: 1, y: 2, z: 2}
 --- !u!4 &657298943 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: eb87e696fbcae4647ae219c643130269,
@@ -108020,7 +108019,7 @@ PrefabInstance:
     - target: {fileID: 4348352056793209671, guid: c6fa42430a03bf14baf8a4605a3a3bd5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6fa42430a03bf14baf8a4605a3a3bd5, type: 3}
