@@ -91,6 +91,19 @@ public class PlayerHitbox : MonoBehaviour
                         health.TakeDamage(10 + damage.GetValue());
                     }
                 }
+
+                if(health.enemyClass == EnemyClass.Bishop)
+                {
+                    bool ifAgro = other.gameObject.GetComponent<Bishop>().isAgro;
+                    if(!ifAgro)
+                    {
+                        health.TakeDamage(30 + damage.GetValue());
+                    }
+                    else
+                    {
+                        health.TakeDamage(10 + damage.GetValue());
+                    }
+                }
             }
         }
     }
