@@ -50,6 +50,7 @@ public class Longbowman : MonoBehaviour
 
     bool deadFetch; // from EnemyHealth -script
     bool dead = false;
+    bool playerDeadFetch;
 
     [Header("Audio Info")]
     [SerializeField] AudioClip attackSound;
@@ -77,6 +78,8 @@ public class Longbowman : MonoBehaviour
         deadFetch = GetComponent<EnemyHealth>().dead;
         gettingHit = GetComponent<EnemyHealth>().gettingHit;
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        playerDeadFetch = player.GetComponent<PlayerHealth>().dead;
+
         if (gettingHit)
         {
             //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
@@ -86,7 +89,7 @@ public class Longbowman : MonoBehaviour
 
         if (!dead)
         {
-            if (canSeePlayer)
+            if (canSeePlayer && !playerDeadFetch)
             {
                 isAgro = true;
                 agroCounter = 0;
@@ -109,7 +112,7 @@ public class Longbowman : MonoBehaviour
                 }
             }
 
-            if (isAgro)
+            if (isAgro && !playerDeadFetch)
             {
                 if (distanceToPlayer > attackDistance)
                 {
@@ -155,6 +158,11 @@ public class Longbowman : MonoBehaviour
                     //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", true);
                 }
             }
+        }
+
+        if(playerDeadFetch)
+        {
+            isAgro = false;
         }
     }
 

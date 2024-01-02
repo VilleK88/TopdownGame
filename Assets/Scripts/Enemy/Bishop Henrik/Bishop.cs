@@ -39,6 +39,13 @@ public class Bishop : MonoBehaviour
     float distanceToPlayer;
     [SerializeField] Transform shotPoint;
     [SerializeField] GameObject molotovCoctailPrefab;
+    [SerializeField] GameObject droppingMolotov;
+    float minDistance = 5;
+    float maxDistance = 10;
+    float height = 10;
+    float spawnMolotovsMaxTime = 4;
+    float spawnMolotovsCounter = 0;
+    int molotovCount = 0;
 
     [Header("Patrol Parameters")]
     public Transform[] waypoints;
@@ -51,6 +58,7 @@ public class Bishop : MonoBehaviour
     bool deadFetch; // from EnemyHealth -script
     bool dead = false;
     bool gettingHitFetch;
+    bool playerDeadFetch;
 
     [Header("Audio Info")]
     [SerializeField] AudioClip attackSound;
@@ -79,6 +87,7 @@ public class Bishop : MonoBehaviour
         deadFetch = GetComponent<EnemyHealth>().dead;
         gettingHit = GetComponent<EnemyHealth>().gettingHit;
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        playerDeadFetch = player.GetComponent<PlayerHealth>().dead;
         if (gettingHit)
         {
             //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
@@ -88,7 +97,7 @@ public class Bishop : MonoBehaviour
 
         if (!dead)
         {
-            if (canSeePlayer)
+            if (canSeePlayer && !playerDeadFetch)
             {
                 isAgro = true;
                 agroCounter = 0;
@@ -111,7 +120,7 @@ public class Bishop : MonoBehaviour
                 }
             }
 
-            if (isAgro)
+            if (isAgro && !playerDeadFetch)
             {
                 if (distanceToPlayer > attackDistance)
                 {
@@ -141,6 +150,15 @@ public class Bishop : MonoBehaviour
                             attackCooldown = attackCooldownOriginal;
                         }
                     }
+
+                    if(spawnMolotovsMaxTime > spawnMolotovsCounter)
+                    {
+                        spawnMolotovsCounter += Time.deltaTime;
+                    }
+                    else
+                    {
+                        SpawnMolotovs();
+                    }
                 }
             }
             else
@@ -157,6 +175,11 @@ public class Bishop : MonoBehaviour
                     //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", true);
                 }
             }
+        }
+
+        if(playerDeadFetch)
+        {
+            isAgro = false;
         }
     }
 
@@ -238,6 +261,35 @@ public class Bishop : MonoBehaviour
         //childSprite.GetComponent<Animator>().SetTrigger("CrusaderAttack1");
         //AudioManager.instance.PlaySound(attackSound);
         Instantiate(molotovCoctailPrefab, shotPoint.position, shotPoint.rotation);
+    }
+
+    void SpawnMolotovs()
+    {
+        if(molotovCount < 30)
+        {
+            for (int i = 0; i < 30; i++)
+            {
+                SpawnDroppingMolotov();
+                molotovCount++;
+            }
+        }
+        else
+        {
+            molotovCount = 0;
+            spawnMolotovsCounter = 0;
+            spawnMolotovsMaxTime = Random.Range(4, 8);
+        }
+    }
+
+    void SpawnDroppingMolotov()
+    {
+        Vector3 randomDirection = Random.insideUnitSphere.normalized * Random.Range(minDistance, maxDistance);
+        randomDirection.y = 0; // Maan tasolla
+
+        Vector3 spawnPosition = transform.position + randomDirection;
+        spawnPosition.y += height; // Korkeus
+
+        Instantiate(droppingMolotov, spawnPosition, Quaternion.identity);
     }
 
     void Chase()

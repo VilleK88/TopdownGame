@@ -159,6 +159,11 @@ public class Knight : MonoBehaviour
                 }
             }
         }
+
+        if (playerDeadFetch)
+        {
+            isAgro = false;
+        }
     }
 
     void Patrol()

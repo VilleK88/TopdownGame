@@ -180,6 +180,11 @@ public class Peasant : MonoBehaviour
                 //Patrol();
             }
         }
+
+        if (playerDeadFetch)
+        {
+            isAgro = false;
+        }
     }
 
     void RandomMovement()

@@ -108140,6 +108140,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2535625e8aeba0f4cafa2090a2b1e0ee, type: 3}
+--- !u!1001 &4236468350533715473
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 107797368500916685, guid: 06e080d9293487f4a83c2cbc6ec81a40,
+        type: 3}
+      propertyPath: m_Name
+      value: DroppingMolotov
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340020919665973634, guid: 06e080d9293487f4a83c2cbc6ec81a40,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340020919665973634, guid: 06e080d9293487f4a83c2cbc6ec81a40,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -25.63299
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340020919665973634, guid: 06e080d9293487f4a83c2cbc6ec81a40,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2004216
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340020919665973634, guid: 06e080d9293487f4a83c2cbc6ec81a40,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.663244
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340020919665973634, guid: 06e080d9293487f4a83c2cbc6ec81a40,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340020919665973634, guid: 06e080d9293487f4a83c2cbc6ec81a40,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340020919665973634, guid: 06e080d9293487f4a83c2cbc6ec81a40,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340020919665973634, guid: 06e080d9293487f4a83c2cbc6ec81a40,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340020919665973634, guid: 06e080d9293487f4a83c2cbc6ec81a40,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340020919665973634, guid: 06e080d9293487f4a83c2cbc6ec81a40,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340020919665973634, guid: 06e080d9293487f4a83c2cbc6ec81a40,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 06e080d9293487f4a83c2cbc6ec81a40, type: 3}
 --- !u!1 &4377464300053089995
 GameObject:
   m_ObjectHideFlags: 0
@@ -109082,7 +109151,7 @@ MonoBehaviour:
   enemySprite: {fileID: 6996238960488422306}
   enemyClass: 6
   enemyProfile: {fileID: 11400000, guid: 8e0e17266c69fc94f82a78add9dda3f8, type: 2}
-  currentHealth: 200
+  currentHealth: 300
   dead: 0
   playerBlockFetch: 0
   blockingPlayer: 0
@@ -109246,6 +109315,8 @@ MonoBehaviour:
   shotPoint: {fileID: 1571527204}
   molotovCoctailPrefab: {fileID: 4859781177920632831, guid: cc155786380ee8c4d8f378fc59a26531,
     type: 3}
+  droppingMolotov: {fileID: 107797368500916685, guid: 06e080d9293487f4a83c2cbc6ec81a40,
+    type: 3}
   waypoints:
   - {fileID: 316503436}
   - {fileID: 1006600232}
@@ -109322,7 +109393,7 @@ PrefabInstance:
     - target: {fileID: 4859781177920632831, guid: cc155786380ee8c4d8f378fc59a26531,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc155786380ee8c4d8f378fc59a26531, type: 3}
