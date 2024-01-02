@@ -13,6 +13,20 @@ public class GameManager : MonoBehaviour
     public int currentLevel;
     public float currentExperience;
     public float maxExperience;
+    public int skillPoints;
+
+    public bool healthRegen;
+    public bool healthPotionPlus;
+    public bool healthPlusFirst;
+    public bool healthPlusSecond;
+
+    public bool smashUpgrade;
+    public bool spin;
+
+    public bool staminaRegen;
+    public bool staminaPotionPlus;
+    public bool staminaPlusFirst;
+    public bool staminaPlusSecond;
 
     public float health;
     public float currentHealth;
@@ -95,14 +109,32 @@ public class GameManager : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter(); // Tehd‰‰n uusi olio tai instanssi luokasta BinaryFormatter
         FileStream file = File.Create(Application.persistentDataPath + "/gameInfo.dat");
         GameData data = new GameData();
+
         data.currentLevel = currentLevel;
         data.currentExperience = currentExperience;
         data.maxExperience = maxExperience;
+        data.skillPoints = skillPoints;
+
+        data.healthRegen = healthRegen;
+        data.healthPotionPlus = healthPotionPlus;
+        data.healthPlusFirst = healthPlusFirst;
+        data.healthPlusSecond = healthPlusSecond;
+
+        data.smashUpgrade = smashUpgrade;
+        data.spin = spin;
+
+        data.staminaRegen = staminaRegen;
+        data.staminaPotionPlus = staminaPotionPlus;
+        data.staminaPlusFirst = staminaPlusFirst;
+        data.staminaPlusSecond = staminaPlusSecond;
+
         data.health = health;
         data.currentHealth = currentHealth;
         data.maxHealth = maxHealth;
+
         data.currentStamina = currentStamina;
         data.maxStamina = maxStamina;
+
         data.x = x;
         data.y = y;
         data.z = z;
@@ -149,6 +181,20 @@ public class GameManager : MonoBehaviour
             currentLevel = data.currentLevel;
             currentExperience = data.currentExperience;
             maxExperience = data.maxExperience;
+            skillPoints = data.skillPoints;
+
+            healthRegen = data.healthRegen;
+            healthPotionPlus = data.healthPotionPlus;
+            healthPlusFirst = data.healthPlusFirst;
+            healthPlusSecond = data.healthPlusSecond;
+
+            smashUpgrade = data.smashUpgrade;
+            spin = data.spin;
+
+            staminaRegen = data.staminaRegen;
+            staminaPotionPlus = data.staminaPotionPlus;
+            staminaPlusFirst = data.staminaPlusFirst;
+            staminaPlusSecond = data.staminaPlusSecond;
 
             health = data.health;
             currentHealth = data.currentHealth;
@@ -192,6 +238,20 @@ class GameData
     public int currentLevel;
     public float currentExperience;
     public float maxExperience;
+    public int skillPoints;
+
+    public bool healthRegen;
+    public bool healthPotionPlus;
+    public bool healthPlusFirst;
+    public bool healthPlusSecond;
+
+    public bool smashUpgrade;
+    public bool spin;
+
+    public bool staminaRegen;
+    public bool staminaPotionPlus;
+    public bool staminaPlusFirst;
+    public bool staminaPlusSecond;
 
     public float health;
     public float currentHealth;

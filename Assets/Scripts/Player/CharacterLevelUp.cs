@@ -94,6 +94,8 @@ public class CharacterLevelUp : MonoBehaviour
         playerHealtScript.IncreaseHealth(GameManager.manager.currentLevel);
         playerScript.IncreaseStamina(GameManager.manager.currentLevel);
         GameManager.manager.maxExperience = CalculateRequiredXp();
+        GameManager.manager.skillPoints++;
+        SkillTree.instance.RefreshSkillPointsCount();
     }
 
     public void UpdateXpUI()

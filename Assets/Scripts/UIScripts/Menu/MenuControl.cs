@@ -17,6 +17,10 @@ public class MenuControl : MonoBehaviour
 
     public void StartGame()
     {
+        GameManager.manager.triggeredQuestIDs = new int[0];
+        GameManager.manager.rewardReadyQuestIDs = new int[0];
+        GameManager.manager.completedQuestIDs = new int[0];
+
         GameManager.manager.woodenAxeCollected = false;
         Array.Clear(GameManager.manager.pickUpItemIDs, 0, GameManager.manager.pickUpItemIDs.Length);
         GameManager.manager.weaponSlot = 0;

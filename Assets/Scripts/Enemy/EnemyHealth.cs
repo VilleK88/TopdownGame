@@ -60,6 +60,10 @@ public class EnemyHealth : MonoBehaviour
         {
             currentHealth = Mathf.Clamp(currentHealth, 0, currentHealth);
         }
+        else if(enemyClass == EnemyClass.Bishop)
+        {
+            currentHealth = Mathf.Clamp(currentHealth, 0, currentHealth);
+        }
         else
         {
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
@@ -132,9 +136,16 @@ public class EnemyHealth : MonoBehaviour
                 gettingHitOrNot = Random.Range(0, 1);
                 if (gettingHitOrNot == 0)
                 {
-                    //gettingHit = true;
+                    gettingHit = true;
                     StartCoroutine(StopGettingHit());
                 }
+            }
+            else if(enemyClass == EnemyClass.Bishop)
+            {
+                AudioManager.instance.PlaySound(hitSound);
+                bloodSplatterAnim.SetTrigger("Hit");
+                gettingHit = true;
+                StartCoroutine(StopGettingHit());
             }
         }
     }
@@ -146,7 +157,7 @@ public class EnemyHealth : MonoBehaviour
 
     IEnumerator StopGettingHit()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         gettingHit = false;
     }
 

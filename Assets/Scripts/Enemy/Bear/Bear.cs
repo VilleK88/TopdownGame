@@ -204,6 +204,11 @@ public class Bear : MonoBehaviour
                 }
             }
         }
+
+        if (playerDeadFetch)
+        {
+            isAgro = false;
+        }
     }
 
     void Patrol()

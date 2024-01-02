@@ -93,6 +93,16 @@ public class InGameMenuControls : MonoBehaviour
 
     public void Load()
     {
+        GameObject questCanvas = GameObject.Find("QuestCanvas");
+        if(questCanvas != null)
+        {
+            Destroy(questCanvas);
+        }
+        else
+        {
+            Debug.LogError("QuestCanvas object not found!");
+        }
+
         GameManager.manager.Load();
         LoadSaveSceneID();
 

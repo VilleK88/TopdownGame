@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class Player : MonoBehaviour
 {
@@ -69,6 +70,14 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip jumpSound;
 
     bool deadFetch; // from PlayerHealth -script
+
+    [Header("Upgrades")]
+    float srMaxTime = 20;
+    public float srCounter = 20;
+    public bool regenStamina = false;
+    float chargeMaxTime = 5;
+    public float chargeCounter = 0;
+
 
     private void Start()
     {
@@ -145,6 +154,51 @@ public class Player : MonoBehaviour
             }
             //Attack();
         }
+
+        if (GameManager.manager.staminaRegen)
+        {
+            if (srCounter >= srMaxTime)
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha4))
+                {
+                    regenStamina = true;
+                    srCounter = 0;
+                }
+            }
+            else
+            {
+                srCounter += Time.deltaTime;
+            }
+        }
+
+        if (regenStamina)
+        {
+            if (GameManager.manager.currentStamina < GameManager.manager.maxStamina)
+            {
+                GameManager.manager.currentStamina += 20 * Time.deltaTime;
+                if (GameManager.manager.currentStamina > GameManager.manager.maxStamina)
+                {
+                    GameManager.manager.currentStamina = GameManager.manager.maxStamina;
+                }
+            }
+
+            if (chargeMaxTime >= chargeCounter)
+            {
+                chargeCounter += Time.deltaTime;
+            }
+            else
+            {
+                regenStamina = false;
+                srCounter = 0;
+                chargeCounter = 0;
+                if (recharge != null)
+                {
+                    StopCoroutine(recharge);
+                }
+                recharge = StartCoroutine(RechargeStamina());
+            }
+        }
+
         UpdateStaminaUI();
 
 
@@ -232,6 +286,14 @@ public class Player : MonoBehaviour
             isFrozen = true;
         }
         else if(QuestManager.questManager.inQuestUI)
+        {
+            isFrozen = true;
+        }
+        else if(SkillTree.instance.isSkillTreeActive)
+        {
+            isFrozen = true;
+        }
+        else if(QuestlogManager.instance.isQuestlogActive)
         {
             isFrozen = true;
         }
@@ -405,7 +467,11 @@ public class Player : MonoBehaviour
             {
                 StopCoroutine(recharge);
             }
-            recharge = StartCoroutine(RechargeStamina());
+            if (!regenStamina)
+            {
+                recharge = StartCoroutine(RechargeStamina());
+            }
+            //recharge = StartCoroutine(RechargeStamina());
         }
     }
 
@@ -459,7 +525,11 @@ public class Player : MonoBehaviour
             {
                 StopCoroutine(recharge);
             }
-            recharge = StartCoroutine(RechargeStamina());
+            if(!regenStamina)
+            {
+                recharge = StartCoroutine(RechargeStamina());
+            }
+            //recharge = StartCoroutine(RechargeStamina());
         }
         else if(Input.GetMouseButtonDown(1) && GameManager.manager.currentStamina > strongAttackCost &&
             !Input.GetMouseButtonDown(0) && strongAttack)
@@ -475,7 +545,11 @@ public class Player : MonoBehaviour
             {
                 StopCoroutine(recharge);
             }
-            recharge = StartCoroutine(RechargeStamina());
+            if (!regenStamina)
+            {
+                recharge = StartCoroutine(RechargeStamina());
+            }
+            //recharge = StartCoroutine(RechargeStamina());
         }
     }
 
@@ -505,7 +579,11 @@ public class Player : MonoBehaviour
             {
                 StopCoroutine(recharge);
             }
-            recharge = StartCoroutine(RechargeStamina());
+            if (!regenStamina)
+            {
+                recharge = StartCoroutine(RechargeStamina());
+            }
+            //recharge = StartCoroutine(RechargeStamina());
         }
     }
 
