@@ -85,7 +85,22 @@ public class PlayerStrongAttackHitBox : MonoBehaviour
                     }
                     else
                     {
-                        health.TakeDamage(10 + damage.GetValue());
+                        health.TakeDamage(20 + damage.GetValue());
+                    }
+                }
+
+                if (health.enemyClass == EnemyClass.Longbowman)
+                {
+                    bool ifAgro = other.gameObject.GetComponent<Longbowman>().isAgro;
+                    if (!ifBlocking && !ifAgro)
+                    {
+                        health.TakeDamage(100 + damage.GetValue());
+                        //Debug.Log("Sneak kill knight.");
+                    }
+                    else if (!ifBlocking)
+                    {
+                        health.TakeDamage(20 + damage.GetValue());
+                        //Debug.Log("Hit knight.");
                     }
                 }
             }

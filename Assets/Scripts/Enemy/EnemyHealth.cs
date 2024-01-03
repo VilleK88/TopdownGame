@@ -147,6 +147,13 @@ public class EnemyHealth : MonoBehaviour
                 gettingHit = true;
                 StartCoroutine(StopGettingHit());
             }
+            else if(enemyClass == EnemyClass.Longbowman)
+            {
+                AudioManager.instance.PlaySound(hitSound);
+                bloodSplatterAnim.SetTrigger("Hit");
+                gettingHit = true;
+                StartCoroutine(StopGettingHit());
+            }
         }
     }
 

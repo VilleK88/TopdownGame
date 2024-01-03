@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    float arrowSpeed = 10;
+    float arrowSpeed = 12;
     float lifeTime = 4;
 
     private void Start()
@@ -29,7 +29,7 @@ public class Arrow : MonoBehaviour
             PlayerHealth health = collision.gameObject.GetComponent<PlayerHealth>();
             if(health != null)
             {
-                health.TakeDamage(5);
+                health.TakeDamage(10);
                 Destroy(gameObject);
             }
             Player player = collision.gameObject.GetComponent<Player>();

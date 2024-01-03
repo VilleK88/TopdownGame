@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class Player : MonoBehaviour
 {
@@ -16,9 +15,9 @@ public class Player : MonoBehaviour
     public Interactable focus;
 
     [Header("Player Movement and Mouse Aiming Parameters")]
-    float moveSpeed = 3.7f; // 3.5f // test 10f
-    float walkSpeed = 3.7f;
-    float runningSpeed = 5.7f;
+    float moveSpeed = 3.7f; // 3.7f
+    float walkSpeed = 3.7f; // 3.7f;
+    float runningSpeed = 5.7f; // 5.7f
     Vector3 movement;
     Ray ray;
     RaycastHit hit;

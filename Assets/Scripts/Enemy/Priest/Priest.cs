@@ -40,9 +40,9 @@ public class Priest : MonoBehaviour
     GameObject previousEnemy;
 
     [Header("Field of View Parameters")]
-    public float radius = 12;
+    public float radius = 10;
     [Range(0, 360)]
-    public float angle = 160;
+    public float angle = 140;
     public LayerMask targetMask;
     public LayerMask obstructionMask;
     public bool canSeePlayer;

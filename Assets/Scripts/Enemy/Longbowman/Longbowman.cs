@@ -14,9 +14,9 @@ public class Longbowman : MonoBehaviour
     Transform playerTransform;
 
     [Header("Field of View Parameters")]
-    public float radius = 12;
+    public float radius = 10;
     [Range(0, 360)]
-    public float angle = 160;
+    public float angle = 140;
     public LayerMask targetMask;
     public LayerMask obstructionMask;
     public bool canSeePlayer;
@@ -116,7 +116,7 @@ public class Longbowman : MonoBehaviour
             {
                 if (distanceToPlayer > attackDistance)
                 {
-                    if (!ifBlockingPlayersAttackFetch)
+                    if (!gettingHit)
                     {
                         Chase();
                         attackCooldown = 0.2f;
@@ -130,7 +130,7 @@ public class Longbowman : MonoBehaviour
                 {
                     //childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
                     transform.LookAt(player.transform.position);
-                    if (!ifBlockingPlayersAttackFetch)
+                    if (!gettingHit)
                     {
                         if (attackCooldown >= 0)
                         {
