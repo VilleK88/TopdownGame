@@ -58,6 +58,10 @@ public class Player : MonoBehaviour
     float strongAttackMaxTime = 2;
     public float strongAttackTimer = 0;
 
+    public bool isPlayerAttacking;
+    float isPlayerAttackingMaxTime = 0.2f;
+    float isPlayerAttackingCounter = 0;
+
     public VectorValue startingPosition;
     //public bool loadPlayerPosition;
 
@@ -235,6 +239,19 @@ public class Player : MonoBehaviour
         else if(attacking)
         {
             StartCoroutine(CanMove());
+        }
+
+        if(isPlayerAttacking)
+        {
+            if(isPlayerAttackingMaxTime > isPlayerAttackingCounter)
+            {
+                isPlayerAttackingCounter += Time.deltaTime;
+            }
+            else
+            {
+                isPlayerAttacking = false;
+                isPlayerAttackingCounter = 0;
+            }
         }
     }
 
@@ -502,6 +519,7 @@ public class Player : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && GameManager.manager.currentStamina > attackCost &&
             !Input.GetMouseButtonDown(1))
         {
+            isPlayerAttacking = true;
             if(!attack1)
             {
                 AudioManager.instance.PlaySound(attackSound);
@@ -533,6 +551,7 @@ public class Player : MonoBehaviour
         else if(Input.GetMouseButtonDown(1) && GameManager.manager.currentStamina > strongAttackCost &&
             !Input.GetMouseButtonDown(0) && strongAttack)
         {
+            isPlayerAttacking = true;
             AudioManager.instance.PlaySound(strongAttackSound);
             childSprite.GetComponent<Animator>().SetTrigger("StrongAxeAttack");
             GameManager.manager.currentStamina -= strongAttackCost;
