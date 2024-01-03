@@ -28,6 +28,7 @@ public class EnemyHealth : MonoBehaviour
     int gettingHitOrNot;
     public bool gettingHit = false;
     float blockingTime;
+    public bool isActiveBlocking;
 
     [Header("Player XP")]
     float expAmount;
@@ -108,7 +109,7 @@ public class EnemyHealth : MonoBehaviour
         {
             if(enemyClass == EnemyClass.Knight)
             {
-                blockOrNot = Random.Range(0, 2);
+                /*blockOrNot = Random.Range(0, 2);
                 if (blockOrNot == 0)
                 {
                     AudioManager.instance.PlaySound(blockHitSound);
@@ -122,7 +123,21 @@ public class EnemyHealth : MonoBehaviour
                     AudioManager.instance.PlaySound(hitSound);
                     bloodSplatterAnim.SetTrigger("Hit");
                     gettingHit = false;
+                }*/
+                isActiveBlocking = GetComponent<Knight>().activeBlocking;
+                if(isActiveBlocking)
+                {
+                    AudioManager.instance.PlaySound(blockHitSound);
+                    blockingPlayer = true;
                 }
+                else
+                {
+                    AudioManager.instance.PlaySound(hitSound);
+                    bloodSplatterAnim.SetTrigger("Hit");
+                    blockingPlayer = false;
+                    gettingHit = false;
+                }
+
             }
             else if(enemyClass == EnemyClass.Priest)
             {

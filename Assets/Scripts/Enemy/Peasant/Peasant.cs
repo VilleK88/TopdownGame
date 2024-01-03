@@ -256,7 +256,7 @@ public class Peasant : MonoBehaviour
 
     void Chase()
     {
-        agent.speed = 3;
+        agent.speed = 3.7f;
         agent.SetDestination(playerTransform.position);
         childSprite.GetComponent<Animator>().SetBool("Walking", true);
     }
