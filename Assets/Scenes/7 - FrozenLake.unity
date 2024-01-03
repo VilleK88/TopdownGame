@@ -225,6 +225,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -8.3
       objectReference: {fileID: 0}
+    - target: {fileID: 6723823031740475240, guid: c6fa42430a03bf14baf8a4605a3a3bd5,
+        type: 3}
+      propertyPath: questEnemyID
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6723823031740475258, guid: c6fa42430a03bf14baf8a4605a3a3bd5,
         type: 3}
       propertyPath: randomPatrol

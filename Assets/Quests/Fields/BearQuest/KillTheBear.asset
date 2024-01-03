@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: KillTheBear
   m_EditorClassIdentifier: 
   questName: Kill the bear
-  questID: 1
+  questID: 2
   questDescription: Kill the angry bear roaming the forest.
   NPCTurnIn: {fileID: 11400000, guid: 281ef917b4910124c89a1bd40f1ece3c, type: 2}
   completedQuestDialogue: {fileID: 11400000, guid: 5f4d5e6f9088fd94099bd5f67b4b9da8,

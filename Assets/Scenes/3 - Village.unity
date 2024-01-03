@@ -10480,7 +10480,7 @@ PrefabInstance:
     - target: {fileID: 1067344652477661545, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: questEnemyID
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661545, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
@@ -15557,6 +15557,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 510383753}
     m_Modifications:
+    - target: {fileID: 1067344652477661545, guid: 2f277d0751841dc4eade76cf9eb6bea3,
+        type: 3}
+      propertyPath: questEnemyID
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1067344652477661545, guid: 2f277d0751841dc4eade76cf9eb6bea3,
         type: 3}
       propertyPath: currentHealth
@@ -107751,6 +107756,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DroppingMolotov
       objectReference: {fileID: 0}
+    - target: {fileID: 107797368500916685, guid: 06e080d9293487f4a83c2cbc6ec81a40,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7340020919665973634, guid: 06e080d9293487f4a83c2cbc6ec81a40,
         type: 3}
       propertyPath: m_RootOrder
@@ -108101,7 +108111,7 @@ PrefabInstance:
     - target: {fileID: 4859781177920632831, guid: cc155786380ee8c4d8f378fc59a26531,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc155786380ee8c4d8f378fc59a26531, type: 3}

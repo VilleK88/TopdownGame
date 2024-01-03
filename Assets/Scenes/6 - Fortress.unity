@@ -4857,6 +4857,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Longbowman (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6253919661241382293, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
+        type: 3}
+      propertyPath: questEnemyID
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6253919661241382294, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
         type: 3}
       propertyPath: randomPatrol
@@ -5131,6 +5136,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Longbowman (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253919661241382293, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
+        type: 3}
+      propertyPath: questEnemyID
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6253919661241382294, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
         type: 3}
@@ -6892,6 +6902,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Longbowman (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253919661241382293, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
+        type: 3}
+      propertyPath: questEnemyID
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6253919661241382294, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
         type: 3}
@@ -104277,6 +104292,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Longbowman
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253919661241382293, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
+        type: 3}
+      propertyPath: questEnemyID
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6253919661241382294, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
         type: 3}
