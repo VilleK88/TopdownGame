@@ -97307,6 +97307,11 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[8]
       value: 
       objectReference: {fileID: 1445923428}
+    - target: {fileID: 7764761366545408691, guid: 3840373927c29e84ebf87f6983bc19ae,
+        type: 3}
+      propertyPath: questEnemyID
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3840373927c29e84ebf87f6983bc19ae, type: 3}
 --- !u!4 &1080191693 stripped

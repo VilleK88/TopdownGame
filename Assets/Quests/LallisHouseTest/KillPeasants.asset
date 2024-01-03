@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: KillPeasants
   m_EditorClassIdentifier: 
   questName: Kill the christian peasants
-  questID: 1
-  questDescription: Kill the converted.
-  NPCTurnIn: {fileID: 11400000, guid: 281ef917b4910124c89a1bd40f1ece3c, type: 2}
+  questID: 10
+  questDescription: Kill the converted christian peasants.
+  NPCTurnIn: {fileID: 11400000, guid: 5eb0a1059f7cde24a93047383906bbfd, type: 2}
   completedQuestDialogue: {fileID: 11400000, guid: 198e323b61f65b744bcc61f032f36375,
     type: 2}
   rewards:
