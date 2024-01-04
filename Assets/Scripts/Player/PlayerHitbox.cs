@@ -89,7 +89,7 @@ public class PlayerHitbox : MonoBehaviour
                     }
                     else
                     {
-                        health.TakeDamage(10 + damage.GetValue());
+                        health.TakeDamage(100 + damage.GetValue());
                     }
                 }
 
