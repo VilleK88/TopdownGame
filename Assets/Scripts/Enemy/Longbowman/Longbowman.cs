@@ -14,9 +14,9 @@ public class Longbowman : MonoBehaviour
     Transform playerTransform;
 
     [Header("Field of View Parameters")]
-    public float radius = 12;
+    public float radius = 10;
     [Range(0, 360)]
-    public float angle = 160;
+    public float angle = 140;
     public LayerMask targetMask;
     public LayerMask obstructionMask;
     public bool canSeePlayer;
@@ -70,6 +70,7 @@ public class Longbowman : MonoBehaviour
         attackCooldownOriginal = attackCooldown;
         originalSpeed = agent.speed;
         //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", true);
+        childSprite.GetComponent<Animator>().SetBool("Walk", true);
     }
 
     private void Update()
@@ -82,7 +83,7 @@ public class Longbowman : MonoBehaviour
 
         if (gettingHit)
         {
-            //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
+            childSprite.GetComponent<Animator>().SetBool("Walk", false);
             //childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
         }
         Death();
@@ -116,7 +117,7 @@ public class Longbowman : MonoBehaviour
             {
                 if (distanceToPlayer > attackDistance)
                 {
-                    if (!ifBlockingPlayersAttackFetch)
+                    if (!gettingHit)
                     {
                         Chase();
                         attackCooldown = 0.2f;
@@ -128,9 +129,9 @@ public class Longbowman : MonoBehaviour
                 }
                 else if (distanceToPlayer < attackDistance)
                 {
-                    //childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
+                    childSprite.GetComponent<Animator>().SetBool("Walk", false);
                     transform.LookAt(player.transform.position);
-                    if (!ifBlockingPlayersAttackFetch)
+                    if (!gettingHit)
                     {
                         if (attackCooldown >= 0)
                         {
@@ -155,7 +156,7 @@ public class Longbowman : MonoBehaviour
                 else
                 {
                     agent.SetDestination(waypoints[waypointIndex].position);
-                    //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", true);
+                    childSprite.GetComponent<Animator>().SetBool("Walk", true);
                 }
             }
         }
@@ -181,7 +182,7 @@ public class Longbowman : MonoBehaviour
                 waypointIndex++;
             }
             waypointCounter = 0;
-            //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
+            childSprite.GetComponent<Animator>().SetBool("Walk", false);
 
             if (waypointIndex >= waypoints.Length)
             {
@@ -241,15 +242,22 @@ public class Longbowman : MonoBehaviour
 
     void Attack()
     {
-        //childSprite.GetComponent<Animator>().SetTrigger("CrusaderAttack1");
+        childSprite.GetComponent<Animator>().SetTrigger("Attack");
         //AudioManager.instance.PlaySound(attackSound);
+        StartCoroutine(ShootArrow());
+        //Instantiate(arrowPrefab, shotPoint.position, shotPoint.rotation);
+    }
+    
+    IEnumerator ShootArrow()
+    {
+        yield return new WaitForSeconds(0.4f);
         Instantiate(arrowPrefab, shotPoint.position, shotPoint.rotation);
     }
 
     void Chase()
     {
         //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
-        agent.speed = 3.5f;
+        agent.speed = 3.7f;
         agent.SetDestination(playerTransform.position);
         //childSprite.GetComponent<Animator>().SetBool("CrusaderRun", true);
     }

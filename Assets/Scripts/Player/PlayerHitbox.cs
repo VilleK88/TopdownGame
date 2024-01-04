@@ -26,7 +26,7 @@ public class PlayerHitbox : MonoBehaviour
                     }
                     else
                     {
-                        health.TakeDamage(10 + damage.GetValue());
+                        health.TakeDamage(100 + damage.GetValue());
                         //Debug.Log("Hit priest.");
                     }
                 }
@@ -35,14 +35,15 @@ public class PlayerHitbox : MonoBehaviour
                 if (health.enemyClass == EnemyClass.Knight)
                 {
                     bool ifAgro = other.gameObject.GetComponent<Knight>().isAgro;
-                    if (!ifBlocking && !ifAgro)
+                    bool ifActiveBlocking = other.gameObject.GetComponent<Knight>().activeBlocking;
+                    if (/*!ifBlocking*/ !ifActiveBlocking && !ifAgro)
                     {
                         health.TakeDamage(100 + damage.GetValue());
                         //Debug.Log("Sneak kill knight.");
                     }
-                    else if(!ifBlocking)
+                    else if (/*!ifBlocking*/ !ifActiveBlocking)
                     {
-                        health.TakeDamage(10 + damage.GetValue());
+                        health.TakeDamage(100 + damage.GetValue());
                         //Debug.Log("Hit knight.");
                     }
                 }
@@ -74,7 +75,7 @@ public class PlayerHitbox : MonoBehaviour
                     }
                     else if(ifConverted)
                     {
-                        health.TakeDamage(10 + damage.GetValue());
+                        health.TakeDamage(100 + damage.GetValue());
                         //Debug.Log("Hit peasant.");
                     }
                 }
@@ -88,7 +89,7 @@ public class PlayerHitbox : MonoBehaviour
                     }
                     else
                     {
-                        health.TakeDamage(10 + damage.GetValue());
+                        health.TakeDamage(100 + damage.GetValue());
                     }
                 }
 

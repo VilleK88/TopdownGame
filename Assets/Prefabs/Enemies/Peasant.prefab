@@ -331,8 +331,8 @@ MonoBehaviour:
   converted: 0
   centerPoint: {fileID: 1067344652477661559}
   childSprite: {fileID: 1067344652550070822}
-  radius: 12
-  angle: 120
+  radius: 10
+  angle: 140
   targetMask:
     serializedVersion: 2
     m_Bits: 64

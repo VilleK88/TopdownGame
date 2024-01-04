@@ -15,9 +15,9 @@ public class Knight : MonoBehaviour
     Transform playerTransform;
 
     [Header("Field of View Parameters")]
-    public float radius = 12;
+    public float radius = 10;
     [Range(0, 360)]
-    public float angle = 160;
+    public float angle = 140;
     public LayerMask targetMask;
     public LayerMask obstructionMask;
     public bool canSeePlayer;
@@ -40,6 +40,9 @@ public class Knight : MonoBehaviour
     public float attackDistance = 2;
     bool gettingHit; // fetch from EnemyHealth -script
     float distanceToPlayer;
+    bool isPlayeAttacking;
+    int blockOrNot;
+    public bool activeBlocking;
 
     [Header("Patrol Parameters")]
     public Transform[] waypoints;
@@ -79,6 +82,7 @@ public class Knight : MonoBehaviour
         gettingHit = GetComponent<EnemyHealth>().gettingHit;
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         playerDeadFetch = player.GetComponent<PlayerHealth>().dead;
+        isPlayeAttacking = player.GetComponent<Player>().isPlayerAttacking;
 
         if (gettingHit)
         {
@@ -116,7 +120,7 @@ public class Knight : MonoBehaviour
             {
                 if (distanceToPlayer > attackDistance && !playerDeadFetch)
                 {
-                    if(!ifBlockingPlayersAttackFetch)
+                    if(/*!ifBlockingPlayersAttackFetch*/ !activeBlocking)
                     {
                         Chase();
                         attackCooldown = 0.2f;
@@ -130,7 +134,19 @@ public class Knight : MonoBehaviour
                 {
                     childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
                     transform.LookAt(player.transform.position);
-                    if (!ifBlockingPlayersAttackFetch)
+
+                    if(isPlayeAttacking)
+                    {
+                        blockOrNot = Random.Range(0, 2);
+                        if(blockOrNot == 0)
+                        {
+                            activeBlocking = true;
+                            childSprite.GetComponent<Animator>().SetBool("CrusaderBlock", true);
+                            StartCoroutine(StopBlocking());
+                        }
+                    }
+
+                    if (/*!ifBlockingPlayersAttackFetch*/ !activeBlocking)
                     {
                         if(attackCooldown >= 0)
                         {
@@ -164,6 +180,13 @@ public class Knight : MonoBehaviour
         {
             isAgro = false;
         }
+    }
+
+    IEnumerator StopBlocking()
+    {
+        yield return new WaitForSeconds(1);
+        childSprite.GetComponent<Animator>().SetBool("CrusaderBlock", false);
+        activeBlocking = false;
     }
 
     void Patrol()
@@ -248,7 +271,7 @@ public class Knight : MonoBehaviour
     void Chase()
     {
         childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
-        agent.speed = 3.5f;
+        agent.speed = 3.7f;
         agent.SetDestination(playerTransform.position);
         childSprite.GetComponent<Animator>().SetBool("CrusaderRun", true);
     }

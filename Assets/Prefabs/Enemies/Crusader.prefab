@@ -277,8 +277,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childSprite: {fileID: 9125619689206134125}
-  radius: 12
-  angle: 160
+  radius: 10
+  angle: 140
   targetMask:
     serializedVersion: 2
     m_Bits: 64

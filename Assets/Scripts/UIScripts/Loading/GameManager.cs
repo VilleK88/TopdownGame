@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour
         // Jos on, niin sitten vasta jatka prosessia.
         if (File.Exists(Application.persistentDataPath + "/gameInfo.dat"))
         {
-            Debug.Log("Game Loaded!");
+            //Debug.Log("Game Loaded!");
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/gameInfo.dat", FileMode.Open);
             // Deserialisoidaan ja muunnetaan data GameData -muotoon. Me tiedämme, että data on GameData objectin informaatio
