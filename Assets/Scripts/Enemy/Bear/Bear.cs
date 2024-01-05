@@ -296,7 +296,7 @@ public class Bear : MonoBehaviour
     void Chase()
     {
         //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
-        agent.speed = 3.8f;
+        agent.speed = 3.7f;
         agent.SetDestination(playerTransform.position);
         childSprite.GetComponent<Animator>().SetBool("Walk", true);
     }

@@ -67,8 +67,8 @@ public class Priest : MonoBehaviour
     public bool activated;
 
     [Header("Hurt")]
-    bool gettingHit;
-    float hitMaxTime = 0.25f;
+    //bool gettingHit;
+    //float hitMaxTime = 0.25f;
     public float hitCounter = 0;
 
     [Header("Audio")]
@@ -95,7 +95,7 @@ public class Priest : MonoBehaviour
     private void Update()
     {
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        gettingHit = GetComponent<EnemyHealth>().gettingHit;
+        //gettingHit = GetComponent<EnemyHealth>().gettingHit;
         deadFetch = GetComponent<EnemyHealth>().dead;
         Death();
         if(distanceToPlayer < 30)

@@ -87,6 +87,9 @@ public class QuestBase : ScriptableObject
         DialogueManager.instance.completedQuest = this;
         QuestManager.questManager.RemoveCompletedQuestIDs();
         QuestManager.questManager.RemoveAllCompletedQuestsOnStart();
+
+        //GameManager.manager.Save();
+        //GameManager.manager.Load();
     }
 
     public virtual string GetObjectiveList()

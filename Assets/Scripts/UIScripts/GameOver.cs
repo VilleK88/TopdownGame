@@ -18,8 +18,8 @@ public class GameOver : MonoBehaviour
     #endregion
 
     Animator anim;
-    float maxTime = 5;
-    float counter = 0;
+    //float maxTime = 5;
+    //float counter = 0;
 
     private void Start()
     {

@@ -12,8 +12,8 @@ public class NPCInteraction : MonoBehaviour
     [HideInInspector] public float radius = 3;
     [HideInInspector] public float distance;
 
-    bool startCounting = false;
-    float maxTime = 0.2f;
+    //bool startCounting = false;
+    //float maxTime = 0.2f;
     public float counter = 0;
 
 
