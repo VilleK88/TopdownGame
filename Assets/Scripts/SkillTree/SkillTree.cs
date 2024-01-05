@@ -72,6 +72,32 @@ public class SkillTree : MonoBehaviour
             changeImage = healthPlusSecondB.gameObject.GetComponent<Image>();
             changeImage.sprite = healthPlusSelected;
         }
+
+
+        if(GameManager.manager.staminaRegen)
+        {
+            Image changeImage;
+            changeImage = staminaRegenB.gameObject.GetComponent<Image>();
+            changeImage.sprite = staminaRegenSelected;
+        }
+        if (GameManager.manager.staminaPotionPlus)
+        {
+            Image changeImage;
+            changeImage = staminaPotionPlusB.gameObject.GetComponent<Image>();
+            changeImage.sprite = staminaPotionPlusSelected;
+        }
+        if (GameManager.manager.staminaPlusFirst)
+        {
+            Image changeImage;
+            changeImage = staminaPlusFirstB.gameObject.GetComponent<Image>();
+            changeImage.sprite = staminaPlusSelected;
+        }
+        if (GameManager.manager.staminaPlusSecond)
+        {
+            Image changeImage;
+            changeImage = staminaPlusSecondB.gameObject.GetComponent<Image>();
+            changeImage.sprite = staminaPlusSelected;
+        }
     }
 
 
