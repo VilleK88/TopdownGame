@@ -163,8 +163,11 @@ public class QuestDialogueTrigger : DialogueTrigger
             if(rewardReadyQuestIDs.Contains(questID))
             {
                 rewardReadyQuestIDs.Remove(questID);
+                Debug.Log("Poista RewardReadyQuest");
             }
         }
+
+        GameManager.manager.rewardReadyQuestIDs = rewardReadyQuestIDs.ToArray();
     }
 
     void RemoveRewardReadyQuestsArray(QuestBase quest)
