@@ -18,7 +18,7 @@ public class BearAttackHitBox : MonoBehaviour
             PlayerHealth health = other.gameObject.GetComponent<PlayerHealth>();
             if (health != null)
             {
-                health.TakeDamage(15);
+                health.TakeDamage(20);
             }
             Player player = other.gameObject.GetComponent<Player>();
             if (player != null)
