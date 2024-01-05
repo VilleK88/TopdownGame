@@ -257,7 +257,7 @@ public class Longbowman : MonoBehaviour
     void Chase()
     {
         //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
-        agent.speed = 3.7f;
+        agent.speed = 3.8f;
         agent.SetDestination(playerTransform.position);
         //childSprite.GetComponent<Animator>().SetBool("CrusaderRun", true);
     }

@@ -250,7 +250,7 @@ public class Bear : MonoBehaviour
     {
         childSprite.GetComponent<Animator>().SetBool("Walk", false);
         childSprite.GetComponent<Animator>().SetBool("Charge", true);
-        agent.speed = 8;
+        agent.speed = 8.2f;
         //agent.SetDestination(playerChargePosition);
 
         if(playRoarOnlyOnce)
@@ -296,7 +296,7 @@ public class Bear : MonoBehaviour
     void Chase()
     {
         //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
-        agent.speed = 3.5f;
+        agent.speed = 3.9f;
         agent.SetDestination(playerTransform.position);
         childSprite.GetComponent<Animator>().SetBool("Walk", true);
     }
