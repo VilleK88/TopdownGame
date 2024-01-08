@@ -32,6 +32,9 @@ public class QuestlogManager : MonoBehaviour
     public Image[] rewardIcons;
     QuestBase lastDisplayedQuest;
     Scene currentScene;
+    public int[] triggeredQuestButtonIDs;
+    public int[] rewardReadyQuestButtonIDs;
+    public int[] completedQuestButtonIDs;
 
 
     public void UpdateQuestlogUI(QuestBase newQuest, string objectiveList)
@@ -45,8 +48,23 @@ public class QuestlogManager : MonoBehaviour
 
     public void AddQuestLog(QuestBase newQuest)
     {
-        var questButton = Instantiate(questlogButtonPrefab, questHolder);
-        questButton.GetComponent<QuestlogButton>().SetQuest(newQuest);
+        if(!triggeredQuestButtonIDs.Contains(newQuest.questID))
+        {
+            var questButton = Instantiate(questlogButtonPrefab, questHolder);
+            questButton.GetComponent<QuestlogButton>().SetQuest(newQuest);
+            AddToTriggeredQuestButtonIDs(newQuest.questID);
+        }
+    }
+
+    public void AddToTriggeredQuestButtonIDs(int newQuestButtonID)
+    {
+        int[] newQuestButtonIDs = new int[triggeredQuestButtonIDs.Length + 1];
+        for(int i = 0; i < triggeredQuestButtonIDs.Length; i++)
+        {
+            newQuestButtonIDs[i] = triggeredQuestButtonIDs[i];
+        }
+        newQuestButtonIDs[triggeredQuestButtonIDs.Length] = newQuestButtonID;
+        triggeredQuestButtonIDs = newQuestButtonIDs;
     }
 
     private void Update()

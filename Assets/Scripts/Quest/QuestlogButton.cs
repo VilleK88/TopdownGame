@@ -12,11 +12,14 @@ public class QuestlogButton : MonoBehaviour
     public TextMeshProUGUI questNameText;
     public Image uncheckBox;
     public Sprite checkedBox;
+    public int questlogButtonID;
 
     public void SetQuest(QuestBase newQuest)
     {
         myQuest = newQuest;
         questNameText.text = newQuest.questName;
+        questlogButtonID = newQuest.questID;
+
     }
 
     public void OnPressed()
