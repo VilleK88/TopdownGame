@@ -153,7 +153,7 @@ public class QuestManager : MonoBehaviour
 
     public void AddQuestToRewardReadyArray(QuestBase quest)
     {
-        if(!GameManager.manager.rewardReadyQuests.Contains(quest))
+        /*if(!GameManager.manager.rewardReadyQuests.Contains(quest))
         {
             QuestBase[] newRewardReadyQuests = new QuestBase[GameManager.manager.rewardReadyQuests.Length + 1];
             for(int i = 0; i < GameManager.manager.rewardReadyQuests.Length; i++)
@@ -162,7 +162,15 @@ public class QuestManager : MonoBehaviour
             }
             newRewardReadyQuests[GameManager.manager.rewardReadyQuests.Length] = quest;
             GameManager.manager.rewardReadyQuests = newRewardReadyQuests;
+        }*/
+
+        QuestBase[] newRewardReadyQuests = new QuestBase[GameManager.manager.rewardReadyQuests.Length + 1];
+        for (int i = 0; i < GameManager.manager.rewardReadyQuests.Length; i++)
+        {
+            newRewardReadyQuests[i] = GameManager.manager.rewardReadyQuests[i];
         }
+        newRewardReadyQuests[GameManager.manager.rewardReadyQuests.Length] = quest;
+        GameManager.manager.rewardReadyQuests = newRewardReadyQuests;
     }
 
     public void AddQuestToCompletedArray(QuestBase quest)

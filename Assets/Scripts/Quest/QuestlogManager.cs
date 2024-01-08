@@ -51,18 +51,29 @@ public class QuestlogManager : MonoBehaviour
             var questButton = Instantiate(questlogButtonPrefab, questHolder);
             questButton.GetComponent<QuestlogButton>().SetQuest(newQuest);
             AddToTriggeredQuestButtonIDs(newQuest.questID);
+            Debug.Log("AddQuestLog debuggaa");
         }
     }
 
     public void AddToTriggeredQuestButtonIDs(int newQuestButtonID)
     {
-        int[] newQuestButtonIDs = new int[triggeredQuestButtonIDs.Length + 1];
+        if(!triggeredQuestButtonIDs.Contains(newQuestButtonID))
+        {
+            int[] newQuestButtonIDs = new int[triggeredQuestButtonIDs.Length + 1];
+            for (int i = 0; i < triggeredQuestButtonIDs.Length; i++)
+            {
+                newQuestButtonIDs[i] = triggeredQuestButtonIDs[i];
+            }
+            newQuestButtonIDs[triggeredQuestButtonIDs.Length] = newQuestButtonID;
+            triggeredQuestButtonIDs = newQuestButtonIDs;
+        }
+        /*int[] newQuestButtonIDs = new int[triggeredQuestButtonIDs.Length + 1];
         for(int i = 0; i < triggeredQuestButtonIDs.Length; i++)
         {
             newQuestButtonIDs[i] = triggeredQuestButtonIDs[i];
         }
         newQuestButtonIDs[triggeredQuestButtonIDs.Length] = newQuestButtonID;
-        triggeredQuestButtonIDs = newQuestButtonIDs;
+        triggeredQuestButtonIDs = newQuestButtonIDs;*/
     }
 
     private void Update()

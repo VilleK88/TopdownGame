@@ -27,7 +27,7 @@ public class InGameMenuControls : MonoBehaviour
         {
             SaveSceneID();
             player.GetComponent<Player>().SavePlayerTransformPosition();
-            GameManager.manager.loadPlayerPosition = true;
+            //GameManager.manager.loadPlayerPosition = true;
             GameManager.manager.Save();
             PlayerManager.instance.player.GetComponent<Player>().isPaused = false;
             PlayerManager.instance.player.GetComponent<Player>().menuButtons.gameObject.SetActive(false);

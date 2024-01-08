@@ -96,6 +96,7 @@ public class Player : MonoBehaviour
         {
             LoadPlayerTransformPosition();
             GameManager.manager.loadPlayerPosition = false;
+            Debug.Log("Player Start debuggaa");
         }
         else
         {
