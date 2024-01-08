@@ -14,7 +14,7 @@ public class NPCInteraction : MonoBehaviour
 
     //bool startCounting = false;
     //float maxTime = 0.2f;
-    public float counter = 0;
+    //public float counter = 0;
 
 
     private void Update()

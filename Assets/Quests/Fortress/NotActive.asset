@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: NotActive
   m_EditorClassIdentifier: 
   dialogueInfo:
-  - character: {fileID: 11400000, guid: 281ef917b4910124c89a1bd40f1ece3c, type: 2}
+  - character: {fileID: 11400000, guid: 5eb0a1059f7cde24a93047383906bbfd, type: 2}
     myText: Hi Lalli!
     characterEmotion: 0

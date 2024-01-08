@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d18f51ec0059f5c4a8244f9bd4e5f893, type: 3}
-  m_Name: DialogueKill
+  m_Name: FortressDialogue
   m_EditorClassIdentifier: 
   dialogueInfo:
-  - character: {fileID: 11400000, guid: 281ef917b4910124c89a1bd40f1ece3c, type: 2}
-    myText: Kill the christian peasants outside!
+  - character: {fileID: 11400000, guid: 5eb0a1059f7cde24a93047383906bbfd, type: 2}
+    myText: Help as Lalli! Crusaders are attacking from the nearby fortress. Kill
+      everyone from there.
     characterEmotion: 0
-  quest: {fileID: 11400000, guid: e3863e10ab57167459731c98dbf5e05c, type: 2}
+  quest: {fileID: 11400000, guid: 13086a85b27d66649b79c8d06a7ad028, type: 2}

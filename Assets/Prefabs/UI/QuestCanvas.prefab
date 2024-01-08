@@ -2133,6 +2133,7 @@ MonoBehaviour:
   allQuests:
   - {fileID: 11400000, guid: 4a29b149051236f4a92e4fd0b2cb1042, type: 2}
   - {fileID: 11400000, guid: 453ec63307f0b714a983501f2baaea24, type: 2}
+  - {fileID: 11400000, guid: 13086a85b27d66649b79c8d06a7ad028, type: 2}
   questIndex: 0
   questStartsSound: {fileID: 8300000, guid: 5c94a706f1993ce44b7240ab360954a5, type: 3}
 --- !u!114 &6601506825340582802
@@ -2972,6 +2973,9 @@ MonoBehaviour:
   objectiveText: {fileID: 6601506824525018395}
   npcTurnInText: {fileID: 6601506825904132883}
   rewardIcons: []
+  triggeredQuestButtonIDs: 
+  rewardReadyQuestButtonIDs: 
+  completedQuestButtonIDs: 
 --- !u!1 &6601506825751701616
 GameObject:
   m_ObjectHideFlags: 0
