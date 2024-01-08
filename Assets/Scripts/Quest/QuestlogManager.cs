@@ -33,8 +33,6 @@ public class QuestlogManager : MonoBehaviour
     QuestBase lastDisplayedQuest;
     Scene currentScene;
     public int[] triggeredQuestButtonIDs;
-    public int[] rewardReadyQuestButtonIDs;
-    public int[] completedQuestButtonIDs;
 
 
     public void UpdateQuestlogUI(QuestBase newQuest, string objectiveList)
