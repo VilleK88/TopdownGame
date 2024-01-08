@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     [Header("Player Movement and Mouse Aiming Parameters")]
     float moveSpeed = 3.7f; // 3.7f
     float walkSpeed = 3.7f; // 3.7f;
-    float runningSpeed = 20.7f; // 5.7f
+    float runningSpeed = 5.7f; // 5.7f
     Vector3 movement;
     Ray ray;
     RaycastHit hit;
@@ -96,7 +96,6 @@ public class Player : MonoBehaviour
         {
             LoadPlayerTransformPosition();
             GameManager.manager.loadPlayerPosition = false;
-            Debug.Log("Player Start debuggaa");
         }
         else
         {

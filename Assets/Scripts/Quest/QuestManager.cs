@@ -42,6 +42,7 @@ public class QuestManager : MonoBehaviour
     {
         RemoveCompletedQuestIDs();
         RemoveAllCompletedQuestsOnStart();
+        Debug.Log("Debuggaa QuestManagerin startissa");
         //RemoveEnemiesForRewardReadyQuests();
         //RemoveEnemiesForCompletedQuests();
     }
@@ -58,6 +59,7 @@ public class QuestManager : MonoBehaviour
                     {
                         if (!GameManager.manager.completedQuests.Contains(allQuests[i]))
                         {
+                            Debug.Log("Debuggaa QuestManagerin CompletedQuestissa");
                             AddQuestToCompletedArray(allQuests[i]);
                         }
                     }
@@ -77,6 +79,7 @@ public class QuestManager : MonoBehaviour
                         {
                             if (!GameManager.manager.completedQuests.Contains(allQuests[i]))
                             {
+                                Debug.Log("Debuggaa QuestManagerin RewardReadyQuestissa");
                                 allQuests[i].InitializeRewardReadyQuest();
                                 AddQuestToRewardReadyArray(allQuests[i]);
                             }
@@ -99,6 +102,7 @@ public class QuestManager : MonoBehaviour
                         {
                             if (!GameManager.manager.completedQuests.Contains(allQuests[i]))
                             {
+                                Debug.Log("Debuggaa QuestManagerin TriggeredQuestissa");
                                 allQuests[i].initializeQuest();
                             }
                         }

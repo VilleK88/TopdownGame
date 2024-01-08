@@ -227,6 +227,8 @@ public class GameManager : MonoBehaviour
             savedSceneID = data.savedSceneID;
             //loadPlayerPosition = data.loadPlayerPosition;
             loadPlayerPosition = true;
+            //QuestManager.questManager.RemoveCompletedQuestIDs();
+            //QuestManager.questManager.RemoveAllCompletedQuestsOnStart();
         }
     }
 }
