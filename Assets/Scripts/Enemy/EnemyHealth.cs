@@ -48,6 +48,9 @@ public class EnemyHealth : MonoBehaviour
 
     [SerializeField] Animator bloodSplatterAnim;
 
+    [Header("Knight Info")]
+    bool blocking;
+
     private void Start()
     {
         //currentHealth = maxHealth;
@@ -68,6 +71,11 @@ public class EnemyHealth : MonoBehaviour
         else
         {
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        }
+
+        if(enemyClass == EnemyClass.Knight)
+        {
+            blocking = GetComponent<Knight>().activeBlocking;
         }
     }
 
@@ -109,21 +117,15 @@ public class EnemyHealth : MonoBehaviour
         {
             if(enemyClass == EnemyClass.Knight)
             {
-                /*blockOrNot = Random.Range(0, 2);
-                if (blockOrNot == 0)
+                if (blocking)
                 {
                     AudioManager.instance.PlaySound(blockHitSound);
-                    blockingPlayer = true;
-                    anim.SetBool("CrusaderBlock", true);
-                    blockingTime = Random.Range(1, 2);
-                    StartCoroutine(StopBlocking());
                 }
                 else
                 {
                     AudioManager.instance.PlaySound(hitSound);
                     bloodSplatterAnim.SetTrigger("Hit");
-                    gettingHit = false;
-                }*/
+                }
                 isActiveBlocking = GetComponent<Knight>().activeBlocking;
                 if(isActiveBlocking)
                 {
@@ -168,6 +170,10 @@ public class EnemyHealth : MonoBehaviour
                 bloodSplatterAnim.SetTrigger("Hit");
                 gettingHit = true;
                 StartCoroutine(StopGettingHit());
+            }
+            else if(enemyClass == EnemyClass.Bear)
+            {
+
             }
         }
     }

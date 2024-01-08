@@ -67,11 +67,12 @@ public class PlayerStrongAttackHitBox : MonoBehaviour
                 if (health.enemyClass == EnemyClass.Bear)
                 {
                     bool ifAgro = other.gameObject.GetComponent<Bear>().isAgro;
-                    if (!ifAgro)
+                    bool ifDead = other.gameObject.GetComponent<EnemyHealth>().dead;
+                    if (!ifAgro && !ifDead)
                     {
                         health.TakeDamage(30 + damage.GetValue());
                     }
-                    else
+                    else if (!ifDead)
                     {
                         health.TakeDamage(20 + damage.GetValue());
                     }
