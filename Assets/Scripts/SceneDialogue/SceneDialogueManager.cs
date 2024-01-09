@@ -20,18 +20,23 @@ public class SceneDialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
 
+    Animator anim;
+
     Queue<string> sentences;
 
     public bool inSceneDialogue = false;
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
         sentences = new Queue<string>();
     }
 
     public void StartSceneDialogue(SceneDialogue sceneDialogue)
     {
         inSceneDialogue = true;
+
+        anim.SetBool("IsOpen", true);
 
         nameText.text = sceneDialogue.name;
 
@@ -55,11 +60,23 @@ public class SceneDialogueManager : MonoBehaviour
         }
 
         string sentence = sentences.Dequeue();
-        dialogueText.text = sentence;
+        //dialogueText.text = sentence;
+        StopCoroutine(TypeSentence(sentence));
+        StartCoroutine(TypeSentence(sentence));
+    }
+
+    IEnumerator TypeSentence(string sentence)
+    {
+        dialogueText.text = "";
+        foreach(char letter in sentence.ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 
     public void EndSceneDialogue()
     {
-        Debug.Log("End of scene conversation.");
+        anim.SetBool("IsOpen", false);
     }
 }

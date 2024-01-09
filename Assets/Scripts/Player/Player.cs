@@ -317,6 +317,10 @@ public class Player : MonoBehaviour
         {
             isFrozen = true;
         }
+        else if(SceneDialogueManager.instance.inSceneDialogue)
+        {
+            isFrozen = true;
+        }
         else
         {
             isFrozen = false;

@@ -70,6 +70,9 @@ public class GameManager : MonoBehaviour
     public int savedSceneID;
     public bool loadPlayerPosition = false;
 
+    public bool startingSceneDialogueDone;
+    public bool startSecondStartingSceneDialogue;
+
 
     private void Awake()
     {
@@ -157,6 +160,9 @@ public class GameManager : MonoBehaviour
         data.savedSceneID = savedSceneID;
         data.loadPlayerPosition = false;
 
+        data.startingSceneDialogueDone = startingSceneDialogueDone;
+        data.startSecondStartingSceneDialogue = startSecondStartingSceneDialogue;
+
         // Serialisoidaan GameData objekti, joka tallennetaan samalla tiedostoon.
         bf.Serialize(file, data);
         file.Close(); // Suljetaan tiedosto, ettei kukaan hakkeri p‰‰se siihen k‰siksi.
@@ -229,6 +235,8 @@ public class GameManager : MonoBehaviour
             loadPlayerPosition = true;
             //QuestManager.questManager.RemoveCompletedQuestIDs();
             //QuestManager.questManager.RemoveAllCompletedQuestsOnStart();
+            startingSceneDialogueDone = data.startingSceneDialogueDone;
+            startSecondStartingSceneDialogue = data.startSecondStartingSceneDialogue;
         }
     }
 }
@@ -285,4 +293,7 @@ class GameData
 
     public int savedSceneID;
     public bool loadPlayerPosition = false;
+
+    public bool startingSceneDialogueDone;
+    public bool startSecondStartingSceneDialogue = true;
 }

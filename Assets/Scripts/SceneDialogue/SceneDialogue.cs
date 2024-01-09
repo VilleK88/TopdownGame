@@ -5,6 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class SceneDialogue
 {
+    public bool triggerFromStart = false;
+    public bool alreadyUsed = false;
+
     public string name;
 
     [TextArea(3, 10)]

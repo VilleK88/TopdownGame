@@ -15,6 +15,10 @@ public class SceneDialogueTrigger : MonoBehaviour
     private void Start()
     {
         //TriggerSceneDialogue();
+        if(sceneDialogue.triggerFromStart && !GameManager.manager.startingSceneDialogueDone)
+        {
+            TriggerSceneDialogue();
+        }
     }
 
     private void Update()
@@ -23,13 +27,14 @@ public class SceneDialogueTrigger : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.E))
         {
-            if(!ifInSceneDialogue)
+            if(!ifInSceneDialogue && !GameManager.manager.startingSceneDialogueDone)
             {
                 TriggerSceneDialogue();
             }
             else
             {
                 SceneDialogueManager.instance.DisplayNextSentence();
+                GameManager.manager.startingSceneDialogueDone = true;
             }
         }
     }
