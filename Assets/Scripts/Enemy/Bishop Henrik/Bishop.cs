@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Bishop : MonoBehaviour
 {
@@ -367,6 +368,7 @@ public class Bishop : MonoBehaviour
             gameObject.GetComponent<NavMeshAgent>().isStopped = true;
 
             StartCoroutine(Vanish());
+            //StartCoroutine(Count());
         }
     }
 
@@ -375,7 +377,15 @@ public class Bishop : MonoBehaviour
         yield return new WaitForSeconds(2);
         childSprite.GetComponent<SpriteRenderer>().enabled = false;
         childSprite.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        //yield return new WaitForSeconds(2);
+        //SpriteRenderer bishopSprite = gameObject.GetComponent<SpriteRenderer>();
+        //bishopSprite.enabled = false;
         gameObject.SetActive(false);
+    }
+
+    IEnumerator Count()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("8 - GameCompleted");
+        GameManager.manager.currentHealth = GameManager.manager.maxHealth;
     }
 }

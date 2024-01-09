@@ -258,6 +258,31 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 15906712}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &15906714 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4348352056793209671, guid: c6fa42430a03bf14baf8a4605a3a3bd5,
+    type: 3}
+  m_PrefabInstance: {fileID: 15906712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &15906715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15906714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f3fc667b01824c449c0852716f222c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bishopHenrik: {fileID: 15906716}
+--- !u!1 &15906716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6723823031740475232, guid: c6fa42430a03bf14baf8a4605a3a3bd5,
+    type: 3}
+  m_PrefabInstance: {fileID: 15906712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &26730955
 PrefabInstance:
   m_ObjectHideFlags: 0
