@@ -109,6 +109,12 @@ public class EnemyHealth : MonoBehaviour
         gettingHit = true;
         if (currentHealth <= 0)
         {
+            if(enemyClass == EnemyClass.Knight || enemyClass == EnemyClass.Peasant ||
+                enemyClass == EnemyClass.Longbowman || enemyClass == EnemyClass.Priest ||
+                enemyClass == EnemyClass.Bishop)
+            {
+                bloodSplatterAnim.SetTrigger("Hit");
+            }
             Die();
             AudioManager.instance.PlaySound(dieSound);
             dead = true;
