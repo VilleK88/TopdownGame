@@ -43,15 +43,15 @@ public class QuestBase : ScriptableObject
     {
         isCompleted = false;
         currentAmount = new int[requiredAmount.Length];
-        Debug.Log("InitializeRewardReadyQuest debuggaa");
+        //Debug.Log("InitializeRewardReadyQuest debuggaa");
         QuestlogManager.instance.AddQuestLog(this);
     }
-
+    
     public virtual void InitializeCompletedQuest()
     {
         isCompleted = true;
         currentAmount = new int[requiredAmount.Length];
-        Debug.Log("InitializeCompletedQuest debuggaa");
+        //Debug.Log("InitializeCompletedQuest debuggaa");
         QuestlogManager.instance.AddQuestLog(this);
     }
 

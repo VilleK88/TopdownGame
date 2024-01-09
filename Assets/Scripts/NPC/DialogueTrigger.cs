@@ -24,7 +24,6 @@ public class DialogueTrigger : NPCInteraction
                 DialogueManager.instance.EnqueueDialogue(completedQuestDialogue);
                 DialogueManager.instance.completedQuestReady = true;
                 hasCompletedQuest = false;
-                Debug.Log("Debuggaa t‰‰ll‰");
                 return;
             }
         }

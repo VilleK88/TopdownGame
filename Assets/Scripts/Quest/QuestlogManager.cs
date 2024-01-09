@@ -51,7 +51,6 @@ public class QuestlogManager : MonoBehaviour
             var questButton = Instantiate(questlogButtonPrefab, questHolder);
             questButton.GetComponent<QuestlogButton>().SetQuest(newQuest);
             AddToTriggeredQuestButtonIDs(newQuest.questID);
-            Debug.Log("AddQuestLog debuggaa");
         }
     }
 
@@ -67,13 +66,6 @@ public class QuestlogManager : MonoBehaviour
             newQuestButtonIDs[triggeredQuestButtonIDs.Length] = newQuestButtonID;
             triggeredQuestButtonIDs = newQuestButtonIDs;
         }
-        /*int[] newQuestButtonIDs = new int[triggeredQuestButtonIDs.Length + 1];
-        for(int i = 0; i < triggeredQuestButtonIDs.Length; i++)
-        {
-            newQuestButtonIDs[i] = triggeredQuestButtonIDs[i];
-        }
-        newQuestButtonIDs[triggeredQuestButtonIDs.Length] = newQuestButtonID;
-        triggeredQuestButtonIDs = newQuestButtonIDs;*/
     }
 
     private void Update()
@@ -98,7 +90,6 @@ public class QuestlogManager : MonoBehaviour
                         QuestBase completedQuest = Array.Find(GameManager.manager.completedQuests, quest => quest == lastDisplayedQuest);
                         if(completedQuest != null)
                         {
-                            Debug.Log("CompletedQuests debuggaa");
                             UpdateQuestlogUI(completedQuest, completedQuest.GetCompletedObjectiveList());
                         }
                     }
@@ -108,14 +99,12 @@ public class QuestlogManager : MonoBehaviour
                         QuestBase rewardReadyQuest = Array.Find(GameManager.manager.rewardReadyQuests, quest => quest == lastDisplayedQuest);
                         if(rewardReadyQuest != null)
                         {
-                            Debug.Log("RewardReadyQuests debuggaa");
                             UpdateQuestlogUI(rewardReadyQuest, rewardReadyQuest.GetCompletedObjectiveList());
                         }
                     }
                     if(GameManager.manager != null && GameManager.manager.triggeredQuests != null &&
                         GameManager.manager.triggeredQuests.Contains(lastDisplayedQuest))
                     {
-                        Debug.Log("TriggeredQuests debuggaa");
                         UpdateQuestlogUI(lastDisplayedQuest, lastDisplayedQuest.GetObjectiveList());
                     }
                 }
