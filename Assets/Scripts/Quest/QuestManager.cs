@@ -75,12 +75,13 @@ public class QuestManager : MonoBehaviour
                 {
                     if (allQuests[i].questID == rewardReadyQuestID)
                     {
+                        allQuests[i].InitializeRewardReadyQuest();
                         if (!GameManager.manager.rewardReadyQuests.Contains(allQuests[i]))
                         {
                             if (!GameManager.manager.completedQuests.Contains(allQuests[i]))
                             {
                                 Debug.Log("Debuggaa QuestManagerin RewardReadyQuestissa");
-                                allQuests[i].InitializeRewardReadyQuest();
+                                //allQuests[i].InitializeRewardReadyQuest();
                                 AddQuestToRewardReadyArray(allQuests[i]);
                             }
                         }
