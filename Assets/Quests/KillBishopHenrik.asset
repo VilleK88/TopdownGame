@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58166cea6409797409f1d7b71b52f59e, type: 3}
+  m_Name: KillBishopHenrik
+  m_EditorClassIdentifier: 
+  questName: Kill Bishop Henrik
+  questID: 5
+  questDescription: Bishop Henrik has robbed your home in the name of ecclesiastical
+    discipline and killed your wife in the progress. It's time for revenge. Pick
+    your trusted great axe and kill bishop Henrik and every living crusader that
+    you come across.
+  NPCTurnIn: {fileID: 11400000, guid: 6f8ea0950f97a0e4c81798d890ea82c4, type: 2}
+  completedQuestDialogue: {fileID: 0}
+  rewards:
+    itemRewards: []
+    experienceReward: 1000
+  objectives:
+  - requiredEnemy: {fileID: 11400000, guid: 8e0e17266c69fc94f82a78add9dda3f8, type: 2}
+    requiredAmount: 1
