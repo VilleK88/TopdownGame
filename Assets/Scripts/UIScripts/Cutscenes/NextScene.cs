@@ -7,16 +7,22 @@ public class NextScene : MonoBehaviour
 {
     public string sceneName;
     public float time;
+    float timer = 0;
 
-    private void Start()
+    private void Update()
     {
-        StartCoroutine(Count());
-    }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(sceneName);
+        }
 
-    IEnumerator Count()
-    {
-        yield return new WaitForSeconds(time);
-        SceneManager.LoadScene(sceneName);
-        GameManager.manager.currentHealth = GameManager.manager.maxHealth;
+        if(time > timer)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneName);
+        }
     }
 }

@@ -29,7 +29,8 @@ public class MenuControl : MonoBehaviour
         GameManager.manager.xpPotions = 0;
         //PlayerPrefs.DeleteKey("ItemCollected");
         //PlayerPrefs.DeleteAll();
-        SceneManager.LoadScene("2 - LallisHouse");
+        //SceneManager.LoadScene("2 - LallisHouse");
+        SceneManager.LoadScene("10 - StartingCredits");
         //SceneManager.LoadScene("VilleScene");
     }
 
