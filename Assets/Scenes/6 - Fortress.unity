@@ -1771,6 +1771,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
+      propertyPath: enemyProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 9882bf9820ec9834abc8f5633092f483,
+        type: 2}
+    - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
+        type: 3}
       propertyPath: questEnemyID
       value: 2
       objectReference: {fileID: 0}
@@ -3499,6 +3505,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
+      propertyPath: enemyProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 9882bf9820ec9834abc8f5633092f483,
+        type: 2}
+    - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
+        type: 3}
       propertyPath: questEnemyID
       value: 2
       objectReference: {fileID: 0}
@@ -4311,6 +4323,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1028896086}
     m_Modifications:
+    - target: {fileID: 5381059141635268842, guid: 64f62cbe37009914ba0f42714790a738,
+        type: 3}
+      propertyPath: enemyProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: e4232c48773b7c64e8ee27cbc4575600,
+        type: 2}
     - target: {fileID: 5381059141635268842, guid: 64f62cbe37009914ba0f42714790a738,
         type: 3}
       propertyPath: questEnemyID
@@ -5297,6 +5315,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6253919661241382293, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
         type: 3}
+      propertyPath: enemyProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: ec49400369c18e94da960bfa62c8449f,
+        type: 2}
+    - target: {fileID: 6253919661241382293, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
+        type: 3}
       propertyPath: questEnemyID
       value: 2
       objectReference: {fileID: 0}
@@ -5607,6 +5631,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Longbowman (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6253919661241382293, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
+        type: 3}
+      propertyPath: enemyProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: ec49400369c18e94da960bfa62c8449f,
+        type: 2}
     - target: {fileID: 6253919661241382293, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
         type: 3}
       propertyPath: questEnemyID
@@ -7470,6 +7500,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Longbowman (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6253919661241382293, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
+        type: 3}
+      propertyPath: enemyProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: ec49400369c18e94da960bfa62c8449f,
+        type: 2}
     - target: {fileID: 6253919661241382293, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
         type: 3}
       propertyPath: questEnemyID
@@ -10990,6 +11026,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crusader (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
+        type: 3}
+      propertyPath: enemyProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 9882bf9820ec9834abc8f5633092f483,
+        type: 2}
     - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
       propertyPath: questEnemyID
@@ -99458,6 +99500,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
+      propertyPath: enemyProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 9882bf9820ec9834abc8f5633092f483,
+        type: 2}
+    - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
+        type: 3}
       propertyPath: questEnemyID
       value: 2
       objectReference: {fileID: 0}
@@ -105169,6 +105217,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Longbowman
       objectReference: {fileID: 0}
+    - target: {fileID: 6253919661241382293, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
+        type: 3}
+      propertyPath: enemyProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: ec49400369c18e94da960bfa62c8449f,
+        type: 2}
     - target: {fileID: 6253919661241382293, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
         type: 3}
       propertyPath: questEnemyID

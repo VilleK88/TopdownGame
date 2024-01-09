@@ -26,9 +26,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a180f4c63b92b954db59d5b7a339909d, type: 2}
     experienceReward: 200
   objectives:
-  - requiredEnemy: {fileID: 11400000, guid: f5c6434752c913d41adba8b512e37520, type: 2}
+  - requiredEnemy: {fileID: 11400000, guid: e4232c48773b7c64e8ee27cbc4575600, type: 2}
     requiredAmount: 1
-  - requiredEnemy: {fileID: 11400000, guid: 97e6c9d4d9bd8784f9c2005298f9a79f, type: 2}
+  - requiredEnemy: {fileID: 11400000, guid: 9882bf9820ec9834abc8f5633092f483, type: 2}
     requiredAmount: 4
-  - requiredEnemy: {fileID: 11400000, guid: 70789faad2066b24ab03546da3dcbb43, type: 2}
+  - requiredEnemy: {fileID: 11400000, guid: ec49400369c18e94da960bfa62c8449f, type: 2}
     requiredAmount: 4

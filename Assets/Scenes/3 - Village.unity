@@ -2414,6 +2414,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
+      propertyPath: enemyProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 491eb1fb70bb5354bbc404e4f0cf9bbe,
+        type: 2}
+    - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
+        type: 3}
       propertyPath: currentHealth
       value: 100
       objectReference: {fileID: 0}
@@ -3546,6 +3552,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crusader
       objectReference: {fileID: 0}
+    - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
+        type: 3}
+      propertyPath: enemyProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 491eb1fb70bb5354bbc404e4f0cf9bbe,
+        type: 2}
     - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
       propertyPath: currentHealth
@@ -6527,6 +6539,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 958704499}
     m_Modifications:
+    - target: {fileID: 5381059141635268842, guid: 64f62cbe37009914ba0f42714790a738,
+        type: 3}
+      propertyPath: enemyProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 5b34d2b7acbee5c4bb1dd47ff1f05148,
+        type: 2}
     - target: {fileID: 5381059141635268843, guid: 64f62cbe37009914ba0f42714790a738,
         type: 3}
       propertyPath: m_RootOrder
@@ -14284,6 +14302,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crusader
       objectReference: {fileID: 0}
+    - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
+        type: 3}
+      propertyPath: enemyProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 491eb1fb70bb5354bbc404e4f0cf9bbe,
+        type: 2}
     - target: {fileID: 9125619688714398318, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -14616,6 +14640,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crusader
       objectReference: {fileID: 0}
+    - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
+        type: 3}
+      propertyPath: enemyProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 491eb1fb70bb5354bbc404e4f0cf9bbe,
+        type: 2}
     - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
       propertyPath: currentHealth
@@ -104731,6 +104761,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crusader (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
+        type: 3}
+      propertyPath: enemyProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 491eb1fb70bb5354bbc404e4f0cf9bbe,
+        type: 2}
     - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
       propertyPath: currentHealth
