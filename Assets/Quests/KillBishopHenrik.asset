@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: KillBishopHenrik
   m_EditorClassIdentifier: 
   questName: Kill Bishop Henrik
-  questID: 5
+  questID: 3
   questDescription: Bishop Henrik has robbed your home in the name of ecclesiastical
     discipline and killed your wife in the progress. It's time for revenge. Pick
-    your trusted great axe and kill bishop Henrik and every living crusader that
-    you come across.
+    your trusted great axe and kill bishop Henrik and every living christian crusader
+    that you come across.
   NPCTurnIn: {fileID: 11400000, guid: 6f8ea0950f97a0e4c81798d890ea82c4, type: 2}
   completedQuestDialogue: {fileID: 0}
   rewards:
