@@ -37,6 +37,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] AudioClip hitSound;
     [SerializeField] AudioClip blockHitSound;
     [SerializeField] AudioClip dieSound;
+    [SerializeField] AudioClip bearDieSound;
 
     [Header("Enemy ID Info")]
     public int enemyID;
@@ -179,7 +180,7 @@ public class EnemyHealth : MonoBehaviour
             }
             else if(enemyClass == EnemyClass.Bear)
             {
-
+                AudioManager.instance.PlaySound(hitSound);
             }
         }
     }
@@ -212,6 +213,11 @@ public class EnemyHealth : MonoBehaviour
         ExperienceManager.instance.AddExperience(expAmount);
         AddQuestEnemyIDToArray(this.questEnemyID);
         SpawnLoot();
+
+        if(enemyClass == EnemyClass.Bear)
+        {
+            AudioManager.instance.PlaySound(bearDieSound);
+        }
     }
 
     void AddQuestEnemyIDToArray(int newQuestEnemyID)

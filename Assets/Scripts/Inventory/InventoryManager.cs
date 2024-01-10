@@ -21,7 +21,7 @@ public class InventoryManager : MonoBehaviour
     }
     #endregion
 
-    public int maxStackedItems = 4;
+    int maxStackedItems = 6;
     public InventorySlot[] inventorySlots;
     public WeaponSlot weaponSlot;
     public bool weaponOnHand = false;

@@ -8,7 +8,6 @@ public class Quickbar : MonoBehaviour
 
     private void Update()
     {
-        //ChangeLayersToDefault(quickbar);
         StartCoroutine(ChangeLayers());
     }
 

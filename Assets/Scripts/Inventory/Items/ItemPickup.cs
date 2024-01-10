@@ -52,7 +52,6 @@ public class ItemPickup : Interactable
             }
 
             gameObject.SetActive(false);
-            //Destroy(gameObject);
         }
     }
 
@@ -64,7 +63,6 @@ public class ItemPickup : Interactable
         if (wasPickedUp)
         {
             gameObject.SetActive(false);
-            //Destroy(gameObject);
         }
     }
 

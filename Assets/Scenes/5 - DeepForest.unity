@@ -97489,6 +97489,11 @@ PrefabInstance:
       objectReference: {fileID: 1445923428}
     - target: {fileID: 7764761366545408691, guid: 3840373927c29e84ebf87f6983bc19ae,
         type: 3}
+      propertyPath: bearDieSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0b82fb4a6ac1f8445b988530607c1f94, type: 3}
+    - target: {fileID: 7764761366545408691, guid: 3840373927c29e84ebf87f6983bc19ae,
+        type: 3}
       propertyPath: questEnemyID
       value: 1
       objectReference: {fileID: 0}

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class WeaponSlot : MonoBehaviour, IDropHandler
 {
     public Image image;
-    //public bool weaponOnHand = false;
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -17,7 +16,6 @@ public class WeaponSlot : MonoBehaviour, IDropHandler
         {
             inventoryItem.parentAfterDrag = transform;
             GameManager.manager.weaponSlot = 1;
-            //weaponOnHand = true;
         }
     }
 }
