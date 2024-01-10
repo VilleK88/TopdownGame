@@ -2134,8 +2134,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4a29b149051236f4a92e4fd0b2cb1042, type: 2}
   - {fileID: 11400000, guid: 453ec63307f0b714a983501f2baaea24, type: 2}
   - {fileID: 11400000, guid: 13086a85b27d66649b79c8d06a7ad028, type: 2}
-  - {fileID: 11400000, guid: b7f6c3720fc9ec74db57426441cbc36c, type: 2}
   - {fileID: 11400000, guid: 5bf1c1079647c544096d4547f2c2f039, type: 2}
+  - {fileID: 11400000, guid: b7f6c3720fc9ec74db57426441cbc36c, type: 2}
   questIndex: 0
   questStartsSound: {fileID: 8300000, guid: 5c94a706f1993ce44b7240ab360954a5, type: 3}
 --- !u!114 &6601506825340582802

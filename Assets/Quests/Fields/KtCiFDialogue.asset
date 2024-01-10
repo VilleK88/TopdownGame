@@ -15,7 +15,6 @@ MonoBehaviour:
   dialogueInfo:
   - character: {fileID: 11400000, guid: 46f32935add2f454cac642d858681c4f, type: 2}
     myText: Help us, Lalli! The Christians are hunting our village shaman who has
-      gone hiding! They go from cabin to cabin, converting, robbing and murdering
-      people in the progress.
+      gone hiding!
     characterEmotion: 0
   quest: {fileID: 11400000, guid: 5bf1c1079647c544096d4547f2c2f039, type: 2}

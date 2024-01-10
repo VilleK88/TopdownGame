@@ -30,7 +30,7 @@ public class Priest : MonoBehaviour
     ParticleSystem particleSystemHealing;
 
     [Header("Healing Enemies Parameters")]
-    bool startHealing = false;
+    public bool startHealing = false;
     float checkInterval = 2;
     float maxHealth = 100;
     string enemyTag = "Enemy";
@@ -81,10 +81,7 @@ public class Priest : MonoBehaviour
         playerTransform = player.transform;
         agent = GetComponent<NavMeshAgent>();
         convertingSound = GetComponent<AudioSource>();
-        //peasants = GameObject.FindGameObjectsWithTag("Peasant");
         peasants = FindObjectsOfType<Peasant>();
-        //peasants = enemies.gameObject.(GameObject.FindGameObjectsWithTag("Peasant"));
-        //Debug.Log("Found " + peasants.Length + " peasants.");
         particleSystemConverting = particleConverting.GetComponent<ParticleSystem>();
         particleSystemHealing = particleHealing.GetComponent<ParticleSystem>();
         capsuleCollider = GetComponent<CapsuleCollider>();
@@ -95,7 +92,6 @@ public class Priest : MonoBehaviour
     private void Update()
     {
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        //gettingHit = GetComponent<EnemyHealth>().gettingHit;
         deadFetch = GetComponent<EnemyHealth>().dead;
         Death();
         if(distanceToPlayer < 30)

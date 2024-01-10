@@ -2434,14 +2434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9857d6d7708b4964387240f65711db2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneDialogue:
-    triggerFromStart: 0
-    alreadyUsed: 0
-    name: 
-    sentences:
-    - Pick up your trusted great axe by walking over to it, aiming your cursor at
-      it, and pressing E. Then select it from your inventory or use the quickslot
-      shortcuts (1-2).
 --- !u!1001 &1888438976
 PrefabInstance:
   m_ObjectHideFlags: 0

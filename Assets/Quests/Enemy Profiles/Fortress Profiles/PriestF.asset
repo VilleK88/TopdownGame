@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3f30bbd45433e459626706e2e77314, type: 3}
   m_Name: PriestF
   m_EditorClassIdentifier: 
-  enemyName: 
+  enemyName: Priest
