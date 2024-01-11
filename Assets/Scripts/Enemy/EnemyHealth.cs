@@ -38,6 +38,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] AudioClip blockHitSound;
     [SerializeField] AudioClip dieSound;
     [SerializeField] AudioClip bearDieSound;
+    [SerializeField] AudioClip bearMoan;
 
     [Header("Enemy ID Info")]
     public int enemyID;
@@ -181,6 +182,7 @@ public class EnemyHealth : MonoBehaviour
             else if(enemyClass == EnemyClass.Bear)
             {
                 AudioManager.instance.PlaySound(hitSound);
+                //AudioManager.instance.PlaySound(bearMoan);
             }
         }
     }

@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     [Header("Player Movement and Mouse Aiming Parameters")]
     float moveSpeed = 3.7f; // 3.7f
     float walkSpeed = 3.7f; // 3.7f;
-    float runningSpeed = 5.7f; // 5.7f
+    float runningSpeed = 20.7f; // 5.7f
     Vector3 movement;
     Ray ray;
     RaycastHit hit;
@@ -81,6 +81,10 @@ public class Player : MonoBehaviour
     float chargeMaxTime = 5;
     public float chargeCounter = 0;
 
+    [Header("Ukko Mode")]
+    public bool ukko = false;
+    const string UkkoModePrefKey = "UkkoMode";
+
 
     private void Start()
     {
@@ -104,6 +108,7 @@ public class Player : MonoBehaviour
 
         PlayerManager.instance.player.GetComponent<Player>().isPaused = false;
         Time.timeScale = 1;
+        ukko = PlayerPrefs.GetInt(UkkoModePrefKey, 0) == 1;
     }
 
     private void Update()
@@ -252,6 +257,13 @@ public class Player : MonoBehaviour
                 isPlayerAttacking = false;
                 isPlayerAttackingCounter = 0;
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.U))
+        {
+            ukko = !ukko;
+            PlayerPrefs.SetInt(UkkoModePrefKey, ukko ? 1 : 0);
+            PlayerPrefs.Save();
         }
     }
 

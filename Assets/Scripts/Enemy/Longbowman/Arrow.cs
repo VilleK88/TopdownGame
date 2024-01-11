@@ -27,13 +27,13 @@ public class Arrow : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             PlayerHealth health = collision.gameObject.GetComponent<PlayerHealth>();
-            if(health != null)
+            Player player = collision.gameObject.GetComponent<Player>();
+            if (health != null && !player.ukko)
             {
                 health.TakeDamage(10);
                 Destroy(gameObject);
             }
-            Player player = collision.gameObject.GetComponent<Player>();
-            if(player != null)
+            if(player != null && !player.ukko)
             {
                 if(player.blocking)
                 {

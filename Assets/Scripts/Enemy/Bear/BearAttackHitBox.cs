@@ -16,12 +16,12 @@ public class BearAttackHitBox : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             PlayerHealth health = other.gameObject.GetComponent<PlayerHealth>();
-            if (health != null)
+            Player player = other.gameObject.GetComponent<Player>();
+            if (health != null && !player.ukko)
             {
                 health.TakeDamage(25);
             }
-            Player player = other.gameObject.GetComponent<Player>();
-            if (player != null)
+            if (player != null && !player.ukko)
             {
                 if (player.blocking)
                 {
