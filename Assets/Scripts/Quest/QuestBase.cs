@@ -66,6 +66,7 @@ public class QuestBase : ScriptableObject
         }
 
         Debug.Log("Quest is Completed");
+        QuestManager.questManager.CheckCompletedQuestlogButton(questID);
 
         for (int i = 0; i < GameManager.manager.allDialogueTriggers.Length; i++)
         {
@@ -89,9 +90,6 @@ public class QuestBase : ScriptableObject
         DialogueManager.instance.completedQuest = this;
         QuestManager.questManager.RemoveCompletedQuestIDs();
         QuestManager.questManager.RemoveAllCompletedQuestsOnStart();
-
-        //GameManager.manager.Save();
-        //GameManager.manager.Load();
     }
 
     public virtual string GetObjectiveList()

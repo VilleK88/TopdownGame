@@ -31,6 +31,6 @@ MonoBehaviour:
   - requiredEnemy: {fileID: 11400000, guid: e901c89fd1165ca46802938ed8f36795, type: 2}
     requiredAmount: 4
   - requiredEnemy: {fileID: 11400000, guid: da6cc734df0e8bd4b8ba700572c3227e, type: 2}
-    requiredAmount: 8
+    requiredAmount: 6
   - requiredEnemy: {fileID: 11400000, guid: c2bdbcbe0cca111488b609f7722aeba1, type: 2}
     requiredAmount: 5

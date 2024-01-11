@@ -68,7 +68,7 @@ public class QuestDialogueTrigger : DialogueTrigger
             }
             else
             {
-                base.Interact();
+                //base.Interact();
             }
         }
     }

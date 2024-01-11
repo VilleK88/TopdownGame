@@ -37,6 +37,10 @@ public class QuestManager : MonoBehaviour
 
     [SerializeField] AudioClip questStartsSound;
 
+    public QuestlogButton[] questlogButtons;
+
+    [SerializeField] GameObject content;
+
 
     private void Start()
     {
@@ -44,6 +48,20 @@ public class QuestManager : MonoBehaviour
         RemoveAllCompletedQuestsOnStart();
         //RemoveEnemiesForRewardReadyQuests();
         //RemoveEnemiesForCompletedQuests();
+    }
+
+    public void CheckCompletedQuestlogButton(int questID)
+    {
+        questlogButtons = FindObjectsOfType<QuestlogButton>();
+        foreach (QuestlogButton questlogButton in questlogButtons)
+        {
+            Debug.Log("QuestID and QuestButtonID: " + questID + " and " + questlogButton.questlogButtonID);
+            if (questlogButton.questlogButtonID == questID)
+            {
+                questlogButton.QuestCompleted();
+                Debug.Log("Change quest to completed");
+            }
+        }
     }
 
     public void RemoveAllCompletedQuestsOnStart()

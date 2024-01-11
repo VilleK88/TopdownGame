@@ -51,4 +51,9 @@ public class QuestlogButton : MonoBehaviour
             uncheckBox.sprite = checkedBox;
         }
     }
+
+    public void QuestCompleted()
+    {
+        uncheckBox.sprite = checkedBox;
+    }
 }

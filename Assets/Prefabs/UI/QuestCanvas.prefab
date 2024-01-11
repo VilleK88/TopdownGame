@@ -2138,6 +2138,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b7f6c3720fc9ec74db57426441cbc36c, type: 2}
   questIndex: 0
   questStartsSound: {fileID: 8300000, guid: 5c94a706f1993ce44b7240ab360954a5, type: 3}
+  questlogButtons: []
+  questCanvas: {fileID: 6601506824658187387}
 --- !u!114 &6601506825340582802
 MonoBehaviour:
   m_ObjectHideFlags: 0
