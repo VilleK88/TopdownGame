@@ -503,6 +503,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMSettingsManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3517897786411874551, guid: cb6753fb09caba54cb4db2d3eea1fb6b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3517897786646811880, guid: cb6753fb09caba54cb4db2d3eea1fb6b,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -691,7 +696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
