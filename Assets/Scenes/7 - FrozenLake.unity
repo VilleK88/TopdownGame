@@ -250,6 +250,17 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[3]
       value: 
       objectReference: {fileID: 1480619534}
+    - target: {fileID: 6723823032288933993, guid: c6fa42430a03bf14baf8a4605a3a3bd5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3c33a5fc462220848b2716a1ce37dddf,
+        type: 3}
+    - target: {fileID: 6723823032288933999, guid: c6fa42430a03bf14baf8a4605a3a3bd5,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7649fde3a9a80d74c89c5168ab8ede5d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6fa42430a03bf14baf8a4605a3a3bd5, type: 3}
 --- !u!4 &15906713 stripped
@@ -1110,6 +1121,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Crusader
+      objectReference: {fileID: 0}
+    - target: {fileID: 9125619688714398309, guid: dcda6a7def1b62541a59d90fd65d17df,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
@@ -2608,6 +2624,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crusader (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9125619688714398309, guid: dcda6a7def1b62541a59d90fd65d17df,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9125619688714398317, guid: dcda6a7def1b62541a59d90fd65d17df,
         type: 3}
       propertyPath: questEnemyID
@@ -3189,6 +3210,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Priest
+      objectReference: {fileID: 0}
+    - target: {fileID: 5381059141635268851, guid: 64f62cbe37009914ba0f42714790a738,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64f62cbe37009914ba0f42714790a738, type: 3}
@@ -67828,6 +67854,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Longbowman
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253919661241382292, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6253919661241382293, guid: 8fd0f041bfa3b3b4aaadfb36ea479a7b,
         type: 3}

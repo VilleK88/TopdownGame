@@ -78,7 +78,7 @@ public class Bishop : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
         attackCooldownOriginal = attackCooldown;
         originalSpeed = agent.speed;
-        //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", true);
+        childSprite.GetComponent<Animator>().SetBool("Walk", true);
     }
 
     private void Update()
@@ -137,7 +137,7 @@ public class Bishop : MonoBehaviour
                 }
                 else if (distanceToPlayer < attackDistance)
                 {
-                    //childSprite.GetComponent<Animator>().SetBool("CrusaderRun", false);
+                    childSprite.GetComponent<Animator>().SetBool("Walk", false);
                     transform.LookAt(player.transform.position);
                     if (!gettingHitFetch)
                     {
@@ -173,7 +173,7 @@ public class Bishop : MonoBehaviour
                 else
                 {
                     agent.SetDestination(waypoints[waypointIndex].position);
-                    //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", true);
+                    childSprite.GetComponent<Animator>().SetBool("Walk", true);
                 }
             }
         }
@@ -199,7 +199,7 @@ public class Bishop : MonoBehaviour
                 waypointIndex++;
             }
             waypointCounter = 0;
-            //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
+            childSprite.GetComponent<Animator>().SetBool("Walk", false);
 
             if (waypointIndex >= waypoints.Length)
             {
@@ -261,6 +261,14 @@ public class Bishop : MonoBehaviour
     {
         //childSprite.GetComponent<Animator>().SetTrigger("CrusaderAttack1");
         //AudioManager.instance.PlaySound(attackSound);
+        childSprite.GetComponent<Animator>().SetTrigger("Attack");
+        //StartCoroutine(ThrowMolotov());
+        Instantiate(molotovCoctailPrefab, shotPoint.position, shotPoint.rotation);
+    }
+
+    IEnumerator ThrowMolotov()
+    {
+        yield return new WaitForSeconds(0.2f);
         Instantiate(molotovCoctailPrefab, shotPoint.position, shotPoint.rotation);
     }
 
@@ -298,7 +306,7 @@ public class Bishop : MonoBehaviour
         //childSprite.GetComponent<Animator>().SetBool("CrusaderWalk", false);
         agent.speed = 3.5f;
         agent.SetDestination(playerTransform.position);
-        //childSprite.GetComponent<Animator>().SetBool("CrusaderRun", true);
+        childSprite.GetComponent<Animator>().SetBool("Walk", true);
     }
 
     IEnumerator FOVRoutine()
