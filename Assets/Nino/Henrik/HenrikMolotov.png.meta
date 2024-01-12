@@ -1,0 +1,475 @@
+fileFormatVersion: 2
+guid: fbf2da552aaba504cae9ff190225f9d8
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HenrikMolotov_0
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 76
+        width: 58
+        height: 48
+      alignment: 9
+      pivot: {x: 0.54138327, y: 0.6309643}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f82dfa1bd148e41489e9208596b8616f
+      internalID: -823701969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HenrikMolotov_1
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 76
+        width: 58
+        height: 48
+      alignment: 9
+      pivot: {x: 0.54388297, y: 0.6325652}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9c8490320291a94ebdc00a3b13a82c4
+      internalID: -822258880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HenrikMolotov_2
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 76
+        width: 57
+        height: 48
+      alignment: 9
+      pivot: {x: 0.552396, y: 0.63321656}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a45278669c3f32c45b0a231ecf5fa4a0
+      internalID: -52721522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HenrikMolotov_3
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 76
+        width: 58
+        height: 48
+      alignment: 9
+      pivot: {x: 0.541647, y: 0.63155985}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 621a35ca5b544634187006599755178c
+      internalID: -2071142273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HenrikMolotov_4
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 77
+        width: 56
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5616259, y: 0.6420759}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 534aec7072b306d4a9c76de73b84951c
+      internalID: 449662727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HenrikMolotov_5
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 77
+        width: 56
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5609327, y: 0.6403391}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd1e2b642feb09143b6a7e31fc40e8a9
+      internalID: 1313845693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HenrikMolotov_6
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 77
+        width: 65
+        height: 47
+      alignment: 9
+      pivot: {x: 0.5145311, y: 0.6248672}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7731f9e6e1e7cd4aae633607b5ee732
+      internalID: -1794113836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HenrikMolotov_7
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 9
+        width: 87
+        height: 52
+      alignment: 9
+      pivot: {x: 0.3840652, y: 0.6600396}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d22611f412aa2d644a6564000deb9e6c
+      internalID: -1556003924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HenrikMolotov_8
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 12
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c6712b4482b1ec43801c9678d5821cc
+      internalID: -790244139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HenrikMolotov_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 9
+        width: 87
+        height: 52
+      alignment: 9
+      pivot: {x: 0.3849303, y: 0.6605309}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6200430648239894b93d40ceac81930a
+      internalID: 893144559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HenrikMolotov_10
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 12
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9449a7a7b9d5d148bcaa6ed0483401d
+      internalID: 609589564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HenrikMolotov_11
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 14
+        width: 85
+        height: 47
+      alignment: 9
+      pivot: {x: 0.3919132, y: 0.62313485}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f18019250a53604dafdedd2ccf8399a
+      internalID: 804792855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HenrikMolotov_12
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 14
+        width: 84
+        height: 47
+      alignment: 9
+      pivot: {x: 0.3978395, y: 0.62395656}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c371bcdcdebb79546a4a1d6d9c43cfc0
+      internalID: -46503034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HenrikMolotov_13
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 15
+        width: 67
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5129176, y: 0.63352406}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56d6c6839acfb9348b421ab6eb7bf567
+      internalID: 1953481774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HenrikMolotov_14
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 2
+        width: 63
+        height: 57
+      alignment: 9
+      pivot: {x: 0.5327914, y: 0.7258746}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9501d1907f2e0384d8dc0d23818bde13
+      internalID: -595462525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HenrikMolotov_15
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 7
+        width: 63
+        height: 52
+      alignment: 9
+      pivot: {x: 0.53250074, y: 0.6991959}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f6dd102a06882541a276bff84c9f4b8
+      internalID: -1980539257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 8bfb42200efa66a40a386e4673e0816f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      HenrikMolotov_0: -823701969
+      HenrikMolotov_1: -822258880
+      HenrikMolotov_10: 609589564
+      HenrikMolotov_11: 804792855
+      HenrikMolotov_12: -46503034
+      HenrikMolotov_13: 1953481774
+      HenrikMolotov_14: -595462525
+      HenrikMolotov_15: -1980539257
+      HenrikMolotov_2: -52721522
+      HenrikMolotov_3: -2071142273
+      HenrikMolotov_4: 449662727
+      HenrikMolotov_5: 1313845693
+      HenrikMolotov_6: -1794113836
+      HenrikMolotov_7: -1556003924
+      HenrikMolotov_8: -790244139
+      HenrikMolotov_9: 893144559
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
