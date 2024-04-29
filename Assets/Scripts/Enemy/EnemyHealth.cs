@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 public enum EnemyClass
 {
     Knight, Peasant, Priest, Dog, Longbowman, Bear, Bishop
@@ -11,100 +9,64 @@ public class EnemyHealth : MonoBehaviour
 {
     Animator anim;
     [SerializeField] GameObject enemySprite;
-
     [Header("Enemy Class/Profile")]
     public EnemyClass enemyClass;
     public EnemyProfile enemyProfile;
-
     [Header("Health")]
     float maxHealth = 100;
     public float currentHealth;
     public bool dead = false;
-
     [Header("Blocking Or Getting Hit")]
     public bool playerBlockFetch;
-    int blockOrNot;
     public bool blockingPlayer; // this is fetched from the Enemy -script
     int gettingHitOrNot;
     public bool gettingHit = false;
-    float blockingTime;
     public bool isActiveBlocking;
-
+    bool blocking;
     [Header("Player XP")]
     float expAmount;
-
     [Header("Audio")]
     [SerializeField] AudioClip hitSound;
     [SerializeField] AudioClip blockHitSound;
     [SerializeField] AudioClip dieSound;
     [SerializeField] AudioClip bearDieSound;
     [SerializeField] AudioClip bearMoan;
-
     [Header("Enemy ID Info")]
     public int enemyID;
     public int questEnemyID;
-
     [Header("Loot Items")]
     [SerializeField] ItemPickup healthPotion;
     [SerializeField] ItemPickup staminaPotion;
-
     [SerializeField] Animator bloodSplatterAnim;
-
-    [Header("Knight Info")]
-    bool blocking;
-
     private void Start()
     {
-        //currentHealth = maxHealth;
         anim = enemySprite.GetComponent<Animator>();
         HowMuchXp();
     }
-
     private void Update()
     {
         if(enemyClass == EnemyClass.Bear)
-        {
             currentHealth = Mathf.Clamp(currentHealth, 0, currentHealth);
-        }
         else if(enemyClass == EnemyClass.Bishop)
-        {
             currentHealth = Mathf.Clamp(currentHealth, 0, currentHealth);
-        }
         else
-        {
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        }
-
-        if(enemyClass == EnemyClass.Knight)
-        {
+        if (enemyClass == EnemyClass.Knight)
             blocking = GetComponent<Knight>().activeBlocking;
-        }
     }
-
     void HowMuchXp()
     {
         if (enemyClass == EnemyClass.Knight)
-        {
             expAmount = 25;
-        }
-        if(enemyClass == EnemyClass.Longbowman)
-        {
+        if (enemyClass == EnemyClass.Longbowman)
             expAmount = 25;
-        }
         if (enemyClass == EnemyClass.Peasant)
-        {
             expAmount = 15;
-        }
         if (enemyClass == EnemyClass.Priest)
-        {
             expAmount = 50;
-        }
-        if(enemyClass == EnemyClass.Bear)
-        {
+        if (enemyClass == EnemyClass.Bear)
             expAmount = 100;
-        }
     }
-
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
@@ -114,9 +76,7 @@ public class EnemyHealth : MonoBehaviour
             if(enemyClass == EnemyClass.Knight || enemyClass == EnemyClass.Peasant ||
                 enemyClass == EnemyClass.Longbowman || enemyClass == EnemyClass.Priest ||
                 enemyClass == EnemyClass.Bishop)
-            {
                 bloodSplatterAnim.SetTrigger("Hit");
-            }
             Die();
             AudioManager.instance.PlaySound(dieSound);
             dead = true;
@@ -126,9 +86,7 @@ public class EnemyHealth : MonoBehaviour
             if(enemyClass == EnemyClass.Knight)
             {
                 if (blocking)
-                {
                     AudioManager.instance.PlaySound(blockHitSound);
-                }
                 else
                 {
                     AudioManager.instance.PlaySound(hitSound);
@@ -182,46 +140,29 @@ public class EnemyHealth : MonoBehaviour
             else if(enemyClass == EnemyClass.Bear)
             {
                 AudioManager.instance.PlaySound(hitSound);
-                //AudioManager.instance.PlaySound(bearMoan);
             }
         }
     }
-
     public void RestoreHealth(float healAmount)
     {
         currentHealth += healAmount;
     }
-
     IEnumerator StopGettingHit()
     {
         yield return new WaitForSeconds(1);
         gettingHit = false;
     }
-
-    IEnumerator StopBlocking()
-    {
-        yield return new WaitForSeconds(blockingTime);
-        anim.SetBool("CrusaderBlock", false);
-        blockingPlayer = false;
-        gettingHit = false;
-    }
-
     public void Die()
     {
         if(GameManager.manager.onEnemyDeathCallBack != null)
-        {
             GameManager.manager.onEnemyDeathCallBack.Invoke(enemyProfile);
-        }
         ExperienceManager.instance.AddExperience(expAmount);
         AddQuestEnemyIDToArray(this.questEnemyID);
         SpawnLoot();
 
         if(enemyClass == EnemyClass.Bear)
-        {
             AudioManager.instance.PlaySound(bearDieSound);
-        }
     }
-
     void AddQuestEnemyIDToArray(int newQuestEnemyID)
     {
         int[] newQuestEnemyIDs = new int[GameManager.manager.questEnemyIDs.Length + 1];
@@ -232,17 +173,12 @@ public class EnemyHealth : MonoBehaviour
         newQuestEnemyIDs[GameManager.manager.questEnemyIDs.Length] = newQuestEnemyID;
         GameManager.manager.questEnemyIDs = newQuestEnemyIDs;
     }
-
     void SpawnLoot()
     {
         int itemToSpawn = Random.Range(0, 2);
         if(itemToSpawn == 0)
-        {
             Instantiate(healthPotion, transform.position, Quaternion.identity);
-        }
         else if(itemToSpawn == 1)
-        {
             Instantiate(staminaPotion, transform.position, Quaternion.identity);
-        }
     }
 }
