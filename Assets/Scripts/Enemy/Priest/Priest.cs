@@ -37,10 +37,8 @@ public class Priest : MonoBehaviour
     Collider[] rangeChecks;
     Transform target;
     Vector3 directionToTarget;
-    float distanceToTarget;
     [Header("Player")]
     GameObject player;
-    Transform playerTransform;
     [Header("Chase, Attack and Agro Parameters")]
     public bool isAgro = false;
     float maxAgroCounter = 5;
@@ -56,7 +54,6 @@ public class Priest : MonoBehaviour
     private void Start()
     {
         player = PlayerManager.instance.player;
-        playerTransform = player.transform;
         agent = GetComponent<NavMeshAgent>();
         convertingSound = GetComponent<AudioSource>();
         peasants = FindObjectsOfType<Peasant>();
@@ -109,7 +106,6 @@ public class Priest : MonoBehaviour
     IEnumerator FOVRoutine()
     {
         WaitForSeconds wait = new WaitForSeconds(0.2f);
-
         while (true)
         {
             yield return wait;
@@ -125,9 +121,7 @@ public class Priest : MonoBehaviour
             directionToTarget = (target.position - transform.position).normalized;
             if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
             {
-                distanceToTarget = Vector3.Distance(transform.position, target.position);
-
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToPlayer, obstructionMask))
                     canSeePlayer = true;
                 else
                     canSeePlayer = false;

@@ -60,7 +60,6 @@ public class Knight : MonoBehaviour
     }
     private void Update()
     {
-        //ifBlockingPlayersAttackFetch = GetComponent<EnemyHealth>().blockingPlayer;
         deadFetch = GetComponent<EnemyHealth>().dead;
         gettingHit = GetComponent<EnemyHealth>().gettingHit;
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
@@ -243,7 +242,6 @@ public class Knight : MonoBehaviour
             directionToTarget = (target.position - transform.position).normalized;
             if(Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
             {
-                distanceToPlayer = Vector3.Distance(transform.position, target.position);
                 if(!Physics.Raycast(transform.position, directionToTarget, distanceToPlayer, obstructionMask))
                     canSeePlayer = true;
                 else
