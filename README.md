@@ -1,9 +1,9 @@
-# First Person Shooter
+# First-Person Shooter Game Project
 
-Ongoing Unity 3D first person shooter game project made using C#, Unity and MongoDB.
+Currently developing a Wolfenstein-inspired 3D first-person shooter using C#, Unity, and MongoDB. The game combines fast-paced combat with stealth mechanics and strategic inventory management, offering an immersive gameplay experience.
 
 Key Features:
 
-- Fast paced shooter
-- Sneaking
-- Inventory management
+- High-speed, action-oriented shooting mechanics
+- Integrated stealth and sneaking elements
+- Dynamic inventory system for resource management
